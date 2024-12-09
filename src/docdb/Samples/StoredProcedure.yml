@@ -1,0 +1,19 @@
+#YamlMime:DocDB_StoredProcedure
+id: dbo.Users
+title: dbo.UsersView Stored Procedure
+type: storedProcedure
+created: yyyyMMdd-HHmmssfff
+lastModified: yyyyMMdd-HHmmssfff
+description: |
+    The longish description.
+parameters:
+  - name: ID
+    dataType: INT
+    maxLength: 0
+    defaultValue:
+    isOutput: false
+    description: blah blah
+script: |
+    CREATE PROCEDURE ...
+    
+      

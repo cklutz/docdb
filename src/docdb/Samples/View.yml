@@ -1,0 +1,36 @@
+#YamlMime:DocDB_View
+id: dbo.Users
+title: dbo.UsersView View
+type: view
+created: yyyyMMdd-HHmmssfff
+lastModified: yyyyMMdd-HHmmssfff
+description: |
+    The longish view description.
+columns:
+  - name: ID
+    dataType: INT
+    maxLength: 0
+    isIdentity: true
+    isNullable: false
+    isPrimaryKey: true
+    isForeignKey: false
+    isComputed: false
+    default: 
+    description: blah blah
+indexes:
+  - name: IDX_foo
+    description: blah
+    columns:
+    - ID
+    - Name
+    isUnique: true
+    isClustered: false
+    isPartitioned: false
+triggers:
+  - name: MyTrigger
+    description: blah blah
+    on: ...
+script: |
+    CREATE VIEW .d.d.d.    
+    
+      
