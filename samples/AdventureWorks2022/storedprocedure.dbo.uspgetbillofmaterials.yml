@@ -1,0 +1,29 @@
+### YamlMime:DocDB
+type: StoredProcedure
+id: storedprocedure.dbo.uspgetbillofmaterials
+description: Stored procedure using a recursive query to return a multi-level bill of material for the specified ProductID.
+createdAt: 2023-05-08T12:07:39.6170000
+lastModifiedAt: 2023-05-08T12:07:39.6170000
+name: '[dbo].[uspGetBillOfMaterials]'
+title: 
+parameters:
+- type: StoredProcedureParameter
+  id: storedprocedure.dbo.uspgetbillofmaterials.param.@startproductid
+  description: Input parameter for the stored procedure uspGetBillOfMaterials. Enter a valid ProductID from the Production.Product table.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@StartProductID'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: INT
+  defaultValue: ''
+- type: StoredProcedureParameter
+  id: storedprocedure.dbo.uspgetbillofmaterials.param.@checkdate
+  description: Input parameter for the stored procedure uspGetBillOfMaterials used to eliminate components not used after that date. Enter a valid date.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@CheckDate'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: DATETIME
+  defaultValue: ''

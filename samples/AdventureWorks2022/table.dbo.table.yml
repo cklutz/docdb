@@ -1,0 +1,35 @@
+### YamlMime:DocDB
+type: Table
+id: table.dbo.table
+description: 
+createdAt: 2024-12-03T07:15:48.8230000
+lastModifiedAt: 2024-12-03T07:15:48.8230000
+name: '[dbo].[TABLE]'
+foreignKeys: []
+checks: []
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+title: 
+indexes: []
+columns:
+- type: TableColumn
+  id: table.dbo.table.column.int
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[INT]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 

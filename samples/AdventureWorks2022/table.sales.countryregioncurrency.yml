@@ -1,0 +1,71 @@
+### YamlMime:DocDB
+type: Table
+id: table.sales.countryregioncurrency
+description: Cross-reference table mapping ISO currency codes to a country or region.
+createdAt: 2023-05-08T12:07:29.4230000
+lastModifiedAt: 2023-05-08T12:07:38.5730000
+name: '[Sales].[CountryRegionCurrency]'
+foreignKeys: []
+checks: []
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+title: 
+indexes: []
+columns:
+- type: TableColumn
+  id: table.sales.countryregioncurrency.column.countryregioncode
+  description: ISO code for countries and regions. Foreign key to CountryRegion.CountryRegionCode.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[CountryRegionCode]'
+  dataType: NVARCHAR(3)
+  maxLengthBytes: 3
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.sales.countryregioncurrency.column.currencycode
+  description: ISO standard currency code. Foreign key to Currency.CurrencyCode.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[CurrencyCode]'
+  dataType: NCHAR(3)
+  maxLengthBytes: 3
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.sales.countryregioncurrency.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[ModifiedDate]'
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: (getdate())

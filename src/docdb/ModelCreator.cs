@@ -1,6 +1,7 @@
-﻿using DocDB.Model;
+﻿using DocDB.Contracts;
 using Microsoft.SqlServer.Management.Smo;
 using System;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 
@@ -25,9 +26,10 @@ internal class ModelCreator
 
     private DdbSchema CreateSchema(Schema schema)
     {
-        var result = new DdbSchema(schema.GetModelId(), schema.GetFullName())
+        var result = new DdbSchema()
         {
-
+            Id = schema.GetModelId(),
+            Name = schema.GetFullName()
         };
 
         return result;
@@ -35,8 +37,10 @@ internal class ModelCreator
 
     private DdbUserDefinedFunction CreateUserDefinedFunction(UserDefinedFunction udf)
     {
-        var result = new DdbUserDefinedFunction(udf.GetModelId(), udf.GetFullName())
+        var result = new DdbUserDefinedFunction
         {
+            Id = udf.GetModelId(),
+            Name = udf.GetFullName(),
             Description = udf.GetMSDescription(),
             CreatedAt = udf.CreateDate,
             LastModifiedAt = udf.DateLastModified,
@@ -52,8 +56,10 @@ internal class ModelCreator
 
         foreach (UserDefinedFunctionParameter parameter in udf.Parameters)
         {
-            result.Parameters.Add(new(parameter.GetModelId(), parameter.Name)
+            result.Parameters.Add(new()
             {
+                Id = parameter.GetModelId(),
+                Name = parameter.Name,
                 DataType = parameter.DataType.PrettyName(),
                 Description = parameter.GetMSDescription(),
                 DefaultValue = parameter.DefaultValue,
@@ -65,8 +71,10 @@ internal class ModelCreator
 
     private DdbStoredProcedure CreateStoredProcedure(StoredProcedure sp)
     {
-        var result = new DdbStoredProcedure(sp.AsIdentifier(), sp.GetFullName())
+        var result = new DdbStoredProcedure
         {
+            Id = sp.GetModelId(),
+            Name = sp.GetFullName(),
             Description = sp.GetMSDescription(),
             CreatedAt = sp.CreateDate,
             LastModifiedAt = sp.DateLastModified
@@ -74,8 +82,10 @@ internal class ModelCreator
 
         foreach (StoredProcedureParameter parameter in sp.Parameters)
         {
-            result.Parameters.Add(new(parameter.GetModelId(), parameter.Name)
+            result.Parameters.Add(new()
             {
+                Id = parameter.GetModelId(),
+                Name = parameter.Name,
                 DataType = parameter.DataType.PrettyName(),
                 IsOutputParameter = parameter.IsOutputParameter,
                 IsCursorParameter = parameter.IsCursorParameter,
@@ -90,8 +100,10 @@ internal class ModelCreator
 
     private DdbView CreateView(View view)
     {
-        var result = new DdbView(view.GetModelId(), view.GetFullName())
+        var result = new DdbView
         {
+            Id = view.GetModelId(),
+            Name = view.GetFullName(),
             Description = view.GetMSDescription(),
             CreatedAt = view.CreateDate,
             LastModifiedAt = view.DateLastModified,
@@ -99,8 +111,10 @@ internal class ModelCreator
 
         foreach (Column column in view.Columns)
         {
-            result.Columns.Add(new(column.GetModelId(), column.Name)
+            result.Columns.Add(new()
             {
+                Id = column.GetModelId(),
+                Name = column.GetFullName(),
                 Description = column.GetMSDescription(),
                 IsComputed = column.Computed,
                 ComputedText = column.ComputedText,
@@ -120,8 +134,10 @@ internal class ModelCreator
 
     private DdbTable CreateTable(Table table)
     {
-        var result = new DdbTable(table.GetModelId(), table.GetFullName())
+        var result = new DdbTable()
         {
+            Id = table.GetModelId(),
+            Name = table.GetFullName(),
             Description = table.GetMSDescription(),
             CreatedAt = table.CreateDate,
             LastModifiedAt = table.DateLastModified,
@@ -137,8 +153,10 @@ internal class ModelCreator
 
         foreach (Column column in table.Columns)
         {
-            result.Columns.Add(new(column.GetModelId(), column.Name)
+            result.Columns.Add(new()
             {
+                Id = column.GetModelId(),
+                Name = column.GetFullName(),
                 Description = column.GetMSDescription(),
                 IsComputed = column.Computed,
                 ComputedText = column.ComputedText,
@@ -163,7 +181,7 @@ internal static class ModelExtensions
     {
         if (obj is ScriptSchemaObjectBase schemaObj)
         {
-            return $"{obj.Urn.Type.ToLowerInvariant()}.{schemaObj.AsIdentifier()}";
+            return $"{schemaObj.Urn.Type.ToLowerInvariant()}.{schemaObj.AsIdentifier()}";
         }
 
         if (obj.ParentCollection?.ParentInstance is ScriptSchemaObjectBase parentObj)
@@ -179,7 +197,7 @@ internal static class ModelExtensions
             return sb.ToString().AsIdentifier();
         }
 
-        return $"{obj.Urn.Type.ToLowerInvariant()}_{obj.AsIdentifier()}";
+        return $"{obj.Urn.Type.ToLowerInvariant()}.{obj.AsIdentifier()}";
     }
 
     public static string PrettyName(this DataType dt)

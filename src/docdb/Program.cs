@@ -1,12 +1,10 @@
-﻿using DocDB.Model;
+﻿using DocDB.Contracts;
 using Microsoft.SqlServer.Management.Sdk.Sfc;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using YamlDotNet.Core;
-using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -17,7 +15,6 @@ public static class Program
 
     public static int Main(string[] args)
     {
-
         if (args.Length < 3)
         {
             Console.Error.WriteLine("Usage: {0} CONNECTION-STRING OUTPUT-DIR ROOTNODE-TEXT");
@@ -53,16 +50,23 @@ public static class Program
         using (var target = new SqlServerTarget(connectionString))
         {
             var modelCreator = new ModelCreator();
-            var objects = new ConcurrentDictionary<string, List<DdbObject>>(StringComparer.OrdinalIgnoreCase);
+            var objects = new List<DdbObject>();
 
-            var serializer = new SerializerBuilder()
+            var serializerBuilder = new SerializerBuilder()
                 .WithAttributeOverride<DdbObject>(o => o.Id, new YamlMemberAttribute { Order = -10 })
-                .WithAttributeOverride<DdbObject>(o => o.Description!, new YamlMemberAttribute { Order = -9 })
-                .WithAttributeOverride<DdbObject>(o => o.CreatedAt!, new YamlMemberAttribute { Order = -8 })
-                .WithAttributeOverride<DdbObject>(o => o.LastModifiedAt!, new YamlMemberAttribute { Order = -7 })
-                .WithAttributeOverride<NamedDdbObject>(o => o.Name, new YamlMemberAttribute { Order = -6 })
-                .WithNamingConvention(CamelCaseNamingConvention.Instance)
-                .Build();
+                .WithAttributeOverride<DdbObject>(o => o.Type, new YamlMemberAttribute { Order = -11 /*-9*/ })
+                .WithAttributeOverride<DdbObject>(o => o.Description!, new YamlMemberAttribute { Order = -8 })
+                .WithAttributeOverride<DdbObject>(o => o.CreatedAt!, new YamlMemberAttribute { Order = -7 })
+                .WithAttributeOverride<DdbObject>(o => o.LastModifiedAt!, new YamlMemberAttribute { Order = -6 })
+                .WithAttributeOverride<NamedDdbObject>(o => o.Name, new YamlMemberAttribute { Order = -5 })
+                .WithNamingConvention(CamelCaseNamingConvention.Instance);
+
+            //foreach (var mappings in DdbObject.GetTagMappings())
+            //{
+            //    serializerBuilder.WithTagMapping(mappings.Tag, mappings.Type);
+            //}
+
+            var serializer = serializerBuilder.Build();
 
             foreach (Urn urn in target.Objects)
             {
@@ -76,14 +80,14 @@ public static class Program
                     continue;
                 }
 
-                var yaml = serializer.Serialize(dbdObject);
+                var yaml = serializer.Serialize(dbdObject, dbdObject.GetType());
 
                 string modelId = smoObject.GetModelId();
                 string fullPath = Path.Combine(outputDirectory, modelId + ".yml");
                 output.Message($"Writing {fullPath}");
 
-                WriteFile(fullPath, urn.Type, yaml);
-                objects.GetOrAdd(dbdObject.GetType().Name, _ => new()).Add(dbdObject);
+                WriteFile(fullPath, modelId, yaml);
+                objects.Add(dbdObject);
             }
 
             string tocFile = Path.Combine(outputDirectory, "toc.yml");
@@ -94,14 +98,14 @@ public static class Program
         return 0;
     }
 
-    static void WriteFile(string name, string mimeType, string? contents)
+    static void WriteFile(string name, string uid, string? contents)
     {
         if (File.Exists(name))
         {
             File.Delete(name);
         }
 
-        File.WriteAllText(name, $"#YamlMime:DocDB_{mimeType}\r\n");
+        File.WriteAllText(name, $"### YamlMime:DocDB\r\n");
         File.AppendAllText(name, contents);
     }
 }

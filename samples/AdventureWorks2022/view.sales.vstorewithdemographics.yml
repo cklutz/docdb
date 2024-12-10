@@ -1,0 +1,226 @@
+### YamlMime:DocDB
+type: View
+id: view.sales.vstorewithdemographics
+description: Stores (including demographics) that sell Adventure Works Cycles products to consumers.
+createdAt: 2023-05-08T12:07:39.5800000
+lastModifiedAt: 2023-05-08T12:07:39.5800000
+name: '[Sales].[vStoreWithDemographics]'
+title: 
+indexes: []
+columns:
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.businessentityid
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[BusinessEntityID]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.name
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[Name]'
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.annualsales
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[AnnualSales]'
+  dataType: MONEY
+  maxLengthBytes: 8
+  precision: 19
+  scale: 4
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.annualrevenue
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[AnnualRevenue]'
+  dataType: MONEY
+  maxLengthBytes: 8
+  precision: 19
+  scale: 4
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.bankname
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[BankName]'
+  dataType: NVARCHAR(50)
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.businesstype
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[BusinessType]'
+  dataType: NVARCHAR(5)
+  maxLengthBytes: 5
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.yearopened
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[YearOpened]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.specialty
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[Specialty]'
+  dataType: NVARCHAR(50)
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.squarefeet
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[SquareFeet]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.brands
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[Brands]'
+  dataType: NVARCHAR(30)
+  maxLengthBytes: 30
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.internet
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[Internet]'
+  dataType: NVARCHAR(30)
+  maxLengthBytes: 30
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.numberemployees
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[NumberEmployees]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 

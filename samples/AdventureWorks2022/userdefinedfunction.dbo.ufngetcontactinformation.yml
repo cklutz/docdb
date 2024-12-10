@@ -1,0 +1,19 @@
+### YamlMime:DocDB
+type: UserDefinedFunction
+id: userdefinedfunction.dbo.ufngetcontactinformation
+description: Table value function returning the first name, last name, job title and contact type for a given contact.
+createdAt: 2023-05-08T12:07:39.6000000
+lastModifiedAt: 2023-05-08T12:07:39.6000000
+name: '[dbo].[ufnGetContactInformation]'
+functionType: Table
+returnsNullOnNullInput: false
+title: 
+parameters:
+- type: UserDefinedFunctionParameter
+  id: userdefinedfunction.dbo.ufngetcontactinformation.param.@personid
+  description: Input parameter for the table value function ufnGetContactInformation. Enter a valid PersonID from the Person.Contact table.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@PersonID'
+  dataType: INT
+  defaultValue: ''

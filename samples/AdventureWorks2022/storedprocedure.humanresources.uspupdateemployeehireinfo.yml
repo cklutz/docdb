@@ -1,0 +1,79 @@
+### YamlMime:DocDB
+type: StoredProcedure
+id: storedprocedure.humanresources.uspupdateemployeehireinfo
+description: Updates the Employee table and inserts a new row in the EmployeePayHistory table with the values specified in the input parameters.
+createdAt: 2023-05-08T12:07:39.6330000
+lastModifiedAt: 2023-05-08T12:07:39.6330000
+name: '[HumanResources].[uspUpdateEmployeeHireInfo]'
+title: 
+parameters:
+- type: StoredProcedureParameter
+  id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@businessentityid
+  description: Input parameter for the stored procedure uspUpdateEmployeeHireInfo. Enter a valid BusinessEntityID from the Employee table.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@BusinessEntityID'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: INT
+  defaultValue: ''
+- type: StoredProcedureParameter
+  id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@jobtitle
+  description: Input parameter for the stored procedure uspUpdateEmployeeHireInfo. Enter a title for the employee.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@JobTitle'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: NVARCHAR(50)
+  defaultValue: ''
+- type: StoredProcedureParameter
+  id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@hiredate
+  description: Input parameter for the stored procedure uspUpdateEmployeeHireInfo. Enter a hire date for the employee.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@HireDate'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: DATETIME
+  defaultValue: ''
+- type: StoredProcedureParameter
+  id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@ratechangedate
+  description: Input parameter for the stored procedure uspUpdateEmployeeHireInfo. Enter the date the rate changed for the employee.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@RateChangeDate'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: DATETIME
+  defaultValue: ''
+- type: StoredProcedureParameter
+  id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@rate
+  description: Input parameter for the stored procedure uspUpdateEmployeeHireInfo. Enter the new rate for the employee.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@Rate'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: MONEY
+  defaultValue: ''
+- type: StoredProcedureParameter
+  id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@payfrequency
+  description: Input parameter for the stored procedure uspUpdateEmployeeHireInfo. Enter the pay frequency for the employee.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@PayFrequency'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: TINYINT
+  defaultValue: ''
+- type: StoredProcedureParameter
+  id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@currentflag
+  description: Input parameter for the stored procedure uspUpdateEmployeeHireInfo. Enter the current flag for the employee.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@CurrentFlag'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: FLAG
+  defaultValue: ''

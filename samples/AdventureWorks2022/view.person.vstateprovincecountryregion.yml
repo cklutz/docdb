@@ -1,0 +1,136 @@
+### YamlMime:DocDB
+type: View
+id: view.person.vstateprovincecountryregion
+description: Joins StateProvince table with CountryRegion table.
+createdAt: 2023-05-08T12:07:39.5670000
+lastModifiedAt: 2023-05-08T12:07:39.5700000
+name: '[Person].[vStateProvinceCountryRegion]'
+title: 
+indexes: []
+columns:
+- type: ViewColumn
+  id: view.person.vstateprovincecountryregion.column.stateprovinceid
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[StateProvinceID]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.person.vstateprovincecountryregion.column.stateprovincecode
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[StateProvinceCode]'
+  dataType: NCHAR(3)
+  maxLengthBytes: 3
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.person.vstateprovincecountryregion.column.isonlystateprovinceflag
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[IsOnlyStateProvinceFlag]'
+  dataType: FLAG
+  maxLengthBytes: 1
+  precision: 1
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.person.vstateprovincecountryregion.column.stateprovincename
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[StateProvinceName]'
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.person.vstateprovincecountryregion.column.territoryid
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[TerritoryID]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.person.vstateprovincecountryregion.column.countryregioncode
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[CountryRegionCode]'
+  dataType: NVARCHAR(3)
+  maxLengthBytes: 3
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: ViewColumn
+  id: view.person.vstateprovincecountryregion.column.countryregionname
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[CountryRegionName]'
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 

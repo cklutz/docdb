@@ -1,0 +1,89 @@
+### YamlMime:DocDB
+type: Table
+id: table.production.productproductphoto
+description: Cross-reference table mapping products and product photos.
+createdAt: 2023-05-08T12:07:29.5230000
+lastModifiedAt: 2023-05-08T12:07:38.8270000
+name: '[Production].[ProductProductPhoto]'
+foreignKeys: []
+checks: []
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+title: 
+indexes: []
+columns:
+- type: TableColumn
+  id: table.production.productproductphoto.column.productid
+  description: Product identification number. Foreign key to Product.ProductID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[ProductID]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.production.productproductphoto.column.productphotoid
+  description: Product photo identification number. Foreign key to ProductPhoto.ProductPhotoID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[ProductPhotoID]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.production.productproductphoto.column.primary
+  description: 0 = Photo is not the principal image. 1 = Photo is the principal image.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[Primary]'
+  dataType: FLAG
+  maxLengthBytes: 1
+  precision: 1
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: ((0))
+- type: TableColumn
+  id: table.production.productproductphoto.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[ModifiedDate]'
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: (getdate())

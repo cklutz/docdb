@@ -1,0 +1,125 @@
+### YamlMime:DocDB
+type: Table
+id: table.humanresources.employeedepartmenthistory
+description: Employee department transfers.
+createdAt: 2023-05-08T12:07:29.4600000
+lastModifiedAt: 2023-05-08T12:07:38.6800000
+name: '[HumanResources].[EmployeeDepartmentHistory]'
+foreignKeys: []
+checks: []
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+title: 
+indexes: []
+columns:
+- type: TableColumn
+  id: table.humanresources.employeedepartmenthistory.column.businessentityid
+  description: Employee identification number. Foreign key to Employee.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[BusinessEntityID]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.humanresources.employeedepartmenthistory.column.departmentid
+  description: Department in which the employee worked including currently. Foreign key to Department.DepartmentID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[DepartmentID]'
+  dataType: SMALLINT
+  maxLengthBytes: 2
+  precision: 5
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.humanresources.employeedepartmenthistory.column.shiftid
+  description: Identifies which 8-hour shift the employee works. Foreign key to Shift.Shift.ID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[ShiftID]'
+  dataType: TINYINT
+  maxLengthBytes: 1
+  precision: 3
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.humanresources.employeedepartmenthistory.column.startdate
+  description: Date the employee started work in the department.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[StartDate]'
+  dataType: DATE
+  maxLengthBytes: 3
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.humanresources.employeedepartmenthistory.column.enddate
+  description: Date the employee left the department. NULL = Current department.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[EndDate]'
+  dataType: DATE
+  maxLengthBytes: 3
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.humanresources.employeedepartmenthistory.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[ModifiedDate]'
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: (getdate())

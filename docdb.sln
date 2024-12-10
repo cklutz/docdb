@@ -5,6 +5,10 @@ VisualStudioVersion = 17.10.34607.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "docdb", "src\docdb\docdb.csproj", "{15BC5888-8BA3-48F9-8E65-1A73907F9999}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Docfx.Plugins.DocDB", "src\Docfx.Plugins.DocDB\Docfx.Plugins.DocDB.csproj", "{71394D85-C8F1-408D-87DF-8EA5182275AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocDB.Contracts", "src\DocDB.Contracts\DocDB.Contracts.csproj", "{43732FDE-9948-4A1B-808A-D7A5A4E193D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{15BC5888-8BA3-48F9-8E65-1A73907F9999}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15BC5888-8BA3-48F9-8E65-1A73907F9999}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15BC5888-8BA3-48F9-8E65-1A73907F9999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71394D85-C8F1-408D-87DF-8EA5182275AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71394D85-C8F1-408D-87DF-8EA5182275AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71394D85-C8F1-408D-87DF-8EA5182275AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71394D85-C8F1-408D-87DF-8EA5182275AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43732FDE-9948-4A1B-808A-D7A5A4E193D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43732FDE-9948-4A1B-808A-D7A5A4E193D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43732FDE-9948-4A1B-808A-D7A5A4E193D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43732FDE-9948-4A1B-808A-D7A5A4E193D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

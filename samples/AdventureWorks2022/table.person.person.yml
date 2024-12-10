@@ -1,0 +1,251 @@
+### YamlMime:DocDB
+type: Table
+id: table.person.person
+description: 'Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.'
+createdAt: 2023-05-08T12:07:29.4770000
+lastModifiedAt: 2023-05-08T12:07:39.4100000
+name: '[Person].[Person]'
+foreignKeys: []
+checks: []
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+title: 
+indexes: []
+columns:
+- type: TableColumn
+  id: table.person.person.column.businessentityid
+  description: Primary key for Person records.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[BusinessEntityID]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.person.person.column.persontype
+  description: 'Primary type of person: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact'
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[PersonType]'
+  dataType: NCHAR(2)
+  maxLengthBytes: 2
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.person.person.column.namestyle
+  description: 0 = The data in FirstName and LastName are stored in western style (first name, last name) order.  1 = Eastern style (last name, first name) order.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[NameStyle]'
+  dataType: NAMESTYLE
+  maxLengthBytes: 1
+  precision: 1
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: ((0))
+- type: TableColumn
+  id: table.person.person.column.title
+  description: A courtesy title. For example, Mr. or Ms.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[Title]'
+  dataType: NVARCHAR(8)
+  maxLengthBytes: 8
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.person.person.column.firstname
+  description: First name of the person.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[FirstName]'
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.person.person.column.middlename
+  description: Middle name or middle initial of the person.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[MiddleName]'
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.person.person.column.lastname
+  description: Last name of the person.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[LastName]'
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.person.person.column.suffix
+  description: Surname suffix. For example, Sr. or Jr.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[Suffix]'
+  dataType: NVARCHAR(10)
+  maxLengthBytes: 10
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.person.person.column.emailpromotion
+  description: '0 = Contact does not wish to receive e-mail promotions, 1 = Contact does wish to receive e-mail promotions from AdventureWorks, 2 = Contact does wish to receive e-mail promotions from AdventureWorks and selected partners. '
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[EmailPromotion]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: ((0))
+- type: TableColumn
+  id: table.person.person.column.additionalcontactinfo
+  description: 'Additional contact information about the person stored in xml format. '
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[AdditionalContactInfo]'
+  dataType: ADDITIONALCONTACTINFOSCHEMACOLLECTION
+  maxLengthBytes: -1
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.person.person.column.demographics
+  description: Personal information such as hobbies, and income collected from online shoppers. Used for sales analysis.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[Demographics]'
+  dataType: INDIVIDUALSURVEYSCHEMACOLLECTION
+  maxLengthBytes: -1
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.person.person.column.rowguid
+  description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[rowguid]'
+  dataType: UNIQUEIDENTIFIER
+  maxLengthBytes: 16
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: (newid())
+- type: TableColumn
+  id: table.person.person.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[ModifiedDate]'
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: (getdate())

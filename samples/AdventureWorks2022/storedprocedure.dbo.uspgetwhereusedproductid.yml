@@ -1,0 +1,29 @@
+### YamlMime:DocDB
+type: StoredProcedure
+id: storedprocedure.dbo.uspgetwhereusedproductid
+description: Stored procedure using a recursive query to return all components or assemblies that directly or indirectly use the specified ProductID.
+createdAt: 2023-05-08T12:07:39.6300000
+lastModifiedAt: 2023-05-08T12:07:39.6300000
+name: '[dbo].[uspGetWhereUsedProductID]'
+title: 
+parameters:
+- type: StoredProcedureParameter
+  id: storedprocedure.dbo.uspgetwhereusedproductid.param.@startproductid
+  description: Input parameter for the stored procedure uspGetWhereUsedProductID. Enter a valid ProductID from the Production.Product table.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@StartProductID'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: INT
+  defaultValue: ''
+- type: StoredProcedureParameter
+  id: storedprocedure.dbo.uspgetwhereusedproductid.param.@checkdate
+  description: Input parameter for the stored procedure uspGetWhereUsedProductID used to eliminate components not used after that date. Enter a valid date.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@CheckDate'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: DATETIME
+  defaultValue: ''

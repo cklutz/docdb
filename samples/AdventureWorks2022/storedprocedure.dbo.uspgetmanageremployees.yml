@@ -1,0 +1,19 @@
+### YamlMime:DocDB
+type: StoredProcedure
+id: storedprocedure.dbo.uspgetmanageremployees
+description: Stored procedure using a recursive query to return the direct and indirect employees of the specified manager.
+createdAt: 2023-05-08T12:07:39.6270000
+lastModifiedAt: 2023-05-08T12:07:39.6270000
+name: '[dbo].[uspGetManagerEmployees]'
+title: 
+parameters:
+- type: StoredProcedureParameter
+  id: storedprocedure.dbo.uspgetmanageremployees.param.@businessentityid
+  description: Input parameter for the stored procedure uspGetManagerEmployees. Enter a valid BusinessEntityID of the manager from the HumanResources.Employee table.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@BusinessEntityID'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: INT
+  defaultValue: ''

@@ -1,0 +1,161 @@
+### YamlMime:DocDB
+type: Table
+id: table.purchasing.vendor
+description: Companies from whom Adventure Works Cycles purchases parts or other goods.
+createdAt: 2023-05-08T12:07:29.6230000
+lastModifiedAt: 2023-05-08T12:07:39.4330000
+name: '[Purchasing].[Vendor]'
+foreignKeys: []
+checks: []
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+title: 
+indexes: []
+columns:
+- type: TableColumn
+  id: table.purchasing.vendor.column.businessentityid
+  description: Primary key for Vendor records.  Foreign key to BusinessEntity.BusinessEntityID
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[BusinessEntityID]'
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.purchasing.vendor.column.accountnumber
+  description: Vendor account (identification) number.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[AccountNumber]'
+  dataType: ACCOUNTNUMBER
+  maxLengthBytes: 15
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.purchasing.vendor.column.name
+  description: Company name.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[Name]'
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.purchasing.vendor.column.creditrating
+  description: 1 = Superior, 2 = Excellent, 3 = Above average, 4 = Average, 5 = Below average
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[CreditRating]'
+  dataType: TINYINT
+  maxLengthBytes: 1
+  precision: 3
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.purchasing.vendor.column.preferredvendorstatus
+  description: 0 = Do not use if another vendor is available. 1 = Preferred over other vendors supplying the same product.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[PreferredVendorStatus]'
+  dataType: FLAG
+  maxLengthBytes: 1
+  precision: 1
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: ((1))
+- type: TableColumn
+  id: table.purchasing.vendor.column.activeflag
+  description: 0 = Vendor no longer used. 1 = Vendor is actively used.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[ActiveFlag]'
+  dataType: FLAG
+  maxLengthBytes: 1
+  precision: 1
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: ((1))
+- type: TableColumn
+  id: table.purchasing.vendor.column.purchasingwebserviceurl
+  description: Vendor URL.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[PurchasingWebServiceURL]'
+  dataType: NVARCHAR(1024)
+  maxLengthBytes: 1024
+  precision: 0
+  scale: 0
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: 
+- type: TableColumn
+  id: table.purchasing.vendor.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '[ModifiedDate]'
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  default: (getdate())

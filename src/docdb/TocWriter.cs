@@ -1,4 +1,4 @@
-﻿using DocDB.Model;
+﻿using DocDB.Contracts;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -38,34 +38,34 @@ namespace DocDB
         //  
 
 
-        public static void WriteToc(string fileName, ConcurrentDictionary<string, List<DdbObject>> objects)
+        public static void WriteToc(string fileName, List<DdbObject> objects)
         {
             using var stream = new StreamWriter(fileName, append: false);
+            stream.WriteLine("### YamlMime:TableOfContent");
             var emitter = new Emitter(stream);
             emitter.Emit(new StreamStart());
-            emitter.Emit(new Comment($"YamlMime:DocDB_TableOfContents", false));
             emitter.Emit(new DocumentStart());
 
             emitter.Emit(MappingStart());
             emitter.Emit(new Scalar("items"));
             emitter.Emit(SequenceStart());
 
-            AddNamedItemSequence(emitter, "Tables", GetObjects<DdbTable>(objects));
-            AddNamedItemSequence(emitter, "Views", GetObjects<DdbView>(objects));
+            AddNamedItemSequence(emitter, "Tables", objects.OfType<DdbTable>());
+            AddNamedItemSequence(emitter, "Views", objects.OfType<DdbView>());
 
             NamedComplexSequenceEntry(emitter, "Programmability", emitter =>
             {
                 emitter.Emit(new Scalar("items"));
                 emitter.Emit(SequenceStart());
 
-                AddNamedItemSequence(emitter, "Stored Procedures", GetObjects<DdbStoredProcedure>(objects));
+                AddNamedItemSequence(emitter, "Stored Procedures", objects.OfType<DdbStoredProcedure>());
 
                 NamedComplexSequenceEntry(emitter, "Functions", emitter =>
                 {
                     emitter.Emit(new Scalar("items"));
                     emitter.Emit(SequenceStart());
 
-                    var functions = GetObjects<DdbUserDefinedFunction>(objects);
+                    var functions = objects.OfType<DdbUserDefinedFunction>();
 
                     // SSMS also treats "inline" as "table"
                     var tableValued = functions.Where(u =>
@@ -76,7 +76,7 @@ namespace DocDB
 
                     AddNamedItemSequence(emitter, "Table-valued Functions", tableValued);
                     AddNamedItemSequence(emitter, "Scalar-valued Functions", scalarValued);
-                    AddNamedItemSequence(emitter, "Aggregate Functions", GetObjects<DbdUserDefinedAggregate>(objects));
+                    AddNamedItemSequence(emitter, "Aggregate Functions", objects.OfType<DbdUserDefinedAggregate>());
 
                     emitter.Emit(SequenceEnd());
                 });
@@ -92,16 +92,6 @@ namespace DocDB
             emitter.Emit(new StreamEnd());
         }
 
-        static List<T> GetObjects<T>(IDictionary<string, List<DdbObject>> objects) where T : DdbObject
-        {
-            if (objects.TryGetValue(typeof(T).Name, out var types))
-            {
-                return types.OfType<T>().ToList();
-            }
-
-            return [];
-        }
-
         static void NamedComplexSequenceEntry(IEmitter emitter, string name, Action<IEmitter> content)
         {
             emitter.Emit(MappingStart());
@@ -113,12 +103,12 @@ namespace DocDB
             emitter.Emit(MappingEnd());
         }
 
-        static void AddNamedItemSequence<T>(IEmitter emitter, string name, List<T>? items) where T : DdbObject
+        static void AddNamedItemSequence<T>(IEmitter emitter, string name, IEnumerable<T>? items) where T : DdbObject
         {
             NamedComplexSequenceEntry(emitter, name, e => AddItemSequence(items, e));
         }
 
-        static void AddItemSequence<T>(List<T>? items, IEmitter emitter) where T : DdbObject
+        static void AddItemSequence<T>(IEnumerable<T>? items, IEmitter emitter) where T : DdbObject
         {
             emitter.Emit(new Scalar("items"));
             emitter.Emit(SequenceStart());
@@ -135,6 +125,8 @@ namespace DocDB
                         emitter.Emit(new Scalar("name"));
                         emitter.Emit(new Scalar(named.Name));
                     }
+                    emitter.Emit(new Scalar("type"));
+                    emitter.Emit(new Scalar(item.Type));
                     emitter.Emit(MappingEnd());
                 }
             }

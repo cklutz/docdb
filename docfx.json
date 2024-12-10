@@ -1,23 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
-  "metadata": [
-    {
-      "src": [
-        {
-          "src": "./src",
-          "files": [
-            "**/*.csproj"
-          ]
-        }
-      ],
-      "dest": "api"
-    }
-  ],
+
   "build": {
     "content": [
       {
         "files": [
-          "**/*.{md,yml}"
+          "samples/**/*.{md,yml}"
         ],
         "exclude": [
           "_site/**"
@@ -34,7 +22,8 @@
     "output": "_site",
     "template": [
       "default",
-      "modern"
+      "modern",
+      "src/docdb/template/docdb"
     ],
     "globalMetadata": {
       "_appName": "docdb",

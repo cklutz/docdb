@@ -1,0 +1,19 @@
+### YamlMime:DocDB
+type: StoredProcedure
+id: storedprocedure.dbo.usplogerror
+description: Logs error information in the ErrorLog table about the error that caused execution to jump to the CATCH block of a TRY...CATCH construct. Should be executed from within the scope of a CATCH block otherwise it will return without inserting error information.
+createdAt: 2023-05-08T12:07:29.2630000
+lastModifiedAt: 2023-05-08T12:07:29.2630000
+name: '[dbo].[uspLogError]'
+title: 
+parameters:
+- type: StoredProcedureParameter
+  id: storedprocedure.dbo.usplogerror.param.@errorlogid
+  description: Output parameter for the stored procedure uspLogError. Contains the ErrorLogID value corresponding to the row inserted by uspLogError in the ErrorLog table.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@ErrorLogID'
+  isOutputParameter: true
+  isCursorParameter: false
+  dataType: INT
+  defaultValue: 0

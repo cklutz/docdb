@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TemplatesDirectory>$(ArtifactsPath)\templates\</TemplatesDirectory>
+    <PluginsDirectory>$(TemplatesDirectory)\plugins\</PluginsDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Docfx.Common" Version="2.78.2" />
+    <PackageReference Include="Docfx.Plugins" Version="2.78.2" />
+    <PackageReference Include="System.Composition" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_TemplateFiles Include="templates/**/*" />
+    <_PluginFiles Include="$(OutputPath)/**/*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DocDB.Contracts\DocDB.Contracts.csproj" />
+  </ItemGroup>
+
+  <Target Name="CopyTemplates" AfterTargets="Build" Inputs="@(_TemplateFiles)" Outputs="@(_TemplateFiles->'$(TemplatesDirectory)%(RecursiveDir)%(Filename)%(Extension)')">
+    <Copy SourceFiles="@(_TemplateFiles)" DestinationFiles="@(_TemplateFiles->'$(TemplatesDirectory)%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
+
+  <Target Name="CopyPlugin" AfterTargets="Build" Inputs="@(_PluginFiles)" Outputs="@(_PluginFiles->'$(PluginsDirectory)%(RecursiveDir)%(Filename)%(Extension)')">
+    <Copy SourceFiles="@(_PluginFiles)" DestinationFiles="@(_PluginFiles->'$(PluginsDirectory)%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
+
+
+</Project>

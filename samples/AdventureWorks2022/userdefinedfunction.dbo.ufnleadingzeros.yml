@@ -1,0 +1,19 @@
+### YamlMime:DocDB
+type: UserDefinedFunction
+id: userdefinedfunction.dbo.ufnleadingzeros
+description: Scalar function used by the Sales.Customer table to help set the account number.
+createdAt: 2023-05-08T12:07:29.2830000
+lastModifiedAt: 2023-05-08T12:07:29.2830000
+name: '[dbo].[ufnLeadingZeros]'
+functionType: Scalar
+returnsNullOnNullInput: false
+title: 
+parameters:
+- type: UserDefinedFunctionParameter
+  id: userdefinedfunction.dbo.ufnleadingzeros.param.@value
+  description: Input parameter for the scalar function ufnLeadingZeros. Enter a valid integer.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@Value'
+  dataType: INT
+  defaultValue: ''
