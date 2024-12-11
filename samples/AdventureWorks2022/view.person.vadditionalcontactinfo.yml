@@ -5,7 +5,6 @@ description: Displays the contact name and content from each element in the xml 
 createdAt: 2023-05-08T12:07:39.4530000
 lastModifiedAt: 2023-05-08T12:07:39.4530000
 name: Person.vAdditionalContactInfo
-title: 
 indexes: []
 columns:
 - type: ViewColumn

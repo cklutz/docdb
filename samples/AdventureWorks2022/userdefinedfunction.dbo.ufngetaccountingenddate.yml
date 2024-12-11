@@ -7,7 +7,6 @@ lastModifiedAt: 2023-05-08T12:07:39.5930000
 name: dbo.ufnGetAccountingEndDate
 functionType: Scalar
 returnsNullOnNullInput: false
-title: 
 parameters: []
 script: |+
   SET ANSI_NULLS ON

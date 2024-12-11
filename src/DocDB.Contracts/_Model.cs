@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 namespace DocDB.Contracts;
 
@@ -13,11 +15,17 @@ public abstract class DdbObject
         Type = GetTypeTag(GetType());
     }
 
+    [JsonPropertyName("id"), JsonProperty("id")]
     public string Id { get; set; } = null!;
+    [JsonPropertyName("type"), JsonProperty("type")]
     public string Type { get; }
+    [JsonPropertyName("description"), JsonProperty("description")]
     public string? Description { get; set; }
+    [JsonPropertyName("script"), JsonProperty("script")]
     public string? Script { get; set; }
+    [JsonPropertyName("createdAt"), JsonProperty("createdAt")] 
     public DateTime CreatedAt { get; set; }
+    [JsonPropertyName("lastModifiedAt"), JsonProperty("lastModifiedAt")]
     public DateTime LastModifiedAt { get; set; }
 
     public override bool Equals(object? obj) => obj is DdbObject dbo && dbo.Id == Id && dbo.Type == Type;
@@ -94,6 +102,7 @@ public abstract class DdbObject
 
 public abstract class NamedDdbObject : DdbObject
 {
+    [JsonPropertyName("name"), JsonProperty("name")]
     public string Name { get; set; } = null!;
 }
 
@@ -112,7 +121,9 @@ public enum DdbUserDefinedFunctionType
 
 public abstract class DdbParameterBase : NamedDdbObject
 {
+    [JsonPropertyName("dataType"), JsonProperty("dataType")]
     public string? DataType { get; set; }
+    [JsonPropertyName("defaultValue"), JsonProperty("defaultValue")]
     public string? DefaultValue { get; set; }
 
     public override bool Equals(object? obj) => obj is DdbColumnBase dbo && dbo.Name == Name;
@@ -122,7 +133,9 @@ public abstract class DdbParameterBase : NamedDdbObject
 
 public class DdbStoredProcedureParameter : DdbParameterBase
 {
+    [JsonPropertyName("isOutputParameter"), JsonProperty("isOutputParameter")]
     public bool IsOutputParameter { get; set; }
+    [JsonPropertyName("isCursorParameter"), JsonProperty("isCursorParameter")]
     public bool IsCursorParameter { get; set; }
 }
 
@@ -133,7 +146,7 @@ public class DdbUserDefinedFunctionParameter : DdbParameterBase
 public abstract class DdbProcedureOrFunctionObject<TParameter> : NamedDdbObject
     where TParameter : DdbParameterBase
 {
-    public string? Title { get; set; }
+    [JsonPropertyName("parameters"), JsonProperty("parameters")]
     public List<TParameter> Parameters { get; set; } = [];
 }
 
@@ -147,24 +160,38 @@ public class DbdUserDefinedAggregate : NamedDdbObject
 
 public class DdbUserDefinedFunction : DdbProcedureOrFunctionObject<DdbUserDefinedFunctionParameter>
 {
+    [JsonPropertyName("functionType"), JsonProperty("functionType")]
     public DdbUserDefinedFunctionType FunctionType { get; set; }
+    [JsonPropertyName("returnsNullOnNullInput"), JsonProperty("returnsNullOnNullInput")]
     public bool ReturnsNullOnNullInput { get; set; }
 }
 
 public abstract class DdbColumnBase : NamedDdbObject
 {
+    [JsonPropertyName("dataType"), JsonProperty("dataType")]
     public string? DataType { get; set; }
+    [JsonPropertyName("maxLengthBytes"), JsonProperty("maxLengthBytes")]
     public int? MaxLengthBytes { get; set; }
+    [JsonPropertyName("precision"), JsonProperty("precision")]
     public int? Precision { get; set; }
+    [JsonPropertyName("scale"), JsonProperty("scale")]
     public int? Scale { get; set; }
 
+    [JsonPropertyName("isComputed"), JsonProperty("isComputed")]
     public bool IsComputed { get; set; }
+    [JsonPropertyName("computedText"), JsonProperty("computedText")]
     public string? ComputedText { get; set; }
+    [JsonPropertyName("isIdentity"), JsonProperty("isIdentity")]
     public bool IsIdentity { get; set; }
+    [JsonPropertyName("identityIncrement"), JsonProperty("identityIncrement")]
     public long? IdentityIncrement { get; set; }
+    [JsonPropertyName("identitySeed"), JsonProperty("identitySeed")]
     public long? IdentitySeed { get; set; }
+    [JsonPropertyName("inPrimaryKey"), JsonProperty("inPrimaryKey")]
     public bool InPrimaryKey { get; set; }
+    [JsonPropertyName("isForeignKey"), JsonProperty("isForeignKey")]
     public bool IsForeignKey { get; set; }
+    [JsonPropertyName("default"), JsonProperty("default")]
     public string? Default { get; set; }
 
     public override bool Equals(object? obj) => obj is DdbColumnBase dbo && dbo.Name == Name;
@@ -182,43 +209,59 @@ public class DdbViewColumn : DdbColumnBase
 
 public class DdbIndex : NamedDdbObject
 {
+    [JsonPropertyName("columns"), JsonProperty("columns")]
     public List<string> Columns { get; set; } = [];
+    [JsonPropertyName("isUnique"), JsonProperty("isUnique")]
     public bool IsUnique { get; set; }
+    [JsonPropertyName("isClustered"), JsonProperty("isClustered")]
     public bool IsClustered { get; set; }
+    [JsonPropertyName("isPartitioned"), JsonProperty("isPartitioned")]
     public bool IsPartitioned { get; set; }
 }
 
 public class DdbForeignKey : NamedDdbObject
 {
+    [JsonPropertyName("columns"), JsonProperty("columns")]
     public List<string> Columns { get; set; } = [];
+    [JsonPropertyName("noCheck"), JsonProperty("noCheck")]
     public bool NoCheck { get; set; }
 }
 
 public class DdbCheckConstraint : NamedDdbObject
 {
+    [JsonPropertyName("on"), JsonProperty("on")]
     public string? On { get; set; }
+    [JsonPropertyName("constraintText"), JsonProperty("constraintText")]
     public string? ConstraintText { get; set; }
 }
 
 public class DdbTablePartitionInfo
 {
+    [JsonPropertyName("isPartitioned"), JsonProperty("isPartitioned")]
     public bool IsPartitioned { get; set; }
+    [JsonPropertyName("columns"), JsonProperty("columns")]
     public List<string> Columns { get; set; } = [];
+    [JsonPropertyName("partitionScheme"), JsonProperty("partitionScheme")]
     public string? PartitionScheme { get; set; }
+    [JsonPropertyName("fileGroup"), JsonProperty("fileGroup")]
     public string? FileGroup { get; set; }
 }
 
 public abstract class TabularDdbObject<TColumn> : NamedDdbObject where TColumn : DdbColumnBase
 {
-   public string? Title { get; set; }
+    [JsonPropertyName("indexes"), JsonProperty("indexes")]
     public List<DdbIndex> Indexes { get; set; } = [];
+    [JsonPropertyName("columns"), JsonProperty("columns")]
     public List<TColumn> Columns { get; set;  } = [];
 }
 
 public class DdbTable : TabularDdbObject<DdbTableColumn>
 {
+    [JsonPropertyName("foreignKeys"), JsonProperty("foreignKeys")]
     public List<DdbForeignKey> ForeignKeys { get; set; } = [];
+    [JsonPropertyName("checks"), JsonProperty("checks")]
     public List<DdbCheckConstraint> Checks { get; set; } = [];
+    [JsonPropertyName("partitionInfo"), JsonProperty("partitionInfo")]
     public DdbTablePartitionInfo PartitionInfo { get; set; } = new();
 }
 

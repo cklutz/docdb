@@ -5,7 +5,6 @@ description: Employee names and addresses.
 createdAt: 2023-05-08T12:07:39.4570000
 lastModifiedAt: 2023-05-08T12:07:39.4570000
 name: HumanResources.vEmployee
-title: 
 indexes: []
 columns:
 - type: ViewColumn

@@ -12,7 +12,6 @@ partitionInfo:
   columns: []
   partitionScheme: 
   fileGroup: 
-title: 
 indexes: []
 columns:
 - type: TableColumn

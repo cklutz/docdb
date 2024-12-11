@@ -4,9 +4,9 @@
 exports.transform = function (model) {
     if (!model) return null;
 
-    if (model.Object.Type) {
-        model['is' + model.Object.Type] = true;
-        switch (model.Object.Type.toLowerCase()) {
+    if (model.payload.type) {
+        model['is' + model.payload.type] = true;
+        switch (model.payload.type.toLowerCase()) {
             case 'table':
             case 'view':
                 model.isTabular = true;

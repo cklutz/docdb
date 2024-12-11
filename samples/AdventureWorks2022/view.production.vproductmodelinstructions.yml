@@ -5,7 +5,6 @@ description: Displays the content from each element in the xml column Instructio
 createdAt: 2023-05-08T12:07:39.5570000
 lastModifiedAt: 2023-05-08T12:07:39.5570000
 name: Production.vProductModelInstructions
-title: 
 indexes: []
 columns:
 - type: ViewColumn

@@ -5,7 +5,6 @@ description: Stored procedure using a recursive query to return all components o
 createdAt: 2023-05-08T12:07:39.6300000
 lastModifiedAt: 2023-05-08T12:07:39.6300000
 name: dbo.uspGetWhereUsedProductID
-title: 
 parameters:
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspgetwhereusedproductid.param.@startproductid

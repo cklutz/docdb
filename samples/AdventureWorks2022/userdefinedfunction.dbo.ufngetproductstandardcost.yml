@@ -7,7 +7,6 @@ lastModifiedAt: 2023-05-08T12:07:39.6070000
 name: dbo.ufnGetProductStandardCost
 functionType: Scalar
 returnsNullOnNullInput: false
-title: 
 parameters:
 - type: UserDefinedFunctionParameter
   id: userdefinedfunction.dbo.ufngetproductstandardcost.param.@productid

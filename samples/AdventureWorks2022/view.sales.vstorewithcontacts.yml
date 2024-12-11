@@ -5,7 +5,6 @@ description: Stores (including store contacts) that sell Adventure Works Cycles 
 createdAt: 2023-05-08T12:07:39.5830000
 lastModifiedAt: 2023-05-08T12:07:39.5830000
 name: Sales.vStoreWithContacts
-title: 
 indexes: []
 columns:
 - type: ViewColumn

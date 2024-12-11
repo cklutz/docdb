@@ -5,7 +5,6 @@ description: Sales representiatives (names and addresses) and their sales-relate
 createdAt: 2023-05-08T12:07:39.5600000
 lastModifiedAt: 2023-05-08T12:07:39.5600000
 name: Sales.vSalesPerson
-title: 
 indexes: []
 columns:
 - type: ViewColumn

@@ -5,7 +5,6 @@ description: Displays the content from each element in the xml column Demographi
 createdAt: 2023-05-08T12:07:39.4770000
 lastModifiedAt: 2023-05-08T12:07:39.4770000
 name: Sales.vPersonDemographics
-title: 
 indexes: []
 columns:
 - type: ViewColumn

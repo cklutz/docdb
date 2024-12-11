@@ -5,7 +5,6 @@ description: Updates the Employee table with the values specified in the input p
 createdAt: 2023-05-08T12:07:39.6370000
 lastModifiedAt: 2023-05-08T12:07:39.6370000
 name: HumanResources.uspUpdateEmployeePersonalInfo
-title: 
 parameters:
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeepersonalinfo.param.@businessentityid

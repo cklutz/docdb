@@ -5,7 +5,6 @@ description: Returns employee name and current and previous departments.
 createdAt: 2023-05-08T12:07:39.4630000
 lastModifiedAt: 2023-05-08T12:07:39.4630000
 name: HumanResources.vEmployeeDepartmentHistory
-title: 
 indexes: []
 columns:
 - type: ViewColumn

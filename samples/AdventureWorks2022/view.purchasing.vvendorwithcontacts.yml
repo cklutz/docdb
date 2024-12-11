@@ -5,7 +5,6 @@ description: Vendor (company) names  and the names of vendor employees to contac
 createdAt: 2023-05-08T12:07:39.5870000
 lastModifiedAt: 2023-05-08T12:07:39.5870000
 name: Purchasing.vVendorWithContacts
-title: 
 indexes: []
 columns:
 - type: ViewColumn

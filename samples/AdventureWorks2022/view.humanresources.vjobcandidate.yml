@@ -5,7 +5,6 @@ description: Job candidate names and resumes.
 createdAt: 2023-05-08T12:07:39.4900000
 lastModifiedAt: 2023-05-08T12:07:39.4900000
 name: HumanResources.vJobCandidate
-title: 
 indexes: []
 columns:
 - type: ViewColumn
