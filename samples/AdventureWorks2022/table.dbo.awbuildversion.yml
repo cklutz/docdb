@@ -4,7 +4,7 @@ id: table.dbo.awbuildversion
 description: 'Current version number of the AdventureWorks 2016 sample database. '
 createdAt: 2023-05-08T12:07:29.4070000
 lastModifiedAt: 2023-05-08T12:07:32.8530000
-name: '[dbo].[AWBuildVersion]'
+name: dbo.AWBuildVersion
 foreignKeys: []
 checks: []
 partitionInfo:
@@ -20,7 +20,7 @@ columns:
   description: Primary key for AWBuildVersion records.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[SystemInformationID]'
+  name: SystemInformationID
   dataType: TINYINT
   maxLengthBytes: 1
   precision: 3
@@ -33,12 +33,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.dbo.awbuildversion.column.database_version
   description: Version number of the database in 9.yy.mm.dd.00 format.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Database Version]'
+  name: Database Version
   dataType: NVARCHAR(25)
   maxLengthBytes: 25
   precision: 0
@@ -51,12 +52,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.dbo.awbuildversion.column.versiondate
   description: Date and time the record was last updated.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[VersionDate]'
+  name: VersionDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -69,12 +71,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.dbo.awbuildversion.column.modifieddate
   description: Date and time the record was last updated.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ModifiedDate]'
+  name: ModifiedDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -87,3 +90,27 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (getdate())
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [dbo].[AWBuildVersion](
+  	[SystemInformationID] [tinyint] IDENTITY(1,1) NOT NULL,
+  	[Database Version] [nvarchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[VersionDate] [datetime] NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_AWBuildVersion_SystemInformationID] PRIMARY KEY CLUSTERED
+  (
+  	[SystemInformationID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  ALTER TABLE [dbo].[AWBuildVersion] ADD  CONSTRAINT [DF_AWBuildVersion_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+

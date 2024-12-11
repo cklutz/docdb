@@ -4,7 +4,7 @@ id: userdefinedfunction.dbo.ufnleadingzeros
 description: Scalar function used by the Sales.Customer table to help set the account number.
 createdAt: 2023-05-08T12:07:29.2830000
 lastModifiedAt: 2023-05-08T12:07:29.2830000
-name: '[dbo].[ufnLeadingZeros]'
+name: dbo.ufnLeadingZeros
 functionType: Scalar
 returnsNullOnNullInput: false
 title: 
@@ -17,3 +17,28 @@ parameters:
   name: '@Value'
   dataType: INT
   defaultValue: ''
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE FUNCTION [dbo].[ufnLeadingZeros](
+      @Value int
+  )
+  RETURNS varchar(8)
+  WITH SCHEMABINDING
+  AS
+  BEGIN
+      DECLARE @ReturnValue varchar(8);
+
+      SET @ReturnValue = CONVERT(varchar(8), @Value);
+      SET @ReturnValue = REPLICATE('0', 8 - DATALENGTH(@ReturnValue)) + @ReturnValue;
+
+      RETURN (@ReturnValue);
+  END;
+
+  GO
+

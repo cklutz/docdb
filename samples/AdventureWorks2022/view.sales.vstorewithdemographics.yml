@@ -4,7 +4,7 @@ id: view.sales.vstorewithdemographics
 description: Stores (including demographics) that sell Adventure Works Cycles products to consumers.
 createdAt: 2023-05-08T12:07:39.5800000
 lastModifiedAt: 2023-05-08T12:07:39.5800000
-name: '[Sales].[vStoreWithDemographics]'
+name: Sales.vStoreWithDemographics
 title: 
 indexes: []
 columns:
@@ -13,7 +13,7 @@ columns:
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[BusinessEntityID]'
+  name: BusinessEntityID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -26,12 +26,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.name
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Name]'
+  name: Name
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -44,12 +45,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.annualsales
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[AnnualSales]'
+  name: AnnualSales
   dataType: MONEY
   maxLengthBytes: 8
   precision: 19
@@ -62,12 +64,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.annualrevenue
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[AnnualRevenue]'
+  name: AnnualRevenue
   dataType: MONEY
   maxLengthBytes: 8
   precision: 19
@@ -80,12 +83,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.bankname
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[BankName]'
+  name: BankName
   dataType: NVARCHAR(50)
   maxLengthBytes: 50
   precision: 0
@@ -98,12 +102,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.businesstype
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[BusinessType]'
+  name: BusinessType
   dataType: NVARCHAR(5)
   maxLengthBytes: 5
   precision: 0
@@ -116,12 +121,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.yearopened
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[YearOpened]'
+  name: YearOpened
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -134,12 +140,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.specialty
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Specialty]'
+  name: Specialty
   dataType: NVARCHAR(50)
   maxLengthBytes: 50
   precision: 0
@@ -152,12 +159,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.squarefeet
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[SquareFeet]'
+  name: SquareFeet
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -170,12 +178,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.brands
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Brands]'
+  name: Brands
   dataType: NVARCHAR(30)
   maxLengthBytes: 30
   precision: 0
@@ -188,12 +197,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.internet
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Internet]'
+  name: Internet
   dataType: NVARCHAR(30)
   maxLengthBytes: 30
   precision: 0
@@ -206,12 +216,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.numberemployees
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[NumberEmployees]'
+  name: NumberEmployees
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -224,3 +235,39 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [Sales].[vStoreWithDemographics] AS
+  SELECT
+      s.[BusinessEntityID]
+      ,s.[Name]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/AnnualSales)[1]', 'money') AS [AnnualSales]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/AnnualRevenue)[1]', 'money') AS [AnnualRevenue]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/BankName)[1]', 'nvarchar(50)') AS [BankName]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/BusinessType)[1]', 'nvarchar(5)') AS [BusinessType]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/YearOpened)[1]', 'integer') AS [YearOpened]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/Specialty)[1]', 'nvarchar(50)') AS [Specialty]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/SquareFeet)[1]', 'integer') AS [SquareFeet]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/Brands)[1]', 'nvarchar(30)') AS [Brands]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/Internet)[1]', 'nvarchar(30)') AS [Internet]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/NumberEmployees)[1]', 'integer') AS [NumberEmployees]
+  FROM [Sales].[Store] s;
+
+  GO
+

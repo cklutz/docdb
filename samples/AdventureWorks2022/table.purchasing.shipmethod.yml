@@ -4,7 +4,7 @@ id: table.purchasing.shipmethod
 description: Shipping company lookup table.
 createdAt: 2023-05-08T12:07:29.5930000
 lastModifiedAt: 2023-05-08T12:07:39.0100000
-name: '[Purchasing].[ShipMethod]'
+name: Purchasing.ShipMethod
 foreignKeys: []
 checks: []
 partitionInfo:
@@ -20,7 +20,7 @@ columns:
   description: Primary key for ShipMethod records.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ShipMethodID]'
+  name: ShipMethodID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -33,12 +33,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.purchasing.shipmethod.column.name
   description: Shipping company name.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Name]'
+  name: Name
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -51,12 +52,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.purchasing.shipmethod.column.shipbase
   description: Minimum shipping charge.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ShipBase]'
+  name: ShipBase
   dataType: MONEY
   maxLengthBytes: 8
   precision: 19
@@ -69,12 +71,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: ((0.00))
+  script: ""
 - type: TableColumn
   id: table.purchasing.shipmethod.column.shiprate
   description: Shipping charge per pound.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ShipRate]'
+  name: ShipRate
   dataType: MONEY
   maxLengthBytes: 8
   precision: 19
@@ -87,12 +90,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: ((0.00))
+  script: ""
 - type: TableColumn
   id: table.purchasing.shipmethod.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[rowguid]'
+  name: rowguid
   dataType: UNIQUEIDENTIFIER
   maxLengthBytes: 16
   precision: 0
@@ -105,12 +109,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (newid())
+  script: ""
 - type: TableColumn
   id: table.purchasing.shipmethod.column.modifieddate
   description: Date and time the record was last updated.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ModifiedDate]'
+  name: ModifiedDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -123,3 +128,65 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (getdate())
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Purchasing].[ShipMethod](
+  	[ShipMethodID] [int] IDENTITY(1,1) NOT NULL,
+  	[Name] [dbo].[Name] NOT NULL,
+  	[ShipBase] [money] NOT NULL,
+  	[ShipRate] [money] NOT NULL,
+  	[rowguid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_ShipMethod_ShipMethodID] PRIMARY KEY CLUSTERED
+  (
+  	[ShipMethodID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  SET ANSI_PADDING ON
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_ShipMethod_Name] ON [Purchasing].[ShipMethod]
+  (
+  	[Name] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_ShipMethod_rowguid] ON [Purchasing].[ShipMethod]
+  (
+  	[rowguid] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Purchasing].[ShipMethod] ADD  CONSTRAINT [DF_ShipMethod_ShipBase]  DEFAULT ((0.00)) FOR [ShipBase]
+  GO
+
+  ALTER TABLE [Purchasing].[ShipMethod] ADD  CONSTRAINT [DF_ShipMethod_ShipRate]  DEFAULT ((0.00)) FOR [ShipRate]
+  GO
+
+  ALTER TABLE [Purchasing].[ShipMethod] ADD  CONSTRAINT [DF_ShipMethod_rowguid]  DEFAULT (newid()) FOR [rowguid]
+  GO
+
+  ALTER TABLE [Purchasing].[ShipMethod] ADD  CONSTRAINT [DF_ShipMethod_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Purchasing].[ShipMethod]  WITH CHECK ADD  CONSTRAINT [CK_ShipMethod_ShipBase] CHECK  (([ShipBase]>(0.00)))
+  GO
+
+  ALTER TABLE [Purchasing].[ShipMethod] CHECK CONSTRAINT [CK_ShipMethod_ShipBase]
+  GO
+
+  ALTER TABLE [Purchasing].[ShipMethod]  WITH CHECK ADD  CONSTRAINT [CK_ShipMethod_ShipRate] CHECK  (([ShipRate]>(0.00)))
+  GO
+
+  ALTER TABLE [Purchasing].[ShipMethod] CHECK CONSTRAINT [CK_ShipMethod_ShipRate]
+  GO
+

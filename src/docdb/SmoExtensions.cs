@@ -4,6 +4,7 @@ using System;
 using System.Buffers;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace DocDB;
 
@@ -34,6 +35,101 @@ public static class SmoExtensions
         }
 
         return new ScriptingOptions(options) { AllowSystemObjects = value };
+    }
+
+    public static string GetScript(this SmoObjectBase obj, ScriptingOptions? scriptingOptions = null)
+    {
+        if (obj is IScriptable scriptable)
+        {
+            scriptingOptions ??= new();
+            var batches = scriptable.Script(scriptingOptions);
+            var output = new StringBuilder();
+
+            foreach (string? batch in batches)
+            {
+                // Ensure that lines to get overly long. For example when scripting "CREATE ASSEMBLY ...".
+                // By using 255 we leave a little leeway. Because the wrapping algorithm does not handle
+                // quotes, etc. we need to make sure the likeliness, that wrapping occurs inside a string
+                // literal, etc. is reduced.
+                if (batch?.Length > 255)
+                {
+                    WrapLines(output, batch, 255);
+                }
+                else
+                {
+                    output.Append(batch.AsSpan().TrimStart(NewLines).TrimEnd());
+                    output.AppendLine();
+                }
+                output.AppendLine("GO");
+                output.AppendLine();
+            }
+
+            return output.ToString();
+        }
+
+        return "";
+    }
+
+    private static ReadOnlySpan<char> NewLines => ['\r', '\n'];
+    private static readonly SearchValues<char> s_wrapAt = SearchValues.Create([' ', '\t', '.', ',', ';', ':', '!', '?']);
+    private static readonly SearchValues<char> s_space = SearchValues.Create([' ', '\t']);
+
+    private static void WrapLines(StringBuilder buffer, string input, int maxLineLength)
+    {
+        ArgumentNullException.ThrowIfNull(buffer);
+        ArgumentNullException.ThrowIfNull(input);
+        ArgumentOutOfRangeException.ThrowIfLessThan(maxLineLength, 0);
+
+        var span = input.AsSpan().TrimStart(NewLines);
+        int count = span.Count('\n') + 1;
+        Span<Range> ranges = count <= 255 ? stackalloc Range[count] : new Range[count];
+        int num = span.Split(ranges, '\n');
+        for (int i = 0; i < num; i++)
+        {
+            WrapLine(buffer, span[ranges[i]].TrimEnd(), maxLineLength);
+        }
+    }
+
+    private static void WrapLine(StringBuilder buffer, ReadOnlySpan<char> inputSpan, int maxLineLength)
+    {
+        if (inputSpan.Length < maxLineLength)
+        {
+            buffer.Append(inputSpan.TrimEnd());
+            buffer.AppendLine();
+            return;
+        }
+
+        while (!inputSpan.IsEmpty)
+        {
+            int currentLineLength = Math.Min(maxLineLength, inputSpan.Length);
+            int wrapIndex = currentLineLength;
+
+            // Find a preferred break point before the limit
+            if (wrapIndex < inputSpan.Length && !s_wrapAt.Contains(inputSpan[wrapIndex]))
+            {
+                int lastPreferredIndex = inputSpan.Slice(0, currentLineLength).LastIndexOfAny(s_wrapAt);
+                if (lastPreferredIndex >= 0)
+                {
+                    wrapIndex = lastPreferredIndex + 1;
+                }
+                else
+                {
+                    // No preferred break point found; fall back to word boundary
+                    int nextWhitespace = inputSpan.Slice(wrapIndex).IndexOfAny(s_space);
+                    if (nextWhitespace >= 0)
+                    {
+                        wrapIndex += nextWhitespace; // Extend to the next whitespace
+                    }
+                }
+            }
+
+            // Append the line to the result
+            buffer.Append(inputSpan.Slice(0, wrapIndex).TrimEnd());
+            buffer.AppendLine();
+
+            // Move the span forward
+            inputSpan = inputSpan.Slice(wrapIndex).TrimStart();
+        }
     }
 
     public static string AsIdentifier(this NamedSmoObject obj)

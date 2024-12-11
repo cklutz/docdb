@@ -4,7 +4,7 @@ id: view.production.vproductmodelcatalogdescription
 description: Displays the content from each element in the xml column CatalogDescription for each product in the Production.ProductModel table that has catalog data.
 createdAt: 2023-05-08T12:07:39.5500000
 lastModifiedAt: 2023-05-08T12:07:39.5500000
-name: '[Production].[vProductModelCatalogDescription]'
+name: Production.vProductModelCatalogDescription
 title: 
 indexes: []
 columns:
@@ -13,7 +13,7 @@ columns:
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductModelID]'
+  name: ProductModelID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -26,12 +26,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.name
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Name]'
+  name: Name
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -44,12 +45,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.summary
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Summary]'
+  name: Summary
   dataType: NVARCHAR(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -62,12 +64,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.manufacturer
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Manufacturer]'
+  name: Manufacturer
   dataType: NVARCHAR(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -80,12 +83,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.copyright
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Copyright]'
+  name: Copyright
   dataType: NVARCHAR(30)
   maxLengthBytes: 30
   precision: 0
@@ -98,12 +102,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.producturl
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductURL]'
+  name: ProductURL
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -116,12 +121,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.warrantyperiod
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[WarrantyPeriod]'
+  name: WarrantyPeriod
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -134,12 +140,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.warrantydescription
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[WarrantyDescription]'
+  name: WarrantyDescription
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -152,12 +159,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.noofyears
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[NoOfYears]'
+  name: NoOfYears
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -170,12 +178,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.maintenancedescription
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[MaintenanceDescription]'
+  name: MaintenanceDescription
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -188,12 +197,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.wheel
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Wheel]'
+  name: Wheel
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -206,12 +216,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.saddle
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Saddle]'
+  name: Saddle
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -224,12 +235,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.pedal
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Pedal]'
+  name: Pedal
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -242,12 +254,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.bikeframe
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[BikeFrame]'
+  name: BikeFrame
   dataType: NVARCHAR(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -260,12 +273,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.crankset
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Crankset]'
+  name: Crankset
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -278,12 +292,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.pictureangle
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[PictureAngle]'
+  name: PictureAngle
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -296,12 +311,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.picturesize
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[PictureSize]'
+  name: PictureSize
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -314,12 +330,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.productphotoid
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductPhotoID]'
+  name: ProductPhotoID
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -332,12 +349,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.material
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Material]'
+  name: Material
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -350,12 +368,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.color
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Color]'
+  name: Color
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -368,12 +387,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.productline
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductLine]'
+  name: ProductLine
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -386,12 +406,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.style
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Style]'
+  name: Style
   dataType: NVARCHAR(256)
   maxLengthBytes: 256
   precision: 0
@@ -404,12 +425,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.riderexperience
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[RiderExperience]'
+  name: RiderExperience
   dataType: NVARCHAR(1024)
   maxLengthBytes: 1024
   precision: 0
@@ -422,12 +444,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.rowguid
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[rowguid]'
+  name: rowguid
   dataType: UNIQUEIDENTIFIER
   maxLengthBytes: 16
   precision: 0
@@ -440,12 +463,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelcatalogdescription.column.modifieddate
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ModifiedDate]'
+  name: ModifiedDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -458,3 +482,75 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [Production].[vProductModelCatalogDescription]
+  AS
+  SELECT
+      [ProductModelID]
+      ,[Name]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          declare namespace html="http://www.w3.org/1999/xhtml";
+          (/p1:ProductDescription/p1:Summary/html:p)[1]', 'nvarchar(max)') AS [Summary]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          (/p1:ProductDescription/p1:Manufacturer/p1:Name)[1]', 'nvarchar(max)') AS [Manufacturer]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          (/p1:ProductDescription/p1:Manufacturer/p1:Copyright)[1]', 'nvarchar(30)') AS [Copyright]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          (/p1:ProductDescription/p1:Manufacturer/p1:ProductURL)[1]', 'nvarchar(256)') AS [ProductURL]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          declare namespace wm="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelWarrAndMain";
+          (/p1:ProductDescription/p1:Features/wm:Warranty/wm:WarrantyPeriod)[1]', 'nvarchar(256)') AS [WarrantyPeriod]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          declare namespace wm="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelWarrAndMain";
+          (/p1:ProductDescription/p1:Features/wm:Warranty/wm:Description)[1]', 'nvarchar(256)') AS [WarrantyDescription]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          declare namespace wm="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelWarrAndMain";
+          (/p1:ProductDescription/p1:Features/wm:Maintenance/wm:NoOfYears)[1]', 'nvarchar(256)') AS [NoOfYears]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          declare namespace wm="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelWarrAndMain";
+          (/p1:ProductDescription/p1:Features/wm:Maintenance/wm:Description)[1]', 'nvarchar(256)') AS [MaintenanceDescription]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          declare namespace wf="http://www.adventure-works.com/schemas/OtherFeatures";
+          (/p1:ProductDescription/p1:Features/wf:wheel)[1]', 'nvarchar(256)') AS [Wheel]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          declare namespace wf="http://www.adventure-works.com/schemas/OtherFeatures";
+          (/p1:ProductDescription/p1:Features/wf:saddle)[1]', 'nvarchar(256)') AS [Saddle]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          declare namespace wf="http://www.adventure-works.com/schemas/OtherFeatures";
+          (/p1:ProductDescription/p1:Features/wf:pedal)[1]', 'nvarchar(256)') AS [Pedal]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          declare namespace wf="http://www.adventure-works.com/schemas/OtherFeatures";
+          (/p1:ProductDescription/p1:Features/wf:BikeFrame)[1]', 'nvarchar(max)') AS [BikeFrame]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          declare namespace wf="http://www.adventure-works.com/schemas/OtherFeatures";
+          (/p1:ProductDescription/p1:Features/wf:crankset)[1]', 'nvarchar(256)') AS [Crankset]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          (/p1:ProductDescription/p1:Picture/p1:Angle)[1]', 'nvarchar(256)') AS [PictureAngle]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          (/p1:ProductDescription/p1:Picture/p1:Size)[1]', 'nvarchar(256)') AS [PictureSize]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          (/p1:ProductDescription/p1:Picture/p1:ProductPhotoID)[1]', 'nvarchar(256)') AS [ProductPhotoID]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          (/p1:ProductDescription/p1:Specifications/Material)[1]', 'nvarchar(256)') AS [Material]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          (/p1:ProductDescription/p1:Specifications/Color)[1]', 'nvarchar(256)') AS [Color]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          (/p1:ProductDescription/p1:Specifications/ProductLine)[1]', 'nvarchar(256)') AS [ProductLine]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          (/p1:ProductDescription/p1:Specifications/Style)[1]', 'nvarchar(256)') AS [Style]
+      ,[CatalogDescription].value(N'declare namespace p1="http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelDescription";
+          (/p1:ProductDescription/p1:Specifications/RiderExperience)[1]', 'nvarchar(1024)') AS [RiderExperience]
+      ,[rowguid]
+      ,[ModifiedDate]
+  FROM [Production].[ProductModel]
+  WHERE [CatalogDescription] IS NOT NULL;
+
+  GO
+

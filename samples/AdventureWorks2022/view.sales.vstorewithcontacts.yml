@@ -4,7 +4,7 @@ id: view.sales.vstorewithcontacts
 description: Stores (including store contacts) that sell Adventure Works Cycles products to consumers.
 createdAt: 2023-05-08T12:07:39.5830000
 lastModifiedAt: 2023-05-08T12:07:39.5830000
-name: '[Sales].[vStoreWithContacts]'
+name: Sales.vStoreWithContacts
 title: 
 indexes: []
 columns:
@@ -13,7 +13,7 @@ columns:
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[BusinessEntityID]'
+  name: BusinessEntityID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -26,12 +26,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.name
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Name]'
+  name: Name
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -44,12 +45,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.contacttype
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ContactType]'
+  name: ContactType
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -62,12 +64,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.title
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Title]'
+  name: Title
   dataType: NVARCHAR(8)
   maxLengthBytes: 8
   precision: 0
@@ -80,12 +83,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.firstname
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[FirstName]'
+  name: FirstName
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -98,12 +102,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.middlename
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[MiddleName]'
+  name: MiddleName
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -116,12 +121,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.lastname
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[LastName]'
+  name: LastName
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -134,12 +140,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.suffix
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Suffix]'
+  name: Suffix
   dataType: NVARCHAR(10)
   maxLengthBytes: 10
   precision: 0
@@ -152,12 +159,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.phonenumber
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[PhoneNumber]'
+  name: PhoneNumber
   dataType: PHONE
   maxLengthBytes: 25
   precision: 0
@@ -170,12 +178,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.phonenumbertype
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[PhoneNumberType]'
+  name: PhoneNumberType
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -188,12 +197,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.emailaddress
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[EmailAddress]'
+  name: EmailAddress
   dataType: NVARCHAR(50)
   maxLengthBytes: 50
   precision: 0
@@ -206,12 +216,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.emailpromotion
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[EmailPromotion]'
+  name: EmailPromotion
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -224,3 +235,41 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [Sales].[vStoreWithContacts] AS
+  SELECT
+      s.[BusinessEntityID]
+      ,s.[Name]
+      ,ct.[Name] AS [ContactType]
+      ,p.[Title]
+      ,p.[FirstName]
+      ,p.[MiddleName]
+      ,p.[LastName]
+      ,p.[Suffix]
+      ,pp.[PhoneNumber]
+  	,pnt.[Name] AS [PhoneNumberType]
+      ,ea.[EmailAddress]
+      ,p.[EmailPromotion]
+  FROM [Sales].[Store] s
+      INNER JOIN [Person].[BusinessEntityContact] bec
+      ON bec.[BusinessEntityID] = s.[BusinessEntityID]
+  	INNER JOIN [Person].[ContactType] ct
+  	ON ct.[ContactTypeID] = bec.[ContactTypeID]
+  	INNER JOIN [Person].[Person] p
+  	ON p.[BusinessEntityID] = bec.[PersonID]
+  	LEFT OUTER JOIN [Person].[EmailAddress] ea
+  	ON ea.[BusinessEntityID] = p.[BusinessEntityID]
+  	LEFT OUTER JOIN [Person].[PersonPhone] pp
+  	ON pp.[BusinessEntityID] = p.[BusinessEntityID]
+  	LEFT OUTER JOIN [Person].[PhoneNumberType] pnt
+  	ON pnt.[PhoneNumberTypeID] = pp.[PhoneNumberTypeID];
+
+  GO
+

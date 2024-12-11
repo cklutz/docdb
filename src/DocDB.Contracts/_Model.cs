@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Reflection;
 
 namespace DocDB.Contracts;
 
@@ -14,7 +16,7 @@ public abstract class DdbObject
     public string Id { get; set; } = null!;
     public string Type { get; }
     public string? Description { get; set; }
-
+    public string? Script { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime LastModifiedAt { get; set; }
 
@@ -39,6 +41,54 @@ public abstract class DdbObject
             span = span.Slice(3);
         }
         return span.ToString();
+    }
+
+    public virtual Dictionary<string, string> GetAllIds(bool includeSelf = true)
+    {
+        var result = new Dictionary<string, string>(StringComparer.Ordinal);
+        var queue = new Queue<DdbObject>();
+        queue.Enqueue(this);
+
+        while (queue.Count > 0)
+        {
+            var current = queue.Dequeue();
+
+            bool shouldContinue = false;
+            if (includeSelf || !ReferenceEquals(this, current))
+            {
+                shouldContinue = result.TryAdd(current.Id, current is NamedDdbObject named ? named.Name : current.Type);
+            }
+
+            if (shouldContinue)
+            {
+                var properties = current.GetType()
+                    .GetProperties()
+                    .Where(p => typeof(DdbObject).IsAssignableFrom(p.PropertyType) ||
+                           (p.PropertyType.IsGenericType && typeof(IEnumerable).IsAssignableFrom(p.PropertyType)));
+
+                foreach (var property in properties)
+                {
+                    var value = property.GetValue(current);
+
+                    if (value is DdbObject DdbObjectValue)
+                    {
+                        queue.Enqueue(DdbObjectValue);
+                    }
+                    else if (value is IEnumerable enumerable)
+                    {
+                        foreach (var item in enumerable)
+                        {
+                            if (item is DdbObject DdbObjectItem)
+                            {
+                                queue.Enqueue(DdbObjectItem);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return result;
     }
 }
 

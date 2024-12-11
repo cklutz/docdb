@@ -4,7 +4,7 @@ id: table.dbo.errorlog
 description: Audit table tracking errors in the the AdventureWorks database that are caught by the CATCH block of a TRY...CATCH construct. Data is inserted by stored procedure dbo.uspLogError when it is executed from inside the CATCH block of a TRY...CATCH construct.
 createdAt: 2023-05-08T12:07:29.2430000
 lastModifiedAt: 2023-05-08T12:07:29.2600000
-name: '[dbo].[ErrorLog]'
+name: dbo.ErrorLog
 foreignKeys: []
 checks: []
 partitionInfo:
@@ -20,7 +20,7 @@ columns:
   description: Primary key for ErrorLog records.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ErrorLogID]'
+  name: ErrorLogID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -33,12 +33,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.dbo.errorlog.column.errortime
   description: The date and time at which the error occurred.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ErrorTime]'
+  name: ErrorTime
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -51,12 +52,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (getdate())
+  script: ""
 - type: TableColumn
   id: table.dbo.errorlog.column.username
   description: The user who executed the batch in which the error occurred.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[UserName]'
+  name: UserName
   dataType: SYSNAME
   maxLengthBytes: 128
   precision: 0
@@ -69,12 +71,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.dbo.errorlog.column.errornumber
   description: The error number of the error that occurred.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ErrorNumber]'
+  name: ErrorNumber
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -87,12 +90,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.dbo.errorlog.column.errorseverity
   description: The severity of the error that occurred.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ErrorSeverity]'
+  name: ErrorSeverity
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -105,12 +109,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.dbo.errorlog.column.errorstate
   description: The state number of the error that occurred.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ErrorState]'
+  name: ErrorState
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -123,12 +128,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.dbo.errorlog.column.errorprocedure
   description: The name of the stored procedure or trigger where the error occurred.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ErrorProcedure]'
+  name: ErrorProcedure
   dataType: NVARCHAR(126)
   maxLengthBytes: 126
   precision: 0
@@ -141,12 +147,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.dbo.errorlog.column.errorline
   description: The line number at which the error occurred.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ErrorLine]'
+  name: ErrorLine
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -159,12 +166,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.dbo.errorlog.column.errormessage
   description: The message text of the error that occurred.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ErrorMessage]'
+  name: ErrorMessage
   dataType: NVARCHAR(4000)
   maxLengthBytes: 4000
   precision: 0
@@ -177,3 +185,32 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [dbo].[ErrorLog](
+  	[ErrorLogID] [int] IDENTITY(1,1) NOT NULL,
+  	[ErrorTime] [datetime] NOT NULL,
+  	[UserName] [sysname] COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[ErrorNumber] [int] NOT NULL,
+  	[ErrorSeverity] [int] NULL,
+  	[ErrorState] [int] NULL,
+  	[ErrorProcedure] [nvarchar](126) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[ErrorLine] [int] NULL,
+  	[ErrorMessage] [nvarchar](4000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+   CONSTRAINT [PK_ErrorLog_ErrorLogID] PRIMARY KEY CLUSTERED
+  (
+  	[ErrorLogID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  ALTER TABLE [dbo].[ErrorLog] ADD  CONSTRAINT [DF_ErrorLog_ErrorTime]  DEFAULT (getdate()) FOR [ErrorTime]
+  GO
+

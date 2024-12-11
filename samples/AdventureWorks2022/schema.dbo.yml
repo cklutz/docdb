@@ -4,4 +4,8 @@ id: schema.dbo
 description: 
 createdAt: 0001-01-01T00:00:00.0000000
 lastModifiedAt: 0001-01-01T00:00:00.0000000
-name: '[dbo]'
+name: dbo
+script: |+
+  CREATE SCHEMA [dbo]
+  GO
+

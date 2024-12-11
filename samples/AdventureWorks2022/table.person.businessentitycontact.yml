@@ -4,7 +4,7 @@ id: table.person.businessentitycontact
 description: Cross-reference table mapping stores, vendors, and employees to people
 createdAt: 2023-05-08T12:07:29.4170000
 lastModifiedAt: 2023-05-08T12:07:38.5630000
-name: '[Person].[BusinessEntityContact]'
+name: Person.BusinessEntityContact
 foreignKeys: []
 checks: []
 partitionInfo:
@@ -20,7 +20,7 @@ columns:
   description: Primary key. Foreign key to BusinessEntity.BusinessEntityID.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[BusinessEntityID]'
+  name: BusinessEntityID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -33,12 +33,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.person.businessentitycontact.column.personid
   description: Primary key. Foreign key to Person.BusinessEntityID.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[PersonID]'
+  name: PersonID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -51,12 +52,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.person.businessentitycontact.column.contacttypeid
   description: Primary key.  Foreign key to ContactType.ContactTypeID.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ContactTypeID]'
+  name: ContactTypeID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -69,12 +71,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.person.businessentitycontact.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[rowguid]'
+  name: rowguid
   dataType: UNIQUEIDENTIFIER
   maxLengthBytes: 16
   precision: 0
@@ -87,12 +90,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (newid())
+  script: ""
 - type: TableColumn
   id: table.person.businessentitycontact.column.modifieddate
   description: Date and time the record was last updated.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ModifiedDate]'
+  name: ModifiedDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -105,3 +109,72 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (getdate())
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Person].[BusinessEntityContact](
+  	[BusinessEntityID] [int] NOT NULL,
+  	[PersonID] [int] NOT NULL,
+  	[ContactTypeID] [int] NOT NULL,
+  	[rowguid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_BusinessEntityContact_BusinessEntityID_PersonID_ContactTypeID] PRIMARY KEY CLUSTERED
+  (
+  	[BusinessEntityID] ASC,
+  	[PersonID] ASC,
+  	[ContactTypeID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_BusinessEntityContact_rowguid] ON [Person].[BusinessEntityContact]
+  (
+  	[rowguid] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_BusinessEntityContact_ContactTypeID] ON [Person].[BusinessEntityContact]
+  (
+  	[ContactTypeID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_BusinessEntityContact_PersonID] ON [Person].[BusinessEntityContact]
+  (
+  	[PersonID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityContact] ADD  CONSTRAINT [DF_BusinessEntityContact_rowguid]  DEFAULT (newid()) FOR [rowguid]
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityContact] ADD  CONSTRAINT [DF_BusinessEntityContact_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityContact]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityContact_BusinessEntity_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+  REFERENCES [Person].[BusinessEntity] ([BusinessEntityID])
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityContact] CHECK CONSTRAINT [FK_BusinessEntityContact_BusinessEntity_BusinessEntityID]
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityContact]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityContact_ContactType_ContactTypeID] FOREIGN KEY([ContactTypeID])
+  REFERENCES [Person].[ContactType] ([ContactTypeID])
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityContact] CHECK CONSTRAINT [FK_BusinessEntityContact_ContactType_ContactTypeID]
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityContact]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityContact_Person_PersonID] FOREIGN KEY([PersonID])
+  REFERENCES [Person].[Person] ([BusinessEntityID])
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityContact] CHECK CONSTRAINT [FK_BusinessEntityContact_Person_PersonID]
+  GO
+

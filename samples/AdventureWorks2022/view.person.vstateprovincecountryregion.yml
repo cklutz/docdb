@@ -4,7 +4,7 @@ id: view.person.vstateprovincecountryregion
 description: Joins StateProvince table with CountryRegion table.
 createdAt: 2023-05-08T12:07:39.5670000
 lastModifiedAt: 2023-05-08T12:07:39.5700000
-name: '[Person].[vStateProvinceCountryRegion]'
+name: Person.vStateProvinceCountryRegion
 title: 
 indexes: []
 columns:
@@ -13,7 +13,7 @@ columns:
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[StateProvinceID]'
+  name: StateProvinceID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -26,12 +26,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.stateprovincecode
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[StateProvinceCode]'
+  name: StateProvinceCode
   dataType: NCHAR(3)
   maxLengthBytes: 3
   precision: 0
@@ -44,12 +45,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.isonlystateprovinceflag
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[IsOnlyStateProvinceFlag]'
+  name: IsOnlyStateProvinceFlag
   dataType: FLAG
   maxLengthBytes: 1
   precision: 1
@@ -62,12 +64,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.stateprovincename
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[StateProvinceName]'
+  name: StateProvinceName
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -80,12 +83,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.territoryid
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[TerritoryID]'
+  name: TerritoryID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -98,12 +102,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.countryregioncode
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[CountryRegionCode]'
+  name: CountryRegionCode
   dataType: NVARCHAR(3)
   maxLengthBytes: 3
   precision: 0
@@ -116,12 +121,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.countryregionname
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[CountryRegionName]'
+  name: CountryRegionName
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -134,3 +140,44 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [Person].[vStateProvinceCountryRegion]
+  WITH SCHEMABINDING
+  AS
+  SELECT
+      sp.[StateProvinceID]
+      ,sp.[StateProvinceCode]
+      ,sp.[IsOnlyStateProvinceFlag]
+      ,sp.[Name] AS [StateProvinceName]
+      ,sp.[TerritoryID]
+      ,cr.[CountryRegionCode]
+      ,cr.[Name] AS [CountryRegionName]
+  FROM [Person].[StateProvince] sp
+      INNER JOIN [Person].[CountryRegion] cr
+      ON sp.[CountryRegionCode] = cr.[CountryRegionCode];
+
+  GO
+
+  SET ARITHABORT ON
+  SET CONCAT_NULL_YIELDS_NULL ON
+  SET QUOTED_IDENTIFIER ON
+  SET ANSI_NULLS ON
+  SET ANSI_PADDING ON
+  SET ANSI_WARNINGS ON
+  SET NUMERIC_ROUNDABORT OFF
+  GO
+
+  CREATE UNIQUE CLUSTERED INDEX [IX_vStateProvinceCountryRegion] ON [Person].[vStateProvinceCountryRegion]
+  (
+  	[StateProvinceID] ASC,
+  	[CountryRegionCode] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+

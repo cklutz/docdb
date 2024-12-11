@@ -4,7 +4,7 @@ id: view.production.vproductmodelinstructions
 description: Displays the content from each element in the xml column Instructions for each product in the Production.ProductModel table that has manufacturing instructions.
 createdAt: 2023-05-08T12:07:39.5570000
 lastModifiedAt: 2023-05-08T12:07:39.5570000
-name: '[Production].[vProductModelInstructions]'
+name: Production.vProductModelInstructions
 title: 
 indexes: []
 columns:
@@ -13,7 +13,7 @@ columns:
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductModelID]'
+  name: ProductModelID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -26,12 +26,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.name
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Name]'
+  name: Name
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -44,12 +45,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.instructions
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Instructions]'
+  name: Instructions
   dataType: NVARCHAR(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -62,12 +64,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.locationid
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[LocationID]'
+  name: LocationID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -80,12 +83,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.setuphours
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[SetupHours]'
+  name: SetupHours
   dataType: DECIMAL
   maxLengthBytes: 5
   precision: 9
@@ -98,12 +102,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.machinehours
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[MachineHours]'
+  name: MachineHours
   dataType: DECIMAL
   maxLengthBytes: 5
   precision: 9
@@ -116,12 +121,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.laborhours
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[LaborHours]'
+  name: LaborHours
   dataType: DECIMAL
   maxLengthBytes: 5
   precision: 9
@@ -134,12 +140,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.lotsize
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[LotSize]'
+  name: LotSize
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -152,12 +159,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.step
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Step]'
+  name: Step
   dataType: NVARCHAR(1024)
   maxLengthBytes: 1024
   precision: 0
@@ -170,12 +178,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.rowguid
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[rowguid]'
+  name: rowguid
   dataType: UNIQUEIDENTIFIER
   maxLengthBytes: 16
   precision: 0
@@ -188,12 +197,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.modifieddate
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ModifiedDate]'
+  name: ModifiedDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -206,3 +216,34 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [Production].[vProductModelInstructions]
+  AS
+  SELECT
+      [ProductModelID]
+      ,[Name]
+      ,[Instructions].value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelManuInstructions";
+          (/root/text())[1]', 'nvarchar(max)') AS [Instructions]
+      ,[MfgInstructions].ref.value('@LocationID[1]', 'int') AS [LocationID]
+      ,[MfgInstructions].ref.value('@SetupHours[1]', 'decimal(9, 4)') AS [SetupHours]
+      ,[MfgInstructions].ref.value('@MachineHours[1]', 'decimal(9, 4)') AS [MachineHours]
+      ,[MfgInstructions].ref.value('@LaborHours[1]', 'decimal(9, 4)') AS [LaborHours]
+      ,[MfgInstructions].ref.value('@LotSize[1]', 'int') AS [LotSize]
+      ,[Steps].ref.value('string(.)[1]', 'nvarchar(1024)') AS [Step]
+      ,[rowguid]
+      ,[ModifiedDate]
+  FROM [Production].[ProductModel]
+  CROSS APPLY [Instructions].nodes(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelManuInstructions";
+      /root/Location') MfgInstructions(ref)
+  CROSS APPLY [MfgInstructions].ref.nodes('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelManuInstructions";
+      step') Steps(ref);
+
+  GO
+

@@ -4,7 +4,7 @@ id: table.production.product
 description: Products sold or used in the manfacturing of sold products.
 createdAt: 2023-05-08T12:07:29.4900000
 lastModifiedAt: 2023-05-08T12:07:39.5300000
-name: '[Production].[Product]'
+name: Production.Product
 foreignKeys: []
 checks: []
 partitionInfo:
@@ -20,7 +20,7 @@ columns:
   description: Primary key for Product records.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductID]'
+  name: ProductID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -33,12 +33,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.name
   description: Name of the product.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Name]'
+  name: Name
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -51,12 +52,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.productnumber
   description: Unique product identification number.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductNumber]'
+  name: ProductNumber
   dataType: NVARCHAR(25)
   maxLengthBytes: 25
   precision: 0
@@ -69,12 +71,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.makeflag
   description: 0 = Product is purchased, 1 = Product is manufactured in-house.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[MakeFlag]'
+  name: MakeFlag
   dataType: FLAG
   maxLengthBytes: 1
   precision: 1
@@ -87,12 +90,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: ((1))
+  script: ""
 - type: TableColumn
   id: table.production.product.column.finishedgoodsflag
   description: 0 = Product is not a salable item. 1 = Product is salable.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[FinishedGoodsFlag]'
+  name: FinishedGoodsFlag
   dataType: FLAG
   maxLengthBytes: 1
   precision: 1
@@ -105,12 +109,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: ((1))
+  script: ""
 - type: TableColumn
   id: table.production.product.column.color
   description: Product color.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Color]'
+  name: Color
   dataType: NVARCHAR(15)
   maxLengthBytes: 15
   precision: 0
@@ -123,12 +128,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.safetystocklevel
   description: 'Minimum inventory quantity. '
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[SafetyStockLevel]'
+  name: SafetyStockLevel
   dataType: SMALLINT
   maxLengthBytes: 2
   precision: 5
@@ -141,12 +147,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.reorderpoint
   description: 'Inventory level that triggers a purchase order or work order. '
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ReorderPoint]'
+  name: ReorderPoint
   dataType: SMALLINT
   maxLengthBytes: 2
   precision: 5
@@ -159,12 +166,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.standardcost
   description: Standard cost of the product.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[StandardCost]'
+  name: StandardCost
   dataType: MONEY
   maxLengthBytes: 8
   precision: 19
@@ -177,12 +185,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.listprice
   description: Selling price.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ListPrice]'
+  name: ListPrice
   dataType: MONEY
   maxLengthBytes: 8
   precision: 19
@@ -195,12 +204,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.size
   description: Product size.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Size]'
+  name: Size
   dataType: NVARCHAR(5)
   maxLengthBytes: 5
   precision: 0
@@ -213,12 +223,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.sizeunitmeasurecode
   description: Unit of measure for Size column.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[SizeUnitMeasureCode]'
+  name: SizeUnitMeasureCode
   dataType: NCHAR(3)
   maxLengthBytes: 3
   precision: 0
@@ -231,12 +242,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.weightunitmeasurecode
   description: Unit of measure for Weight column.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[WeightUnitMeasureCode]'
+  name: WeightUnitMeasureCode
   dataType: NCHAR(3)
   maxLengthBytes: 3
   precision: 0
@@ -249,12 +261,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.weight
   description: Product weight.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Weight]'
+  name: Weight
   dataType: DECIMAL
   maxLengthBytes: 5
   precision: 8
@@ -267,12 +280,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.daystomanufacture
   description: Number of days required to manufacture the product.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[DaysToManufacture]'
+  name: DaysToManufacture
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -285,12 +299,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.productline
   description: R = Road, M = Mountain, T = Touring, S = Standard
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductLine]'
+  name: ProductLine
   dataType: NCHAR(2)
   maxLengthBytes: 2
   precision: 0
@@ -303,12 +318,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.class
   description: H = High, M = Medium, L = Low
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Class]'
+  name: Class
   dataType: NCHAR(2)
   maxLengthBytes: 2
   precision: 0
@@ -321,12 +337,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.style
   description: W = Womens, M = Mens, U = Universal
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Style]'
+  name: Style
   dataType: NCHAR(2)
   maxLengthBytes: 2
   precision: 0
@@ -339,12 +356,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.productsubcategoryid
   description: 'Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID. '
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductSubcategoryID]'
+  name: ProductSubcategoryID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -357,12 +375,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.productmodelid
   description: Product is a member of this product model. Foreign key to ProductModel.ProductModelID.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductModelID]'
+  name: ProductModelID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -375,12 +394,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.sellstartdate
   description: Date the product was available for sale.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[SellStartDate]'
+  name: SellStartDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -393,12 +413,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.sellenddate
   description: Date the product was no longer available for sale.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[SellEndDate]'
+  name: SellEndDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -411,12 +432,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.discontinueddate
   description: Date the product was discontinued.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[DiscontinuedDate]'
+  name: DiscontinuedDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -429,12 +451,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.product.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[rowguid]'
+  name: rowguid
   dataType: UNIQUEIDENTIFIER
   maxLengthBytes: 16
   precision: 0
@@ -447,12 +470,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (newid())
+  script: ""
 - type: TableColumn
   id: table.production.product.column.modifieddate
   description: Date and time the record was last updated.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ModifiedDate]'
+  name: ModifiedDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -465,3 +489,169 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (getdate())
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Production].[Product](
+  	[ProductID] [int] IDENTITY(1,1) NOT NULL,
+  	[Name] [dbo].[Name] NOT NULL,
+  	[ProductNumber] [nvarchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[MakeFlag] [dbo].[Flag] NOT NULL,
+  	[FinishedGoodsFlag] [dbo].[Flag] NOT NULL,
+  	[Color] [nvarchar](15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[SafetyStockLevel] [smallint] NOT NULL,
+  	[ReorderPoint] [smallint] NOT NULL,
+  	[StandardCost] [money] NOT NULL,
+  	[ListPrice] [money] NOT NULL,
+  	[Size] [nvarchar](5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[SizeUnitMeasureCode] [nchar](3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[WeightUnitMeasureCode] [nchar](3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[Weight] [decimal](8, 2) NULL,
+  	[DaysToManufacture] [int] NOT NULL,
+  	[ProductLine] [nchar](2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[Class] [nchar](2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[Style] [nchar](2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[ProductSubcategoryID] [int] NULL,
+  	[ProductModelID] [int] NULL,
+  	[SellStartDate] [datetime] NOT NULL,
+  	[SellEndDate] [datetime] NULL,
+  	[DiscontinuedDate] [datetime] NULL,
+  	[rowguid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_Product_ProductID] PRIMARY KEY CLUSTERED
+  (
+  	[ProductID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  SET ANSI_PADDING ON
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Product_Name] ON [Production].[Product]
+  (
+  	[Name] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  SET ANSI_PADDING ON
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Product_ProductNumber] ON [Production].[Product]
+  (
+  	[ProductNumber] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Product_rowguid] ON [Production].[Product]
+  (
+  	[rowguid] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Production].[Product] ADD  CONSTRAINT [DF_Product_MakeFlag]  DEFAULT ((1)) FOR [MakeFlag]
+  GO
+
+  ALTER TABLE [Production].[Product] ADD  CONSTRAINT [DF_Product_FinishedGoodsFlag]  DEFAULT ((1)) FOR [FinishedGoodsFlag]
+  GO
+
+  ALTER TABLE [Production].[Product] ADD  CONSTRAINT [DF_Product_rowguid]  DEFAULT (newid()) FOR [rowguid]
+  GO
+
+  ALTER TABLE [Production].[Product] ADD  CONSTRAINT [DF_Product_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_ProductModel_ProductModelID] FOREIGN KEY([ProductModelID])
+  REFERENCES [Production].[ProductModel] ([ProductModelID])
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [FK_Product_ProductModel_ProductModelID]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_ProductSubcategory_ProductSubcategoryID] FOREIGN KEY([ProductSubcategoryID])
+  REFERENCES [Production].[ProductSubcategory] ([ProductSubcategoryID])
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [FK_Product_ProductSubcategory_ProductSubcategoryID]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_UnitMeasure_SizeUnitMeasureCode] FOREIGN KEY([SizeUnitMeasureCode])
+  REFERENCES [Production].[UnitMeasure] ([UnitMeasureCode])
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [FK_Product_UnitMeasure_SizeUnitMeasureCode]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_UnitMeasure_WeightUnitMeasureCode] FOREIGN KEY([WeightUnitMeasureCode])
+  REFERENCES [Production].[UnitMeasure] ([UnitMeasureCode])
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [FK_Product_UnitMeasure_WeightUnitMeasureCode]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_Class] CHECK  ((upper([Class])='H' OR upper([Class])='M' OR upper([Class])='L' OR [Class] IS NULL))
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_Class]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_DaysToManufacture] CHECK  (([DaysToManufacture]>=(0)))
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_DaysToManufacture]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_ListPrice] CHECK  (([ListPrice]>=(0.00)))
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_ListPrice]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_ProductLine] CHECK  ((upper([ProductLine])='R' OR upper([ProductLine])='M' OR upper([ProductLine])='T' OR upper([ProductLine])='S' OR [ProductLine] IS NULL))
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_ProductLine]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_ReorderPoint] CHECK  (([ReorderPoint]>(0)))
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_ReorderPoint]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_SafetyStockLevel] CHECK  (([SafetyStockLevel]>(0)))
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_SafetyStockLevel]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_SellEndDate] CHECK  (([SellEndDate]>=[SellStartDate] OR [SellEndDate] IS NULL))
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_SellEndDate]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_StandardCost] CHECK  (([StandardCost]>=(0.00)))
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_StandardCost]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_Style] CHECK  ((upper([Style])='U' OR upper([Style])='M' OR upper([Style])='W' OR [Style] IS NULL))
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_Style]
+  GO
+
+  ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_Weight] CHECK  (([Weight]>(0.00)))
+  GO
+
+  ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_Weight]
+  GO
+

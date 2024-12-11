@@ -4,7 +4,7 @@ id: table.production.productphoto
 description: Product images.
 createdAt: 2023-05-08T12:07:29.5200000
 lastModifiedAt: 2023-05-08T12:07:38.8270000
-name: '[Production].[ProductPhoto]'
+name: Production.ProductPhoto
 foreignKeys: []
 checks: []
 partitionInfo:
@@ -20,7 +20,7 @@ columns:
   description: Primary key for ProductPhoto records.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductPhotoID]'
+  name: ProductPhotoID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -33,12 +33,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.productphoto.column.thumbnailphoto
   description: Small image of the product.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ThumbNailPhoto]'
+  name: ThumbNailPhoto
   dataType: VARBINARY(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -51,12 +52,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.productphoto.column.thumbnailphotofilename
   description: Small image file name.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ThumbnailPhotoFileName]'
+  name: ThumbnailPhotoFileName
   dataType: NVARCHAR(50)
   maxLengthBytes: 50
   precision: 0
@@ -69,12 +71,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.productphoto.column.largephoto
   description: Large image of the product.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[LargePhoto]'
+  name: LargePhoto
   dataType: VARBINARY(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -87,12 +90,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.productphoto.column.largephotofilename
   description: Large image file name.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[LargePhotoFileName]'
+  name: LargePhotoFileName
   dataType: NVARCHAR(50)
   maxLengthBytes: 50
   precision: 0
@@ -105,12 +109,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.productphoto.column.modifieddate
   description: Date and time the record was last updated.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ModifiedDate]'
+  name: ModifiedDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -123,3 +128,29 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (getdate())
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Production].[ProductPhoto](
+  	[ProductPhotoID] [int] IDENTITY(1,1) NOT NULL,
+  	[ThumbNailPhoto] [varbinary](max) NULL,
+  	[ThumbnailPhotoFileName] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[LargePhoto] [varbinary](max) NULL,
+  	[LargePhotoFileName] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_ProductPhoto_ProductPhotoID] PRIMARY KEY CLUSTERED
+  (
+  	[ProductPhotoID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+  GO
+
+  ALTER TABLE [Production].[ProductPhoto] ADD  CONSTRAINT [DF_ProductPhoto_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+

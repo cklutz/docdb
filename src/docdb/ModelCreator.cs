@@ -24,24 +24,45 @@ internal class ModelCreator
         };
     }
 
+    private static T InitBase<T>(T obj, NamedSmoObject smo) where T : DdbObject
+    {
+        obj.Id = smo.GetModelId();
+
+        if (obj is NamedDdbObject named)
+        {
+            named.Name = smo.GetFullName(quote: false);
+        }
+
+        if (smo is IExtendedProperties extendedProperties)
+        {
+            obj.Description = extendedProperties.GetMSDescription();
+        }
+
+        if (smo is IScriptable)
+        {
+            var scriptingOptions = new ScriptingOptions();
+            if (obj is DdbTable || obj is DdbView)
+            {
+                scriptingOptions.Indexes = true;
+                scriptingOptions.Triggers = true;
+                scriptingOptions.DriAll = true;
+            }
+            obj.Script = smo.GetScript(scriptingOptions);
+        }
+
+        return obj;
+    }
+
     private DdbSchema CreateSchema(Schema schema)
     {
-        var result = new DdbSchema()
-        {
-            Id = schema.GetModelId(),
-            Name = schema.GetFullName()
-        };
-
+        var result = InitBase(new DdbSchema(), schema);
         return result;
     }
 
     private DdbUserDefinedFunction CreateUserDefinedFunction(UserDefinedFunction udf)
     {
-        var result = new DdbUserDefinedFunction
+        var result = InitBase(new DdbUserDefinedFunction
         {
-            Id = udf.GetModelId(),
-            Name = udf.GetFullName(),
-            Description = udf.GetMSDescription(),
             CreatedAt = udf.CreateDate,
             LastModifiedAt = udf.DateLastModified,
             ReturnsNullOnNullInput = udf.ReturnsNullOnNullInput,
@@ -52,18 +73,16 @@ internal class ModelCreator
                 UserDefinedFunctionType.Inline => DdbUserDefinedFunctionType.Inline,
                 _ => DdbUserDefinedFunctionType.Unknown,
             }
-        };
+        }, udf);
 
         foreach (UserDefinedFunctionParameter parameter in udf.Parameters)
         {
-            result.Parameters.Add(new()
+            result.Parameters.Add(InitBase(new DdbUserDefinedFunctionParameter()
             {
-                Id = parameter.GetModelId(),
-                Name = parameter.Name,
                 DataType = parameter.DataType.PrettyName(),
                 Description = parameter.GetMSDescription(),
                 DefaultValue = parameter.DefaultValue,
-            });
+            }, parameter));
         }
 
         return result;
@@ -71,27 +90,22 @@ internal class ModelCreator
 
     private DdbStoredProcedure CreateStoredProcedure(StoredProcedure sp)
     {
-        var result = new DdbStoredProcedure
+        var result = InitBase(new DdbStoredProcedure
         {
-            Id = sp.GetModelId(),
-            Name = sp.GetFullName(),
-            Description = sp.GetMSDescription(),
             CreatedAt = sp.CreateDate,
             LastModifiedAt = sp.DateLastModified
-        };
+        }, sp);
 
         foreach (StoredProcedureParameter parameter in sp.Parameters)
         {
-            result.Parameters.Add(new()
+            result.Parameters.Add(InitBase(new DdbStoredProcedureParameter()
             {
-                Id = parameter.GetModelId(),
-                Name = parameter.Name,
                 DataType = parameter.DataType.PrettyName(),
                 IsOutputParameter = parameter.IsOutputParameter,
                 IsCursorParameter = parameter.IsCursorParameter,
                 Description = parameter.GetMSDescription(),
                 DefaultValue = parameter.DefaultValue,
-            });
+            }, parameter));
         }
 
         return result;
@@ -100,22 +114,16 @@ internal class ModelCreator
 
     private DdbView CreateView(View view)
     {
-        var result = new DdbView
+        var result = InitBase(new DdbView
         {
-            Id = view.GetModelId(),
-            Name = view.GetFullName(),
-            Description = view.GetMSDescription(),
             CreatedAt = view.CreateDate,
             LastModifiedAt = view.DateLastModified,
-        };
+        }, view);
 
         foreach (Column column in view.Columns)
         {
-            result.Columns.Add(new()
+            result.Columns.Add(InitBase(new DdbViewColumn()
             {
-                Id = column.GetModelId(),
-                Name = column.GetFullName(),
-                Description = column.GetMSDescription(),
                 IsComputed = column.Computed,
                 ComputedText = column.ComputedText,
                 DataType = column.DataType.PrettyName(),
@@ -126,7 +134,7 @@ internal class ModelCreator
                 IdentityIncrement = column.IdentityIncrement,
                 IdentitySeed = column.IdentitySeed,
                 Default = column.DefaultConstraint?.Text
-            });
+            }, column));
         }
 
         return result;
@@ -134,14 +142,11 @@ internal class ModelCreator
 
     private DdbTable CreateTable(Table table)
     {
-        var result = new DdbTable()
+        var result = InitBase(new DdbTable()
         {
-            Id = table.GetModelId(),
-            Name = table.GetFullName(),
-            Description = table.GetMSDescription(),
             CreatedAt = table.CreateDate,
             LastModifiedAt = table.DateLastModified,
-        };
+        }, table);
 
         if (table.IsPartitioned)
         {
@@ -153,11 +158,8 @@ internal class ModelCreator
 
         foreach (Column column in table.Columns)
         {
-            result.Columns.Add(new()
+            result.Columns.Add(InitBase(new DdbTableColumn()
             {
-                Id = column.GetModelId(),
-                Name = column.GetFullName(),
-                Description = column.GetMSDescription(),
                 IsComputed = column.Computed,
                 ComputedText = column.ComputedText,
                 DataType = column.DataType.PrettyName(),
@@ -168,7 +170,7 @@ internal class ModelCreator
                 IdentityIncrement = column.IdentityIncrement,
                 IdentitySeed = column.IdentitySeed,
                 Default = column.DefaultConstraint?.Text
-            });
+            }, column));
         }
 
         return result;

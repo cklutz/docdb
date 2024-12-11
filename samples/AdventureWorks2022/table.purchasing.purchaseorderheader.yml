@@ -4,7 +4,7 @@ id: table.purchasing.purchaseorderheader
 description: General purchase order information. See PurchaseOrderDetail.
 createdAt: 2023-05-08T12:07:29.5430000
 lastModifiedAt: 2023-05-08T12:07:39.4200000
-name: '[Purchasing].[PurchaseOrderHeader]'
+name: Purchasing.PurchaseOrderHeader
 foreignKeys: []
 checks: []
 partitionInfo:
@@ -20,7 +20,7 @@ columns:
   description: Primary key.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[PurchaseOrderID]'
+  name: PurchaseOrderID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -33,12 +33,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.revisionnumber
   description: Incremental number to track changes to the purchase order over time.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[RevisionNumber]'
+  name: RevisionNumber
   dataType: TINYINT
   maxLengthBytes: 1
   precision: 3
@@ -51,12 +52,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: ((0))
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.status
   description: Order current status. 1 = Pending; 2 = Approved; 3 = Rejected; 4 = Complete
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Status]'
+  name: Status
   dataType: TINYINT
   maxLengthBytes: 1
   precision: 3
@@ -69,12 +71,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: ((1))
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.employeeid
   description: Employee who created the purchase order. Foreign key to Employee.BusinessEntityID.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[EmployeeID]'
+  name: EmployeeID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -87,12 +90,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.vendorid
   description: Vendor with whom the purchase order is placed. Foreign key to Vendor.BusinessEntityID.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[VendorID]'
+  name: VendorID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -105,12 +109,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.shipmethodid
   description: Shipping method. Foreign key to ShipMethod.ShipMethodID.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ShipMethodID]'
+  name: ShipMethodID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -123,12 +128,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.orderdate
   description: Purchase order creation date.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[OrderDate]'
+  name: OrderDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -141,12 +147,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (getdate())
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.shipdate
   description: Estimated shipment date from the vendor.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ShipDate]'
+  name: ShipDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -159,12 +166,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.subtotal
   description: Purchase order subtotal. Computed as SUM(PurchaseOrderDetail.LineTotal)for the appropriate PurchaseOrderID.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[SubTotal]'
+  name: SubTotal
   dataType: MONEY
   maxLengthBytes: 8
   precision: 19
@@ -177,12 +185,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: ((0.00))
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.taxamt
   description: Tax amount.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[TaxAmt]'
+  name: TaxAmt
   dataType: MONEY
   maxLengthBytes: 8
   precision: 19
@@ -195,12 +204,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: ((0.00))
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.freight
   description: Shipping cost.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Freight]'
+  name: Freight
   dataType: MONEY
   maxLengthBytes: 8
   precision: 19
@@ -213,12 +223,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: ((0.00))
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.totaldue
   description: Total due to vendor. Computed as Subtotal + TaxAmt + Freight.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[TotalDue]'
+  name: TotalDue
   dataType: MONEY
   maxLengthBytes: 8
   precision: 19
@@ -231,12 +242,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.modifieddate
   description: Date and time the record was last updated.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ModifiedDate]'
+  name: ModifiedDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -249,3 +261,164 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (getdate())
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Purchasing].[PurchaseOrderHeader](
+  	[PurchaseOrderID] [int] IDENTITY(1,1) NOT NULL,
+  	[RevisionNumber] [tinyint] NOT NULL,
+  	[Status] [tinyint] NOT NULL,
+  	[EmployeeID] [int] NOT NULL,
+  	[VendorID] [int] NOT NULL,
+  	[ShipMethodID] [int] NOT NULL,
+  	[OrderDate] [datetime] NOT NULL,
+  	[ShipDate] [datetime] NULL,
+  	[SubTotal] [money] NOT NULL,
+  	[TaxAmt] [money] NOT NULL,
+  	[Freight] [money] NOT NULL,
+  	[TotalDue]  AS (isnull(([SubTotal]+[TaxAmt])+[Freight],(0))) PERSISTED NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_PurchaseOrderHeader_PurchaseOrderID] PRIMARY KEY CLUSTERED
+  (
+  	[PurchaseOrderID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_PurchaseOrderHeader_EmployeeID] ON [Purchasing].[PurchaseOrderHeader]
+  (
+  	[EmployeeID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_PurchaseOrderHeader_VendorID] ON [Purchasing].[PurchaseOrderHeader]
+  (
+  	[VendorID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] ADD  CONSTRAINT [DF_PurchaseOrderHeader_RevisionNumber]  DEFAULT ((0)) FOR [RevisionNumber]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] ADD  CONSTRAINT [DF_PurchaseOrderHeader_Status]  DEFAULT ((1)) FOR [Status]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] ADD  CONSTRAINT [DF_PurchaseOrderHeader_OrderDate]  DEFAULT (getdate()) FOR [OrderDate]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] ADD  CONSTRAINT [DF_PurchaseOrderHeader_SubTotal]  DEFAULT ((0.00)) FOR [SubTotal]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] ADD  CONSTRAINT [DF_PurchaseOrderHeader_TaxAmt]  DEFAULT ((0.00)) FOR [TaxAmt]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] ADD  CONSTRAINT [DF_PurchaseOrderHeader_Freight]  DEFAULT ((0.00)) FOR [Freight]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] ADD  CONSTRAINT [DF_PurchaseOrderHeader_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_PurchaseOrderHeader_Employee_EmployeeID] FOREIGN KEY([EmployeeID])
+  REFERENCES [HumanResources].[Employee] ([BusinessEntityID])
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [FK_PurchaseOrderHeader_Employee_EmployeeID]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_PurchaseOrderHeader_ShipMethod_ShipMethodID] FOREIGN KEY([ShipMethodID])
+  REFERENCES [Purchasing].[ShipMethod] ([ShipMethodID])
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [FK_PurchaseOrderHeader_ShipMethod_ShipMethodID]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_PurchaseOrderHeader_Vendor_VendorID] FOREIGN KEY([VendorID])
+  REFERENCES [Purchasing].[Vendor] ([BusinessEntityID])
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [FK_PurchaseOrderHeader_Vendor_VendorID]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_PurchaseOrderHeader_Freight] CHECK  (([Freight]>=(0.00)))
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [CK_PurchaseOrderHeader_Freight]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_PurchaseOrderHeader_ShipDate] CHECK  (([ShipDate]>=[OrderDate] OR [ShipDate] IS NULL))
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [CK_PurchaseOrderHeader_ShipDate]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_PurchaseOrderHeader_Status] CHECK  (([Status]>=(1) AND [Status]<=(4)))
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [CK_PurchaseOrderHeader_Status]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_PurchaseOrderHeader_SubTotal] CHECK  (([SubTotal]>=(0.00)))
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [CK_PurchaseOrderHeader_SubTotal]
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_PurchaseOrderHeader_TaxAmt] CHECK  (([TaxAmt]>=(0.00)))
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [CK_PurchaseOrderHeader_TaxAmt]
+  GO
+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TRIGGER [Purchasing].[uPurchaseOrderHeader] ON [Purchasing].[PurchaseOrderHeader]
+  AFTER UPDATE AS
+  BEGIN
+      DECLARE @Count int;
+
+      SET @Count = @@ROWCOUNT;
+      IF @Count = 0
+          RETURN;
+
+      SET NOCOUNT ON;
+
+      BEGIN TRY
+          -- Update RevisionNumber for modification of any field EXCEPT the Status.
+          IF NOT UPDATE([Status])
+          BEGIN
+              UPDATE [Purchasing].[PurchaseOrderHeader]
+              SET [Purchasing].[PurchaseOrderHeader].[RevisionNumber] =
+                  [Purchasing].[PurchaseOrderHeader].[RevisionNumber] + 1
+              WHERE [Purchasing].[PurchaseOrderHeader].[PurchaseOrderID] IN
+                  (SELECT inserted.[PurchaseOrderID] FROM inserted);
+          END;
+      END TRY
+      BEGIN CATCH
+          EXECUTE [dbo].[uspPrintError];
+
+          -- Rollback any active or uncommittable transactions before
+          -- inserting information in the ErrorLog
+          IF @@TRANCOUNT > 0
+          BEGIN
+              ROLLBACK TRANSACTION;
+          END
+
+          EXECUTE [dbo].[uspLogError];
+      END CATCH;
+  END;
+
+  GO
+
+  ALTER TABLE [Purchasing].[PurchaseOrderHeader] ENABLE TRIGGER [uPurchaseOrderHeader]
+  GO
+

@@ -4,7 +4,7 @@ id: view.humanresources.vjobcandidateemployment
 description: Displays the content from each employement history related element in the xml column Resume in the HumanResources.JobCandidate table. The content has been localized into French, Simplified Chinese and Thai. Some data may not display correctly unless supplemental language support is installed.
 createdAt: 2023-05-08T12:07:39.5030000
 lastModifiedAt: 2023-05-08T12:07:39.5030000
-name: '[HumanResources].[vJobCandidateEmployment]'
+name: HumanResources.vJobCandidateEmployment
 title: 
 indexes: []
 columns:
@@ -13,7 +13,7 @@ columns:
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[JobCandidateID]'
+  name: JobCandidateID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -26,12 +26,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.startdate
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Emp.StartDate]'
+  name: Emp.StartDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -44,12 +45,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.enddate
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Emp.EndDate]'
+  name: Emp.EndDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -62,12 +64,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.orgname
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Emp.OrgName]'
+  name: Emp.OrgName
   dataType: NVARCHAR(100)
   maxLengthBytes: 100
   precision: 0
@@ -80,12 +83,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.jobtitle
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Emp.JobTitle]'
+  name: Emp.JobTitle
   dataType: NVARCHAR(100)
   maxLengthBytes: 100
   precision: 0
@@ -98,12 +102,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.responsibility
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Emp.Responsibility]'
+  name: Emp.Responsibility
   dataType: NVARCHAR(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -116,12 +121,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.functioncategory
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Emp.FunctionCategory]'
+  name: Emp.FunctionCategory
   dataType: NVARCHAR(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -134,12 +140,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.industrycategory
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Emp.IndustryCategory]'
+  name: Emp.IndustryCategory
   dataType: NVARCHAR(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -152,12 +159,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.loc.countryregion
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Emp.Loc.CountryRegion]'
+  name: Emp.Loc.CountryRegion
   dataType: NVARCHAR(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -170,12 +178,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.loc.state
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Emp.Loc.State]'
+  name: Emp.Loc.State
   dataType: NVARCHAR(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -188,12 +197,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.loc.city
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Emp.Loc.City]'
+  name: Emp.Loc.City
   dataType: NVARCHAR(MAX)
   maxLengthBytes: -1
   precision: 0
@@ -206,3 +216,41 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [HumanResources].[vJobCandidateEmployment]
+  AS
+  SELECT
+      jc.[JobCandidateID]
+      ,CONVERT(datetime, REPLACE([Employment].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Emp.StartDate)[1]', 'nvarchar(20)') ,'Z', ''), 101) AS [Emp.StartDate]
+      ,CONVERT(datetime, REPLACE([Employment].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Emp.EndDate)[1]', 'nvarchar(20)') ,'Z', ''), 101) AS [Emp.EndDate]
+      ,[Employment].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Emp.OrgName)[1]', 'nvarchar(100)') AS [Emp.OrgName]
+      ,[Employment].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Emp.JobTitle)[1]', 'nvarchar(100)') AS [Emp.JobTitle]
+      ,[Employment].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Emp.Responsibility)[1]', 'nvarchar(max)') AS [Emp.Responsibility]
+      ,[Employment].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Emp.FunctionCategory)[1]', 'nvarchar(max)') AS [Emp.FunctionCategory]
+      ,[Employment].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Emp.IndustryCategory)[1]', 'nvarchar(max)') AS [Emp.IndustryCategory]
+      ,[Employment].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Emp.Location/Location/Loc.CountryRegion)[1]', 'nvarchar(max)') AS [Emp.Loc.CountryRegion]
+      ,[Employment].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Emp.Location/Location/Loc.State)[1]', 'nvarchar(max)') AS [Emp.Loc.State]
+      ,[Employment].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Emp.Location/Location/Loc.City)[1]', 'nvarchar(max)') AS [Emp.Loc.City]
+  FROM [HumanResources].[JobCandidate] jc
+  CROSS APPLY jc.[Resume].nodes(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+      /Resume/Employment') AS Employment(ref);
+
+  GO
+

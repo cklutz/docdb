@@ -1,7 +1,11 @@
 ### YamlMime:DocDB
 type: Schema
 id: schema.purchasing
-description: 
+description: Contains objects related to vendors and purchase orders.
 createdAt: 0001-01-01T00:00:00.0000000
 lastModifiedAt: 0001-01-01T00:00:00.0000000
-name: '[Purchasing]'
+name: Purchasing
+script: |+
+  CREATE SCHEMA [Purchasing]
+  GO
+

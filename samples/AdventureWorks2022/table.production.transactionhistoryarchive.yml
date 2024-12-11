@@ -4,7 +4,7 @@ id: table.production.transactionhistoryarchive
 description: Transactions for previous years.
 createdAt: 2023-05-08T12:07:29.6170000
 lastModifiedAt: 2023-05-08T12:07:35.1070000
-name: '[Production].[TransactionHistoryArchive]'
+name: Production.TransactionHistoryArchive
 foreignKeys: []
 checks: []
 partitionInfo:
@@ -20,7 +20,7 @@ columns:
   description: Primary key for TransactionHistoryArchive records.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[TransactionID]'
+  name: TransactionID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -33,12 +33,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.productid
   description: Product identification number. Foreign key to Product.ProductID.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductID]'
+  name: ProductID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -51,12 +52,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.referenceorderid
   description: Purchase order, sales order, or work order identification number.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ReferenceOrderID]'
+  name: ReferenceOrderID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -69,12 +71,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.referenceorderlineid
   description: Line number associated with the purchase order, sales order, or work order.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ReferenceOrderLineID]'
+  name: ReferenceOrderLineID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -87,12 +90,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: ((0))
+  script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.transactiondate
   description: Date and time of the transaction.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[TransactionDate]'
+  name: TransactionDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -105,12 +109,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (getdate())
+  script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.transactiontype
   description: W = Work Order, S = Sales Order, P = Purchase Order
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[TransactionType]'
+  name: TransactionType
   dataType: NCHAR(1)
   maxLengthBytes: 1
   precision: 0
@@ -123,12 +128,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.quantity
   description: Product quantity.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Quantity]'
+  name: Quantity
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -141,12 +147,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.actualcost
   description: Product cost.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ActualCost]'
+  name: ActualCost
   dataType: MONEY
   maxLengthBytes: 8
   precision: 19
@@ -159,12 +166,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.modifieddate
   description: Date and time the record was last updated.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ModifiedDate]'
+  name: ModifiedDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -177,3 +185,57 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (getdate())
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Production].[TransactionHistoryArchive](
+  	[TransactionID] [int] NOT NULL,
+  	[ProductID] [int] NOT NULL,
+  	[ReferenceOrderID] [int] NOT NULL,
+  	[ReferenceOrderLineID] [int] NOT NULL,
+  	[TransactionDate] [datetime] NOT NULL,
+  	[TransactionType] [nchar](1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[Quantity] [int] NOT NULL,
+  	[ActualCost] [money] NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_TransactionHistoryArchive_TransactionID] PRIMARY KEY CLUSTERED
+  (
+  	[TransactionID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_TransactionHistoryArchive_ProductID] ON [Production].[TransactionHistoryArchive]
+  (
+  	[ProductID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_TransactionHistoryArchive_ReferenceOrderID_ReferenceOrderLineID] ON [Production].[TransactionHistoryArchive]
+  (
+  	[ReferenceOrderID] ASC,
+  	[ReferenceOrderLineID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Production].[TransactionHistoryArchive] ADD  CONSTRAINT [DF_TransactionHistoryArchive_ReferenceOrderLineID]  DEFAULT ((0)) FOR [ReferenceOrderLineID]
+  GO
+
+  ALTER TABLE [Production].[TransactionHistoryArchive] ADD  CONSTRAINT [DF_TransactionHistoryArchive_TransactionDate]  DEFAULT (getdate()) FOR [TransactionDate]
+  GO
+
+  ALTER TABLE [Production].[TransactionHistoryArchive] ADD  CONSTRAINT [DF_TransactionHistoryArchive_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Production].[TransactionHistoryArchive]  WITH CHECK ADD  CONSTRAINT [CK_TransactionHistoryArchive_TransactionType] CHECK  ((upper([TransactionType])='P' OR upper([TransactionType])='S' OR upper([TransactionType])='W'))
+  GO
+
+  ALTER TABLE [Production].[TransactionHistoryArchive] CHECK CONSTRAINT [CK_TransactionHistoryArchive_TransactionType]
+  GO
+

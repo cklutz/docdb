@@ -4,7 +4,7 @@ id: table.production.workorder
 description: Manufacturing work orders.
 createdAt: 2023-05-08T12:07:29.6270000
 lastModifiedAt: 2023-05-08T12:07:39.4400000
-name: '[Production].[WorkOrder]'
+name: Production.WorkOrder
 foreignKeys: []
 checks: []
 partitionInfo:
@@ -20,7 +20,7 @@ columns:
   description: Primary key for WorkOrder records.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[WorkOrderID]'
+  name: WorkOrderID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -33,12 +33,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.workorder.column.productid
   description: Product identification number. Foreign key to Product.ProductID.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ProductID]'
+  name: ProductID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -51,12 +52,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.workorder.column.orderqty
   description: Product quantity to build.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[OrderQty]'
+  name: OrderQty
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -69,12 +71,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.workorder.column.stockedqty
   description: Quantity built and put in inventory.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[StockedQty]'
+  name: StockedQty
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -87,12 +90,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.workorder.column.scrappedqty
   description: Quantity that failed inspection.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ScrappedQty]'
+  name: ScrappedQty
   dataType: SMALLINT
   maxLengthBytes: 2
   precision: 5
@@ -105,12 +109,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.workorder.column.startdate
   description: Work order start date.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[StartDate]'
+  name: StartDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -123,12 +128,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.workorder.column.enddate
   description: Work order end date.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[EndDate]'
+  name: EndDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -141,12 +147,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.workorder.column.duedate
   description: Work order due date.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[DueDate]'
+  name: DueDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -159,12 +166,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.workorder.column.scrapreasonid
   description: Reason for inspection failure.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ScrapReasonID]'
+  name: ScrapReasonID
   dataType: SMALLINT
   maxLengthBytes: 2
   precision: 5
@@ -177,12 +185,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: TableColumn
   id: table.production.workorder.column.modifieddate
   description: Date and time the record was last updated.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[ModifiedDate]'
+  name: ModifiedDate
   dataType: DATETIME
   maxLengthBytes: 8
   precision: 23
@@ -195,3 +204,184 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: (getdate())
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Production].[WorkOrder](
+  	[WorkOrderID] [int] IDENTITY(1,1) NOT NULL,
+  	[ProductID] [int] NOT NULL,
+  	[OrderQty] [int] NOT NULL,
+  	[StockedQty]  AS (isnull([OrderQty]-[ScrappedQty],(0))),
+  	[ScrappedQty] [smallint] NOT NULL,
+  	[StartDate] [datetime] NOT NULL,
+  	[EndDate] [datetime] NULL,
+  	[DueDate] [datetime] NOT NULL,
+  	[ScrapReasonID] [smallint] NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_WorkOrder_WorkOrderID] PRIMARY KEY CLUSTERED
+  (
+  	[WorkOrderID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_WorkOrder_ProductID] ON [Production].[WorkOrder]
+  (
+  	[ProductID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_WorkOrder_ScrapReasonID] ON [Production].[WorkOrder]
+  (
+  	[ScrapReasonID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] ADD  CONSTRAINT [DF_WorkOrder_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [FK_WorkOrder_Product_ProductID] FOREIGN KEY([ProductID])
+  REFERENCES [Production].[Product] ([ProductID])
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [FK_WorkOrder_Product_ProductID]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [FK_WorkOrder_ScrapReason_ScrapReasonID] FOREIGN KEY([ScrapReasonID])
+  REFERENCES [Production].[ScrapReason] ([ScrapReasonID])
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [FK_WorkOrder_ScrapReason_ScrapReasonID]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [CK_WorkOrder_EndDate] CHECK  (([EndDate]>=[StartDate] OR [EndDate] IS NULL))
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [CK_WorkOrder_EndDate]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [CK_WorkOrder_OrderQty] CHECK  (([OrderQty]>(0)))
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [CK_WorkOrder_OrderQty]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [CK_WorkOrder_ScrappedQty] CHECK  (([ScrappedQty]>=(0)))
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [CK_WorkOrder_ScrappedQty]
+  GO
+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TRIGGER [Production].[iWorkOrder] ON [Production].[WorkOrder]
+  AFTER INSERT AS
+  BEGIN
+      DECLARE @Count int;
+
+      SET @Count = @@ROWCOUNT;
+      IF @Count = 0
+          RETURN;
+
+      SET NOCOUNT ON;
+
+      BEGIN TRY
+          INSERT INTO [Production].[TransactionHistory](
+              [ProductID]
+              ,[ReferenceOrderID]
+              ,[TransactionType]
+              ,[TransactionDate]
+              ,[Quantity]
+              ,[ActualCost])
+          SELECT
+              inserted.[ProductID]
+              ,inserted.[WorkOrderID]
+              ,'W'
+              ,GETDATE()
+              ,inserted.[OrderQty]
+              ,0
+          FROM inserted;
+      END TRY
+      BEGIN CATCH
+          EXECUTE [dbo].[uspPrintError];
+
+          -- Rollback any active or uncommittable transactions before
+          -- inserting information in the ErrorLog
+          IF @@TRANCOUNT > 0
+          BEGIN
+              ROLLBACK TRANSACTION;
+          END
+
+          EXECUTE [dbo].[uspLogError];
+      END CATCH;
+  END;
+
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] ENABLE TRIGGER [iWorkOrder]
+  GO
+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TRIGGER [Production].[uWorkOrder] ON [Production].[WorkOrder]
+  AFTER UPDATE AS
+  BEGIN
+      DECLARE @Count int;
+
+      SET @Count = @@ROWCOUNT;
+      IF @Count = 0
+          RETURN;
+
+      SET NOCOUNT ON;
+
+      BEGIN TRY
+          IF UPDATE([ProductID]) OR UPDATE([OrderQty])
+          BEGIN
+              INSERT INTO [Production].[TransactionHistory](
+                  [ProductID]
+                  ,[ReferenceOrderID]
+                  ,[TransactionType]
+                  ,[TransactionDate]
+                  ,[Quantity])
+              SELECT
+                  inserted.[ProductID]
+                  ,inserted.[WorkOrderID]
+                  ,'W'
+                  ,GETDATE()
+                  ,inserted.[OrderQty]
+              FROM inserted;
+          END;
+      END TRY
+      BEGIN CATCH
+          EXECUTE [dbo].[uspPrintError];
+
+          -- Rollback any active or uncommittable transactions before
+          -- inserting information in the ErrorLog
+          IF @@TRANCOUNT > 0
+          BEGIN
+              ROLLBACK TRANSACTION;
+          END
+
+          EXECUTE [dbo].[uspLogError];
+      END CATCH;
+  END;
+
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] ENABLE TRIGGER [uWorkOrder]
+  GO
+

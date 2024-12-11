@@ -4,10 +4,6 @@ var overwrite = require('./DocDB.overwrite.js');
 
 exports.transform = function (model) {
 
-    console.log("1>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ");
-    console.log(JSON.stringify(model));
-    console.log("2>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ");
-
     model.yamlmime = "DocDB";
 
     if (overwrite && overwrite.transform) {

@@ -4,7 +4,7 @@ id: storedprocedure.dbo.uspsearchcandidateresumes
 description: 
 createdAt: 2023-05-08T12:07:39.6400000
 lastModifiedAt: 2023-05-08T12:07:39.6400000
-name: '[dbo].[uspSearchCandidateResumes]'
+name: dbo.uspSearchCandidateResumes
 title: 
 parameters:
 - type: StoredProcedureParameter
@@ -17,6 +17,7 @@ parameters:
   isCursorParameter: false
   dataType: NVARCHAR(1000)
   defaultValue: ''
+  script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspsearchcandidateresumes.param.@useinflectional
   description: 
@@ -27,6 +28,7 @@ parameters:
   isCursorParameter: false
   dataType: BIT
   defaultValue: 0
+  script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspsearchcandidateresumes.param.@usethesaurus
   description: 
@@ -37,6 +39,7 @@ parameters:
   isCursorParameter: false
   dataType: BIT
   defaultValue: 0
+  script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspsearchcandidateresumes.param.@language
   description: 
@@ -47,3 +50,69 @@ parameters:
   isCursorParameter: false
   dataType: INT
   defaultValue: 0
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  --A stored procedure which demonstrates integrated full text search
+
+  CREATE PROCEDURE [dbo].[uspSearchCandidateResumes]
+      @searchString [nvarchar](1000),
+      @useInflectional [bit]=0,
+      @useThesaurus [bit]=0,
+      @language[int]=0
+
+
+  WITH EXECUTE AS CALLER
+  AS
+  BEGIN
+      SET NOCOUNT ON;
+
+        DECLARE @string nvarchar(1050)
+        --setting the lcid to the default instance LCID if needed
+        IF @language = NULL OR @language = 0
+        BEGIN
+              SELECT @language =CONVERT(int, serverproperty('lcid'))
+        END
+
+
+              --FREETEXTTABLE case as inflectional and Thesaurus were required
+        IF @useThesaurus = 1 AND @useInflectional = 1
+          BEGIN
+                    SELECT FT_TBL.[JobCandidateID], KEY_TBL.[RANK] FROM [HumanResources].[JobCandidate] AS FT_TBL
+                          INNER JOIN FREETEXTTABLE([HumanResources].[JobCandidate],*, @searchString,LANGUAGE @language) AS KEY_TBL
+                     ON  FT_TBL.[JobCandidateID] =KEY_TBL.[KEY]
+              END
+
+        ELSE IF @useThesaurus = 1
+              BEGIN
+                    SELECT @string ='FORMSOF(THESAURUS,"'+@searchString +'"'+')'
+                    SELECT FT_TBL.[JobCandidateID], KEY_TBL.[RANK] FROM [HumanResources].[JobCandidate] AS FT_TBL
+                          INNER JOIN CONTAINSTABLE([HumanResources].[JobCandidate],*, @string,LANGUAGE @language) AS KEY_TBL
+                     ON  FT_TBL.[JobCandidateID] =KEY_TBL.[KEY]
+          END
+
+        ELSE IF @useInflectional = 1
+              BEGIN
+                    SELECT @string ='FORMSOF(INFLECTIONAL,"'+@searchString +'"'+')'
+                    SELECT FT_TBL.[JobCandidateID], KEY_TBL.[RANK] FROM [HumanResources].[JobCandidate] AS FT_TBL
+                          INNER JOIN CONTAINSTABLE([HumanResources].[JobCandidate],*, @string,LANGUAGE @language) AS KEY_TBL
+                     ON  FT_TBL.[JobCandidateID] =KEY_TBL.[KEY]
+          END
+
+        ELSE --base case, plain CONTAINSTABLE
+              BEGIN
+                    SELECT @string='"'+@searchString +'"'
+                    SELECT FT_TBL.[JobCandidateID],KEY_TBL.[RANK] FROM [HumanResources].[JobCandidate] AS FT_TBL
+                          INNER JOIN CONTAINSTABLE([HumanResources].[JobCandidate],*,@string,LANGUAGE @language) AS KEY_TBL
+                     ON  FT_TBL.[JobCandidateID] =KEY_TBL.[KEY]
+              END
+
+  END;
+
+  GO
+

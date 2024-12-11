@@ -4,7 +4,7 @@ id: view.humanresources.vemployeedepartment
 description: Returns employee name, title, and current department.
 createdAt: 2023-05-08T12:07:39.4600000
 lastModifiedAt: 2023-05-08T12:07:39.4600000
-name: '[HumanResources].[vEmployeeDepartment]'
+name: HumanResources.vEmployeeDepartment
 title: 
 indexes: []
 columns:
@@ -13,7 +13,7 @@ columns:
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[BusinessEntityID]'
+  name: BusinessEntityID
   dataType: INT
   maxLengthBytes: 4
   precision: 10
@@ -26,12 +26,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vemployeedepartment.column.title
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Title]'
+  name: Title
   dataType: NVARCHAR(8)
   maxLengthBytes: 8
   precision: 0
@@ -44,12 +45,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vemployeedepartment.column.firstname
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[FirstName]'
+  name: FirstName
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -62,12 +64,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vemployeedepartment.column.middlename
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[MiddleName]'
+  name: MiddleName
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -80,12 +83,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vemployeedepartment.column.lastname
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[LastName]'
+  name: LastName
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -98,12 +102,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vemployeedepartment.column.suffix
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Suffix]'
+  name: Suffix
   dataType: NVARCHAR(10)
   maxLengthBytes: 10
   precision: 0
@@ -116,12 +121,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vemployeedepartment.column.jobtitle
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[JobTitle]'
+  name: JobTitle
   dataType: NVARCHAR(50)
   maxLengthBytes: 50
   precision: 0
@@ -134,12 +140,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vemployeedepartment.column.department
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[Department]'
+  name: Department
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -152,12 +159,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vemployeedepartment.column.groupname
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[GroupName]'
+  name: GroupName
   dataType: NAME
   maxLengthBytes: 50
   precision: 0
@@ -170,12 +178,13 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
 - type: ViewColumn
   id: view.humanresources.vemployeedepartment.column.startdate
   description: 
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: '[StartDate]'
+  name: StartDate
   dataType: DATE
   maxLengthBytes: 3
   precision: 10
@@ -188,3 +197,35 @@ columns:
   inPrimaryKey: false
   isForeignKey: false
   default: 
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [HumanResources].[vEmployeeDepartment]
+  AS
+  SELECT
+      e.[BusinessEntityID]
+      ,p.[Title]
+      ,p.[FirstName]
+      ,p.[MiddleName]
+      ,p.[LastName]
+      ,p.[Suffix]
+      ,e.[JobTitle]
+      ,d.[Name] AS [Department]
+      ,d.[GroupName]
+      ,edh.[StartDate]
+  FROM [HumanResources].[Employee] e
+  	INNER JOIN [Person].[Person] p
+  	ON p.[BusinessEntityID] = e.[BusinessEntityID]
+      INNER JOIN [HumanResources].[EmployeeDepartmentHistory] edh
+      ON e.[BusinessEntityID] = edh.[BusinessEntityID]
+      INNER JOIN [HumanResources].[Department] d
+      ON edh.[DepartmentID] = d.[DepartmentID]
+  WHERE edh.EndDate IS NULL
+
+  GO
+

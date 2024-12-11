@@ -4,7 +4,7 @@ id: userdefinedfunction.dbo.ufngetdocumentstatustext
 description: Scalar function returning the text representation of the Status column in the Document table.
 createdAt: 2023-05-08T12:07:39.6100000
 lastModifiedAt: 2023-05-08T12:07:39.6100000
-name: '[dbo].[ufnGetDocumentStatusText]'
+name: dbo.ufnGetDocumentStatusText
 functionType: Scalar
 returnsNullOnNullInput: false
 title: 
@@ -17,3 +17,31 @@ parameters:
   name: '@Status'
   dataType: TINYINT
   defaultValue: ''
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE FUNCTION [dbo].[ufnGetDocumentStatusText](@Status [tinyint])
+  RETURNS [nvarchar](16)
+  AS
+  -- Returns the sales order status text representation for the status value.
+  BEGIN
+      DECLARE @ret [nvarchar](16);
+
+      SET @ret =
+          CASE @Status
+              WHEN 1 THEN N'Pending approval'
+              WHEN 2 THEN N'Approved'
+              WHEN 3 THEN N'Obsolete'
+              ELSE N'** Invalid **'
+          END;
+
+      RETURN @ret
+  END;
+
+  GO
+
