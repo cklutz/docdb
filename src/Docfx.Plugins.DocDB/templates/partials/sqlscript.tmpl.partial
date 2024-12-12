@@ -1,0 +1,4 @@
+{{#payload.script}}
+<h2>Script</h2>
+<pre class="sql pre-wrap"><code>{{payload.script}}</code></pre>
+{{/payload.script}}

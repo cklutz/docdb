@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Person].[BusinessEntityContact]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityContact_BusinessEntity_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
-    REFERENCES [Person].[BusinessEntity] ([BusinessEntityID])
-    GO
-
-    ALTER TABLE [Person].[BusinessEntityContact] CHECK CONSTRAINT [FK_BusinessEntityContact_BusinessEntity_BusinessEntityID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.person.businessentitycontact.foreignkey.fk_businessentitycontact_contacttype_contacttypeid
   description: Foreign key constraint referencing ContactType.ContactTypeID.
@@ -50,14 +43,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Person].[BusinessEntityContact]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityContact_ContactType_ContactTypeID] FOREIGN KEY([ContactTypeID])
-    REFERENCES [Person].[ContactType] ([ContactTypeID])
-    GO
-
-    ALTER TABLE [Person].[BusinessEntityContact] CHECK CONSTRAINT [FK_BusinessEntityContact_ContactType_ContactTypeID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.person.businessentitycontact.foreignkey.fk_businessentitycontact_person_personid
   description: Foreign key constraint referencing Person.BusinessEntityID.
@@ -76,14 +62,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Person].[BusinessEntityContact]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityContact_Person_PersonID] FOREIGN KEY([PersonID])
-    REFERENCES [Person].[Person] ([BusinessEntityID])
-    GO
-
-    ALTER TABLE [Person].[BusinessEntityContact] CHECK CONSTRAINT [FK_BusinessEntityContact_Person_PersonID]
-    GO
-
+  script: ""
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -91,6 +70,7 @@ partitionInfo:
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.person.businessentitycontact.column.businessentityid

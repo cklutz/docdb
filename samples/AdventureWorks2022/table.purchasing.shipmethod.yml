@@ -6,13 +6,46 @@ createdAt: 2023-05-08T12:07:29.5930000
 lastModifiedAt: 2023-05-08T12:07:39.0100000
 name: Purchasing.ShipMethod
 foreignKeys: []
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.purchasing.shipmethod.check.ck_shipmethod_shipbase
+  description: Check constraint [ShipBase] > (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ShipMethod_ShipBase
+  isChecked: true
+  isEnabled: true
+  constraintText: ([ShipBase]>(0.00))
+  script: |+
+    ALTER TABLE [Purchasing].[ShipMethod]  WITH CHECK ADD  CONSTRAINT [CK_ShipMethod_ShipBase] CHECK  (([ShipBase]>(0.00)))
+    GO
+
+    ALTER TABLE [Purchasing].[ShipMethod] CHECK CONSTRAINT [CK_ShipMethod_ShipBase]
+    GO
+
+- type: CheckConstraint
+  id: table.purchasing.shipmethod.check.ck_shipmethod_shiprate
+  description: Check constraint [ShipRate] > (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ShipMethod_ShipRate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([ShipRate]>(0.00))
+  script: |+
+    ALTER TABLE [Purchasing].[ShipMethod]  WITH CHECK ADD  CONSTRAINT [CK_ShipMethod_ShipRate] CHECK  (([ShipRate]>(0.00)))
+    GO
+
+    ALTER TABLE [Purchasing].[ShipMethod] CHECK CONSTRAINT [CK_ShipMethod_ShipRate]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.purchasing.shipmethod.column.shipmethodid

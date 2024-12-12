@@ -1,0 +1,363 @@
+### YamlMime:DocDB
+type: Table
+id: table.vendor.vendor
+description: Companies from whom Adventure Works Cycles purchases parts or other goods.
+createdAt: 2023-05-08T12:07:29.6230000
+lastModifiedAt: 2023-05-08T12:07:39.4330000
+name: Vendor.Vendor
+foreignKeys:
+- type: ForeignKey
+  id: table.vendor.vendor.foreignkey.fk_vendor_businessentity_businessentityid
+  description: Foreign key constraint referencing BusinessEntity.BusinessEntityID
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Vendor_BusinessEntity_BusinessEntityID
+  columns:
+  - name: BusinessEntityID
+    id: table.vendor.vendor.column.businessentityid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_BusinessEntity_BusinessEntityID
+  referencedTable:
+    name: '[BusinessEntity].[BusinessEntity]'
+    id: table.businessentity.businessentity
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+checks:
+- type: CheckConstraint
+  id: table.vendor.vendor.check.ck_vendor_creditrating
+  description: Check constraint [CreditRating] BETWEEN (1) AND (5)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Vendor_CreditRating
+  isChecked: true
+  isEnabled: true
+  constraintText: ([CreditRating]>=(1) AND [CreditRating]<=(5))
+  script: ""
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+indexes: []
+triggers:
+- type: DmlTrigger
+  id: table.vendor.vendor.trigger.dvendor
+  description: INSTEAD OF DELETE trigger which keeps Vendors from being deleted.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Purchasing.dVendor
+  isEnabled: true
+  isSchemaBound: false
+  isInsteadOf: true
+  onDelete: true
+  onUpdate: false
+  onInsert: false
+  script: ""
+columns:
+- type: TableColumn
+  id: table.vendor.vendor.column.businessentityid
+  description: Primary key for Vendor records.  Foreign key to BusinessEntity.BusinessEntityID
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: BusinessEntityID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Vendor_BusinessEntity_BusinessEntityID
+    id: table.vendor.vendor.foreignkey.fk_vendor_businessentity_businessentityid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.vendor.vendor.column.accountnumber
+  description: Vendor account (identification) number.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: AccountNumber
+  dataType: ACCOUNTNUMBER
+  maxLengthBytes: 15
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.vendor.vendor.column.name
+  description: Company name.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Name
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.vendor.vendor.column.creditrating
+  description: 1 = Superior, 2 = Excellent, 3 = Above average, 4 = Average, 5 = Below average
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CreditRating
+  dataType: TINYINT
+  maxLengthBytes: 1
+  precision: 3
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.vendor.vendor.column.preferredvendorstatus
+  description: 0 = Do not use if another vendor is available. 1 = Preferred over other vendors supplying the same product.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: PreferredVendorStatus
+  dataType: FLAG
+  maxLengthBytes: 1
+  precision: 1
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((1))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.vendor.vendor.column.activeflag
+  description: 0 = Vendor no longer used. 1 = Vendor is actively used.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ActiveFlag
+  dataType: FLAG
+  maxLengthBytes: 1
+  precision: 1
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((1))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.vendor.vendor.column.purchasingwebserviceurl
+  description: Vendor URL.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: PurchasingWebServiceURL
+  dataType: NVARCHAR(1024)
+  maxLengthBytes: 1024
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.vendor.vendor.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ModifiedDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Purchasing].[Vendor](
+  	[BusinessEntityID] [int] NOT NULL,
+  	[AccountNumber] [dbo].[AccountNumber] NOT NULL,
+  	[Name] [dbo].[Name] NOT NULL,
+  	[CreditRating] [tinyint] NOT NULL,
+  	[PreferredVendorStatus] [dbo].[Flag] NOT NULL,
+  	[ActiveFlag] [dbo].[Flag] NOT NULL,
+  	[PurchasingWebServiceURL] [nvarchar](1024) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_Vendor_BusinessEntityID] PRIMARY KEY CLUSTERED
+  (
+  	[BusinessEntityID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  SET ANSI_PADDING ON
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Vendor_AccountNumber] ON [Purchasing].[Vendor]
+  (
+  	[AccountNumber] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Purchasing].[Vendor] ADD  CONSTRAINT [DF_Vendor_PreferredVendorStatus]  DEFAULT ((1)) FOR [PreferredVendorStatus]
+  GO
+
+  ALTER TABLE [Purchasing].[Vendor] ADD  CONSTRAINT [DF_Vendor_ActiveFlag]  DEFAULT ((1)) FOR [ActiveFlag]
+  GO
+
+  ALTER TABLE [Purchasing].[Vendor] ADD  CONSTRAINT [DF_Vendor_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Purchasing].[Vendor]  WITH CHECK ADD  CONSTRAINT [FK_Vendor_BusinessEntity_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+  REFERENCES [Person].[BusinessEntity] ([BusinessEntityID])
+  GO
+
+  ALTER TABLE [Purchasing].[Vendor] CHECK CONSTRAINT [FK_Vendor_BusinessEntity_BusinessEntityID]
+  GO
+
+  ALTER TABLE [Purchasing].[Vendor]  WITH CHECK ADD  CONSTRAINT [CK_Vendor_CreditRating] CHECK  (([CreditRating]>=(1) AND [CreditRating]<=(5)))
+  GO
+
+  ALTER TABLE [Purchasing].[Vendor] CHECK CONSTRAINT [CK_Vendor_CreditRating]
+  GO
+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TRIGGER [Purchasing].[dVendor] ON [Purchasing].[Vendor]
+  INSTEAD OF DELETE NOT FOR REPLICATION AS
+  BEGIN
+      DECLARE @Count int;
+
+      SET @Count = @@ROWCOUNT;
+      IF @Count = 0
+          RETURN;
+
+      SET NOCOUNT ON;
+
+      BEGIN TRY
+          DECLARE @DeleteCount int;
+
+          SELECT @DeleteCount = COUNT(*) FROM deleted;
+          IF @DeleteCount > 0
+          BEGIN
+              RAISERROR
+                  (N'Vendors cannot be deleted. They can only be marked as not active.', -- Message
+                  10, -- Severity.
+                  1); -- State.
+
+          -- Rollback any active or uncommittable transactions
+              IF @@TRANCOUNT > 0
+              BEGIN
+                  ROLLBACK TRANSACTION;
+              END
+          END;
+      END TRY
+      BEGIN CATCH
+          EXECUTE [dbo].[uspPrintError];
+
+          -- Rollback any active or uncommittable transactions before
+          -- inserting information in the ErrorLog
+          IF @@TRANCOUNT > 0
+          BEGIN
+              ROLLBACK TRANSACTION;
+          END
+
+          EXECUTE [dbo].[uspLogError];
+      END CATCH;
+  END;
+
+  GO
+
+  ALTER TABLE [Purchasing].[Vendor] ENABLE TRIGGER [dVendor]
+  GO
+

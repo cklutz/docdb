@@ -1,0 +1,223 @@
+### YamlMime:DocDB
+type: Table
+id: table.productlistpricehistory.productlistpricehistory
+description: Changes in the list price of a product over time.
+createdAt: 2023-05-08T12:07:29.5100000
+lastModifiedAt: 2023-05-08T12:07:38.8100000
+name: ProductListPriceHistory.ProductListPriceHistory
+foreignKeys:
+- type: ForeignKey
+  id: table.productlistpricehistory.productlistpricehistory.foreignkey.fk_productlistpricehistory_product_productid
+  description: Foreign key constraint referencing Product.ProductID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_ProductListPriceHistory_Product_ProductID
+  columns:
+  - name: ProductID
+    id: table.productlistpricehistory.productlistpricehistory.column.productid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Product_ProductID
+  referencedTable:
+    name: '[Product].[Product]'
+    id: table.product.product
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+checks:
+- type: CheckConstraint
+  id: table.productlistpricehistory.productlistpricehistory.check.ck_productlistpricehistory_enddate
+  description: Check constraint [EndDate] >= [StartDate] OR [EndDate] IS NULL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductListPriceHistory_EndDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([EndDate]>=[StartDate] OR [EndDate] IS NULL)
+  script: ""
+- type: CheckConstraint
+  id: table.productlistpricehistory.productlistpricehistory.check.ck_productlistpricehistory_listprice
+  description: Check constraint [ListPrice] > (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductListPriceHistory_ListPrice
+  isChecked: true
+  isEnabled: true
+  constraintText: ([ListPrice]>(0.00))
+  script: ""
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+indexes: []
+triggers: []
+columns:
+- type: TableColumn
+  id: table.productlistpricehistory.productlistpricehistory.column.productid
+  description: Product identification number. Foreign key to Product.ProductID
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ProductID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_ProductListPriceHistory_Product_ProductID
+    id: table.productlistpricehistory.productlistpricehistory.foreignkey.fk_productlistpricehistory_product_productid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.productlistpricehistory.productlistpricehistory.column.startdate
+  description: List price start date.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: StartDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.productlistpricehistory.productlistpricehistory.column.enddate
+  description: List price end date
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: EndDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.productlistpricehistory.productlistpricehistory.column.listprice
+  description: Product list price.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ListPrice
+  dataType: MONEY
+  maxLengthBytes: 8
+  precision: 19
+  scale: 4
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.productlistpricehistory.productlistpricehistory.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ModifiedDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Production].[ProductListPriceHistory](
+  	[ProductID] [int] NOT NULL,
+  	[StartDate] [datetime] NOT NULL,
+  	[EndDate] [datetime] NULL,
+  	[ListPrice] [money] NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_ProductListPriceHistory_ProductID_StartDate] PRIMARY KEY CLUSTERED
+  (
+  	[ProductID] ASC,
+  	[StartDate] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  ALTER TABLE [Production].[ProductListPriceHistory] ADD  CONSTRAINT [DF_ProductListPriceHistory_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Production].[ProductListPriceHistory]  WITH CHECK ADD  CONSTRAINT [FK_ProductListPriceHistory_Product_ProductID] FOREIGN KEY([ProductID])
+  REFERENCES [Production].[Product] ([ProductID])
+  GO
+
+  ALTER TABLE [Production].[ProductListPriceHistory] CHECK CONSTRAINT [FK_ProductListPriceHistory_Product_ProductID]
+  GO
+
+  ALTER TABLE [Production].[ProductListPriceHistory]  WITH CHECK ADD  CONSTRAINT [CK_ProductListPriceHistory_EndDate] CHECK  (([EndDate]>=[StartDate] OR [EndDate] IS NULL))
+  GO
+
+  ALTER TABLE [Production].[ProductListPriceHistory] CHECK CONSTRAINT [CK_ProductListPriceHistory_EndDate]
+  GO
+
+  ALTER TABLE [Production].[ProductListPriceHistory]  WITH CHECK ADD  CONSTRAINT [CK_ProductListPriceHistory_ListPrice] CHECK  (([ListPrice]>(0.00)))
+  GO
+
+  ALTER TABLE [Production].[ProductListPriceHistory] CHECK CONSTRAINT [CK_ProductListPriceHistory_ListPrice]
+  GO
+

@@ -19,26 +19,53 @@ foreignKeys:
   isChecked: true
   referencedKey: PK_BusinessEntity_BusinessEntityID
   referencedTable:
-    name: '[Person].[BusinessEntity]'
-    id: table.person.businessentity
+    name: '[BusinessEntity].[BusinessEntity]'
+    id: table.businessentity.businessentity
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Person].[Person]  WITH CHECK ADD  CONSTRAINT [FK_Person_BusinessEntity_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
-    REFERENCES [Person].[BusinessEntity] ([BusinessEntityID])
-    GO
-
-    ALTER TABLE [Person].[Person] CHECK CONSTRAINT [FK_Person_BusinessEntity_BusinessEntityID]
-    GO
-
-checks: []
+  script: ""
+checks:
+- type: CheckConstraint
+  id: table.person.person.check.ck_person_emailpromotion
+  description: Check constraint [EmailPromotion] >= (0) AND [EmailPromotion] <= (2)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Person_EmailPromotion
+  isChecked: true
+  isEnabled: true
+  constraintText: ([EmailPromotion]>=(0) AND [EmailPromotion]<=(2))
+  script: ""
+- type: CheckConstraint
+  id: table.person.person.check.ck_person_persontype
+  description: Check constraint [PersonType] is one of SC, VC, IN, EM or SP.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Person_PersonType
+  isChecked: true
+  isEnabled: true
+  constraintText: ([PersonType] IS NULL OR (upper([PersonType])='GC' OR upper([PersonType])='SP' OR upper([PersonType])='EM' OR upper([PersonType])='IN' OR upper([PersonType])='VC' OR upper([PersonType])='SC'))
+  script: ""
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers:
+- type: DmlTrigger
+  id: table.person.person.trigger.iuperson
+  description: AFTER INSERT, UPDATE trigger inserting Individual only if the Customer does not exist in the Store table and setting the ModifiedDate column in the Person table to the current date.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Person.iuPerson
+  isEnabled: true
+  isSchemaBound: false
+  isInsteadOf: false
+  onDelete: false
+  onUpdate: true
+  onInsert: true
+  script: ""
 columns:
 - type: TableColumn
   id: table.person.person.column.businessentityid

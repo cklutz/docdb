@@ -1,3 +1,7 @@
 ﻿tr, td .nowrap {
     white-space: nowrap;
 }
+
+.pre-wrap {
+    white-space: pre-wrap !important;
+}

@@ -84,13 +84,110 @@ foreignKeys:
     ALTER TABLE [Purchasing].[ProductVendor] CHECK CONSTRAINT [FK_ProductVendor_Vendor_BusinessEntityID]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.purchasing.productvendor.check.ck_productvendor_averageleadtime
+  description: Check constraint [AverageLeadTime] >= (1)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductVendor_AverageLeadTime
+  isChecked: true
+  isEnabled: true
+  constraintText: ([AverageLeadTime]>=(1))
+  script: |+
+    ALTER TABLE [Purchasing].[ProductVendor]  WITH CHECK ADD  CONSTRAINT [CK_ProductVendor_AverageLeadTime] CHECK  (([AverageLeadTime]>=(1)))
+    GO
+
+    ALTER TABLE [Purchasing].[ProductVendor] CHECK CONSTRAINT [CK_ProductVendor_AverageLeadTime]
+    GO
+
+- type: CheckConstraint
+  id: table.purchasing.productvendor.check.ck_productvendor_lastreceiptcost
+  description: Check constraint [LastReceiptCost] > (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductVendor_LastReceiptCost
+  isChecked: true
+  isEnabled: true
+  constraintText: ([LastReceiptCost]>(0.00))
+  script: |+
+    ALTER TABLE [Purchasing].[ProductVendor]  WITH CHECK ADD  CONSTRAINT [CK_ProductVendor_LastReceiptCost] CHECK  (([LastReceiptCost]>(0.00)))
+    GO
+
+    ALTER TABLE [Purchasing].[ProductVendor] CHECK CONSTRAINT [CK_ProductVendor_LastReceiptCost]
+    GO
+
+- type: CheckConstraint
+  id: table.purchasing.productvendor.check.ck_productvendor_maxorderqty
+  description: Check constraint [MaxOrderQty] >= (1)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductVendor_MaxOrderQty
+  isChecked: true
+  isEnabled: true
+  constraintText: ([MaxOrderQty]>=(1))
+  script: |+
+    ALTER TABLE [Purchasing].[ProductVendor]  WITH CHECK ADD  CONSTRAINT [CK_ProductVendor_MaxOrderQty] CHECK  (([MaxOrderQty]>=(1)))
+    GO
+
+    ALTER TABLE [Purchasing].[ProductVendor] CHECK CONSTRAINT [CK_ProductVendor_MaxOrderQty]
+    GO
+
+- type: CheckConstraint
+  id: table.purchasing.productvendor.check.ck_productvendor_minorderqty
+  description: Check constraint [MinOrderQty] >= (1)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductVendor_MinOrderQty
+  isChecked: true
+  isEnabled: true
+  constraintText: ([MinOrderQty]>=(1))
+  script: |+
+    ALTER TABLE [Purchasing].[ProductVendor]  WITH CHECK ADD  CONSTRAINT [CK_ProductVendor_MinOrderQty] CHECK  (([MinOrderQty]>=(1)))
+    GO
+
+    ALTER TABLE [Purchasing].[ProductVendor] CHECK CONSTRAINT [CK_ProductVendor_MinOrderQty]
+    GO
+
+- type: CheckConstraint
+  id: table.purchasing.productvendor.check.ck_productvendor_onorderqty
+  description: Check constraint [OnOrderQty] >= (0)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductVendor_OnOrderQty
+  isChecked: true
+  isEnabled: true
+  constraintText: ([OnOrderQty]>=(0))
+  script: |+
+    ALTER TABLE [Purchasing].[ProductVendor]  WITH CHECK ADD  CONSTRAINT [CK_ProductVendor_OnOrderQty] CHECK  (([OnOrderQty]>=(0)))
+    GO
+
+    ALTER TABLE [Purchasing].[ProductVendor] CHECK CONSTRAINT [CK_ProductVendor_OnOrderQty]
+    GO
+
+- type: CheckConstraint
+  id: table.purchasing.productvendor.check.ck_productvendor_standardprice
+  description: Check constraint [StandardPrice] > (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductVendor_StandardPrice
+  isChecked: true
+  isEnabled: true
+  constraintText: ([StandardPrice]>(0.00))
+  script: |+
+    ALTER TABLE [Purchasing].[ProductVendor]  WITH CHECK ADD  CONSTRAINT [CK_ProductVendor_StandardPrice] CHECK  (([StandardPrice]>(0.00)))
+    GO
+
+    ALTER TABLE [Purchasing].[ProductVendor] CHECK CONSTRAINT [CK_ProductVendor_StandardPrice]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.productid

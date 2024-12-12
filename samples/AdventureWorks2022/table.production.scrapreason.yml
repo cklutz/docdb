@@ -13,6 +13,7 @@ partitionInfo:
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.production.scrapreason.column.scrapreasonid

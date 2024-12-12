@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Person].[Address]  WITH CHECK ADD  CONSTRAINT [FK_Address_StateProvince_StateProvinceID] FOREIGN KEY([StateProvinceID])
-    REFERENCES [Person].[StateProvince] ([StateProvinceID])
-    GO
-
-    ALTER TABLE [Person].[Address] CHECK CONSTRAINT [FK_Address_StateProvince_StateProvinceID]
-    GO
-
+  script: ""
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -39,6 +32,7 @@ partitionInfo:
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.person.address.column.addressid

@@ -1,0 +1,363 @@
+### YamlMime:DocDB
+type: View
+id: view.vjobcandidateeducation.vjobcandidateeducation
+description: Displays the content from each education related element in the xml column Resume in the HumanResources.JobCandidate table. The content has been localized into French, Simplified Chinese and Thai. Some data may not display correctly unless supplemental language support is installed.
+createdAt: 2023-05-08T12:07:39.5170000
+lastModifiedAt: 2023-05-08T12:07:39.5170000
+name: vJobCandidateEducation.vJobCandidateEducation
+indexes: []
+triggers: []
+columns:
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.jobcandidateid
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: JobCandidateID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: true
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.level
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.Level
+  dataType: NVARCHAR(MAX)
+  maxLengthBytes: -1
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.startdate
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.StartDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.enddate
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.EndDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.degree
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.Degree
+  dataType: NVARCHAR(50)
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.major
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.Major
+  dataType: NVARCHAR(50)
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.minor
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.Minor
+  dataType: NVARCHAR(50)
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.gpa
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.GPA
+  dataType: NVARCHAR(5)
+  maxLengthBytes: 5
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.gpascale
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.GPAScale
+  dataType: NVARCHAR(5)
+  maxLengthBytes: 5
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.school
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.School
+  dataType: NVARCHAR(100)
+  maxLengthBytes: 100
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.loc.countryregion
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.Loc.CountryRegion
+  dataType: NVARCHAR(100)
+  maxLengthBytes: 100
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.loc.state
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.Loc.State
+  dataType: NVARCHAR(100)
+  maxLengthBytes: 100
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vjobcandidateeducation.vjobcandidateeducation.column.edu.loc.city
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Edu.Loc.City
+  dataType: NVARCHAR(100)
+  maxLengthBytes: 100
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [HumanResources].[vJobCandidateEducation]
+  AS
+  SELECT
+      jc.[JobCandidateID]
+      ,[Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.Level)[1]', 'nvarchar(max)') AS [Edu.Level]
+      ,CONVERT(datetime, REPLACE([Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.StartDate)[1]', 'nvarchar(20)') ,'Z', ''), 101) AS [Edu.StartDate]
+      ,CONVERT(datetime, REPLACE([Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.EndDate)[1]', 'nvarchar(20)') ,'Z', ''), 101) AS [Edu.EndDate]
+      ,[Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.Degree)[1]', 'nvarchar(50)') AS [Edu.Degree]
+      ,[Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.Major)[1]', 'nvarchar(50)') AS [Edu.Major]
+      ,[Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.Minor)[1]', 'nvarchar(50)') AS [Edu.Minor]
+      ,[Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.GPA)[1]', 'nvarchar(5)') AS [Edu.GPA]
+      ,[Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.GPAScale)[1]', 'nvarchar(5)') AS [Edu.GPAScale]
+      ,[Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.School)[1]', 'nvarchar(100)') AS [Edu.School]
+      ,[Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.Location/Location/Loc.CountryRegion)[1]', 'nvarchar(100)') AS [Edu.Loc.CountryRegion]
+      ,[Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.Location/Location/Loc.State)[1]', 'nvarchar(100)') AS [Edu.Loc.State]
+      ,[Education].ref.value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+          (Edu.Location/Location/Loc.City)[1]', 'nvarchar(100)') AS [Edu.Loc.City]
+  FROM [HumanResources].[JobCandidate] jc
+  CROSS APPLY jc.[Resume].nodes(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/Resume";
+      /Resume/Education') AS [Education](ref);
+
+  GO
+

@@ -214,13 +214,203 @@ foreignKeys:
     ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_ShipMethod_ShipMethodID]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.sales.salesorderheader.check.ck_salesorderheader_duedate
+  description: Check constraint [DueDate] >= [OrderDate]
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesOrderHeader_DueDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([DueDate]>=[OrderDate])
+  script: |+
+    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_DueDate] CHECK  (([DueDate]>=[OrderDate]))
+    GO
+
+    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_DueDate]
+    GO
+
+- type: CheckConstraint
+  id: table.sales.salesorderheader.check.ck_salesorderheader_freight
+  description: Check constraint [Freight] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesOrderHeader_Freight
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Freight]>=(0.00))
+  script: |+
+    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_Freight] CHECK  (([Freight]>=(0.00)))
+    GO
+
+    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_Freight]
+    GO
+
+- type: CheckConstraint
+  id: table.sales.salesorderheader.check.ck_salesorderheader_shipdate
+  description: Check constraint [ShipDate] >= [OrderDate] OR [ShipDate] IS NULL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesOrderHeader_ShipDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([ShipDate]>=[OrderDate] OR [ShipDate] IS NULL)
+  script: |+
+    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_ShipDate] CHECK  (([ShipDate]>=[OrderDate] OR [ShipDate] IS NULL))
+    GO
+
+    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_ShipDate]
+    GO
+
+- type: CheckConstraint
+  id: table.sales.salesorderheader.check.ck_salesorderheader_status
+  description: Check constraint [Status] BETWEEN (0) AND (8)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesOrderHeader_Status
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Status]>=(0) AND [Status]<=(8))
+  script: |+
+    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_Status] CHECK  (([Status]>=(0) AND [Status]<=(8)))
+    GO
+
+    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_Status]
+    GO
+
+- type: CheckConstraint
+  id: table.sales.salesorderheader.check.ck_salesorderheader_subtotal
+  description: Check constraint [SubTotal] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesOrderHeader_SubTotal
+  isChecked: true
+  isEnabled: true
+  constraintText: ([SubTotal]>=(0.00))
+  script: |+
+    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_SubTotal] CHECK  (([SubTotal]>=(0.00)))
+    GO
+
+    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_SubTotal]
+    GO
+
+- type: CheckConstraint
+  id: table.sales.salesorderheader.check.ck_salesorderheader_taxamt
+  description: Check constraint [TaxAmt] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesOrderHeader_TaxAmt
+  isChecked: true
+  isEnabled: true
+  constraintText: ([TaxAmt]>=(0.00))
+  script: |+
+    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_TaxAmt] CHECK  (([TaxAmt]>=(0.00)))
+    GO
+
+    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_TaxAmt]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers:
+- type: DmlTrigger
+  id: table.sales.salesorderheader.trigger.usalesorderheader
+  description: AFTER UPDATE trigger that updates the RevisionNumber and ModifiedDate columns in the SalesOrderHeader table.Updates the SalesYTD column in the SalesPerson and SalesTerritory tables.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: uSalesOrderHeader
+  isEnabled: true
+  isSchemaBound: false
+  isInsteadOf: false
+  onDelete: false
+  onUpdate: true
+  onInsert: false
+  script: |+
+    SET ANSI_NULLS ON
+    GO
+
+    SET QUOTED_IDENTIFIER ON
+    GO
+
+    CREATE TRIGGER [Sales].[uSalesOrderHeader] ON [Sales].[SalesOrderHeader]
+    AFTER UPDATE NOT FOR REPLICATION AS
+    BEGIN
+        DECLARE @Count int;
+
+        SET @Count = @@ROWCOUNT;
+        IF @Count = 0
+            RETURN;
+
+        SET NOCOUNT ON;
+
+        BEGIN TRY
+            -- Update RevisionNumber for modification of any field EXCEPT the Status.
+            IF NOT UPDATE([Status])
+            BEGIN
+                UPDATE [Sales].[SalesOrderHeader]
+                SET [Sales].[SalesOrderHeader].[RevisionNumber] =
+                    [Sales].[SalesOrderHeader].[RevisionNumber] + 1
+                WHERE [Sales].[SalesOrderHeader].[SalesOrderID] IN
+                    (SELECT inserted.[SalesOrderID] FROM inserted);
+            END;
+
+            -- Update the SalesPerson SalesYTD when SubTotal is updated
+            IF UPDATE([SubTotal])
+            BEGIN
+                DECLARE @StartDate datetime,
+                        @EndDate datetime
+
+                SET @StartDate = [dbo].[ufnGetAccountingStartDate]();
+                SET @EndDate = [dbo].[ufnGetAccountingEndDate]();
+
+                UPDATE [Sales].[SalesPerson]
+                SET [Sales].[SalesPerson].[SalesYTD] =
+                    (SELECT SUM([Sales].[SalesOrderHeader].[SubTotal])
+                    FROM [Sales].[SalesOrderHeader]
+                    WHERE [Sales].[SalesPerson].[BusinessEntityID] = [Sales].[SalesOrderHeader].[SalesPersonID]
+                        AND ([Sales].[SalesOrderHeader].[Status] = 5) -- Shipped
+                        AND [Sales].[SalesOrderHeader].[OrderDate] BETWEEN @StartDate AND @EndDate)
+                WHERE [Sales].[SalesPerson].[BusinessEntityID]
+                    IN (SELECT DISTINCT inserted.[SalesPersonID] FROM inserted
+                        WHERE inserted.[OrderDate] BETWEEN @StartDate AND @EndDate);
+
+                -- Update the SalesTerritory SalesYTD when SubTotal is updated
+                UPDATE [Sales].[SalesTerritory]
+                SET [Sales].[SalesTerritory].[SalesYTD] =
+                    (SELECT SUM([Sales].[SalesOrderHeader].[SubTotal])
+                    FROM [Sales].[SalesOrderHeader]
+                    WHERE [Sales].[SalesTerritory].[TerritoryID] = [Sales].[SalesOrderHeader].[TerritoryID]
+                        AND ([Sales].[SalesOrderHeader].[Status] = 5) -- Shipped
+                        AND [Sales].[SalesOrderHeader].[OrderDate] BETWEEN @StartDate AND @EndDate)
+                WHERE [Sales].[SalesTerritory].[TerritoryID]
+                    IN (SELECT DISTINCT inserted.[TerritoryID] FROM inserted
+                        WHERE inserted.[OrderDate] BETWEEN @StartDate AND @EndDate);
+            END;
+        END TRY
+        BEGIN CATCH
+            EXECUTE [dbo].[uspPrintError];
+
+            -- Rollback any active or uncommittable transactions before
+            -- inserting information in the ErrorLog
+            IF @@TRANCOUNT > 0
+            BEGIN
+                ROLLBACK TRANSACTION;
+            END
+
+            EXECUTE [dbo].[uspLogError];
+        END CATCH;
+    END;
+
+    GO
+
+    ALTER TABLE [Sales].[SalesOrderHeader] ENABLE TRIGGER [uSalesOrderHeader]
+    GO
+
 columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.salesorderid

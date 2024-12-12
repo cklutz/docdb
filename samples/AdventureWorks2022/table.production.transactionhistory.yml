@@ -32,13 +32,30 @@ foreignKeys:
     ALTER TABLE [Production].[TransactionHistory] CHECK CONSTRAINT [FK_TransactionHistory_Product_ProductID]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.production.transactionhistory.check.ck_transactionhistory_transactiontype
+  description: Check constraint [TransactionType]='p' OR [TransactionType]='s' OR [TransactionType]='w' OR [TransactionType]='P' OR [TransactionType]='S' OR [TransactionType]='W')
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_TransactionHistory_TransactionType
+  isChecked: true
+  isEnabled: true
+  constraintText: (upper([TransactionType])='P' OR upper([TransactionType])='S' OR upper([TransactionType])='W')
+  script: |+
+    ALTER TABLE [Production].[TransactionHistory]  WITH CHECK ADD  CONSTRAINT [CK_TransactionHistory_TransactionType] CHECK  ((upper([TransactionType])='P' OR upper([TransactionType])='S' OR upper([TransactionType])='W'))
+    GO
+
+    ALTER TABLE [Production].[TransactionHistory] CHECK CONSTRAINT [CK_TransactionHistory_TransactionType]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.production.transactionhistory.column.transactionid

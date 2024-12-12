@@ -84,13 +84,78 @@ foreignKeys:
     ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [FK_BillOfMaterials_UnitMeasure_UnitMeasureCode]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.production.billofmaterials.check.ck_billofmaterials_bomlevel
+  description: Check constraint [ProductAssemblyID] IS NULL AND [BOMLevel] = (0) AND [PerAssemblyQty] = (1) OR [ProductAssemblyID] IS NOT NULL AND [BOMLevel] >= (1)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_BillOfMaterials_BOMLevel
+  isChecked: true
+  isEnabled: true
+  constraintText: ([ProductAssemblyID] IS NULL AND [BOMLevel]=(0) AND [PerAssemblyQty]=(1.00) OR [ProductAssemblyID] IS NOT NULL AND [BOMLevel]>=(1))
+  script: |+
+    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [CK_BillOfMaterials_BOMLevel] CHECK  (([ProductAssemblyID] IS NULL AND [BOMLevel]=(0) AND [PerAssemblyQty]=(1.00) OR [ProductAssemblyID] IS NOT NULL AND [BOMLevel]>=(1)))
+    GO
+
+    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [CK_BillOfMaterials_BOMLevel]
+    GO
+
+- type: CheckConstraint
+  id: table.production.billofmaterials.check.ck_billofmaterials_enddate
+  description: Check constraint EndDate] > [StartDate] OR [EndDate] IS NULL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_BillOfMaterials_EndDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([EndDate]>[StartDate] OR [EndDate] IS NULL)
+  script: |+
+    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [CK_BillOfMaterials_EndDate] CHECK  (([EndDate]>[StartDate] OR [EndDate] IS NULL))
+    GO
+
+    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [CK_BillOfMaterials_EndDate]
+    GO
+
+- type: CheckConstraint
+  id: table.production.billofmaterials.check.ck_billofmaterials_perassemblyqty
+  description: Check constraint [PerAssemblyQty] >= (1.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_BillOfMaterials_PerAssemblyQty
+  isChecked: true
+  isEnabled: true
+  constraintText: ([PerAssemblyQty]>=(1.00))
+  script: |+
+    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [CK_BillOfMaterials_PerAssemblyQty] CHECK  (([PerAssemblyQty]>=(1.00)))
+    GO
+
+    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [CK_BillOfMaterials_PerAssemblyQty]
+    GO
+
+- type: CheckConstraint
+  id: table.production.billofmaterials.check.ck_billofmaterials_productassemblyid
+  description: Check constraint [ProductAssemblyID] <> [ComponentID]
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_BillOfMaterials_ProductAssemblyID
+  isChecked: true
+  isEnabled: true
+  constraintText: ([ProductAssemblyID]<>[ComponentID])
+  script: |+
+    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [CK_BillOfMaterials_ProductAssemblyID] CHECK  (([ProductAssemblyID]<>[ComponentID]))
+    GO
+
+    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [CK_BillOfMaterials_ProductAssemblyID]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.production.billofmaterials.column.billofmaterialsid

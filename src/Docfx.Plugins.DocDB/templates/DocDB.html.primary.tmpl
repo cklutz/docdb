@@ -13,12 +13,13 @@
 {{>partials/table.foreignkeys}}
 {{/isTable}}
 
-{{#payload.script}}
-<h2>Script</h2>
-<pre class="sql">
-<code>
-{{payload.script}}
-</code>
-</pre>
-{{/payload.script}}
+{{#isTable}}
+{{>partials/table.checks}}
+{{/isTable}}
+
+{{#isTabular}}
+{{>partials/tabular.triggers}}
+{{/isTabular}}
+
+{{>partials/sqlscript}}
  

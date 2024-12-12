@@ -1,0 +1,54 @@
+### YamlMime:DocDB
+type: UserDefinedFunction
+id: userdefinedfunction.ufngetproductstandardcost.ufngetproductstandardcost
+description: Scalar function returning the standard cost for a given product on a particular order date.
+createdAt: 2023-05-08T12:07:39.6070000
+lastModifiedAt: 2023-05-08T12:07:39.6070000
+name: ufnGetProductStandardCost.ufnGetProductStandardCost
+functionType: Scalar
+returnsNullOnNullInput: false
+parameters:
+- type: UserDefinedFunctionParameter
+  id: userdefinedfunction.ufngetproductstandardcost.ufngetproductstandardcost.param.@productid
+  description: Input parameter for the scalar function ufnGetProductStandardCost. Enter a valid ProductID from the Production.Product table.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@ProductID'
+  dataType: INT
+  defaultValue: ''
+  script: ""
+- type: UserDefinedFunctionParameter
+  id: userdefinedfunction.ufngetproductstandardcost.ufngetproductstandardcost.param.@orderdate
+  description: Input parameter for the scalar function ufnGetProductStandardCost. Enter a valid order date.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@OrderDate'
+  dataType: DATETIME
+  defaultValue: ''
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE FUNCTION [dbo].[ufnGetProductStandardCost](@ProductID [int], @OrderDate [datetime])
+  RETURNS [money]
+  AS
+  -- Returns the standard cost for the product on a specific date.
+  BEGIN
+      DECLARE @StandardCost money;
+
+      SELECT @StandardCost = pch.[StandardCost]
+      FROM [Production].[Product] p
+          INNER JOIN [Production].[ProductCostHistory] pch
+          ON p.[ProductID] = pch.[ProductID]
+              AND p.[ProductID] = @ProductID
+              AND @OrderDate BETWEEN pch.[StartDate] AND COALESCE(pch.[EndDate], CONVERT(datetime, '99991231', 112)); -- Make sure we get all the prices!
+
+      RETURN @StandardCost;
+  END;
+
+  GO
+

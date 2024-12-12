@@ -2,7 +2,7 @@
 <h2>{{__global.foreignKeys}}</h2>
 
 {{#payload.foreignKeys}}
-<h3 id="{{id}}">{{name}}</h3>
+<h3 id="{{id}}">{{name}} foreign key</h3>
 
 <div class"markdown level0 summary">{{description}}</div>
 

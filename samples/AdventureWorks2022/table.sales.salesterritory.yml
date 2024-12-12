@@ -32,13 +32,78 @@ foreignKeys:
     ALTER TABLE [Sales].[SalesTerritory] CHECK CONSTRAINT [FK_SalesTerritory_CountryRegion_CountryRegionCode]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.sales.salesterritory.check.ck_salesterritory_costlastyear
+  description: Check constraint [CostLastYear] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesTerritory_CostLastYear
+  isChecked: true
+  isEnabled: true
+  constraintText: ([CostLastYear]>=(0.00))
+  script: |+
+    ALTER TABLE [Sales].[SalesTerritory]  WITH CHECK ADD  CONSTRAINT [CK_SalesTerritory_CostLastYear] CHECK  (([CostLastYear]>=(0.00)))
+    GO
+
+    ALTER TABLE [Sales].[SalesTerritory] CHECK CONSTRAINT [CK_SalesTerritory_CostLastYear]
+    GO
+
+- type: CheckConstraint
+  id: table.sales.salesterritory.check.ck_salesterritory_costytd
+  description: Check constraint [CostYTD] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesTerritory_CostYTD
+  isChecked: true
+  isEnabled: true
+  constraintText: ([CostYTD]>=(0.00))
+  script: |+
+    ALTER TABLE [Sales].[SalesTerritory]  WITH CHECK ADD  CONSTRAINT [CK_SalesTerritory_CostYTD] CHECK  (([CostYTD]>=(0.00)))
+    GO
+
+    ALTER TABLE [Sales].[SalesTerritory] CHECK CONSTRAINT [CK_SalesTerritory_CostYTD]
+    GO
+
+- type: CheckConstraint
+  id: table.sales.salesterritory.check.ck_salesterritory_saleslastyear
+  description: Check constraint [SalesLastYear] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesTerritory_SalesLastYear
+  isChecked: true
+  isEnabled: true
+  constraintText: ([SalesLastYear]>=(0.00))
+  script: |+
+    ALTER TABLE [Sales].[SalesTerritory]  WITH CHECK ADD  CONSTRAINT [CK_SalesTerritory_SalesLastYear] CHECK  (([SalesLastYear]>=(0.00)))
+    GO
+
+    ALTER TABLE [Sales].[SalesTerritory] CHECK CONSTRAINT [CK_SalesTerritory_SalesLastYear]
+    GO
+
+- type: CheckConstraint
+  id: table.sales.salesterritory.check.ck_salesterritory_salesytd
+  description: Check constraint [SalesYTD] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesTerritory_SalesYTD
+  isChecked: true
+  isEnabled: true
+  constraintText: ([SalesYTD]>=(0.00))
+  script: |+
+    ALTER TABLE [Sales].[SalesTerritory]  WITH CHECK ADD  CONSTRAINT [CK_SalesTerritory_SalesYTD] CHECK  (([SalesYTD]>=(0.00)))
+    GO
+
+    ALTER TABLE [Sales].[SalesTerritory] CHECK CONSTRAINT [CK_SalesTerritory_SalesYTD]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.sales.salesterritory.column.territoryid

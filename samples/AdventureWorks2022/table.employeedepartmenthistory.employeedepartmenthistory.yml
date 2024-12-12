@@ -1,0 +1,304 @@
+### YamlMime:DocDB
+type: Table
+id: table.employeedepartmenthistory.employeedepartmenthistory
+description: Employee department transfers.
+createdAt: 2023-05-08T12:07:29.4600000
+lastModifiedAt: 2023-05-08T12:07:38.6800000
+name: EmployeeDepartmentHistory.EmployeeDepartmentHistory
+foreignKeys:
+- type: ForeignKey
+  id: table.employeedepartmenthistory.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_department_departmentid
+  description: Foreign key constraint referencing Department.DepartmentID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_EmployeeDepartmentHistory_Department_DepartmentID
+  columns:
+  - name: DepartmentID
+    id: table.employeedepartmenthistory.employeedepartmenthistory.column.departmentid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Department_DepartmentID
+  referencedTable:
+    name: '[Department].[Department]'
+    id: table.department.department
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+- type: ForeignKey
+  id: table.employeedepartmenthistory.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_employee_businessentityid
+  description: Foreign key constraint referencing Employee.EmployeeID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_EmployeeDepartmentHistory_Employee_BusinessEntityID
+  columns:
+  - name: BusinessEntityID
+    id: table.employeedepartmenthistory.employeedepartmenthistory.column.businessentityid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Employee_BusinessEntityID
+  referencedTable:
+    name: '[Employee].[Employee]'
+    id: table.employee.employee
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+- type: ForeignKey
+  id: table.employeedepartmenthistory.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_shift_shiftid
+  description: Foreign key constraint referencing Shift.ShiftID
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_EmployeeDepartmentHistory_Shift_ShiftID
+  columns:
+  - name: ShiftID
+    id: table.employeedepartmenthistory.employeedepartmenthistory.column.shiftid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Shift_ShiftID
+  referencedTable:
+    name: '[Shift].[Shift]'
+    id: table.shift.shift
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+checks:
+- type: CheckConstraint
+  id: table.employeedepartmenthistory.employeedepartmenthistory.check.ck_employeedepartmenthistory_enddate
+  description: Check constraint [EndDate] >= [StartDate] OR [EndDate] IS NUL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_EmployeeDepartmentHistory_EndDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([EndDate]>=[StartDate] OR [EndDate] IS NULL)
+  script: ""
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+indexes: []
+triggers: []
+columns:
+- type: TableColumn
+  id: table.employeedepartmenthistory.employeedepartmenthistory.column.businessentityid
+  description: Employee identification number. Foreign key to Employee.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: BusinessEntityID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_EmployeeDepartmentHistory_Employee_BusinessEntityID
+    id: table.employeedepartmenthistory.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_employee_businessentityid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employeedepartmenthistory.employeedepartmenthistory.column.departmentid
+  description: Department in which the employee worked including currently. Foreign key to Department.DepartmentID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: DepartmentID
+  dataType: SMALLINT
+  maxLengthBytes: 2
+  precision: 5
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_EmployeeDepartmentHistory_Department_DepartmentID
+    id: table.employeedepartmenthistory.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_department_departmentid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employeedepartmenthistory.employeedepartmenthistory.column.shiftid
+  description: Identifies which 8-hour shift the employee works. Foreign key to Shift.Shift.ID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ShiftID
+  dataType: TINYINT
+  maxLengthBytes: 1
+  precision: 3
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_EmployeeDepartmentHistory_Shift_ShiftID
+    id: table.employeedepartmenthistory.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_shift_shiftid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employeedepartmenthistory.employeedepartmenthistory.column.startdate
+  description: Date the employee started work in the department.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: StartDate
+  dataType: DATE
+  maxLengthBytes: 3
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employeedepartmenthistory.employeedepartmenthistory.column.enddate
+  description: Date the employee left the department. NULL = Current department.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: EndDate
+  dataType: DATE
+  maxLengthBytes: 3
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employeedepartmenthistory.employeedepartmenthistory.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ModifiedDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [HumanResources].[EmployeeDepartmentHistory](
+  	[BusinessEntityID] [int] NOT NULL,
+  	[DepartmentID] [smallint] NOT NULL,
+  	[ShiftID] [tinyint] NOT NULL,
+  	[StartDate] [date] NOT NULL,
+  	[EndDate] [date] NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_EmployeeDepartmentHistory_BusinessEntityID_StartDate_DepartmentID] PRIMARY KEY CLUSTERED
+  (
+  	[BusinessEntityID] ASC,
+  	[StartDate] ASC,
+  	[DepartmentID] ASC,
+  	[ShiftID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_EmployeeDepartmentHistory_DepartmentID] ON [HumanResources].[EmployeeDepartmentHistory]
+  (
+  	[DepartmentID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_EmployeeDepartmentHistory_ShiftID] ON [HumanResources].[EmployeeDepartmentHistory]
+  (
+  	[ShiftID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [HumanResources].[EmployeeDepartmentHistory] ADD  CONSTRAINT [DF_EmployeeDepartmentHistory_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [HumanResources].[EmployeeDepartmentHistory]  WITH CHECK ADD  CONSTRAINT [FK_EmployeeDepartmentHistory_Department_DepartmentID] FOREIGN KEY([DepartmentID])
+  REFERENCES [HumanResources].[Department] ([DepartmentID])
+  GO
+
+  ALTER TABLE [HumanResources].[EmployeeDepartmentHistory] CHECK CONSTRAINT [FK_EmployeeDepartmentHistory_Department_DepartmentID]
+  GO
+
+  ALTER TABLE [HumanResources].[EmployeeDepartmentHistory]  WITH CHECK ADD  CONSTRAINT [FK_EmployeeDepartmentHistory_Employee_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+  REFERENCES [HumanResources].[Employee] ([BusinessEntityID])
+  GO
+
+  ALTER TABLE [HumanResources].[EmployeeDepartmentHistory] CHECK CONSTRAINT [FK_EmployeeDepartmentHistory_Employee_BusinessEntityID]
+  GO
+
+  ALTER TABLE [HumanResources].[EmployeeDepartmentHistory]  WITH CHECK ADD  CONSTRAINT [FK_EmployeeDepartmentHistory_Shift_ShiftID] FOREIGN KEY([ShiftID])
+  REFERENCES [HumanResources].[Shift] ([ShiftID])
+  GO
+
+  ALTER TABLE [HumanResources].[EmployeeDepartmentHistory] CHECK CONSTRAINT [FK_EmployeeDepartmentHistory_Shift_ShiftID]
+  GO
+
+  ALTER TABLE [HumanResources].[EmployeeDepartmentHistory]  WITH CHECK ADD  CONSTRAINT [CK_EmployeeDepartmentHistory_EndDate] CHECK  (([EndDate]>=[StartDate] OR [EndDate] IS NULL))
+  GO
+
+  ALTER TABLE [HumanResources].[EmployeeDepartmentHistory] CHECK CONSTRAINT [CK_EmployeeDepartmentHistory_EndDate]
+  GO
+

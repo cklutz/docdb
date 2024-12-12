@@ -171,11 +171,25 @@ public static class SmoExtensions
 
     public static string GetFullName(this NamedSmoObject obj, bool quote = true)
     {
+        string? schemaName = null;
+        string objectName = obj.Name;
+
         if (obj is ScriptSchemaObjectBase schemaObj)
         {
-            return quote ? $"[{schemaObj.Schema}].[{schemaObj.Name}]" : $"{schemaObj.Schema}.{schemaObj.Name}";
+            schemaName = schemaObj.Name;
         }
-        return quote ? $"[{obj.Name}]" : obj.Name;
+
+        if (obj is Trigger trigger && trigger.Parent is Table parentTable)
+        {
+            schemaName = parentTable.Schema;
+        }
+
+        if (!string.IsNullOrEmpty(schemaName))
+        {
+            return quote ? $"[{schemaName}].[{objectName}]" : $"{schemaName}.{objectName}";
+        }
+
+        return quote ? $"[{objectName}]" : objectName;
     }
 
     public static UrnObjectType GetUrnObjectType(this Urn urn)
@@ -283,8 +297,8 @@ public static class SmoExtensions
         ArgumentException.ThrowIfNullOrEmpty(tableName);
 
         var tables = database.Tables.OfType<Table>();
-        var table = tables.FirstOrDefault(t => 
-            t.Name.Equals(tableName, StringComparison.OrdinalIgnoreCase) && 
+        var table = tables.FirstOrDefault(t =>
+            t.Name.Equals(tableName, StringComparison.OrdinalIgnoreCase) &&
             t.Schema.Equals(schemaName, StringComparison.OrdinalIgnoreCase));
         if (table == null)
         {

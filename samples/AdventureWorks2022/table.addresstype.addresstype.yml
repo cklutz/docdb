@@ -1,0 +1,154 @@
+### YamlMime:DocDB
+type: Table
+id: table.addresstype.addresstype
+description: 'Types of addresses stored in the Address table. '
+createdAt: 2023-05-08T12:07:29.4030000
+lastModifiedAt: 2023-05-08T12:07:38.5400000
+name: AddressType.AddressType
+foreignKeys: []
+checks: []
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+indexes: []
+triggers: []
+columns:
+- type: TableColumn
+  id: table.addresstype.addresstype.column.addresstypeid
+  description: Primary key for AddressType records.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: AddressTypeID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: true
+  identityIncrement: 1
+  identitySeed: 1
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.addresstype.addresstype.column.name
+  description: Address type description. For example, Billing, Home, or Shipping.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Name
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.addresstype.addresstype.column.rowguid
+  description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: rowguid
+  dataType: UNIQUEIDENTIFIER
+  maxLengthBytes: 16
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.addresstype.addresstype.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ModifiedDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Person].[AddressType](
+  	[AddressTypeID] [int] IDENTITY(1,1) NOT NULL,
+  	[Name] [dbo].[Name] NOT NULL,
+  	[rowguid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_AddressType_AddressTypeID] PRIMARY KEY CLUSTERED
+  (
+  	[AddressTypeID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  SET ANSI_PADDING ON
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_AddressType_Name] ON [Person].[AddressType]
+  (
+  	[Name] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_AddressType_rowguid] ON [Person].[AddressType]
+  (
+  	[rowguid] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Person].[AddressType] ADD  CONSTRAINT [DF_AddressType_rowguid]  DEFAULT (newid()) FOR [rowguid]
+  GO
+
+  ALTER TABLE [Person].[AddressType] ADD  CONSTRAINT [DF_AddressType_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+

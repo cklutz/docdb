@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Person].[BusinessEntityAddress]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityAddress_Address_AddressID] FOREIGN KEY([AddressID])
-    REFERENCES [Person].[Address] ([AddressID])
-    GO
-
-    ALTER TABLE [Person].[BusinessEntityAddress] CHECK CONSTRAINT [FK_BusinessEntityAddress_Address_AddressID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.person.businessentityaddress.foreignkey.fk_businessentityaddress_addresstype_addresstypeid
   description: Foreign key constraint referencing AddressType.AddressTypeID.
@@ -50,14 +43,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Person].[BusinessEntityAddress]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityAddress_AddressType_AddressTypeID] FOREIGN KEY([AddressTypeID])
-    REFERENCES [Person].[AddressType] ([AddressTypeID])
-    GO
-
-    ALTER TABLE [Person].[BusinessEntityAddress] CHECK CONSTRAINT [FK_BusinessEntityAddress_AddressType_AddressTypeID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.person.businessentityaddress.foreignkey.fk_businessentityaddress_businessentity_businessentityid
   description: Foreign key constraint referencing BusinessEntity.BusinessEntityID.
@@ -76,14 +62,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Person].[BusinessEntityAddress]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityAddress_BusinessEntity_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
-    REFERENCES [Person].[BusinessEntity] ([BusinessEntityID])
-    GO
-
-    ALTER TABLE [Person].[BusinessEntityAddress] CHECK CONSTRAINT [FK_BusinessEntityAddress_BusinessEntity_BusinessEntityID]
-    GO
-
+  script: ""
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -91,6 +70,7 @@ partitionInfo:
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.person.businessentityaddress.column.businessentityid

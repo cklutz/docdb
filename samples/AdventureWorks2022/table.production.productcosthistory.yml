@@ -32,13 +32,46 @@ foreignKeys:
     ALTER TABLE [Production].[ProductCostHistory] CHECK CONSTRAINT [FK_ProductCostHistory_Product_ProductID]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.production.productcosthistory.check.ck_productcosthistory_enddate
+  description: Check constraint [EndDate] >= [StartDate] OR [EndDate] IS NULL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductCostHistory_EndDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([EndDate]>=[StartDate] OR [EndDate] IS NULL)
+  script: |+
+    ALTER TABLE [Production].[ProductCostHistory]  WITH CHECK ADD  CONSTRAINT [CK_ProductCostHistory_EndDate] CHECK  (([EndDate]>=[StartDate] OR [EndDate] IS NULL))
+    GO
+
+    ALTER TABLE [Production].[ProductCostHistory] CHECK CONSTRAINT [CK_ProductCostHistory_EndDate]
+    GO
+
+- type: CheckConstraint
+  id: table.production.productcosthistory.check.ck_productcosthistory_standardcost
+  description: Check constraint [StandardCost] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductCostHistory_StandardCost
+  isChecked: true
+  isEnabled: true
+  constraintText: ([StandardCost]>=(0.00))
+  script: |+
+    ALTER TABLE [Production].[ProductCostHistory]  WITH CHECK ADD  CONSTRAINT [CK_ProductCostHistory_StandardCost] CHECK  (([StandardCost]>=(0.00)))
+    GO
+
+    ALTER TABLE [Production].[ProductCostHistory] CHECK CONSTRAINT [CK_ProductCostHistory_StandardCost]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.production.productcosthistory.column.productid

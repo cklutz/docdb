@@ -27,14 +27,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [dbo].[Employee]  WITH CHECK ADD  CONSTRAINT [FK_DboEmployee_Person_BusinessEntityID] FOREIGN KEY([EmployeeID], [EmployeeType])
-    REFERENCES [dbo].[Person] ([BusinessEntityID], [PersonType])
-    GO
-
-    ALTER TABLE [dbo].[Employee] CHECK CONSTRAINT [FK_DboEmployee_Person_BusinessEntityID]
-    GO
-
+  script: ""
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -42,6 +35,7 @@ partitionInfo:
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.dbo.employee.column.employeeid

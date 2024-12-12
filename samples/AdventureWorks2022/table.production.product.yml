@@ -110,13 +110,174 @@ foreignKeys:
     ALTER TABLE [Production].[Product] CHECK CONSTRAINT [FK_Product_UnitMeasure_WeightUnitMeasureCode]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.production.product.check.ck_product_class
+  description: Check constraint [Class]='h' OR [Class]='m' OR [Class]='l' OR [Class]='H' OR [Class]='M' OR [Class]='L' OR [Class] IS NULL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Product_Class
+  isChecked: true
+  isEnabled: true
+  constraintText: (upper([Class])='H' OR upper([Class])='M' OR upper([Class])='L' OR [Class] IS NULL)
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_Class] CHECK  ((upper([Class])='H' OR upper([Class])='M' OR upper([Class])='L' OR [Class] IS NULL))
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_Class]
+    GO
+
+- type: CheckConstraint
+  id: table.production.product.check.ck_product_daystomanufacture
+  description: Check constraint [DaysToManufacture] >= (0)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Product_DaysToManufacture
+  isChecked: true
+  isEnabled: true
+  constraintText: ([DaysToManufacture]>=(0))
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_DaysToManufacture] CHECK  (([DaysToManufacture]>=(0)))
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_DaysToManufacture]
+    GO
+
+- type: CheckConstraint
+  id: table.production.product.check.ck_product_listprice
+  description: Check constraint [ListPrice] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Product_ListPrice
+  isChecked: true
+  isEnabled: true
+  constraintText: ([ListPrice]>=(0.00))
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_ListPrice] CHECK  (([ListPrice]>=(0.00)))
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_ListPrice]
+    GO
+
+- type: CheckConstraint
+  id: table.production.product.check.ck_product_productline
+  description: Check constraint [ProductLine]='r' OR [ProductLine]='m' OR [ProductLine]='t' OR [ProductLine]='s' OR [ProductLine]='R' OR [ProductLine]='M' OR [ProductLine]='T' OR [ProductLine]='S' OR [ProductLine] IS NULL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Product_ProductLine
+  isChecked: true
+  isEnabled: true
+  constraintText: (upper([ProductLine])='R' OR upper([ProductLine])='M' OR upper([ProductLine])='T' OR upper([ProductLine])='S' OR [ProductLine] IS NULL)
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_ProductLine] CHECK  ((upper([ProductLine])='R' OR upper([ProductLine])='M' OR upper([ProductLine])='T' OR upper([ProductLine])='S' OR [ProductLine] IS NULL))
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_ProductLine]
+    GO
+
+- type: CheckConstraint
+  id: table.production.product.check.ck_product_reorderpoint
+  description: Check constraint [ReorderPoint] > (0)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Product_ReorderPoint
+  isChecked: true
+  isEnabled: true
+  constraintText: ([ReorderPoint]>(0))
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_ReorderPoint] CHECK  (([ReorderPoint]>(0)))
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_ReorderPoint]
+    GO
+
+- type: CheckConstraint
+  id: table.production.product.check.ck_product_safetystocklevel
+  description: Check constraint [SafetyStockLevel] > (0)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Product_SafetyStockLevel
+  isChecked: true
+  isEnabled: true
+  constraintText: ([SafetyStockLevel]>(0))
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_SafetyStockLevel] CHECK  (([SafetyStockLevel]>(0)))
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_SafetyStockLevel]
+    GO
+
+- type: CheckConstraint
+  id: table.production.product.check.ck_product_sellenddate
+  description: Check constraint [SellEndDate] >= [SellStartDate] OR [SellEndDate] IS NULL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Product_SellEndDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([SellEndDate]>=[SellStartDate] OR [SellEndDate] IS NULL)
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_SellEndDate] CHECK  (([SellEndDate]>=[SellStartDate] OR [SellEndDate] IS NULL))
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_SellEndDate]
+    GO
+
+- type: CheckConstraint
+  id: table.production.product.check.ck_product_standardcost
+  description: Check constraint [SafetyStockLevel] > (0)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Product_StandardCost
+  isChecked: true
+  isEnabled: true
+  constraintText: ([StandardCost]>=(0.00))
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_StandardCost] CHECK  (([StandardCost]>=(0.00)))
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_StandardCost]
+    GO
+
+- type: CheckConstraint
+  id: table.production.product.check.ck_product_style
+  description: Check constraint [Style]='u' OR [Style]='m' OR [Style]='w' OR [Style]='U' OR [Style]='M' OR [Style]='W' OR [Style] IS NULL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Product_Style
+  isChecked: true
+  isEnabled: true
+  constraintText: (upper([Style])='U' OR upper([Style])='M' OR upper([Style])='W' OR [Style] IS NULL)
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_Style] CHECK  ((upper([Style])='U' OR upper([Style])='M' OR upper([Style])='W' OR [Style] IS NULL))
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_Style]
+    GO
+
+- type: CheckConstraint
+  id: table.production.product.check.ck_product_weight
+  description: Check constraint [Weight] > (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Product_Weight
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Weight]>(0.00))
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [CK_Product_Weight] CHECK  (([Weight]>(0.00)))
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [CK_Product_Weight]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.production.product.column.productid

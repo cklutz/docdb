@@ -58,13 +58,30 @@ foreignKeys:
     ALTER TABLE [Sales].[SalesTerritoryHistory] CHECK CONSTRAINT [FK_SalesTerritoryHistory_SalesTerritory_TerritoryID]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.sales.salesterritoryhistory.check.ck_salesterritoryhistory_enddate
+  description: Check constraint [EndDate] >= [StartDate] OR [EndDate] IS NULL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesTerritoryHistory_EndDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([EndDate]>=[StartDate] OR [EndDate] IS NULL)
+  script: |+
+    ALTER TABLE [Sales].[SalesTerritoryHistory]  WITH CHECK ADD  CONSTRAINT [CK_SalesTerritoryHistory_EndDate] CHECK  (([EndDate]>=[StartDate] OR [EndDate] IS NULL))
+    GO
+
+    ALTER TABLE [Sales].[SalesTerritoryHistory] CHECK CONSTRAINT [CK_SalesTerritoryHistory_EndDate]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.sales.salesterritoryhistory.column.businessentityid

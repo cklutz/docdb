@@ -32,13 +32,30 @@ foreignKeys:
     ALTER TABLE [Sales].[ShoppingCartItem] CHECK CONSTRAINT [FK_ShoppingCartItem_Product_ProductID]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.sales.shoppingcartitem.check.ck_shoppingcartitem_quantity
+  description: Check constraint [Quantity] >= (1)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ShoppingCartItem_Quantity
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Quantity]>=(1))
+  script: |+
+    ALTER TABLE [Sales].[ShoppingCartItem]  WITH CHECK ADD  CONSTRAINT [CK_ShoppingCartItem_Quantity] CHECK  (([Quantity]>=(1)))
+    GO
+
+    ALTER TABLE [Sales].[ShoppingCartItem] CHECK CONSTRAINT [CK_ShoppingCartItem_Quantity]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.sales.shoppingcartitem.column.shoppingcartitemid

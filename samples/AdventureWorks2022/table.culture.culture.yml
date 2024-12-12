@@ -1,0 +1,120 @@
+### YamlMime:DocDB
+type: Table
+id: table.culture.culture
+description: Lookup table containing the languages in which some AdventureWorks data is stored.
+createdAt: 2023-05-08T12:07:29.4300000
+lastModifiedAt: 2023-05-08T12:07:38.8200000
+name: Culture.Culture
+foreignKeys: []
+checks: []
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+indexes: []
+triggers: []
+columns:
+- type: TableColumn
+  id: table.culture.culture.column.cultureid
+  description: Primary key for Culture records.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CultureID
+  dataType: NCHAR(6)
+  maxLengthBytes: 6
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.culture.culture.column.name
+  description: Culture description.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Name
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.culture.culture.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ModifiedDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Production].[Culture](
+  	[CultureID] [nchar](6) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[Name] [dbo].[Name] NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_Culture_CultureID] PRIMARY KEY CLUSTERED
+  (
+  	[CultureID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  SET ANSI_PADDING ON
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Culture_Name] ON [Production].[Culture]
+  (
+  	[Name] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Production].[Culture] ADD  CONSTRAINT [DF_Culture_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+

@@ -6,6 +6,7 @@ createdAt: 2023-05-08T12:07:39.5030000
 lastModifiedAt: 2023-05-08T12:07:39.5030000
 name: HumanResources.vJobCandidateEmployment
 indexes: []
+triggers: []
 columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.jobcandidateid

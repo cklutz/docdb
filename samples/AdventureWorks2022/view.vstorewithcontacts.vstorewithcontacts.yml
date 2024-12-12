@@ -1,0 +1,335 @@
+### YamlMime:DocDB
+type: View
+id: view.vstorewithcontacts.vstorewithcontacts
+description: Stores (including store contacts) that sell Adventure Works Cycles products to consumers.
+createdAt: 2023-05-08T12:07:39.5830000
+lastModifiedAt: 2023-05-08T12:07:39.5830000
+name: vStoreWithContacts.vStoreWithContacts
+indexes: []
+triggers: []
+columns:
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.businessentityid
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: BusinessEntityID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.name
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Name
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.contacttype
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ContactType
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.title
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Title
+  dataType: NVARCHAR(8)
+  maxLengthBytes: 8
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.firstname
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FirstName
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.middlename
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: MiddleName
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.lastname
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: LastName
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.suffix
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Suffix
+  dataType: NVARCHAR(10)
+  maxLengthBytes: 10
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.phonenumber
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: PhoneNumber
+  dataType: PHONE
+  maxLengthBytes: 25
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.phonenumbertype
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: PhoneNumberType
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.emailaddress
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: EmailAddress
+  dataType: NVARCHAR(50)
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vstorewithcontacts.vstorewithcontacts.column.emailpromotion
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: EmailPromotion
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [Sales].[vStoreWithContacts] AS
+  SELECT
+      s.[BusinessEntityID]
+      ,s.[Name]
+      ,ct.[Name] AS [ContactType]
+      ,p.[Title]
+      ,p.[FirstName]
+      ,p.[MiddleName]
+      ,p.[LastName]
+      ,p.[Suffix]
+      ,pp.[PhoneNumber]
+  	,pnt.[Name] AS [PhoneNumberType]
+      ,ea.[EmailAddress]
+      ,p.[EmailPromotion]
+  FROM [Sales].[Store] s
+      INNER JOIN [Person].[BusinessEntityContact] bec
+      ON bec.[BusinessEntityID] = s.[BusinessEntityID]
+  	INNER JOIN [Person].[ContactType] ct
+  	ON ct.[ContactTypeID] = bec.[ContactTypeID]
+  	INNER JOIN [Person].[Person] p
+  	ON p.[BusinessEntityID] = bec.[PersonID]
+  	LEFT OUTER JOIN [Person].[EmailAddress] ea
+  	ON ea.[BusinessEntityID] = p.[BusinessEntityID]
+  	LEFT OUTER JOIN [Person].[PersonPhone] pp
+  	ON pp.[BusinessEntityID] = p.[BusinessEntityID]
+  	LEFT OUTER JOIN [Person].[PhoneNumberType] pnt
+  	ON pnt.[PhoneNumberTypeID] = pp.[PhoneNumberTypeID];
+
+  GO
+

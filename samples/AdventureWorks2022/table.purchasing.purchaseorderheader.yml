@@ -84,13 +84,154 @@ foreignKeys:
     ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [FK_PurchaseOrderHeader_Vendor_VendorID]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_freight
+  description: Check constraint [Freight] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_PurchaseOrderHeader_Freight
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Freight]>=(0.00))
+  script: |+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_PurchaseOrderHeader_Freight] CHECK  (([Freight]>=(0.00)))
+    GO
+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [CK_PurchaseOrderHeader_Freight]
+    GO
+
+- type: CheckConstraint
+  id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_shipdate
+  description: Check constraint [ShipDate] >= [OrderDate] OR [ShipDate] IS NULL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_PurchaseOrderHeader_ShipDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([ShipDate]>=[OrderDate] OR [ShipDate] IS NULL)
+  script: |+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_PurchaseOrderHeader_ShipDate] CHECK  (([ShipDate]>=[OrderDate] OR [ShipDate] IS NULL))
+    GO
+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [CK_PurchaseOrderHeader_ShipDate]
+    GO
+
+- type: CheckConstraint
+  id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_status
+  description: Check constraint [Status] BETWEEN (1) AND (4)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_PurchaseOrderHeader_Status
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Status]>=(1) AND [Status]<=(4))
+  script: |+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_PurchaseOrderHeader_Status] CHECK  (([Status]>=(1) AND [Status]<=(4)))
+    GO
+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [CK_PurchaseOrderHeader_Status]
+    GO
+
+- type: CheckConstraint
+  id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_subtotal
+  description: Check constraint [SubTotal] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_PurchaseOrderHeader_SubTotal
+  isChecked: true
+  isEnabled: true
+  constraintText: ([SubTotal]>=(0.00))
+  script: |+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_PurchaseOrderHeader_SubTotal] CHECK  (([SubTotal]>=(0.00)))
+    GO
+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [CK_PurchaseOrderHeader_SubTotal]
+    GO
+
+- type: CheckConstraint
+  id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_taxamt
+  description: Check constraint [TaxAmt] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_PurchaseOrderHeader_TaxAmt
+  isChecked: true
+  isEnabled: true
+  constraintText: ([TaxAmt]>=(0.00))
+  script: |+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_PurchaseOrderHeader_TaxAmt] CHECK  (([TaxAmt]>=(0.00)))
+    GO
+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [CK_PurchaseOrderHeader_TaxAmt]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers:
+- type: DmlTrigger
+  id: table.purchasing.purchaseorderheader.trigger.upurchaseorderheader
+  description: AFTER UPDATE trigger that updates the RevisionNumber and ModifiedDate columns in the PurchaseOrderHeader table.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: uPurchaseOrderHeader
+  isEnabled: true
+  isSchemaBound: false
+  isInsteadOf: false
+  onDelete: false
+  onUpdate: true
+  onInsert: false
+  script: |+
+    SET ANSI_NULLS ON
+    GO
+
+    SET QUOTED_IDENTIFIER ON
+    GO
+
+    CREATE TRIGGER [Purchasing].[uPurchaseOrderHeader] ON [Purchasing].[PurchaseOrderHeader]
+    AFTER UPDATE AS
+    BEGIN
+        DECLARE @Count int;
+
+        SET @Count = @@ROWCOUNT;
+        IF @Count = 0
+            RETURN;
+
+        SET NOCOUNT ON;
+
+        BEGIN TRY
+            -- Update RevisionNumber for modification of any field EXCEPT the Status.
+            IF NOT UPDATE([Status])
+            BEGIN
+                UPDATE [Purchasing].[PurchaseOrderHeader]
+                SET [Purchasing].[PurchaseOrderHeader].[RevisionNumber] =
+                    [Purchasing].[PurchaseOrderHeader].[RevisionNumber] + 1
+                WHERE [Purchasing].[PurchaseOrderHeader].[PurchaseOrderID] IN
+                    (SELECT inserted.[PurchaseOrderID] FROM inserted);
+            END;
+        END TRY
+        BEGIN CATCH
+            EXECUTE [dbo].[uspPrintError];
+
+            -- Rollback any active or uncommittable transactions before
+            -- inserting information in the ErrorLog
+            IF @@TRANCOUNT > 0
+            BEGIN
+                ROLLBACK TRANSACTION;
+            END
+
+            EXECUTE [dbo].[uspLogError];
+        END CATCH;
+    END;
+
+    GO
+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader] ENABLE TRIGGER [uPurchaseOrderHeader]
+    GO
+
 columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.purchaseorderid

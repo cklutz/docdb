@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [HumanResources].[JobCandidate]  WITH CHECK ADD  CONSTRAINT [FK_JobCandidate_Employee_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
-    REFERENCES [HumanResources].[Employee] ([BusinessEntityID])
-    GO
-
-    ALTER TABLE [HumanResources].[JobCandidate] CHECK CONSTRAINT [FK_JobCandidate_Employee_BusinessEntityID]
-    GO
-
+  script: ""
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -39,6 +32,7 @@ partitionInfo:
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.humanresources.jobcandidate.column.jobcandidateid

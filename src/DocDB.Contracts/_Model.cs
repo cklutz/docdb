@@ -305,10 +305,28 @@ public class DdbForeignKey : NamedDdbObject
 
 public class DdbCheckConstraint : NamedDdbObject
 {
-    [JsonPropertyName("on"), JsonProperty("on")]
-    public string? On { get; set; }
+    [JsonPropertyName("isChecked"), JsonProperty("isChecked")]
+    public bool IsChecked { get; set; }
+    [JsonPropertyName("isEnabled"), JsonProperty("isEnabled")]
+    public bool IsEnabled { get; set; }
     [JsonPropertyName("constraintText"), JsonProperty("constraintText")]
     public string? ConstraintText { get; set; }
+}
+
+public class DdbDmlTrigger : NamedDdbObject
+{
+    [JsonPropertyName("isEnabled"), JsonProperty("isEnabled")]
+    public bool IsEnabled { get; set; }
+    [JsonPropertyName("isSchemaBound"), JsonProperty("isSchemaBound")]
+    public bool IsSchemaBound { get; set; }
+    [JsonPropertyName("isInsteadOf"), JsonProperty("isInsteadOf")]
+    public bool IsInsteadOf { get; set; }
+    [JsonPropertyName("onDelete"), JsonProperty("onDelete")]
+    public bool OnDelete { get; set; }
+    [JsonPropertyName("onUpdate"), JsonProperty("onUpdate")]
+    public bool OnUpdate { get; set; }
+    [JsonPropertyName("onInsert"), JsonProperty("onInsert")]
+    public bool OnInsert { get; set; }
 }
 
 public class DdbTablePartitionInfo
@@ -327,6 +345,8 @@ public abstract class TabularDdbObject<TColumn> : NamedDdbObject where TColumn :
 {
     [JsonPropertyName("indexes"), JsonProperty("indexes")]
     public List<DdbIndex> Indexes { get; set; } = [];
+    [JsonPropertyName("triggers"), JsonProperty("triggers")]
+    public List<DdbDmlTrigger> Triggers { get; set; } = [];
     [JsonPropertyName("columns"), JsonProperty("columns")]
     public List<TColumn> Columns { get; set; } = [];
 }

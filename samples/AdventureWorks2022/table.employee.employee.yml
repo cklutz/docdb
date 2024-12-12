@@ -1,0 +1,671 @@
+### YamlMime:DocDB
+type: Table
+id: table.employee.employee
+description: Employee information such as salary, department, and title.
+createdAt: 2023-05-08T12:07:29.4530000
+lastModifiedAt: 2023-05-08T12:07:39.4030000
+name: Employee.Employee
+foreignKeys:
+- type: ForeignKey
+  id: table.employee.employee.foreignkey.fk_employee_person_businessentityid
+  description: Foreign key constraint referencing Person.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Employee_Person_BusinessEntityID
+  columns:
+  - name: BusinessEntityID
+    id: table.employee.employee.column.businessentityid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Person_BusinessEntityID
+  referencedTable:
+    name: '[Person].[Person]'
+    id: table.person.person
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+checks:
+- type: CheckConstraint
+  id: table.employee.employee.check.ck_employee_birthdate
+  description: Check constraint [BirthDate] >= '1930-01-01' AND [BirthDate] <= dateadd(year,(-18),GETDATE())
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Employee_BirthDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([BirthDate]>='1930-01-01' AND [BirthDate]<=dateadd(year,(-18),getdate()))
+  script: ""
+- type: CheckConstraint
+  id: table.employee.employee.check.ck_employee_gender
+  description: Check constraint [Gender]='f' OR [Gender]='m' OR [Gender]='F' OR [Gender]='M'
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Employee_Gender
+  isChecked: true
+  isEnabled: true
+  constraintText: (upper([Gender])='F' OR upper([Gender])='M')
+  script: ""
+- type: CheckConstraint
+  id: table.employee.employee.check.ck_employee_hiredate
+  description: Check constraint [HireDate] >= '1996-07-01' AND [HireDate] <= dateadd(day,(1),GETDATE())
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Employee_HireDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([HireDate]>='1996-07-01' AND [HireDate]<=dateadd(day,(1),getdate()))
+  script: ""
+- type: CheckConstraint
+  id: table.employee.employee.check.ck_employee_maritalstatus
+  description: Check constraint [MaritalStatus]='s' OR [MaritalStatus]='m' OR [MaritalStatus]='S' OR [MaritalStatus]='M'
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Employee_MaritalStatus
+  isChecked: true
+  isEnabled: true
+  constraintText: (upper([MaritalStatus])='S' OR upper([MaritalStatus])='M')
+  script: ""
+- type: CheckConstraint
+  id: table.employee.employee.check.ck_employee_sickleavehours
+  description: Check constraint [SickLeaveHours] >= (0) AND [SickLeaveHours] <= (120)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Employee_SickLeaveHours
+  isChecked: true
+  isEnabled: true
+  constraintText: ([SickLeaveHours]>=(0) AND [SickLeaveHours]<=(120))
+  script: ""
+- type: CheckConstraint
+  id: table.employee.employee.check.ck_employee_vacationhours
+  description: Check constraint [VacationHours] >= (-40) AND [VacationHours] <= (240)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Employee_VacationHours
+  isChecked: true
+  isEnabled: true
+  constraintText: ([VacationHours]>=(-40) AND [VacationHours]<=(240))
+  script: ""
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+indexes: []
+triggers:
+- type: DmlTrigger
+  id: table.employee.employee.trigger.demployee
+  description: INSTEAD OF DELETE trigger which keeps Employees from being deleted.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: HumanResources.dEmployee
+  isEnabled: true
+  isSchemaBound: false
+  isInsteadOf: true
+  onDelete: true
+  onUpdate: false
+  onInsert: false
+  script: ""
+columns:
+- type: TableColumn
+  id: table.employee.employee.column.businessentityid
+  description: Primary key for Employee records.  Foreign key to BusinessEntity.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: BusinessEntityID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Employee_Person_BusinessEntityID
+    id: table.employee.employee.foreignkey.fk_employee_person_businessentityid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.nationalidnumber
+  description: Unique national identification number such as a social security number.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: NationalIDNumber
+  dataType: NVARCHAR(15)
+  maxLengthBytes: 15
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.loginid
+  description: Network login.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: LoginID
+  dataType: NVARCHAR(256)
+  maxLengthBytes: 256
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.organizationnode
+  description: Where the employee is located in corporate hierarchy.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: OrganizationNode
+  dataType: HIERARCHYID
+  maxLengthBytes: 892
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.organizationlevel
+  description: The depth of the employee in the corporate hierarchy.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: OrganizationLevel
+  dataType: SMALLINT
+  maxLengthBytes: 2
+  precision: 5
+  scale: 0
+  isNullable: true
+  isComputed: true
+  computedText: ([OrganizationNode].[GetLevel]())
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.jobtitle
+  description: Work title such as Buyer or Sales Representative.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: JobTitle
+  dataType: NVARCHAR(50)
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.birthdate
+  description: Date of birth.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: BirthDate
+  dataType: DATE
+  maxLengthBytes: 3
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.maritalstatus
+  description: M = Married, S = Single
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: MaritalStatus
+  dataType: NCHAR(1)
+  maxLengthBytes: 1
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.gender
+  description: M = Male, F = Female
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Gender
+  dataType: NCHAR(1)
+  maxLengthBytes: 1
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.hiredate
+  description: Employee hired on this date.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: HireDate
+  dataType: DATE
+  maxLengthBytes: 3
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.salariedflag
+  description: Job classification. 0 = Hourly, not exempt from collective bargaining. 1 = Salaried, exempt from collective bargaining.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: SalariedFlag
+  dataType: FLAG
+  maxLengthBytes: 1
+  precision: 1
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((1))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.vacationhours
+  description: Number of available vacation hours.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: VacationHours
+  dataType: SMALLINT
+  maxLengthBytes: 2
+  precision: 5
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((0))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.sickleavehours
+  description: Number of available sick leave hours.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: SickLeaveHours
+  dataType: SMALLINT
+  maxLengthBytes: 2
+  precision: 5
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((0))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.currentflag
+  description: 0 = Inactive, 1 = Active
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CurrentFlag
+  dataType: FLAG
+  maxLengthBytes: 1
+  precision: 1
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((1))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.rowguid
+  description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: rowguid
+  dataType: UNIQUEIDENTIFIER
+  maxLengthBytes: 16
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.employee.employee.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ModifiedDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [HumanResources].[Employee](
+  	[BusinessEntityID] [int] NOT NULL,
+  	[NationalIDNumber] [nvarchar](15) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[LoginID] [nvarchar](256) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[OrganizationNode] [hierarchyid] NULL,
+  	[OrganizationLevel]  AS ([OrganizationNode].[GetLevel]()),
+  	[JobTitle] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[BirthDate] [date] NOT NULL,
+  	[MaritalStatus] [nchar](1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[Gender] [nchar](1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[HireDate] [date] NOT NULL,
+  	[SalariedFlag] [dbo].[Flag] NOT NULL,
+  	[VacationHours] [smallint] NOT NULL,
+  	[SickLeaveHours] [smallint] NOT NULL,
+  	[CurrentFlag] [dbo].[Flag] NOT NULL,
+  	[rowguid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_Employee_BusinessEntityID] PRIMARY KEY CLUSTERED
+  (
+  	[BusinessEntityID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  SET ANSI_PADDING ON
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Employee_LoginID] ON [HumanResources].[Employee]
+  (
+  	[LoginID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  SET ANSI_PADDING ON
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Employee_NationalIDNumber] ON [HumanResources].[Employee]
+  (
+  	[NationalIDNumber] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Employee_rowguid] ON [HumanResources].[Employee]
+  (
+  	[rowguid] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  SET ARITHABORT ON
+  SET CONCAT_NULL_YIELDS_NULL ON
+  SET QUOTED_IDENTIFIER ON
+  SET ANSI_NULLS ON
+  SET ANSI_PADDING ON
+  SET ANSI_WARNINGS ON
+  SET NUMERIC_ROUNDABORT OFF
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_Employee_OrganizationLevel_OrganizationNode] ON [HumanResources].[Employee]
+  (
+  	[OrganizationLevel] ASC,
+  	[OrganizationNode] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_Employee_OrganizationNode] ON [HumanResources].[Employee]
+  (
+  	[OrganizationNode] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] ADD  CONSTRAINT [DF_Employee_SalariedFlag]  DEFAULT ((1)) FOR [SalariedFlag]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] ADD  CONSTRAINT [DF_Employee_VacationHours]  DEFAULT ((0)) FOR [VacationHours]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] ADD  CONSTRAINT [DF_Employee_SickLeaveHours]  DEFAULT ((0)) FOR [SickLeaveHours]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] ADD  CONSTRAINT [DF_Employee_CurrentFlag]  DEFAULT ((1)) FOR [CurrentFlag]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] ADD  CONSTRAINT [DF_Employee_rowguid]  DEFAULT (newid()) FOR [rowguid]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] ADD  CONSTRAINT [DF_Employee_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee]  WITH CHECK ADD  CONSTRAINT [FK_Employee_Person_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+  REFERENCES [Person].[Person] ([BusinessEntityID])
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] CHECK CONSTRAINT [FK_Employee_Person_BusinessEntityID]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee]  WITH CHECK ADD  CONSTRAINT [CK_Employee_BirthDate] CHECK  (([BirthDate]>='1930-01-01' AND [BirthDate]<=dateadd(year,(-18),getdate())))
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] CHECK CONSTRAINT [CK_Employee_BirthDate]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee]  WITH CHECK ADD  CONSTRAINT [CK_Employee_Gender] CHECK  ((upper([Gender])='F' OR upper([Gender])='M'))
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] CHECK CONSTRAINT [CK_Employee_Gender]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee]  WITH CHECK ADD  CONSTRAINT [CK_Employee_HireDate] CHECK  (([HireDate]>='1996-07-01' AND [HireDate]<=dateadd(day,(1),getdate())))
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] CHECK CONSTRAINT [CK_Employee_HireDate]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee]  WITH CHECK ADD  CONSTRAINT [CK_Employee_MaritalStatus] CHECK  ((upper([MaritalStatus])='S' OR upper([MaritalStatus])='M'))
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] CHECK CONSTRAINT [CK_Employee_MaritalStatus]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee]  WITH CHECK ADD  CONSTRAINT [CK_Employee_SickLeaveHours] CHECK  (([SickLeaveHours]>=(0) AND [SickLeaveHours]<=(120)))
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] CHECK CONSTRAINT [CK_Employee_SickLeaveHours]
+  GO
+
+  ALTER TABLE [HumanResources].[Employee]  WITH CHECK ADD  CONSTRAINT [CK_Employee_VacationHours] CHECK  (([VacationHours]>=(-40) AND [VacationHours]<=(240)))
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] CHECK CONSTRAINT [CK_Employee_VacationHours]
+  GO
+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TRIGGER [HumanResources].[dEmployee] ON [HumanResources].[Employee]
+  INSTEAD OF DELETE NOT FOR REPLICATION AS
+  BEGIN
+      DECLARE @Count int;
+
+      SET @Count = @@ROWCOUNT;
+      IF @Count = 0
+          RETURN;
+
+      SET NOCOUNT ON;
+
+      BEGIN
+          RAISERROR
+              (N'Employees cannot be deleted. They can only be marked as not current.', -- Message
+              10, -- Severity.
+              1); -- State.
+
+          -- Rollback any active or uncommittable transactions
+          IF @@TRANCOUNT > 0
+          BEGIN
+              ROLLBACK TRANSACTION;
+          END
+      END;
+  END;
+
+  GO
+
+  ALTER TABLE [HumanResources].[Employee] ENABLE TRIGGER [dEmployee]
+  GO
+

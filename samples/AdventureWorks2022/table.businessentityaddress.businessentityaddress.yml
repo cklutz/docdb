@@ -1,0 +1,271 @@
+### YamlMime:DocDB
+type: Table
+id: table.businessentityaddress.businessentityaddress
+description: Cross-reference table mapping customers, vendors, and employees to their addresses.
+createdAt: 2023-05-08T12:07:29.4170000
+lastModifiedAt: 2023-05-08T12:07:38.5400000
+name: BusinessEntityAddress.BusinessEntityAddress
+foreignKeys:
+- type: ForeignKey
+  id: table.businessentityaddress.businessentityaddress.foreignkey.fk_businessentityaddress_address_addressid
+  description: Foreign key constraint referencing Address.AddressID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_BusinessEntityAddress_Address_AddressID
+  columns:
+  - name: AddressID
+    id: table.businessentityaddress.businessentityaddress.column.addressid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Address_AddressID
+  referencedTable:
+    name: '[Address].[Address]'
+    id: table.address.address
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+- type: ForeignKey
+  id: table.businessentityaddress.businessentityaddress.foreignkey.fk_businessentityaddress_addresstype_addresstypeid
+  description: Foreign key constraint referencing AddressType.AddressTypeID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_BusinessEntityAddress_AddressType_AddressTypeID
+  columns:
+  - name: AddressTypeID
+    id: table.businessentityaddress.businessentityaddress.column.addresstypeid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_AddressType_AddressTypeID
+  referencedTable:
+    name: '[AddressType].[AddressType]'
+    id: table.addresstype.addresstype
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+- type: ForeignKey
+  id: table.businessentityaddress.businessentityaddress.foreignkey.fk_businessentityaddress_businessentity_businessentityid
+  description: Foreign key constraint referencing BusinessEntity.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_BusinessEntityAddress_BusinessEntity_BusinessEntityID
+  columns:
+  - name: BusinessEntityID
+    id: table.businessentityaddress.businessentityaddress.column.businessentityid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_BusinessEntity_BusinessEntityID
+  referencedTable:
+    name: '[BusinessEntity].[BusinessEntity]'
+    id: table.businessentity.businessentity
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+checks: []
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+indexes: []
+triggers: []
+columns:
+- type: TableColumn
+  id: table.businessentityaddress.businessentityaddress.column.businessentityid
+  description: Primary key. Foreign key to BusinessEntity.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: BusinessEntityID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_BusinessEntityAddress_BusinessEntity_BusinessEntityID
+    id: table.businessentityaddress.businessentityaddress.foreignkey.fk_businessentityaddress_businessentity_businessentityid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.businessentityaddress.businessentityaddress.column.addressid
+  description: Primary key. Foreign key to Address.AddressID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: AddressID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_BusinessEntityAddress_Address_AddressID
+    id: table.businessentityaddress.businessentityaddress.foreignkey.fk_businessentityaddress_address_addressid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.businessentityaddress.businessentityaddress.column.addresstypeid
+  description: Primary key. Foreign key to AddressType.AddressTypeID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: AddressTypeID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_BusinessEntityAddress_AddressType_AddressTypeID
+    id: table.businessentityaddress.businessentityaddress.foreignkey.fk_businessentityaddress_addresstype_addresstypeid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.businessentityaddress.businessentityaddress.column.rowguid
+  description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: rowguid
+  dataType: UNIQUEIDENTIFIER
+  maxLengthBytes: 16
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.businessentityaddress.businessentityaddress.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ModifiedDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Person].[BusinessEntityAddress](
+  	[BusinessEntityID] [int] NOT NULL,
+  	[AddressID] [int] NOT NULL,
+  	[AddressTypeID] [int] NOT NULL,
+  	[rowguid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_BusinessEntityAddress_BusinessEntityID_AddressID_AddressTypeID] PRIMARY KEY CLUSTERED
+  (
+  	[BusinessEntityID] ASC,
+  	[AddressID] ASC,
+  	[AddressTypeID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_BusinessEntityAddress_rowguid] ON [Person].[BusinessEntityAddress]
+  (
+  	[rowguid] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_BusinessEntityAddress_AddressID] ON [Person].[BusinessEntityAddress]
+  (
+  	[AddressID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_BusinessEntityAddress_AddressTypeID] ON [Person].[BusinessEntityAddress]
+  (
+  	[AddressTypeID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityAddress] ADD  CONSTRAINT [DF_BusinessEntityAddress_rowguid]  DEFAULT (newid()) FOR [rowguid]
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityAddress] ADD  CONSTRAINT [DF_BusinessEntityAddress_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityAddress]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityAddress_Address_AddressID] FOREIGN KEY([AddressID])
+  REFERENCES [Person].[Address] ([AddressID])
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityAddress] CHECK CONSTRAINT [FK_BusinessEntityAddress_Address_AddressID]
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityAddress]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityAddress_AddressType_AddressTypeID] FOREIGN KEY([AddressTypeID])
+  REFERENCES [Person].[AddressType] ([AddressTypeID])
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityAddress] CHECK CONSTRAINT [FK_BusinessEntityAddress_AddressType_AddressTypeID]
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityAddress]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityAddress_BusinessEntity_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+  REFERENCES [Person].[BusinessEntity] ([BusinessEntityID])
+  GO
+
+  ALTER TABLE [Person].[BusinessEntityAddress] CHECK CONSTRAINT [FK_BusinessEntityAddress_BusinessEntity_BusinessEntityID]
+  GO
+

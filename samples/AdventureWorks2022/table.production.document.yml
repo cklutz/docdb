@@ -32,13 +32,30 @@ foreignKeys:
     ALTER TABLE [Production].[Document] CHECK CONSTRAINT [FK_Document_Employee_Owner]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.production.document.check.ck_document_status
+  description: Check constraint [Status] BETWEEN (1) AND (3)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Document_Status
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Status]>=(1) AND [Status]<=(3))
+  script: |+
+    ALTER TABLE [Production].[Document]  WITH CHECK ADD  CONSTRAINT [CK_Document_Status] CHECK  (([Status]>=(1) AND [Status]<=(3)))
+    GO
+
+    ALTER TABLE [Production].[Document] CHECK CONSTRAINT [CK_Document_Status]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.production.document.column.documentnode

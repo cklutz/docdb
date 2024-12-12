@@ -1,0 +1,63 @@
+{{#payload.checks.0}}
+<h2>{{__global.checks}}</h2>
+
+<table class="table table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th>Check Name</th>
+			<th>Enabled</th>
+			<th>Checked</th>
+			<th>{{__global.description}}</th>
+		</tr>
+	</thead>
+	<tbody>
+{{#payload.checks}}
+		<tr>
+			<td>{{name}}</td>
+			<td>{{#isEnabled}}{{{__global.symCheckMark}}}{{/isEnabled}}</td>
+			<td>{{#isChecked}}{{{__global.symCheckMark}}}{{/isChecked}}</td>
+			<td>{{description}}</td>
+		</tr>
+{{/payload.checks}}
+	</tbody>
+</table>
+
+{{#payload.checks}}
+<h3 id="{{id}}">{{name}} check</h3>
+
+<div class"markdown level0 summary">{{description}}</div>
+
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Enabled</th>
+			<td>
+			{{#isEnabled}}{{{__global.symCheckMark}}}{{/isEnabled}}
+			{{^isEnabled}}{{{__global.symCross}}}{{/isEnabled}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Checked</th>
+			<td>
+			{{#isChecked}}{{{__global.symCheckMark}}}{{/isChecked}}
+			{{^isChecked}}{{{__global.symCross}}}{{/isChecked}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Constraint Text</th>
+			<td>{{#constraintText}}<pre class="sql pre-wrap"><code>{{constraintText}}</code></pre>{{/constraintText}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Referenced Table</th>
+			<td><a href="{{referencedTable.id}}.html">{{referencedTable.name}}</a></td>
+		</tr>
+	</tbody>
+</table>
+
+{{/payload.checks}}
+
+{{/payload.checks.0}}

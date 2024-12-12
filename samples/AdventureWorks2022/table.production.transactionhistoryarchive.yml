@@ -6,13 +6,30 @@ createdAt: 2023-05-08T12:07:29.6170000
 lastModifiedAt: 2023-05-08T12:07:35.1070000
 name: Production.TransactionHistoryArchive
 foreignKeys: []
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.production.transactionhistoryarchive.check.ck_transactionhistoryarchive_transactiontype
+  description: Check constraint [TransactionType]='p' OR [TransactionType]='s' OR [TransactionType]='w' OR [TransactionType]='P' OR [TransactionType]='S' OR [TransactionType]='W'
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_TransactionHistoryArchive_TransactionType
+  isChecked: true
+  isEnabled: true
+  constraintText: (upper([TransactionType])='P' OR upper([TransactionType])='S' OR upper([TransactionType])='W')
+  script: |+
+    ALTER TABLE [Production].[TransactionHistoryArchive]  WITH CHECK ADD  CONSTRAINT [CK_TransactionHistoryArchive_TransactionType] CHECK  ((upper([TransactionType])='P' OR upper([TransactionType])='S' OR upper([TransactionType])='W'))
+    GO
+
+    ALTER TABLE [Production].[TransactionHistoryArchive] CHECK CONSTRAINT [CK_TransactionHistoryArchive_TransactionType]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.transactionid

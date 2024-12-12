@@ -1,0 +1,208 @@
+### YamlMime:DocDB
+type: Table
+id: table.location.location
+description: Product inventory and manufacturing locations.
+createdAt: 2023-05-08T12:07:29.4700000
+lastModifiedAt: 2023-05-08T12:07:39.3200000
+name: Location.Location
+foreignKeys: []
+checks:
+- type: CheckConstraint
+  id: table.location.location.check.ck_location_availability
+  description: Check constraint [Availability] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Location_Availability
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Availability]>=(0.00))
+  script: ""
+- type: CheckConstraint
+  id: table.location.location.check.ck_location_costrate
+  description: Check constraint [CostRate] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Location_CostRate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([CostRate]>=(0.00))
+  script: ""
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+indexes: []
+triggers: []
+columns:
+- type: TableColumn
+  id: table.location.location.column.locationid
+  description: Primary key for Location records.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: LocationID
+  dataType: SMALLINT
+  maxLengthBytes: 2
+  precision: 5
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: true
+  identityIncrement: 1
+  identitySeed: 1
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.location.location.column.name
+  description: Location description.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Name
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.location.location.column.costrate
+  description: Standard hourly cost of the manufacturing location.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CostRate
+  dataType: SMALLMONEY
+  maxLengthBytes: 4
+  precision: 10
+  scale: 4
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((0.00))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.location.location.column.availability
+  description: Work capacity (in hours) of the manufacturing location.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Availability
+  dataType: DECIMAL
+  maxLengthBytes: 5
+  precision: 8
+  scale: 2
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((0.00))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.location.location.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ModifiedDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Production].[Location](
+  	[LocationID] [smallint] IDENTITY(1,1) NOT NULL,
+  	[Name] [dbo].[Name] NOT NULL,
+  	[CostRate] [smallmoney] NOT NULL,
+  	[Availability] [decimal](8, 2) NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_Location_LocationID] PRIMARY KEY CLUSTERED
+  (
+  	[LocationID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  SET ANSI_PADDING ON
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Location_Name] ON [Production].[Location]
+  (
+  	[Name] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Production].[Location] ADD  CONSTRAINT [DF_Location_CostRate]  DEFAULT ((0.00)) FOR [CostRate]
+  GO
+
+  ALTER TABLE [Production].[Location] ADD  CONSTRAINT [DF_Location_Availability]  DEFAULT ((0.00)) FOR [Availability]
+  GO
+
+  ALTER TABLE [Production].[Location] ADD  CONSTRAINT [DF_Location_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Production].[Location]  WITH CHECK ADD  CONSTRAINT [CK_Location_Availability] CHECK  (([Availability]>=(0.00)))
+  GO
+
+  ALTER TABLE [Production].[Location] CHECK CONSTRAINT [CK_Location_Availability]
+  GO
+
+  ALTER TABLE [Production].[Location]  WITH CHECK ADD  CONSTRAINT [CK_Location_CostRate] CHECK  (([CostRate]>=(0.00)))
+  GO
+
+  ALTER TABLE [Production].[Location] CHECK CONSTRAINT [CK_Location_CostRate]
+  GO
+

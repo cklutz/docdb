@@ -6,6 +6,7 @@ createdAt: 2023-05-08T12:07:39.5600000
 lastModifiedAt: 2023-05-08T12:07:39.5600000
 name: Sales.vSalesPerson
 indexes: []
+triggers: []
 columns:
 - type: ViewColumn
   id: view.sales.vsalesperson.column.businessentityid

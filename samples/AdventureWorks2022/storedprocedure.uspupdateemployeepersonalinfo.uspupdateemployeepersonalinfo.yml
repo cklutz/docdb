@@ -1,0 +1,96 @@
+### YamlMime:DocDB
+type: StoredProcedure
+id: storedprocedure.uspupdateemployeepersonalinfo.uspupdateemployeepersonalinfo
+description: Updates the Employee table with the values specified in the input parameters for the given EmployeeID.
+createdAt: 2023-05-08T12:07:39.6370000
+lastModifiedAt: 2023-05-08T12:07:39.6370000
+name: uspUpdateEmployeePersonalInfo.uspUpdateEmployeePersonalInfo
+parameters:
+- type: StoredProcedureParameter
+  id: storedprocedure.uspupdateemployeepersonalinfo.uspupdateemployeepersonalinfo.param.@businessentityid
+  description: Input parameter for the stored procedure uspUpdateEmployeePersonalInfo. Enter a valid BusinessEntityID from the HumanResources.Employee table.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@BusinessEntityID'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: INT
+  defaultValue: ''
+  script: ""
+- type: StoredProcedureParameter
+  id: storedprocedure.uspupdateemployeepersonalinfo.uspupdateemployeepersonalinfo.param.@nationalidnumber
+  description: Input parameter for the stored procedure uspUpdateEmployeeHireInfo. Enter a national ID for the employee.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@NationalIDNumber'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: NVARCHAR(15)
+  defaultValue: ''
+  script: ""
+- type: StoredProcedureParameter
+  id: storedprocedure.uspupdateemployeepersonalinfo.uspupdateemployeepersonalinfo.param.@birthdate
+  description: Input parameter for the stored procedure uspUpdateEmployeeHireInfo. Enter a birth date for the employee.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@BirthDate'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: DATETIME
+  defaultValue: ''
+  script: ""
+- type: StoredProcedureParameter
+  id: storedprocedure.uspupdateemployeepersonalinfo.uspupdateemployeepersonalinfo.param.@maritalstatus
+  description: Input parameter for the stored procedure uspUpdateEmployeeHireInfo. Enter a marital status for the employee.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@MaritalStatus'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: NCHAR(1)
+  defaultValue: ''
+  script: ""
+- type: StoredProcedureParameter
+  id: storedprocedure.uspupdateemployeepersonalinfo.uspupdateemployeepersonalinfo.param.@gender
+  description: Input parameter for the stored procedure uspUpdateEmployeeHireInfo. Enter a gender for the employee.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@Gender'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: NCHAR(1)
+  defaultValue: ''
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE PROCEDURE [HumanResources].[uspUpdateEmployeePersonalInfo]
+      @BusinessEntityID [int],
+      @NationalIDNumber [nvarchar](15),
+      @BirthDate [datetime],
+      @MaritalStatus [nchar](1),
+      @Gender [nchar](1)
+  WITH EXECUTE AS CALLER
+  AS
+  BEGIN
+      SET NOCOUNT ON;
+
+      BEGIN TRY
+          UPDATE [HumanResources].[Employee]
+          SET [NationalIDNumber] = @NationalIDNumber
+              ,[BirthDate] = @BirthDate
+              ,[MaritalStatus] = @MaritalStatus
+              ,[Gender] = @Gender
+          WHERE [BusinessEntityID] = @BusinessEntityID;
+      END TRY
+      BEGIN CATCH
+          EXECUTE [dbo].[uspLogError];
+      END CATCH;
+  END;
+
+  GO
+

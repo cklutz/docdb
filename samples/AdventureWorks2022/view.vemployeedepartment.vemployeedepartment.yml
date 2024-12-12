@@ -1,0 +1,281 @@
+### YamlMime:DocDB
+type: View
+id: view.vemployeedepartment.vemployeedepartment
+description: Returns employee name, title, and current department.
+createdAt: 2023-05-08T12:07:39.4600000
+lastModifiedAt: 2023-05-08T12:07:39.4600000
+name: vEmployeeDepartment.vEmployeeDepartment
+indexes: []
+triggers: []
+columns:
+- type: ViewColumn
+  id: view.vemployeedepartment.vemployeedepartment.column.businessentityid
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: BusinessEntityID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vemployeedepartment.vemployeedepartment.column.title
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Title
+  dataType: NVARCHAR(8)
+  maxLengthBytes: 8
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vemployeedepartment.vemployeedepartment.column.firstname
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FirstName
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vemployeedepartment.vemployeedepartment.column.middlename
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: MiddleName
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vemployeedepartment.vemployeedepartment.column.lastname
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: LastName
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vemployeedepartment.vemployeedepartment.column.suffix
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Suffix
+  dataType: NVARCHAR(10)
+  maxLengthBytes: 10
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vemployeedepartment.vemployeedepartment.column.jobtitle
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: JobTitle
+  dataType: NVARCHAR(50)
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vemployeedepartment.vemployeedepartment.column.department
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Department
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vemployeedepartment.vemployeedepartment.column.groupname
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: GroupName
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vemployeedepartment.vemployeedepartment.column.startdate
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: StartDate
+  dataType: DATE
+  maxLengthBytes: 3
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [HumanResources].[vEmployeeDepartment]
+  AS
+  SELECT
+      e.[BusinessEntityID]
+      ,p.[Title]
+      ,p.[FirstName]
+      ,p.[MiddleName]
+      ,p.[LastName]
+      ,p.[Suffix]
+      ,e.[JobTitle]
+      ,d.[Name] AS [Department]
+      ,d.[GroupName]
+      ,edh.[StartDate]
+  FROM [HumanResources].[Employee] e
+  	INNER JOIN [Person].[Person] p
+  	ON p.[BusinessEntityID] = e.[BusinessEntityID]
+      INNER JOIN [HumanResources].[EmployeeDepartmentHistory] edh
+      ON e.[BusinessEntityID] = edh.[BusinessEntityID]
+      INNER JOIN [HumanResources].[Department] d
+      ON edh.[DepartmentID] = d.[DepartmentID]
+  WHERE edh.EndDate IS NULL
+
+  GO
+

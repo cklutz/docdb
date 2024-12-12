@@ -66,6 +66,7 @@ partitionInfo:
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.sales.salesorderheadersalesreason.column.salesorderid

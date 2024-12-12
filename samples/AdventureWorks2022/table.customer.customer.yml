@@ -1,0 +1,328 @@
+### YamlMime:DocDB
+type: Table
+id: table.customer.customer
+description: Current customer information. Also see the Person and Store tables.
+createdAt: 2023-05-08T12:07:29.4400000
+lastModifiedAt: 2023-05-08T12:07:39.0100000
+name: Customer.Customer
+foreignKeys:
+- type: ForeignKey
+  id: table.customer.customer.foreignkey.fk_customer_person_personid
+  description: Foreign key constraint referencing Person.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Customer_Person_PersonID
+  columns:
+  - name: PersonID
+    id: table.customer.customer.column.personid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Person_BusinessEntityID
+  referencedTable:
+    name: '[Person].[Person]'
+    id: table.person.person
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+- type: ForeignKey
+  id: table.customer.customer.foreignkey.fk_customer_salesterritory_territoryid
+  description: Foreign key constraint referencing SalesTerritory.TerritoryID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Customer_SalesTerritory_TerritoryID
+  columns:
+  - name: TerritoryID
+    id: table.customer.customer.column.territoryid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_SalesTerritory_TerritoryID
+  referencedTable:
+    name: '[SalesTerritory].[SalesTerritory]'
+    id: table.salesterritory.salesterritory
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+- type: ForeignKey
+  id: table.customer.customer.foreignkey.fk_customer_store_storeid
+  description: Foreign key constraint referencing Store.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Customer_Store_StoreID
+  columns:
+  - name: StoreID
+    id: table.customer.customer.column.storeid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Store_BusinessEntityID
+  referencedTable:
+    name: '[Store].[Store]'
+    id: table.store.store
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+checks: []
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+indexes: []
+triggers: []
+columns:
+- type: TableColumn
+  id: table.customer.customer.column.customerid
+  description: Primary key.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CustomerID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: true
+  identityIncrement: 1
+  identitySeed: 1
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.customer.customer.column.personid
+  description: Foreign key to Person.BusinessEntityID
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: PersonID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Customer_Person_PersonID
+    id: table.customer.customer.foreignkey.fk_customer_person_personid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.customer.customer.column.storeid
+  description: Foreign key to Store.BusinessEntityID
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: StoreID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Customer_Store_StoreID
+    id: table.customer.customer.foreignkey.fk_customer_store_storeid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.customer.customer.column.territoryid
+  description: ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: TerritoryID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Customer_SalesTerritory_TerritoryID
+    id: table.customer.customer.foreignkey.fk_customer_salesterritory_territoryid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.customer.customer.column.accountnumber
+  description: Unique number identifying the customer assigned by the accounting system.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: AccountNumber
+  dataType: VARCHAR(10)
+  maxLengthBytes: 10
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: true
+  computedText: (isnull('AW'+[dbo].[ufnLeadingZeros]([CustomerID]),''))
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.customer.customer.column.rowguid
+  description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: rowguid
+  dataType: UNIQUEIDENTIFIER
+  maxLengthBytes: 16
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.customer.customer.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ModifiedDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Sales].[Customer](
+  	[CustomerID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
+  	[PersonID] [int] NULL,
+  	[StoreID] [int] NULL,
+  	[TerritoryID] [int] NULL,
+  	[AccountNumber]  AS (isnull('AW'+[dbo].[ufnLeadingZeros]([CustomerID]),'')),
+  	[rowguid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_Customer_CustomerID] PRIMARY KEY CLUSTERED
+  (
+  	[CustomerID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  SET ARITHABORT ON
+  SET CONCAT_NULL_YIELDS_NULL ON
+  SET QUOTED_IDENTIFIER ON
+  SET ANSI_NULLS ON
+  SET ANSI_PADDING ON
+  SET ANSI_WARNINGS ON
+  SET NUMERIC_ROUNDABORT OFF
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Customer_AccountNumber] ON [Sales].[Customer]
+  (
+  	[AccountNumber] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Customer_rowguid] ON [Sales].[Customer]
+  (
+  	[rowguid] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_Customer_TerritoryID] ON [Sales].[Customer]
+  (
+  	[TerritoryID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Sales].[Customer] ADD  CONSTRAINT [DF_Customer_rowguid]  DEFAULT (newid()) FOR [rowguid]
+  GO
+
+  ALTER TABLE [Sales].[Customer] ADD  CONSTRAINT [DF_Customer_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Sales].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Person_PersonID] FOREIGN KEY([PersonID])
+  REFERENCES [Person].[Person] ([BusinessEntityID])
+  GO
+
+  ALTER TABLE [Sales].[Customer] CHECK CONSTRAINT [FK_Customer_Person_PersonID]
+  GO
+
+  ALTER TABLE [Sales].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_SalesTerritory_TerritoryID] FOREIGN KEY([TerritoryID])
+  REFERENCES [Sales].[SalesTerritory] ([TerritoryID])
+  GO
+
+  ALTER TABLE [Sales].[Customer] CHECK CONSTRAINT [FK_Customer_SalesTerritory_TerritoryID]
+  GO
+
+  ALTER TABLE [Sales].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Store_StoreID] FOREIGN KEY([StoreID])
+  REFERENCES [Sales].[Store] ([BusinessEntityID])
+  GO
+
+  ALTER TABLE [Sales].[Customer] CHECK CONSTRAINT [FK_Customer_Store_StoreID]
+  GO
+

@@ -1,0 +1,47 @@
+### YamlMime:DocDB
+type: UserDefinedFunction
+id: userdefinedfunction.ufngetpurchaseorderstatustext.ufngetpurchaseorderstatustext
+description: Scalar function returning the text representation of the Status column in the PurchaseOrderHeader table.
+createdAt: 2023-05-08T12:07:39.6100000
+lastModifiedAt: 2023-05-08T12:07:39.6100000
+name: ufnGetPurchaseOrderStatusText.ufnGetPurchaseOrderStatusText
+functionType: Scalar
+returnsNullOnNullInput: false
+parameters:
+- type: UserDefinedFunctionParameter
+  id: userdefinedfunction.ufngetpurchaseorderstatustext.ufngetpurchaseorderstatustext.param.@status
+  description: Input parameter for the scalar function ufnGetPurchaseOrdertStatusText. Enter a valid integer.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: '@Status'
+  dataType: TINYINT
+  defaultValue: ''
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE FUNCTION [dbo].[ufnGetPurchaseOrderStatusText](@Status [tinyint])
+  RETURNS [nvarchar](15)
+  AS
+  -- Returns the sales order status text representation for the status value.
+  BEGIN
+      DECLARE @ret [nvarchar](15);
+
+      SET @ret =
+          CASE @Status
+              WHEN 1 THEN 'Pending'
+              WHEN 2 THEN 'Approved'
+              WHEN 3 THEN 'Rejected'
+              WHEN 4 THEN 'Complete'
+              ELSE '** Invalid **'
+          END;
+
+      RETURN @ret
+  END;
+
+  GO
+

@@ -1,0 +1,271 @@
+### YamlMime:DocDB
+type: Table
+id: table.salesterritoryhistory.salesterritoryhistory
+description: Sales representative transfers to other sales territories.
+createdAt: 2023-05-08T12:07:29.5830000
+lastModifiedAt: 2023-05-08T12:07:39.2530000
+name: SalesTerritoryHistory.SalesTerritoryHistory
+foreignKeys:
+- type: ForeignKey
+  id: table.salesterritoryhistory.salesterritoryhistory.foreignkey.fk_salesterritoryhistory_salesperson_businessentityid
+  description: Foreign key constraint referencing SalesPerson.SalesPersonID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_SalesTerritoryHistory_SalesPerson_BusinessEntityID
+  columns:
+  - name: BusinessEntityID
+    id: table.salesterritoryhistory.salesterritoryhistory.column.businessentityid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_SalesPerson_BusinessEntityID
+  referencedTable:
+    name: '[SalesPerson].[SalesPerson]'
+    id: table.salesperson.salesperson
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+- type: ForeignKey
+  id: table.salesterritoryhistory.salesterritoryhistory.foreignkey.fk_salesterritoryhistory_salesterritory_territoryid
+  description: Foreign key constraint referencing SalesTerritory.TerritoryID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_SalesTerritoryHistory_SalesTerritory_TerritoryID
+  columns:
+  - name: TerritoryID
+    id: table.salesterritoryhistory.salesterritoryhistory.column.territoryid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_SalesTerritory_TerritoryID
+  referencedTable:
+    name: '[SalesTerritory].[SalesTerritory]'
+    id: table.salesterritory.salesterritory
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: ""
+checks:
+- type: CheckConstraint
+  id: table.salesterritoryhistory.salesterritoryhistory.check.ck_salesterritoryhistory_enddate
+  description: Check constraint [EndDate] >= [StartDate] OR [EndDate] IS NULL
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesTerritoryHistory_EndDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([EndDate]>=[StartDate] OR [EndDate] IS NULL)
+  script: ""
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+  fileGroup: 
+indexes: []
+triggers: []
+columns:
+- type: TableColumn
+  id: table.salesterritoryhistory.salesterritoryhistory.column.businessentityid
+  description: Primary key. The sales rep.  Foreign key to SalesPerson.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: BusinessEntityID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_SalesTerritoryHistory_SalesPerson_BusinessEntityID
+    id: table.salesterritoryhistory.salesterritoryhistory.foreignkey.fk_salesterritoryhistory_salesperson_businessentityid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.salesterritoryhistory.salesterritoryhistory.column.territoryid
+  description: Primary key. Territory identification number. Foreign key to SalesTerritory.SalesTerritoryID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: TerritoryID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_SalesTerritoryHistory_SalesTerritory_TerritoryID
+    id: table.salesterritoryhistory.salesterritoryhistory.foreignkey.fk_salesterritoryhistory_salesterritory_territoryid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.salesterritoryhistory.salesterritoryhistory.column.startdate
+  description: Primary key. Date the sales representive started work in the territory.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: StartDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.salesterritoryhistory.salesterritoryhistory.column.enddate
+  description: Date the sales representative left work in the territory.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: EndDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.salesterritoryhistory.salesterritoryhistory.column.rowguid
+  description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: rowguid
+  dataType: UNIQUEIDENTIFIER
+  maxLengthBytes: 16
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: table.salesterritoryhistory.salesterritoryhistory.column.modifieddate
+  description: Date and time the record was last updated.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ModifiedDate
+  dataType: DATETIME
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Sales].[SalesTerritoryHistory](
+  	[BusinessEntityID] [int] NOT NULL,
+  	[TerritoryID] [int] NOT NULL,
+  	[StartDate] [datetime] NOT NULL,
+  	[EndDate] [datetime] NULL,
+  	[rowguid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_SalesTerritoryHistory_BusinessEntityID_StartDate_TerritoryID] PRIMARY KEY CLUSTERED
+  (
+  	[BusinessEntityID] ASC,
+  	[StartDate] ASC,
+  	[TerritoryID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_SalesTerritoryHistory_rowguid] ON [Sales].[SalesTerritoryHistory]
+  (
+  	[rowguid] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Sales].[SalesTerritoryHistory] ADD  CONSTRAINT [DF_SalesTerritoryHistory_rowguid]  DEFAULT (newid()) FOR [rowguid]
+  GO
+
+  ALTER TABLE [Sales].[SalesTerritoryHistory] ADD  CONSTRAINT [DF_SalesTerritoryHistory_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Sales].[SalesTerritoryHistory]  WITH CHECK ADD  CONSTRAINT [FK_SalesTerritoryHistory_SalesPerson_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+  REFERENCES [Sales].[SalesPerson] ([BusinessEntityID])
+  GO
+
+  ALTER TABLE [Sales].[SalesTerritoryHistory] CHECK CONSTRAINT [FK_SalesTerritoryHistory_SalesPerson_BusinessEntityID]
+  GO
+
+  ALTER TABLE [Sales].[SalesTerritoryHistory]  WITH CHECK ADD  CONSTRAINT [FK_SalesTerritoryHistory_SalesTerritory_TerritoryID] FOREIGN KEY([TerritoryID])
+  REFERENCES [Sales].[SalesTerritory] ([TerritoryID])
+  GO
+
+  ALTER TABLE [Sales].[SalesTerritoryHistory] CHECK CONSTRAINT [FK_SalesTerritoryHistory_SalesTerritory_TerritoryID]
+  GO
+
+  ALTER TABLE [Sales].[SalesTerritoryHistory]  WITH CHECK ADD  CONSTRAINT [CK_SalesTerritoryHistory_EndDate] CHECK  (([EndDate]>=[StartDate] OR [EndDate] IS NULL))
+  GO
+
+  ALTER TABLE [Sales].[SalesTerritoryHistory] CHECK CONSTRAINT [CK_SalesTerritoryHistory_EndDate]
+  GO
+

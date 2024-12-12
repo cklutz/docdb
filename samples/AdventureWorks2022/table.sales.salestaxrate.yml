@@ -32,13 +32,30 @@ foreignKeys:
     ALTER TABLE [Sales].[SalesTaxRate] CHECK CONSTRAINT [FK_SalesTaxRate_StateProvince_StateProvinceID]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.sales.salestaxrate.check.ck_salestaxrate_taxtype
+  description: Check constraint [TaxType] BETWEEN (1) AND (3)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesTaxRate_TaxType
+  isChecked: true
+  isEnabled: true
+  constraintText: ([TaxType]>=(1) AND [TaxType]<=(3))
+  script: |+
+    ALTER TABLE [Sales].[SalesTaxRate]  WITH CHECK ADD  CONSTRAINT [CK_SalesTaxRate_TaxType] CHECK  (([TaxType]>=(1) AND [TaxType]<=(3)))
+    GO
+
+    ALTER TABLE [Sales].[SalesTaxRate] CHECK CONSTRAINT [CK_SalesTaxRate_TaxType]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.sales.salestaxrate.column.salestaxrateid

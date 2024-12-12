@@ -25,7 +25,7 @@ internal class ModelCreator
         };
     }
 
-    private static T InitBase<T>(T obj, NamedSmoObject smo) where T : DdbObject
+    private static T InitBase<T>(T obj, NamedSmoObject smo, bool noScript = false) where T : DdbObject
     {
         obj.Id = smo.GetModelId();
 
@@ -39,7 +39,7 @@ internal class ModelCreator
             obj.Description = extendedProperties.GetMSDescription();
         }
 
-        if (smo is IScriptable)
+        if (smo is IScriptable && !noScript)
         {
             var scriptingOptions = new ScriptingOptions();
             if (obj is DdbTable || obj is DdbView)
@@ -126,6 +126,8 @@ internal class ModelCreator
             result.Columns.Add(InitBase(CreateColumn<DdbViewColumn>(column), column));
         }
 
+        AddTriggers(view.Triggers, result);
+
         return result;
     }
 
@@ -153,7 +155,7 @@ internal class ModelCreator
                 IsChecked = foreignKey.IsChecked,
                 ReferencedKey = foreignKey.ReferencedKey,
                 ReferencedTable = CreateTableRef(table.Parent, foreignKey.ReferencedTableSchema, foreignKey.ReferencedTable)
-            }, foreignKey));
+            }, foreignKey, noScript: true));
         }
 
         foreach (Column column in table.Columns)
@@ -167,7 +169,40 @@ internal class ModelCreator
             result.Columns.Add(ddbCol);
         }
 
+        foreach (Check check in table.Checks)
+        {
+            var c = InitBase(new DdbCheckConstraint
+            {
+                ConstraintText = check.Text,
+                IsChecked = check.IsChecked,
+                IsEnabled = check.IsEnabled
+            }, check, noScript: true);
+            result.Checks.Add(c);
+        }
+
+        AddTriggers(table.Triggers, result);
+
         return result;
+    }
+
+    private static void AddTriggers<TColumn>(TriggerCollection triggers, TabularDdbObject<TColumn> result) where TColumn : DdbColumnBase
+    {
+        foreach (Trigger trigger in triggers)
+        {
+            // TODO: When we handle NativeCompiled for SPs, etc. we need to handle it here as well.
+
+            var c = InitBase(new DdbDmlTrigger
+            {
+                IsEnabled = trigger.IsEnabled,
+                IsSchemaBound = trigger.IsSchemaBound,
+                IsInsteadOf = trigger.InsteadOf,
+                OnDelete = trigger.Delete,
+                OnUpdate = trigger.Update,
+                OnInsert = trigger.Insert,
+            }, trigger, noScript: true);
+
+            result.Triggers.Add(c);
+        }
     }
 
     private static NamedDdbRef CreateColumnRef(Table table, string columnName)

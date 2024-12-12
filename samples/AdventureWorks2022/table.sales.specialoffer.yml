@@ -6,13 +6,78 @@ createdAt: 2023-05-08T12:07:29.6000000
 lastModifiedAt: 2023-05-08T12:07:39.2630000
 name: Sales.SpecialOffer
 foreignKeys: []
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.sales.specialoffer.check.ck_specialoffer_discountpct
+  description: Check constraint [DiscountPct] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SpecialOffer_DiscountPct
+  isChecked: true
+  isEnabled: true
+  constraintText: ([DiscountPct]>=(0.00))
+  script: |+
+    ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_DiscountPct] CHECK  (([DiscountPct]>=(0.00)))
+    GO
+
+    ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_DiscountPct]
+    GO
+
+- type: CheckConstraint
+  id: table.sales.specialoffer.check.ck_specialoffer_enddate
+  description: Check constraint [EndDate] >= [StartDate]
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SpecialOffer_EndDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([EndDate]>=[StartDate])
+  script: |+
+    ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_EndDate] CHECK  (([EndDate]>=[StartDate]))
+    GO
+
+    ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_EndDate]
+    GO
+
+- type: CheckConstraint
+  id: table.sales.specialoffer.check.ck_specialoffer_maxqty
+  description: Check constraint [MaxQty] >= (0)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SpecialOffer_MaxQty
+  isChecked: true
+  isEnabled: true
+  constraintText: ([MaxQty]>=(0))
+  script: |+
+    ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_MaxQty] CHECK  (([MaxQty]>=(0)))
+    GO
+
+    ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_MaxQty]
+    GO
+
+- type: CheckConstraint
+  id: table.sales.specialoffer.check.ck_specialoffer_minqty
+  description: Check constraint [MinQty] >= (0)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SpecialOffer_MinQty
+  isChecked: true
+  isEnabled: true
+  constraintText: ([MinQty]>=(0))
+  script: |+
+    ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_MinQty] CHECK  (([MinQty]>=(0)))
+    GO
+
+    ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_MinQty]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.specialofferid

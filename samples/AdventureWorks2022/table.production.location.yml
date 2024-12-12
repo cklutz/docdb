@@ -6,13 +6,46 @@ createdAt: 2023-05-08T12:07:29.4700000
 lastModifiedAt: 2023-05-08T12:07:39.3200000
 name: Production.Location
 foreignKeys: []
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.production.location.check.ck_location_availability
+  description: Check constraint [Availability] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Location_Availability
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Availability]>=(0.00))
+  script: |+
+    ALTER TABLE [Production].[Location]  WITH CHECK ADD  CONSTRAINT [CK_Location_Availability] CHECK  (([Availability]>=(0.00)))
+    GO
+
+    ALTER TABLE [Production].[Location] CHECK CONSTRAINT [CK_Location_Availability]
+    GO
+
+- type: CheckConstraint
+  id: table.production.location.check.ck_location_costrate
+  description: Check constraint [CostRate] >= (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_Location_CostRate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([CostRate]>=(0.00))
+  script: |+
+    ALTER TABLE [Production].[Location]  WITH CHECK ADD  CONSTRAINT [CK_Location_CostRate] CHECK  (([CostRate]>=(0.00)))
+    GO
+
+    ALTER TABLE [Production].[Location] CHECK CONSTRAINT [CK_Location_CostRate]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.production.location.column.locationid

@@ -32,13 +32,30 @@ foreignKeys:
     ALTER TABLE [Production].[ProductReview] CHECK CONSTRAINT [FK_ProductReview_Product_ProductID]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.production.productreview.check.ck_productreview_rating
+  description: Check constraint [Rating] BETWEEN (1) AND (5)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductReview_Rating
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Rating]>=(1) AND [Rating]<=(5))
+  script: |+
+    ALTER TABLE [Production].[ProductReview]  WITH CHECK ADD  CONSTRAINT [CK_ProductReview_Rating] CHECK  (([Rating]>=(1) AND [Rating]<=(5)))
+    GO
+
+    ALTER TABLE [Production].[ProductReview] CHECK CONSTRAINT [CK_ProductReview_Rating]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.production.productreview.column.productreviewid

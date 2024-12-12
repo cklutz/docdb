@@ -32,13 +32,30 @@ foreignKeys:
     ALTER TABLE [Sales].[SalesPersonQuotaHistory] CHECK CONSTRAINT [FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.sales.salespersonquotahistory.check.ck_salespersonquotahistory_salesquota
+  description: Check constraint [SalesQuota] > (0.00)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_SalesPersonQuotaHistory_SalesQuota
+  isChecked: true
+  isEnabled: true
+  constraintText: ([SalesQuota]>(0.00))
+  script: |+
+    ALTER TABLE [Sales].[SalesPersonQuotaHistory]  WITH CHECK ADD  CONSTRAINT [CK_SalesPersonQuotaHistory_SalesQuota] CHECK  (([SalesQuota]>(0.00)))
+    GO
+
+    ALTER TABLE [Sales].[SalesPersonQuotaHistory] CHECK CONSTRAINT [CK_SalesPersonQuotaHistory_SalesQuota]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.sales.salespersonquotahistory.column.businessentityid

@@ -1,0 +1,87 @@
+{{#payload.triggers.0}}
+<h2>{{__global.triggers}}</h2>
+
+<table class="table table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th>Trigger Name</th>
+			<th>Enabled</th>
+			<th>Instead Of</th>
+			<th>Mode</th>
+			<th>{{__global.description}}</th>
+		</tr>
+	</thead>
+	<tbody>
+{{#payload.triggers}}
+			<td>{{name}}</td>
+			<td>{{#isEnabled}}{{{__global.symCheckMark}}}{{/isEnabled}}</td>
+			<td>{{#isInsteadOf}}{{{__global.symCheckMark}}}{{/isInsteadOf}}</td>
+			<td>
+				{{#onInsert}}INSERT {{/onInsert}}
+				{{#onUpdate}}UPDATE {{/onUpdate}}
+				{{#onDelete}}DELETE {{/onDelete}}
+			</td>
+			<td>{{description}}</td>
+{{/payload.triggers}}
+	</tbody>
+</table>
+
+{{#payload.triggers}}
+<h3 id="{{id}}">{{name}} trigger</h3>
+
+<div class"markdown level0 summary">{{description}}</div>
+
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Enabled</th>
+			<td>
+			{{#isEnabled}}{{{__global.symCheckMark}}}{{/isEnabled}}
+			{{^isEnabled}}{{{__global.symCross}}}{{/isEnabled}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Schema Bound</th>
+			<td>
+			{{#isSchemaBound}}{{{__global.symCheckMark}}}{{/isSchemaBound}}
+			{{^isSchemaBound}}{{{__global.symCross}}}{{/isSchemaBound}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Instead Of</th>
+			<td>
+			{{#isInsteadOf}}{{{__global.symCheckMark}}}{{/isInsteadOf}}
+			{{^isInsteadOf}}{{{__global.symCross}}}{{/isInsteadOf}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">On Insert</th>
+			<td>
+			{{#onInsert}}{{{__global.symCheckMark}}}{{/onInsert}}
+			{{^onInsert}}{{{__global.symCross}}}{{/onInsert}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">On Update</th>
+			<td>
+			{{#onUpdate}}{{{__global.symCheckMark}}}{{/onUpdate}}
+			{{^onUpdate}}{{{__global.symCross}}}{{/onUpdate}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">On Insert</th>
+			<td>
+			{{#onInsert}}{{{__global.symCheckMark}}}{{/onInsert}}
+			{{^onInsert}}{{{__global.symCross}}}{{/onInsert}}
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+{{/payload.triggers}}
+
+{{/payload.triggers.0}}

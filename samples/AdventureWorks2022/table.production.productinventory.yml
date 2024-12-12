@@ -58,13 +58,46 @@ foreignKeys:
     ALTER TABLE [Production].[ProductInventory] CHECK CONSTRAINT [FK_ProductInventory_Product_ProductID]
     GO
 
-checks: []
+checks:
+- type: CheckConstraint
+  id: table.production.productinventory.check.ck_productinventory_bin
+  description: Check constraint [Bin] BETWEEN (0) AND (100)
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductInventory_Bin
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Bin]>=(0) AND [Bin]<=(100))
+  script: |+
+    ALTER TABLE [Production].[ProductInventory]  WITH CHECK ADD  CONSTRAINT [CK_ProductInventory_Bin] CHECK  (([Bin]>=(0) AND [Bin]<=(100)))
+    GO
+
+    ALTER TABLE [Production].[ProductInventory] CHECK CONSTRAINT [CK_ProductInventory_Bin]
+    GO
+
+- type: CheckConstraint
+  id: table.production.productinventory.check.ck_productinventory_shelf
+  description: Check constraint [Shelf] like '[A-Za-z]' OR [Shelf]='N/A'
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CK_ProductInventory_Shelf
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Shelf] like '[A-Za-z]' OR [Shelf]='N/A')
+  script: |+
+    ALTER TABLE [Production].[ProductInventory]  WITH CHECK ADD  CONSTRAINT [CK_ProductInventory_Shelf] CHECK  (([Shelf] like '[A-Za-z]' OR [Shelf]='N/A'))
+    GO
+
+    ALTER TABLE [Production].[ProductInventory] CHECK CONSTRAINT [CK_ProductInventory_Shelf]
+    GO
+
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
 indexes: []
+triggers: []
 columns:
 - type: TableColumn
   id: table.production.productinventory.column.productid

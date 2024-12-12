@@ -1,0 +1,173 @@
+### YamlMime:DocDB
+type: View
+id: view.vproductanddescription.vproductanddescription
+description: Product names and descriptions. Product descriptions are provided in multiple languages.
+createdAt: 2023-05-08T12:07:39.5200000
+lastModifiedAt: 2023-05-08T12:07:39.5300000
+name: vProductAndDescription.vProductAndDescription
+indexes: []
+triggers: []
+columns:
+- type: ViewColumn
+  id: view.vproductanddescription.vproductanddescription.column.productid
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ProductID
+  dataType: INT
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vproductanddescription.vproductanddescription.column.name
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Name
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vproductanddescription.vproductanddescription.column.productmodel
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: ProductModel
+  dataType: NAME
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vproductanddescription.vproductanddescription.column.cultureid
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: CultureID
+  dataType: NCHAR(6)
+  maxLengthBytes: 6
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: ViewColumn
+  id: view.vproductanddescription.vproductanddescription.column.description
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: Description
+  dataType: NVARCHAR(400)
+  maxLengthBytes: 400
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [Production].[vProductAndDescription]
+  WITH SCHEMABINDING
+  AS
+  -- View (indexed or standard) to display products and product descriptions by language.
+  SELECT
+      p.[ProductID]
+      ,p.[Name]
+      ,pm.[Name] AS [ProductModel]
+      ,pmx.[CultureID]
+      ,pd.[Description]
+  FROM [Production].[Product] p
+      INNER JOIN [Production].[ProductModel] pm
+      ON p.[ProductModelID] = pm.[ProductModelID]
+      INNER JOIN [Production].[ProductModelProductDescriptionCulture] pmx
+      ON pm.[ProductModelID] = pmx.[ProductModelID]
+      INNER JOIN [Production].[ProductDescription] pd
+      ON pmx.[ProductDescriptionID] = pd.[ProductDescriptionID];
+
+  GO
+
+  SET ARITHABORT ON
+  SET CONCAT_NULL_YIELDS_NULL ON
+  SET QUOTED_IDENTIFIER ON
+  SET ANSI_NULLS ON
+  SET ANSI_PADDING ON
+  SET ANSI_WARNINGS ON
+  SET NUMERIC_ROUNDABORT OFF
+  GO
+
+  CREATE UNIQUE CLUSTERED INDEX [IX_vProductAndDescription] ON [Production].[vProductAndDescription]
+  (
+  	[CultureID] ASC,
+  	[ProductID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
