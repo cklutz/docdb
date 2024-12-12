@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesTaxRate]  WITH CHECK ADD  CONSTRAINT [FK_SalesTaxRate_StateProvince_StateProvinceID] FOREIGN KEY([StateProvinceID])
-    REFERENCES [Person].[StateProvince] ([StateProvinceID])
-    GO
-
-    ALTER TABLE [Sales].[SalesTaxRate] CHECK CONSTRAINT [FK_SalesTaxRate_StateProvince_StateProvinceID]
-    GO
-
+  script: ""
 checks:
 - type: CheckConstraint
   id: table.sales.salestaxrate.check.ck_salestaxrate_taxtype
@@ -42,13 +35,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([TaxType]>=(1) AND [TaxType]<=(3))
-  script: |+
-    ALTER TABLE [Sales].[SalesTaxRate]  WITH CHECK ADD  CONSTRAINT [CK_SalesTaxRate_TaxType] CHECK  (([TaxType]>=(1) AND [TaxType]<=(3)))
-    GO
-
-    ALTER TABLE [Sales].[SalesTaxRate] CHECK CONSTRAINT [CK_SalesTaxRate_TaxType]
-    GO
-
+  script: ""
 partitionInfo:
   isPartitioned: false
   columns: []

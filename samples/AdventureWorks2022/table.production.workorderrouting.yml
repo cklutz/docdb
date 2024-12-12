@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Production].[WorkOrderRouting]  WITH CHECK ADD  CONSTRAINT [FK_WorkOrderRouting_Location_LocationID] FOREIGN KEY([LocationID])
-    REFERENCES [Production].[Location] ([LocationID])
-    GO
-
-    ALTER TABLE [Production].[WorkOrderRouting] CHECK CONSTRAINT [FK_WorkOrderRouting_Location_LocationID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.production.workorderrouting.foreignkey.fk_workorderrouting_workorder_workorderid
   description: Foreign key constraint referencing WorkOrder.WorkOrderID.
@@ -50,14 +43,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Production].[WorkOrderRouting]  WITH CHECK ADD  CONSTRAINT [FK_WorkOrderRouting_WorkOrder_WorkOrderID] FOREIGN KEY([WorkOrderID])
-    REFERENCES [Production].[WorkOrder] ([WorkOrderID])
-    GO
-
-    ALTER TABLE [Production].[WorkOrderRouting] CHECK CONSTRAINT [FK_WorkOrderRouting_WorkOrder_WorkOrderID]
-    GO
-
+  script: ""
 checks:
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_actualcost
@@ -68,13 +54,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ActualCost]>(0.00))
-  script: |+
-    ALTER TABLE [Production].[WorkOrderRouting]  WITH CHECK ADD  CONSTRAINT [CK_WorkOrderRouting_ActualCost] CHECK  (([ActualCost]>(0.00)))
-    GO
-
-    ALTER TABLE [Production].[WorkOrderRouting] CHECK CONSTRAINT [CK_WorkOrderRouting_ActualCost]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_actualenddate
   description: Check constraint [ActualEndDate] >= [ActualStartDate] OR [ActualEndDate] IS NULL OR [ActualStartDate] IS NULL
@@ -84,13 +64,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ActualEndDate]>=[ActualStartDate] OR [ActualEndDate] IS NULL OR [ActualStartDate] IS NULL)
-  script: |+
-    ALTER TABLE [Production].[WorkOrderRouting]  WITH CHECK ADD  CONSTRAINT [CK_WorkOrderRouting_ActualEndDate] CHECK  (([ActualEndDate]>=[ActualStartDate] OR [ActualEndDate] IS NULL OR [ActualStartDate] IS NULL))
-    GO
-
-    ALTER TABLE [Production].[WorkOrderRouting] CHECK CONSTRAINT [CK_WorkOrderRouting_ActualEndDate]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_actualresourcehrs
   description: Check constraint [ActualResourceHrs] >= (0.0000)
@@ -100,13 +74,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ActualResourceHrs]>=(0.0000))
-  script: |+
-    ALTER TABLE [Production].[WorkOrderRouting]  WITH CHECK ADD  CONSTRAINT [CK_WorkOrderRouting_ActualResourceHrs] CHECK  (([ActualResourceHrs]>=(0.0000)))
-    GO
-
-    ALTER TABLE [Production].[WorkOrderRouting] CHECK CONSTRAINT [CK_WorkOrderRouting_ActualResourceHrs]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_plannedcost
   description: Check constraint [PlannedCost] > (0.00)
@@ -116,13 +84,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([PlannedCost]>(0.00))
-  script: |+
-    ALTER TABLE [Production].[WorkOrderRouting]  WITH CHECK ADD  CONSTRAINT [CK_WorkOrderRouting_PlannedCost] CHECK  (([PlannedCost]>(0.00)))
-    GO
-
-    ALTER TABLE [Production].[WorkOrderRouting] CHECK CONSTRAINT [CK_WorkOrderRouting_PlannedCost]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_scheduledenddate
   description: Check constraint [ScheduledEndDate] >= [ScheduledStartDate]
@@ -132,13 +94,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ScheduledEndDate]>=[ScheduledStartDate])
-  script: |+
-    ALTER TABLE [Production].[WorkOrderRouting]  WITH CHECK ADD  CONSTRAINT [CK_WorkOrderRouting_ScheduledEndDate] CHECK  (([ScheduledEndDate]>=[ScheduledStartDate]))
-    GO
-
-    ALTER TABLE [Production].[WorkOrderRouting] CHECK CONSTRAINT [CK_WorkOrderRouting_ScheduledEndDate]
-    GO
-
+  script: ""
 partitionInfo:
   isPartitioned: false
   columns: []

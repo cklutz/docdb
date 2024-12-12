@@ -98,7 +98,7 @@ triggers:
   description: INSTEAD OF DELETE trigger which keeps Employees from being deleted.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: dEmployee
+  name: HumanResources.dEmployee
   isEnabled: true
   isSchemaBound: false
   isInsteadOf: true

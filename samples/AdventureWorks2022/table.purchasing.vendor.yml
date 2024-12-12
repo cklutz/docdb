@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Purchasing].[Vendor]  WITH CHECK ADD  CONSTRAINT [FK_Vendor_BusinessEntity_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
-    REFERENCES [Person].[BusinessEntity] ([BusinessEntityID])
-    GO
-
-    ALTER TABLE [Purchasing].[Vendor] CHECK CONSTRAINT [FK_Vendor_BusinessEntity_BusinessEntityID]
-    GO
-
+  script: ""
 checks:
 - type: CheckConstraint
   id: table.purchasing.vendor.check.ck_vendor_creditrating
@@ -42,13 +35,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([CreditRating]>=(1) AND [CreditRating]<=(5))
-  script: |+
-    ALTER TABLE [Purchasing].[Vendor]  WITH CHECK ADD  CONSTRAINT [CK_Vendor_CreditRating] CHECK  (([CreditRating]>=(1) AND [CreditRating]<=(5)))
-    GO
-
-    ALTER TABLE [Purchasing].[Vendor] CHECK CONSTRAINT [CK_Vendor_CreditRating]
-    GO
-
+  script: ""
 partitionInfo:
   isPartitioned: false
   columns: []
@@ -61,68 +48,14 @@ triggers:
   description: INSTEAD OF DELETE trigger which keeps Vendors from being deleted.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: dVendor
+  name: Purchasing.dVendor
   isEnabled: true
   isSchemaBound: false
   isInsteadOf: true
   onDelete: true
   onUpdate: false
   onInsert: false
-  script: |+
-    SET ANSI_NULLS ON
-    GO
-
-    SET QUOTED_IDENTIFIER ON
-    GO
-
-    CREATE TRIGGER [Purchasing].[dVendor] ON [Purchasing].[Vendor]
-    INSTEAD OF DELETE NOT FOR REPLICATION AS
-    BEGIN
-        DECLARE @Count int;
-
-        SET @Count = @@ROWCOUNT;
-        IF @Count = 0
-            RETURN;
-
-        SET NOCOUNT ON;
-
-        BEGIN TRY
-            DECLARE @DeleteCount int;
-
-            SELECT @DeleteCount = COUNT(*) FROM deleted;
-            IF @DeleteCount > 0
-            BEGIN
-                RAISERROR
-                    (N'Vendors cannot be deleted. They can only be marked as not active.', -- Message
-                    10, -- Severity.
-                    1); -- State.
-
-            -- Rollback any active or uncommittable transactions
-                IF @@TRANCOUNT > 0
-                BEGIN
-                    ROLLBACK TRANSACTION;
-                END
-            END;
-        END TRY
-        BEGIN CATCH
-            EXECUTE [dbo].[uspPrintError];
-
-            -- Rollback any active or uncommittable transactions before
-            -- inserting information in the ErrorLog
-            IF @@TRANCOUNT > 0
-            BEGIN
-                ROLLBACK TRANSACTION;
-            END
-
-            EXECUTE [dbo].[uspLogError];
-        END CATCH;
-    END;
-
-    GO
-
-    ALTER TABLE [Purchasing].[Vendor] ENABLE TRIGGER [dVendor]
-    GO
-
+  script: ""
 columns:
 - type: TableColumn
   id: table.purchasing.vendor.column.businessentityid

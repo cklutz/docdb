@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[CountryRegionCurrency]  WITH CHECK ADD  CONSTRAINT [FK_CountryRegionCurrency_CountryRegion_CountryRegionCode] FOREIGN KEY([CountryRegionCode])
-    REFERENCES [Person].[CountryRegion] ([CountryRegionCode])
-    GO
-
-    ALTER TABLE [Sales].[CountryRegionCurrency] CHECK CONSTRAINT [FK_CountryRegionCurrency_CountryRegion_CountryRegionCode]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.sales.countryregioncurrency.foreignkey.fk_countryregioncurrency_currency_currencycode
   description: Foreign key constraint referencing Currency.CurrencyCode.
@@ -50,14 +43,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[CountryRegionCurrency]  WITH CHECK ADD  CONSTRAINT [FK_CountryRegionCurrency_Currency_CurrencyCode] FOREIGN KEY([CurrencyCode])
-    REFERENCES [Sales].[Currency] ([CurrencyCode])
-    GO
-
-    ALTER TABLE [Sales].[CountryRegionCurrency] CHECK CONSTRAINT [FK_CountryRegionCurrency_Currency_CurrencyCode]
-    GO
-
+  script: ""
 checks: []
 partitionInfo:
   isPartitioned: false

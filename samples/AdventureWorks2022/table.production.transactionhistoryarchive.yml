@@ -16,13 +16,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: (upper([TransactionType])='P' OR upper([TransactionType])='S' OR upper([TransactionType])='W')
-  script: |+
-    ALTER TABLE [Production].[TransactionHistoryArchive]  WITH CHECK ADD  CONSTRAINT [CK_TransactionHistoryArchive_TransactionType] CHECK  ((upper([TransactionType])='P' OR upper([TransactionType])='S' OR upper([TransactionType])='W'))
-    GO
-
-    ALTER TABLE [Production].[TransactionHistoryArchive] CHECK CONSTRAINT [CK_TransactionHistoryArchive_TransactionType]
-    GO
-
+  script: ""
 partitionInfo:
   isPartitioned: false
   columns: []

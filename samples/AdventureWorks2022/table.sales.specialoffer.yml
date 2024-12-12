@@ -16,13 +16,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([DiscountPct]>=(0.00))
-  script: |+
-    ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_DiscountPct] CHECK  (([DiscountPct]>=(0.00)))
-    GO
-
-    ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_DiscountPct]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.sales.specialoffer.check.ck_specialoffer_enddate
   description: Check constraint [EndDate] >= [StartDate]
@@ -32,13 +26,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([EndDate]>=[StartDate])
-  script: |+
-    ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_EndDate] CHECK  (([EndDate]>=[StartDate]))
-    GO
-
-    ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_EndDate]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.sales.specialoffer.check.ck_specialoffer_maxqty
   description: Check constraint [MaxQty] >= (0)
@@ -48,13 +36,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([MaxQty]>=(0))
-  script: |+
-    ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_MaxQty] CHECK  (([MaxQty]>=(0)))
-    GO
-
-    ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_MaxQty]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.sales.specialoffer.check.ck_specialoffer_minqty
   description: Check constraint [MinQty] >= (0)
@@ -64,13 +46,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([MinQty]>=(0))
-  script: |+
-    ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_MinQty] CHECK  (([MinQty]>=(0)))
-    GO
-
-    ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_MinQty]
-    GO
-
+  script: ""
 partitionInfo:
   isPartitioned: false
   columns: []

@@ -24,15 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeaderSalesReason]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeaderSalesReason_SalesOrderHeader_SalesOrderID] FOREIGN KEY([SalesOrderID])
-    REFERENCES [Sales].[SalesOrderHeader] ([SalesOrderID])
-    ON DELETE CASCADE
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeaderSalesReason] CHECK CONSTRAINT [FK_SalesOrderHeaderSalesReason_SalesOrderHeader_SalesOrderID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.sales.salesorderheadersalesreason.foreignkey.fk_salesorderheadersalesreason_salesreason_salesreasonid
   description: Foreign key constraint referencing SalesReason.SalesReasonID.
@@ -51,14 +43,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeaderSalesReason]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeaderSalesReason_SalesReason_SalesReasonID] FOREIGN KEY([SalesReasonID])
-    REFERENCES [Sales].[SalesReason] ([SalesReasonID])
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeaderSalesReason] CHECK CONSTRAINT [FK_SalesOrderHeaderSalesReason_SalesReason_SalesReasonID]
-    GO
-
+  script: ""
 checks: []
 partitionInfo:
   isPartitioned: false

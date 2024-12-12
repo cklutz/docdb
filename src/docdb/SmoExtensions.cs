@@ -176,10 +176,9 @@ public static class SmoExtensions
 
         if (obj is ScriptSchemaObjectBase schemaObj)
         {
-            schemaName = schemaObj.Name;
+            schemaName = schemaObj.Schema;
         }
-
-        if (obj is Trigger trigger && trigger.Parent is Table parentTable)
+        else if (obj is Trigger trigger && trigger.Parent is Table parentTable)
         {
             schemaName = parentTable.Schema;
         }

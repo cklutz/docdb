@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesPersonQuotaHistory]  WITH CHECK ADD  CONSTRAINT [FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
-    REFERENCES [Sales].[SalesPerson] ([BusinessEntityID])
-    GO
-
-    ALTER TABLE [Sales].[SalesPersonQuotaHistory] CHECK CONSTRAINT [FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID]
-    GO
-
+  script: ""
 checks:
 - type: CheckConstraint
   id: table.sales.salespersonquotahistory.check.ck_salespersonquotahistory_salesquota
@@ -42,13 +35,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([SalesQuota]>(0.00))
-  script: |+
-    ALTER TABLE [Sales].[SalesPersonQuotaHistory]  WITH CHECK ADD  CONSTRAINT [CK_SalesPersonQuotaHistory_SalesQuota] CHECK  (([SalesQuota]>(0.00)))
-    GO
-
-    ALTER TABLE [Sales].[SalesPersonQuotaHistory] CHECK CONSTRAINT [CK_SalesPersonQuotaHistory_SalesQuota]
-    GO
-
+  script: ""
 partitionInfo:
   isPartitioned: false
   columns: []

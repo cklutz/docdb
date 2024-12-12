@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Production].[ProductModelProductDescriptionCulture]  WITH CHECK ADD  CONSTRAINT [FK_ProductModelProductDescriptionCulture_Culture_CultureID] FOREIGN KEY([CultureID])
-    REFERENCES [Production].[Culture] ([CultureID])
-    GO
-
-    ALTER TABLE [Production].[ProductModelProductDescriptionCulture] CHECK CONSTRAINT [FK_ProductModelProductDescriptionCulture_Culture_CultureID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.production.productmodelproductdescriptionculture.foreignkey.fk_productmodelproductdescriptionculture_productdescription_productdescriptionid
   description: Foreign key constraint referencing ProductDescription.ProductDescriptionID.
@@ -50,14 +43,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Production].[ProductModelProductDescriptionCulture]  WITH CHECK ADD  CONSTRAINT [FK_ProductModelProductDescriptionCulture_ProductDescription_ProductDescriptionID] FOREIGN KEY([ProductDescriptionID])
-    REFERENCES [Production].[ProductDescription] ([ProductDescriptionID])
-    GO
-
-    ALTER TABLE [Production].[ProductModelProductDescriptionCulture] CHECK CONSTRAINT [FK_ProductModelProductDescriptionCulture_ProductDescription_ProductDescriptionID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.production.productmodelproductdescriptionculture.foreignkey.fk_productmodelproductdescriptionculture_productmodel_productmodelid
   description: Foreign key constraint referencing ProductModel.ProductModelID.
@@ -76,14 +62,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Production].[ProductModelProductDescriptionCulture]  WITH CHECK ADD  CONSTRAINT [FK_ProductModelProductDescriptionCulture_ProductModel_ProductModelID] FOREIGN KEY([ProductModelID])
-    REFERENCES [Production].[ProductModel] ([ProductModelID])
-    GO
-
-    ALTER TABLE [Production].[ProductModelProductDescriptionCulture] CHECK CONSTRAINT [FK_ProductModelProductDescriptionCulture_ProductModel_ProductModelID]
-    GO
-
+  script: ""
 checks: []
 partitionInfo:
   isPartitioned: false

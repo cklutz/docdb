@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [FK_BillOfMaterials_Product_ComponentID] FOREIGN KEY([ComponentID])
-    REFERENCES [Production].[Product] ([ProductID])
-    GO
-
-    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [FK_BillOfMaterials_Product_ComponentID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.production.billofmaterials.foreignkey.fk_billofmaterials_product_productassemblyid
   description: Foreign key constraint referencing Product.ProductAssemblyID.
@@ -50,14 +43,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [FK_BillOfMaterials_Product_ProductAssemblyID] FOREIGN KEY([ProductAssemblyID])
-    REFERENCES [Production].[Product] ([ProductID])
-    GO
-
-    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [FK_BillOfMaterials_Product_ProductAssemblyID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.production.billofmaterials.foreignkey.fk_billofmaterials_unitmeasure_unitmeasurecode
   description: Foreign key constraint referencing UnitMeasure.UnitMeasureCode.
@@ -76,14 +62,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [FK_BillOfMaterials_UnitMeasure_UnitMeasureCode] FOREIGN KEY([UnitMeasureCode])
-    REFERENCES [Production].[UnitMeasure] ([UnitMeasureCode])
-    GO
-
-    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [FK_BillOfMaterials_UnitMeasure_UnitMeasureCode]
-    GO
-
+  script: ""
 checks:
 - type: CheckConstraint
   id: table.production.billofmaterials.check.ck_billofmaterials_bomlevel
@@ -94,13 +73,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ProductAssemblyID] IS NULL AND [BOMLevel]=(0) AND [PerAssemblyQty]=(1.00) OR [ProductAssemblyID] IS NOT NULL AND [BOMLevel]>=(1))
-  script: |+
-    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [CK_BillOfMaterials_BOMLevel] CHECK  (([ProductAssemblyID] IS NULL AND [BOMLevel]=(0) AND [PerAssemblyQty]=(1.00) OR [ProductAssemblyID] IS NOT NULL AND [BOMLevel]>=(1)))
-    GO
-
-    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [CK_BillOfMaterials_BOMLevel]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.production.billofmaterials.check.ck_billofmaterials_enddate
   description: Check constraint EndDate] > [StartDate] OR [EndDate] IS NULL
@@ -110,13 +83,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([EndDate]>[StartDate] OR [EndDate] IS NULL)
-  script: |+
-    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [CK_BillOfMaterials_EndDate] CHECK  (([EndDate]>[StartDate] OR [EndDate] IS NULL))
-    GO
-
-    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [CK_BillOfMaterials_EndDate]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.production.billofmaterials.check.ck_billofmaterials_perassemblyqty
   description: Check constraint [PerAssemblyQty] >= (1.00)
@@ -126,13 +93,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([PerAssemblyQty]>=(1.00))
-  script: |+
-    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [CK_BillOfMaterials_PerAssemblyQty] CHECK  (([PerAssemblyQty]>=(1.00)))
-    GO
-
-    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [CK_BillOfMaterials_PerAssemblyQty]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.production.billofmaterials.check.ck_billofmaterials_productassemblyid
   description: Check constraint [ProductAssemblyID] <> [ComponentID]
@@ -142,13 +103,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ProductAssemblyID]<>[ComponentID])
-  script: |+
-    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [CK_BillOfMaterials_ProductAssemblyID] CHECK  (([ProductAssemblyID]<>[ComponentID]))
-    GO
-
-    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [CK_BillOfMaterials_ProductAssemblyID]
-    GO
-
+  script: ""
 partitionInfo:
   isPartitioned: false
   columns: []

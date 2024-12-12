@@ -19,8 +19,8 @@ foreignKeys:
   isChecked: true
   referencedKey: PK_BusinessEntity_BusinessEntityID
   referencedTable:
-    name: '[BusinessEntity].[BusinessEntity]'
-    id: table.businessentity.businessentity
+    name: '[Person].[BusinessEntity]'
+    id: table.person.businessentity
     type: TableRef
   deleteAction: 
   updateAction: 

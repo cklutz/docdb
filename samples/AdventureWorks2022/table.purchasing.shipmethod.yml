@@ -16,13 +16,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ShipBase]>(0.00))
-  script: |+
-    ALTER TABLE [Purchasing].[ShipMethod]  WITH CHECK ADD  CONSTRAINT [CK_ShipMethod_ShipBase] CHECK  (([ShipBase]>(0.00)))
-    GO
-
-    ALTER TABLE [Purchasing].[ShipMethod] CHECK CONSTRAINT [CK_ShipMethod_ShipBase]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.purchasing.shipmethod.check.ck_shipmethod_shiprate
   description: Check constraint [ShipRate] > (0.00)
@@ -32,13 +26,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ShipRate]>(0.00))
-  script: |+
-    ALTER TABLE [Purchasing].[ShipMethod]  WITH CHECK ADD  CONSTRAINT [CK_ShipMethod_ShipRate] CHECK  (([ShipRate]>(0.00)))
-    GO
-
-    ALTER TABLE [Purchasing].[ShipMethod] CHECK CONSTRAINT [CK_ShipMethod_ShipRate]
-    GO
-
+  script: ""
 partitionInfo:
   isPartitioned: false
   columns: []

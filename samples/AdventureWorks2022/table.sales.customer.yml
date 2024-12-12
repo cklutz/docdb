@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Person_PersonID] FOREIGN KEY([PersonID])
-    REFERENCES [Person].[Person] ([BusinessEntityID])
-    GO
-
-    ALTER TABLE [Sales].[Customer] CHECK CONSTRAINT [FK_Customer_Person_PersonID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.sales.customer.foreignkey.fk_customer_salesterritory_territoryid
   description: Foreign key constraint referencing SalesTerritory.TerritoryID.
@@ -50,14 +43,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_SalesTerritory_TerritoryID] FOREIGN KEY([TerritoryID])
-    REFERENCES [Sales].[SalesTerritory] ([TerritoryID])
-    GO
-
-    ALTER TABLE [Sales].[Customer] CHECK CONSTRAINT [FK_Customer_SalesTerritory_TerritoryID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.sales.customer.foreignkey.fk_customer_store_storeid
   description: Foreign key constraint referencing Store.BusinessEntityID.
@@ -76,14 +62,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Store_StoreID] FOREIGN KEY([StoreID])
-    REFERENCES [Sales].[Store] ([BusinessEntityID])
-    GO
-
-    ALTER TABLE [Sales].[Customer] CHECK CONSTRAINT [FK_Customer_Store_StoreID]
-    GO
-
+  script: ""
 checks: []
 partitionInfo:
   isPartitioned: false

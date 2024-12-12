@@ -24,14 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeader_Address_BillToAddressID] FOREIGN KEY([BillToAddressID])
-    REFERENCES [Person].[Address] ([AddressID])
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_Address_BillToAddressID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_address_shiptoaddressid
   description: Foreign key constraint referencing Address.AddressID.
@@ -50,14 +43,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeader_Address_ShipToAddressID] FOREIGN KEY([ShipToAddressID])
-    REFERENCES [Person].[Address] ([AddressID])
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_Address_ShipToAddressID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_creditcard_creditcardid
   description: Foreign key constraint referencing CreditCard.CreditCardID.
@@ -76,14 +62,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeader_CreditCard_CreditCardID] FOREIGN KEY([CreditCardID])
-    REFERENCES [Sales].[CreditCard] ([CreditCardID])
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_CreditCard_CreditCardID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_currencyrate_currencyrateid
   description: Foreign key constraint referencing CurrencyRate.CurrencyRateID.
@@ -102,14 +81,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeader_CurrencyRate_CurrencyRateID] FOREIGN KEY([CurrencyRateID])
-    REFERENCES [Sales].[CurrencyRate] ([CurrencyRateID])
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_CurrencyRate_CurrencyRateID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_customer_customerid
   description: Foreign key constraint referencing Customer.CustomerID.
@@ -128,14 +100,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeader_Customer_CustomerID] FOREIGN KEY([CustomerID])
-    REFERENCES [Sales].[Customer] ([CustomerID])
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_Customer_CustomerID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_salesperson_salespersonid
   description: Foreign key constraint referencing SalesPerson.SalesPersonID.
@@ -154,14 +119,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeader_SalesPerson_SalesPersonID] FOREIGN KEY([SalesPersonID])
-    REFERENCES [Sales].[SalesPerson] ([BusinessEntityID])
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_SalesPerson_SalesPersonID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_salesterritory_territoryid
   description: Foreign key constraint referencing SalesTerritory.TerritoryID.
@@ -180,14 +138,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeader_SalesTerritory_TerritoryID] FOREIGN KEY([TerritoryID])
-    REFERENCES [Sales].[SalesTerritory] ([TerritoryID])
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_SalesTerritory_TerritoryID]
-    GO
-
+  script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_shipmethod_shipmethodid
   description: Foreign key constraint referencing ShipMethod.ShipMethodID.
@@ -206,14 +157,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeader_ShipMethod_ShipMethodID] FOREIGN KEY([ShipMethodID])
-    REFERENCES [Purchasing].[ShipMethod] ([ShipMethodID])
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [FK_SalesOrderHeader_ShipMethod_ShipMethodID]
-    GO
-
+  script: ""
 checks:
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_duedate
@@ -224,13 +168,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([DueDate]>=[OrderDate])
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_DueDate] CHECK  (([DueDate]>=[OrderDate]))
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_DueDate]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_freight
   description: Check constraint [Freight] >= (0.00)
@@ -240,13 +178,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([Freight]>=(0.00))
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_Freight] CHECK  (([Freight]>=(0.00)))
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_Freight]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_shipdate
   description: Check constraint [ShipDate] >= [OrderDate] OR [ShipDate] IS NULL
@@ -256,13 +188,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ShipDate]>=[OrderDate] OR [ShipDate] IS NULL)
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_ShipDate] CHECK  (([ShipDate]>=[OrderDate] OR [ShipDate] IS NULL))
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_ShipDate]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_status
   description: Check constraint [Status] BETWEEN (0) AND (8)
@@ -272,13 +198,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([Status]>=(0) AND [Status]<=(8))
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_Status] CHECK  (([Status]>=(0) AND [Status]<=(8)))
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_Status]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_subtotal
   description: Check constraint [SubTotal] >= (0.00)
@@ -288,13 +208,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([SubTotal]>=(0.00))
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_SubTotal] CHECK  (([SubTotal]>=(0.00)))
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_SubTotal]
-    GO
-
+  script: ""
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_taxamt
   description: Check constraint [TaxAmt] >= (0.00)
@@ -304,13 +218,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([TaxAmt]>=(0.00))
-  script: |+
-    ALTER TABLE [Sales].[SalesOrderHeader]  WITH CHECK ADD  CONSTRAINT [CK_SalesOrderHeader_TaxAmt] CHECK  (([TaxAmt]>=(0.00)))
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] CHECK CONSTRAINT [CK_SalesOrderHeader_TaxAmt]
-    GO
-
+  script: ""
 partitionInfo:
   isPartitioned: false
   columns: []
@@ -323,94 +231,14 @@ triggers:
   description: AFTER UPDATE trigger that updates the RevisionNumber and ModifiedDate columns in the SalesOrderHeader table.Updates the SalesYTD column in the SalesPerson and SalesTerritory tables.
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
-  name: uSalesOrderHeader
+  name: Sales.uSalesOrderHeader
   isEnabled: true
   isSchemaBound: false
   isInsteadOf: false
   onDelete: false
   onUpdate: true
   onInsert: false
-  script: |+
-    SET ANSI_NULLS ON
-    GO
-
-    SET QUOTED_IDENTIFIER ON
-    GO
-
-    CREATE TRIGGER [Sales].[uSalesOrderHeader] ON [Sales].[SalesOrderHeader]
-    AFTER UPDATE NOT FOR REPLICATION AS
-    BEGIN
-        DECLARE @Count int;
-
-        SET @Count = @@ROWCOUNT;
-        IF @Count = 0
-            RETURN;
-
-        SET NOCOUNT ON;
-
-        BEGIN TRY
-            -- Update RevisionNumber for modification of any field EXCEPT the Status.
-            IF NOT UPDATE([Status])
-            BEGIN
-                UPDATE [Sales].[SalesOrderHeader]
-                SET [Sales].[SalesOrderHeader].[RevisionNumber] =
-                    [Sales].[SalesOrderHeader].[RevisionNumber] + 1
-                WHERE [Sales].[SalesOrderHeader].[SalesOrderID] IN
-                    (SELECT inserted.[SalesOrderID] FROM inserted);
-            END;
-
-            -- Update the SalesPerson SalesYTD when SubTotal is updated
-            IF UPDATE([SubTotal])
-            BEGIN
-                DECLARE @StartDate datetime,
-                        @EndDate datetime
-
-                SET @StartDate = [dbo].[ufnGetAccountingStartDate]();
-                SET @EndDate = [dbo].[ufnGetAccountingEndDate]();
-
-                UPDATE [Sales].[SalesPerson]
-                SET [Sales].[SalesPerson].[SalesYTD] =
-                    (SELECT SUM([Sales].[SalesOrderHeader].[SubTotal])
-                    FROM [Sales].[SalesOrderHeader]
-                    WHERE [Sales].[SalesPerson].[BusinessEntityID] = [Sales].[SalesOrderHeader].[SalesPersonID]
-                        AND ([Sales].[SalesOrderHeader].[Status] = 5) -- Shipped
-                        AND [Sales].[SalesOrderHeader].[OrderDate] BETWEEN @StartDate AND @EndDate)
-                WHERE [Sales].[SalesPerson].[BusinessEntityID]
-                    IN (SELECT DISTINCT inserted.[SalesPersonID] FROM inserted
-                        WHERE inserted.[OrderDate] BETWEEN @StartDate AND @EndDate);
-
-                -- Update the SalesTerritory SalesYTD when SubTotal is updated
-                UPDATE [Sales].[SalesTerritory]
-                SET [Sales].[SalesTerritory].[SalesYTD] =
-                    (SELECT SUM([Sales].[SalesOrderHeader].[SubTotal])
-                    FROM [Sales].[SalesOrderHeader]
-                    WHERE [Sales].[SalesTerritory].[TerritoryID] = [Sales].[SalesOrderHeader].[TerritoryID]
-                        AND ([Sales].[SalesOrderHeader].[Status] = 5) -- Shipped
-                        AND [Sales].[SalesOrderHeader].[OrderDate] BETWEEN @StartDate AND @EndDate)
-                WHERE [Sales].[SalesTerritory].[TerritoryID]
-                    IN (SELECT DISTINCT inserted.[TerritoryID] FROM inserted
-                        WHERE inserted.[OrderDate] BETWEEN @StartDate AND @EndDate);
-            END;
-        END TRY
-        BEGIN CATCH
-            EXECUTE [dbo].[uspPrintError];
-
-            -- Rollback any active or uncommittable transactions before
-            -- inserting information in the ErrorLog
-            IF @@TRANCOUNT > 0
-            BEGIN
-                ROLLBACK TRANSACTION;
-            END
-
-            EXECUTE [dbo].[uspLogError];
-        END CATCH;
-    END;
-
-    GO
-
-    ALTER TABLE [Sales].[SalesOrderHeader] ENABLE TRIGGER [uSalesOrderHeader]
-    GO
-
+  script: ""
 columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.salesorderid
