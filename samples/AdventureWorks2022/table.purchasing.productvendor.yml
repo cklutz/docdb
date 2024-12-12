@@ -5,7 +5,85 @@ description: Cross-reference table mapping vendors with the products they supply
 createdAt: 2023-05-08T12:07:29.5330000
 lastModifiedAt: 2023-05-08T12:07:38.8400000
 name: Purchasing.ProductVendor
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.purchasing.productvendor.foreignkey.fk_productvendor_product_productid
+  description: Foreign key constraint referencing Product.ProductID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_ProductVendor_Product_ProductID
+  columns:
+  - name: ProductID
+    id: table.purchasing.productvendor.column.productid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Product_ProductID
+  referencedTable:
+    name: '[Production].[Product]'
+    id: table.production.product
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Purchasing].[ProductVendor]  WITH CHECK ADD  CONSTRAINT [FK_ProductVendor_Product_ProductID] FOREIGN KEY([ProductID])
+    REFERENCES [Production].[Product] ([ProductID])
+    GO
+
+    ALTER TABLE [Purchasing].[ProductVendor] CHECK CONSTRAINT [FK_ProductVendor_Product_ProductID]
+    GO
+
+- type: ForeignKey
+  id: table.purchasing.productvendor.foreignkey.fk_productvendor_unitmeasure_unitmeasurecode
+  description: Foreign key constraint referencing UnitMeasure.UnitMeasureCode.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_ProductVendor_UnitMeasure_UnitMeasureCode
+  columns:
+  - name: UnitMeasureCode
+    id: table.purchasing.productvendor.column.unitmeasurecode
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_UnitMeasure_UnitMeasureCode
+  referencedTable:
+    name: '[Production].[UnitMeasure]'
+    id: table.production.unitmeasure
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Purchasing].[ProductVendor]  WITH CHECK ADD  CONSTRAINT [FK_ProductVendor_UnitMeasure_UnitMeasureCode] FOREIGN KEY([UnitMeasureCode])
+    REFERENCES [Production].[UnitMeasure] ([UnitMeasureCode])
+    GO
+
+    ALTER TABLE [Purchasing].[ProductVendor] CHECK CONSTRAINT [FK_ProductVendor_UnitMeasure_UnitMeasureCode]
+    GO
+
+- type: ForeignKey
+  id: table.purchasing.productvendor.foreignkey.fk_productvendor_vendor_businessentityid
+  description: Foreign key constraint referencing Vendor.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_ProductVendor_Vendor_BusinessEntityID
+  columns:
+  - name: BusinessEntityID
+    id: table.purchasing.productvendor.column.businessentityid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Vendor_BusinessEntityID
+  referencedTable:
+    name: '[Purchasing].[Vendor]'
+    id: table.purchasing.vendor
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Purchasing].[ProductVendor]  WITH CHECK ADD  CONSTRAINT [FK_ProductVendor_Vendor_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+    REFERENCES [Purchasing].[Vendor] ([BusinessEntityID])
+    GO
+
+    ALTER TABLE [Purchasing].[ProductVendor] CHECK CONSTRAINT [FK_ProductVendor_Vendor_BusinessEntityID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +102,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_ProductVendor_Product_ProductID
+    id: table.purchasing.productvendor.foreignkey.fk_productvendor_product_productid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.productvendor.column.businessentityid
@@ -43,14 +129,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_ProductVendor_Vendor_BusinessEntityID
+    id: table.purchasing.productvendor.foreignkey.fk_productvendor_vendor_businessentityid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.productvendor.column.averageleadtime
@@ -62,6 +156,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -69,7 +164,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.productvendor.column.standardprice
@@ -81,6 +180,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -88,7 +188,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.productvendor.column.lastreceiptcost
@@ -100,6 +204,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -107,7 +212,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.productvendor.column.lastreceiptdate
@@ -119,6 +228,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -126,7 +236,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.productvendor.column.minorderqty
@@ -138,6 +252,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -145,7 +260,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.productvendor.column.maxorderqty
@@ -157,6 +276,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -164,7 +284,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.productvendor.column.onorderqty
@@ -176,6 +300,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -183,7 +308,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.productvendor.column.unitmeasurecode
@@ -195,14 +324,22 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_ProductVendor_UnitMeasure_UnitMeasureCode
+    id: table.purchasing.productvendor.foreignkey.fk_productvendor_unitmeasure_unitmeasurecode
+    type: ForeignKeyRef
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.productvendor.column.modifieddate
@@ -214,6 +351,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -221,7 +359,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

@@ -5,8 +5,12 @@
 
 <div class"markdown level0 summary">{{payload.description}}</div>
 
+{{#isTabular}}
+{{>partials/tabular.columns}}
+{{/isTabular}}
+
 {{#isTable}}
-{{>partials/table.columns}}
+{{>partials/table.foreignkeys}}
 {{/isTable}}
 
 {{#payload.script}}

@@ -5,7 +5,111 @@ description: Products sold or used in the manfacturing of sold products.
 createdAt: 2023-05-08T12:07:29.4900000
 lastModifiedAt: 2023-05-08T12:07:39.5300000
 name: Production.Product
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.production.product.foreignkey.fk_product_productmodel_productmodelid
+  description: Foreign key constraint referencing ProductModel.ProductModelID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Product_ProductModel_ProductModelID
+  columns:
+  - name: ProductModelID
+    id: table.production.product.column.productmodelid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_ProductModel_ProductModelID
+  referencedTable:
+    name: '[Production].[ProductModel]'
+    id: table.production.productmodel
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_ProductModel_ProductModelID] FOREIGN KEY([ProductModelID])
+    REFERENCES [Production].[ProductModel] ([ProductModelID])
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [FK_Product_ProductModel_ProductModelID]
+    GO
+
+- type: ForeignKey
+  id: table.production.product.foreignkey.fk_product_productsubcategory_productsubcategoryid
+  description: Foreign key constraint referencing ProductSubcategory.ProductSubcategoryID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Product_ProductSubcategory_ProductSubcategoryID
+  columns:
+  - name: ProductSubcategoryID
+    id: table.production.product.column.productsubcategoryid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_ProductSubcategory_ProductSubcategoryID
+  referencedTable:
+    name: '[Production].[ProductSubcategory]'
+    id: table.production.productsubcategory
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_ProductSubcategory_ProductSubcategoryID] FOREIGN KEY([ProductSubcategoryID])
+    REFERENCES [Production].[ProductSubcategory] ([ProductSubcategoryID])
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [FK_Product_ProductSubcategory_ProductSubcategoryID]
+    GO
+
+- type: ForeignKey
+  id: table.production.product.foreignkey.fk_product_unitmeasure_sizeunitmeasurecode
+  description: Foreign key constraint referencing UnitMeasure.UnitMeasureCode.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Product_UnitMeasure_SizeUnitMeasureCode
+  columns:
+  - name: SizeUnitMeasureCode
+    id: table.production.product.column.sizeunitmeasurecode
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_UnitMeasure_UnitMeasureCode
+  referencedTable:
+    name: '[Production].[UnitMeasure]'
+    id: table.production.unitmeasure
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_UnitMeasure_SizeUnitMeasureCode] FOREIGN KEY([SizeUnitMeasureCode])
+    REFERENCES [Production].[UnitMeasure] ([UnitMeasureCode])
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [FK_Product_UnitMeasure_SizeUnitMeasureCode]
+    GO
+
+- type: ForeignKey
+  id: table.production.product.foreignkey.fk_product_unitmeasure_weightunitmeasurecode
+  description: Foreign key constraint referencing UnitMeasure.UnitMeasureCode.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Product_UnitMeasure_WeightUnitMeasureCode
+  columns:
+  - name: WeightUnitMeasureCode
+    id: table.production.product.column.weightunitmeasurecode
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_UnitMeasure_UnitMeasureCode
+  referencedTable:
+    name: '[Production].[UnitMeasure]'
+    id: table.production.unitmeasure
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Production].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_UnitMeasure_WeightUnitMeasureCode] FOREIGN KEY([WeightUnitMeasureCode])
+    REFERENCES [Production].[UnitMeasure] ([UnitMeasureCode])
+    GO
+
+    ALTER TABLE [Production].[Product] CHECK CONSTRAINT [FK_Product_UnitMeasure_WeightUnitMeasureCode]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +128,19 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: true
   identityIncrement: 1
   identitySeed: 1
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.name
@@ -43,6 +152,7 @@ columns:
   maxLengthBytes: 50
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -50,7 +160,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.productnumber
@@ -62,6 +176,7 @@ columns:
   maxLengthBytes: 25
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -69,7 +184,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.makeflag
@@ -81,6 +200,7 @@ columns:
   maxLengthBytes: 1
   precision: 1
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -88,7 +208,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: ((1))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.finishedgoodsflag
@@ -100,6 +224,7 @@ columns:
   maxLengthBytes: 1
   precision: 1
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -107,7 +232,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: ((1))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.color
@@ -119,6 +248,7 @@ columns:
   maxLengthBytes: 15
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -126,7 +256,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.safetystocklevel
@@ -138,6 +272,7 @@ columns:
   maxLengthBytes: 2
   precision: 5
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -145,7 +280,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.reorderpoint
@@ -157,6 +296,7 @@ columns:
   maxLengthBytes: 2
   precision: 5
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -164,7 +304,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.standardcost
@@ -176,6 +320,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -183,7 +328,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.listprice
@@ -195,6 +344,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -202,7 +352,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.size
@@ -214,6 +368,7 @@ columns:
   maxLengthBytes: 5
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -221,7 +376,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.sizeunitmeasurecode
@@ -233,14 +392,22 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Product_UnitMeasure_SizeUnitMeasureCode
+    id: table.production.product.foreignkey.fk_product_unitmeasure_sizeunitmeasurecode
+    type: ForeignKeyRef
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.weightunitmeasurecode
@@ -252,14 +419,22 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Product_UnitMeasure_WeightUnitMeasureCode
+    id: table.production.product.foreignkey.fk_product_unitmeasure_weightunitmeasurecode
+    type: ForeignKeyRef
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.weight
@@ -271,6 +446,7 @@ columns:
   maxLengthBytes: 5
   precision: 8
   scale: 2
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -278,7 +454,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.daystomanufacture
@@ -290,6 +470,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -297,7 +478,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.productline
@@ -309,6 +494,7 @@ columns:
   maxLengthBytes: 2
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -316,7 +502,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.class
@@ -328,6 +518,7 @@ columns:
   maxLengthBytes: 2
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -335,7 +526,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.style
@@ -347,6 +542,7 @@ columns:
   maxLengthBytes: 2
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -354,7 +550,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.productsubcategoryid
@@ -366,14 +566,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Product_ProductSubcategory_ProductSubcategoryID
+    id: table.production.product.foreignkey.fk_product_productsubcategory_productsubcategoryid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.productmodelid
@@ -385,14 +593,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Product_ProductModel_ProductModelID
+    id: table.production.product.foreignkey.fk_product_productmodel_productmodelid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.sellstartdate
@@ -404,6 +620,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -411,7 +628,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.sellenddate
@@ -423,6 +644,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -430,7 +652,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.discontinueddate
@@ -442,6 +668,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -449,7 +676,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.rowguid
@@ -461,6 +692,7 @@ columns:
   maxLengthBytes: 16
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -468,7 +700,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.product.column.modifieddate
@@ -480,6 +716,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -487,7 +724,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

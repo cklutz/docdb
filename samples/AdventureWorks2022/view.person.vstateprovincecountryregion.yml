@@ -17,6 +17,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -24,7 +25,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.stateprovincecode
@@ -36,6 +41,7 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -43,7 +49,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.isonlystateprovinceflag
@@ -55,6 +65,7 @@ columns:
   maxLengthBytes: 1
   precision: 1
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -62,7 +73,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.stateprovincename
@@ -74,6 +89,7 @@ columns:
   maxLengthBytes: 50
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -81,7 +97,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.territoryid
@@ -93,6 +113,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -100,7 +121,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.countryregioncode
@@ -112,6 +137,7 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -119,7 +145,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.countryregionname
@@ -131,6 +161,7 @@ columns:
   maxLengthBytes: 50
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -138,7 +169,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

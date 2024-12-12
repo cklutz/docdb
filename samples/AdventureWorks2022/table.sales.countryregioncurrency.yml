@@ -5,7 +5,59 @@ description: Cross-reference table mapping ISO currency codes to a country or re
 createdAt: 2023-05-08T12:07:29.4230000
 lastModifiedAt: 2023-05-08T12:07:38.5730000
 name: Sales.CountryRegionCurrency
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.sales.countryregioncurrency.foreignkey.fk_countryregioncurrency_countryregion_countryregioncode
+  description: Foreign key constraint referencing CountryRegion.CountryRegionCode.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_CountryRegionCurrency_CountryRegion_CountryRegionCode
+  columns:
+  - name: CountryRegionCode
+    id: table.sales.countryregioncurrency.column.countryregioncode
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_CountryRegion_CountryRegionCode
+  referencedTable:
+    name: '[Person].[CountryRegion]'
+    id: table.person.countryregion
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[CountryRegionCurrency]  WITH CHECK ADD  CONSTRAINT [FK_CountryRegionCurrency_CountryRegion_CountryRegionCode] FOREIGN KEY([CountryRegionCode])
+    REFERENCES [Person].[CountryRegion] ([CountryRegionCode])
+    GO
+
+    ALTER TABLE [Sales].[CountryRegionCurrency] CHECK CONSTRAINT [FK_CountryRegionCurrency_CountryRegion_CountryRegionCode]
+    GO
+
+- type: ForeignKey
+  id: table.sales.countryregioncurrency.foreignkey.fk_countryregioncurrency_currency_currencycode
+  description: Foreign key constraint referencing Currency.CurrencyCode.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_CountryRegionCurrency_Currency_CurrencyCode
+  columns:
+  - name: CurrencyCode
+    id: table.sales.countryregioncurrency.column.currencycode
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Currency_CurrencyCode
+  referencedTable:
+    name: '[Sales].[Currency]'
+    id: table.sales.currency
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[CountryRegionCurrency]  WITH CHECK ADD  CONSTRAINT [FK_CountryRegionCurrency_Currency_CurrencyCode] FOREIGN KEY([CurrencyCode])
+    REFERENCES [Sales].[Currency] ([CurrencyCode])
+    GO
+
+    ALTER TABLE [Sales].[CountryRegionCurrency] CHECK CONSTRAINT [FK_CountryRegionCurrency_Currency_CurrencyCode]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +76,22 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_CountryRegionCurrency_CountryRegion_CountryRegionCode
+    id: table.sales.countryregioncurrency.foreignkey.fk_countryregioncurrency_countryregion_countryregioncode
+    type: ForeignKeyRef
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.countryregioncurrency.column.currencycode
@@ -43,14 +103,22 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_CountryRegionCurrency_Currency_CurrencyCode
+    id: table.sales.countryregioncurrency.foreignkey.fk_countryregioncurrency_currency_currencycode
+    type: ForeignKeyRef
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.countryregioncurrency.column.modifieddate
@@ -62,6 +130,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -69,7 +138,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

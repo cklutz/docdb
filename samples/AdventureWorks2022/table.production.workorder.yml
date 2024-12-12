@@ -5,7 +5,59 @@ description: Manufacturing work orders.
 createdAt: 2023-05-08T12:07:29.6270000
 lastModifiedAt: 2023-05-08T12:07:39.4400000
 name: Production.WorkOrder
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.production.workorder.foreignkey.fk_workorder_product_productid
+  description: Foreign key constraint referencing Product.ProductID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_WorkOrder_Product_ProductID
+  columns:
+  - name: ProductID
+    id: table.production.workorder.column.productid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Product_ProductID
+  referencedTable:
+    name: '[Production].[Product]'
+    id: table.production.product
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [FK_WorkOrder_Product_ProductID] FOREIGN KEY([ProductID])
+    REFERENCES [Production].[Product] ([ProductID])
+    GO
+
+    ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [FK_WorkOrder_Product_ProductID]
+    GO
+
+- type: ForeignKey
+  id: table.production.workorder.foreignkey.fk_workorder_scrapreason_scrapreasonid
+  description: Foreign key constraint referencing ScrapReason.ScrapReasonID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_WorkOrder_ScrapReason_ScrapReasonID
+  columns:
+  - name: ScrapReasonID
+    id: table.production.workorder.column.scrapreasonid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_ScrapReason_ScrapReasonID
+  referencedTable:
+    name: '[Production].[ScrapReason]'
+    id: table.production.scrapreason
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [FK_WorkOrder_ScrapReason_ScrapReasonID] FOREIGN KEY([ScrapReasonID])
+    REFERENCES [Production].[ScrapReason] ([ScrapReasonID])
+    GO
+
+    ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [FK_WorkOrder_ScrapReason_ScrapReasonID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +76,19 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: true
   identityIncrement: 1
   identitySeed: 1
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.productid
@@ -43,14 +100,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_WorkOrder_Product_ProductID
+    id: table.production.workorder.foreignkey.fk_workorder_product_productid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.orderqty
@@ -62,6 +127,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -69,7 +135,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.stockedqty
@@ -81,6 +151,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: true
   computedText: (isnull([OrderQty]-[ScrappedQty],(0)))
   isIdentity: false
@@ -88,7 +159,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.scrappedqty
@@ -100,6 +175,7 @@ columns:
   maxLengthBytes: 2
   precision: 5
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -107,7 +183,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.startdate
@@ -119,6 +199,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -126,7 +207,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.enddate
@@ -138,6 +223,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -145,7 +231,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.duedate
@@ -157,6 +247,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -164,7 +255,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.scrapreasonid
@@ -176,14 +271,22 @@ columns:
   maxLengthBytes: 2
   precision: 5
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_WorkOrder_ScrapReason_ScrapReasonID
+    id: table.production.workorder.foreignkey.fk_workorder_scrapreason_scrapreasonid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.modifieddate
@@ -195,6 +298,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -202,7 +306,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

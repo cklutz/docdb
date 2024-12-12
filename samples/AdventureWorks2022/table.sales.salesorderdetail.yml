@@ -5,7 +5,63 @@ description: Individual products associated with a specific sales order. See Sal
 createdAt: 2023-05-08T12:07:29.5500000
 lastModifiedAt: 2023-05-08T12:07:39.4270000
 name: Sales.SalesOrderDetail
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.sales.salesorderdetail.foreignkey.fk_salesorderdetail_salesorderheader_salesorderid
+  description: Foreign key constraint referencing SalesOrderHeader.PurchaseOrderID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID
+  columns:
+  - name: SalesOrderID
+    id: table.sales.salesorderdetail.column.salesorderid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_SalesOrderHeader_SalesOrderID
+  referencedTable:
+    name: '[Sales].[SalesOrderHeader]'
+    id: table.sales.salesorderheader
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[SalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID] FOREIGN KEY([SalesOrderID])
+    REFERENCES [Sales].[SalesOrderHeader] ([SalesOrderID])
+    ON DELETE CASCADE
+    GO
+
+    ALTER TABLE [Sales].[SalesOrderDetail] CHECK CONSTRAINT [FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID]
+    GO
+
+- type: ForeignKey
+  id: table.sales.salesorderdetail.foreignkey.fk_salesorderdetail_specialofferproduct_specialofferidproductid
+  description: Foreign key constraint referencing SpecialOfferProduct.SpecialOfferIDProductID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID
+  columns:
+  - name: SpecialOfferID
+    id: table.sales.salesorderdetail.column.specialofferid
+    type: TableColumnRef
+  - name: ProductID
+    id: table.sales.salesorderdetail.column.productid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_SpecialOfferProduct_SpecialOfferID_ProductID
+  referencedTable:
+    name: '[Sales].[SpecialOfferProduct]'
+    id: table.sales.specialofferproduct
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[SalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID] FOREIGN KEY([SpecialOfferID], [ProductID])
+    REFERENCES [Sales].[SpecialOfferProduct] ([SpecialOfferID], [ProductID])
+    GO
+
+    ALTER TABLE [Sales].[SalesOrderDetail] CHECK CONSTRAINT [FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +80,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID
+    id: table.sales.salesorderdetail.foreignkey.fk_salesorderdetail_salesorderheader_salesorderid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.salesorderdetailid
@@ -43,14 +107,19 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: true
   identityIncrement: 1
   identitySeed: 1
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.carriertrackingnumber
@@ -62,6 +131,7 @@ columns:
   maxLengthBytes: 25
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -69,7 +139,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.orderqty
@@ -81,6 +155,7 @@ columns:
   maxLengthBytes: 2
   precision: 5
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -88,7 +163,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.productid
@@ -100,14 +179,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID
+    id: table.sales.salesorderdetail.foreignkey.fk_salesorderdetail_specialofferproduct_specialofferidproductid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.specialofferid
@@ -119,14 +206,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID
+    id: table.sales.salesorderdetail.foreignkey.fk_salesorderdetail_specialofferproduct_specialofferidproductid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.unitprice
@@ -138,6 +233,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -145,7 +241,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.unitpricediscount
@@ -157,6 +257,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -164,7 +265,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: ((0.0))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.linetotal
@@ -176,6 +281,7 @@ columns:
   maxLengthBytes: 17
   precision: 38
   scale: 6
+  isNullable: false
   isComputed: true
   computedText: (isnull(([UnitPrice]*((1.0)-[UnitPriceDiscount]))*[OrderQty],(0.0)))
   isIdentity: false
@@ -183,7 +289,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.rowguid
@@ -195,6 +305,7 @@ columns:
   maxLengthBytes: 16
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -202,7 +313,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.modifieddate
@@ -214,6 +329,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -221,7 +337,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

@@ -5,7 +5,59 @@ description: Individual products associated with a specific purchase order. See 
 createdAt: 2023-05-08T12:07:29.5400000
 lastModifiedAt: 2023-05-08T12:07:39.4200000
 name: Purchasing.PurchaseOrderDetail
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.purchasing.purchaseorderdetail.foreignkey.fk_purchaseorderdetail_product_productid
+  description: Foreign key constraint referencing Product.ProductID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_PurchaseOrderDetail_Product_ProductID
+  columns:
+  - name: ProductID
+    id: table.purchasing.purchaseorderdetail.column.productid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Product_ProductID
+  referencedTable:
+    name: '[Production].[Product]'
+    id: table.production.product
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Purchasing].[PurchaseOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_PurchaseOrderDetail_Product_ProductID] FOREIGN KEY([ProductID])
+    REFERENCES [Production].[Product] ([ProductID])
+    GO
+
+    ALTER TABLE [Purchasing].[PurchaseOrderDetail] CHECK CONSTRAINT [FK_PurchaseOrderDetail_Product_ProductID]
+    GO
+
+- type: ForeignKey
+  id: table.purchasing.purchaseorderdetail.foreignkey.fk_purchaseorderdetail_purchaseorderheader_purchaseorderid
+  description: Foreign key constraint referencing PurchaseOrderHeader.PurchaseOrderID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_PurchaseOrderDetail_PurchaseOrderHeader_PurchaseOrderID
+  columns:
+  - name: PurchaseOrderID
+    id: table.purchasing.purchaseorderdetail.column.purchaseorderid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_PurchaseOrderHeader_PurchaseOrderID
+  referencedTable:
+    name: '[Purchasing].[PurchaseOrderHeader]'
+    id: table.purchasing.purchaseorderheader
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Purchasing].[PurchaseOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_PurchaseOrderDetail_PurchaseOrderHeader_PurchaseOrderID] FOREIGN KEY([PurchaseOrderID])
+    REFERENCES [Purchasing].[PurchaseOrderHeader] ([PurchaseOrderID])
+    GO
+
+    ALTER TABLE [Purchasing].[PurchaseOrderDetail] CHECK CONSTRAINT [FK_PurchaseOrderDetail_PurchaseOrderHeader_PurchaseOrderID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +76,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_PurchaseOrderDetail_PurchaseOrderHeader_PurchaseOrderID
+    id: table.purchasing.purchaseorderdetail.foreignkey.fk_purchaseorderdetail_purchaseorderheader_purchaseorderid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.purchaseorderdetailid
@@ -43,14 +103,19 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: true
   identityIncrement: 1
   identitySeed: 1
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.duedate
@@ -62,6 +127,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -69,7 +135,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.orderqty
@@ -81,6 +151,7 @@ columns:
   maxLengthBytes: 2
   precision: 5
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -88,7 +159,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.productid
@@ -100,14 +175,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_PurchaseOrderDetail_Product_ProductID
+    id: table.purchasing.purchaseorderdetail.foreignkey.fk_purchaseorderdetail_product_productid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.unitprice
@@ -119,6 +202,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -126,7 +210,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.linetotal
@@ -138,6 +226,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: true
   computedText: (isnull([OrderQty]*[UnitPrice],(0.00)))
   isIdentity: false
@@ -145,7 +234,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.receivedqty
@@ -157,6 +250,7 @@ columns:
   maxLengthBytes: 5
   precision: 8
   scale: 2
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -164,7 +258,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.rejectedqty
@@ -176,6 +274,7 @@ columns:
   maxLengthBytes: 5
   precision: 8
   scale: 2
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -183,7 +282,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.stockedqty
@@ -195,6 +298,7 @@ columns:
   maxLengthBytes: 5
   precision: 9
   scale: 2
+  isNullable: false
   isComputed: true
   computedText: (isnull([ReceivedQty]-[RejectedQty],(0.00)))
   isIdentity: false
@@ -202,7 +306,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.modifieddate
@@ -214,6 +322,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -221,7 +330,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

@@ -24,6 +24,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -31,7 +32,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

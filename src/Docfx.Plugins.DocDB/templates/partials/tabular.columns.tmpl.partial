@@ -1,0 +1,124 @@
+{{#payload.columns.0}}
+<h2>{{__global.columns}}</h2>
+
+<table class="table table-bordered table-condensed">
+	<thead>
+		<tr>
+{{#isTable}}
+			<th>{{__global.colKey}}</th>
+{{/isTable}}
+			<th>{{__global.colColumnName}}</th>
+			<th><code>{{__global.colDataType}}</code></th>
+			<th>{{__global.colNullable}}</th>
+{{#isTable}}
+			<th>{{__global.colDefault}}</th>
+			<th>{{__global.colComputed}}</th>
+{{/isTable}}
+			<th>{{__global.description}}</th>
+		</tr>
+	</thead>
+{{/payload.columns.0}}
+	<tbody>
+{{#payload.columns}}
+		<tr>
+{{#isTable}}
+			<td>
+				{{#inPrimaryKey}}{{{__global.symPrimaryKey}}}{{/inPrimaryKey}}
+				{{#isForeignKey}}{{{__global.symForeignKey}}}{{/isForeignKey}}
+			</td>
+{{/isTable}}
+			<td><a href="#{{id}}"><code>{{name}}</code></a></td>
+			<td>{{dataType}} {{#isIdentity}}IDENTITY({{identitySeed}}, {{identityIncrement}}){{/isIdentity}}</td>
+			<td>{{#isNullable}}{{{__global.symCheckMark}}}{{/isNullable}}</td>
+{{#isTable}}
+			<td>{{#default}}{{{__global.symCheckMark}}}{{/default}}</td>
+			<td>{{#isComputed}}{{{__global.symCheckMark}}}{{/isComputed}}</td>
+{{/isTable}}
+			<td>{{description}}</td>
+		</tr>
+{{/payload.columns}}
+{{#payload.columns.0}}
+	</tbody>
+</table>
+
+{{#payload.columns}}
+<h3 id="{{id}}">{{name}} column</h3>
+
+<div class"markdown level0 summary">{{description}}</div>
+
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">{{__global.colDataType}}</th>
+			<td>{{dataType}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Nullable</th>
+			<td>
+			{{#isNullable}}{{{__global.symCheckMark}}}{{/isNullable}}
+			{{^isNullable}}{{{__global.symCross}}}{{/isNullable}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Collation</th>
+			<td>{{#collation}}<code>{{collation}}{{{__global.hlCodeEnd}}}{{/collation}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Identity</th>
+			<td>
+			{{#isIdentity}}IDENTITY({{identitySeed}}, {{identityIncrement}}){{/isIdentity}}
+			{{^isIdentity}}{{{__global.symCross}}}{{/isIdentity}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Maximum Size</th>
+			<td>{{maxLengthBytes}} bytes</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Precision</th>
+			<td>{{precision}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Scale</th>
+			<td>{{scale}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">File Stream</th>
+			<td>
+			{{#isFileStream}}{{{__global.symCheckMark}}}{{/isFileStream}}
+			{{^isFileStream}}{{{__global.symCross}}}{{/isFileStream}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Full Text Indexed</th>
+			<td>
+			{{#isFullTextIndexed}}{{{__global.symCheckMark}}}{{/isFullTextIndexed}}
+			{{^isFullTextIndexed}}{{{__global.symCross}}}{{/isFullTextIndexed}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Default Constraint</th>
+			<td>{{#default}}<code>{{default}}</code>{{/default}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Computed</th>
+			<td>{{#isComputed}}<code>{{computedText}}</code>{{/isComputed}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Foreign Keys</th>
+			<td>
+			{{#foreignKeys}}
+			<a href="#{{id}}">{{name}}</a>
+			{{/foreignKeys}}
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+{{/payload.columns}}
+
+{{/payload.columns.0}}

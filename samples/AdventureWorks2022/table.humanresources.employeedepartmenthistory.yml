@@ -5,7 +5,85 @@ description: Employee department transfers.
 createdAt: 2023-05-08T12:07:29.4600000
 lastModifiedAt: 2023-05-08T12:07:38.6800000
 name: HumanResources.EmployeeDepartmentHistory
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.humanresources.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_department_departmentid
+  description: Foreign key constraint referencing Department.DepartmentID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_EmployeeDepartmentHistory_Department_DepartmentID
+  columns:
+  - name: DepartmentID
+    id: table.humanresources.employeedepartmenthistory.column.departmentid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Department_DepartmentID
+  referencedTable:
+    name: '[HumanResources].[Department]'
+    id: table.humanresources.department
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [HumanResources].[EmployeeDepartmentHistory]  WITH CHECK ADD  CONSTRAINT [FK_EmployeeDepartmentHistory_Department_DepartmentID] FOREIGN KEY([DepartmentID])
+    REFERENCES [HumanResources].[Department] ([DepartmentID])
+    GO
+
+    ALTER TABLE [HumanResources].[EmployeeDepartmentHistory] CHECK CONSTRAINT [FK_EmployeeDepartmentHistory_Department_DepartmentID]
+    GO
+
+- type: ForeignKey
+  id: table.humanresources.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_employee_businessentityid
+  description: Foreign key constraint referencing Employee.EmployeeID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_EmployeeDepartmentHistory_Employee_BusinessEntityID
+  columns:
+  - name: BusinessEntityID
+    id: table.humanresources.employeedepartmenthistory.column.businessentityid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Employee_BusinessEntityID
+  referencedTable:
+    name: '[HumanResources].[Employee]'
+    id: table.humanresources.employee
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [HumanResources].[EmployeeDepartmentHistory]  WITH CHECK ADD  CONSTRAINT [FK_EmployeeDepartmentHistory_Employee_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+    REFERENCES [HumanResources].[Employee] ([BusinessEntityID])
+    GO
+
+    ALTER TABLE [HumanResources].[EmployeeDepartmentHistory] CHECK CONSTRAINT [FK_EmployeeDepartmentHistory_Employee_BusinessEntityID]
+    GO
+
+- type: ForeignKey
+  id: table.humanresources.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_shift_shiftid
+  description: Foreign key constraint referencing Shift.ShiftID
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_EmployeeDepartmentHistory_Shift_ShiftID
+  columns:
+  - name: ShiftID
+    id: table.humanresources.employeedepartmenthistory.column.shiftid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Shift_ShiftID
+  referencedTable:
+    name: '[HumanResources].[Shift]'
+    id: table.humanresources.shift
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [HumanResources].[EmployeeDepartmentHistory]  WITH CHECK ADD  CONSTRAINT [FK_EmployeeDepartmentHistory_Shift_ShiftID] FOREIGN KEY([ShiftID])
+    REFERENCES [HumanResources].[Shift] ([ShiftID])
+    GO
+
+    ALTER TABLE [HumanResources].[EmployeeDepartmentHistory] CHECK CONSTRAINT [FK_EmployeeDepartmentHistory_Shift_ShiftID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +102,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_EmployeeDepartmentHistory_Employee_BusinessEntityID
+    id: table.humanresources.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_employee_businessentityid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.humanresources.employeedepartmenthistory.column.departmentid
@@ -43,14 +129,22 @@ columns:
   maxLengthBytes: 2
   precision: 5
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_EmployeeDepartmentHistory_Department_DepartmentID
+    id: table.humanresources.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_department_departmentid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.humanresources.employeedepartmenthistory.column.shiftid
@@ -62,14 +156,22 @@ columns:
   maxLengthBytes: 1
   precision: 3
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_EmployeeDepartmentHistory_Shift_ShiftID
+    id: table.humanresources.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_shift_shiftid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.humanresources.employeedepartmenthistory.column.startdate
@@ -81,14 +183,19 @@ columns:
   maxLengthBytes: 3
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.humanresources.employeedepartmenthistory.column.enddate
@@ -100,6 +207,7 @@ columns:
   maxLengthBytes: 3
   precision: 10
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -107,7 +215,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.humanresources.employeedepartmenthistory.column.modifieddate
@@ -119,6 +231,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -126,7 +239,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

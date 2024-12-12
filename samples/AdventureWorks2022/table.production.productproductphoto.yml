@@ -5,7 +5,59 @@ description: Cross-reference table mapping products and product photos.
 createdAt: 2023-05-08T12:07:29.5230000
 lastModifiedAt: 2023-05-08T12:07:38.8270000
 name: Production.ProductProductPhoto
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.production.productproductphoto.foreignkey.fk_productproductphoto_product_productid
+  description: Foreign key constraint referencing Product.ProductID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_ProductProductPhoto_Product_ProductID
+  columns:
+  - name: ProductID
+    id: table.production.productproductphoto.column.productid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Product_ProductID
+  referencedTable:
+    name: '[Production].[Product]'
+    id: table.production.product
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Production].[ProductProductPhoto]  WITH CHECK ADD  CONSTRAINT [FK_ProductProductPhoto_Product_ProductID] FOREIGN KEY([ProductID])
+    REFERENCES [Production].[Product] ([ProductID])
+    GO
+
+    ALTER TABLE [Production].[ProductProductPhoto] CHECK CONSTRAINT [FK_ProductProductPhoto_Product_ProductID]
+    GO
+
+- type: ForeignKey
+  id: table.production.productproductphoto.foreignkey.fk_productproductphoto_productphoto_productphotoid
+  description: Foreign key constraint referencing ProductPhoto.ProductPhotoID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_ProductProductPhoto_ProductPhoto_ProductPhotoID
+  columns:
+  - name: ProductPhotoID
+    id: table.production.productproductphoto.column.productphotoid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_ProductPhoto_ProductPhotoID
+  referencedTable:
+    name: '[Production].[ProductPhoto]'
+    id: table.production.productphoto
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Production].[ProductProductPhoto]  WITH CHECK ADD  CONSTRAINT [FK_ProductProductPhoto_ProductPhoto_ProductPhotoID] FOREIGN KEY([ProductPhotoID])
+    REFERENCES [Production].[ProductPhoto] ([ProductPhotoID])
+    GO
+
+    ALTER TABLE [Production].[ProductProductPhoto] CHECK CONSTRAINT [FK_ProductProductPhoto_ProductPhoto_ProductPhotoID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +76,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_ProductProductPhoto_Product_ProductID
+    id: table.production.productproductphoto.foreignkey.fk_productproductphoto_product_productid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.productproductphoto.column.productphotoid
@@ -43,14 +103,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_ProductProductPhoto_ProductPhoto_ProductPhotoID
+    id: table.production.productproductphoto.foreignkey.fk_productproductphoto_productphoto_productphotoid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.productproductphoto.column.primary
@@ -62,6 +130,7 @@ columns:
   maxLengthBytes: 1
   precision: 1
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -69,7 +138,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: ((0))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.productproductphoto.column.modifieddate
@@ -81,6 +154,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -88,7 +162,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

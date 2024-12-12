@@ -17,6 +17,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: true
@@ -24,7 +25,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.level
@@ -36,6 +41,7 @@ columns:
   maxLengthBytes: -1
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -43,7 +49,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.startdate
@@ -55,6 +65,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -62,7 +73,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.enddate
@@ -74,6 +89,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -81,7 +97,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.degree
@@ -93,6 +113,7 @@ columns:
   maxLengthBytes: 50
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -100,7 +121,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.major
@@ -112,6 +137,7 @@ columns:
   maxLengthBytes: 50
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -119,7 +145,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.minor
@@ -131,6 +161,7 @@ columns:
   maxLengthBytes: 50
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -138,7 +169,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.gpa
@@ -150,6 +185,7 @@ columns:
   maxLengthBytes: 5
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -157,7 +193,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.gpascale
@@ -169,6 +209,7 @@ columns:
   maxLengthBytes: 5
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -176,7 +217,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.school
@@ -188,6 +233,7 @@ columns:
   maxLengthBytes: 100
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -195,7 +241,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.loc.countryregion
@@ -207,6 +257,7 @@ columns:
   maxLengthBytes: 100
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -214,7 +265,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.loc.state
@@ -226,6 +281,7 @@ columns:
   maxLengthBytes: 100
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -233,7 +289,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.loc.city
@@ -245,6 +305,7 @@ columns:
   maxLengthBytes: 100
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -252,7 +313,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

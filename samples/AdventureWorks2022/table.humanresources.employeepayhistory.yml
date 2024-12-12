@@ -5,7 +5,33 @@ description: Employee pay history.
 createdAt: 2023-05-08T12:07:29.4600000
 lastModifiedAt: 2023-05-08T12:07:38.6870000
 name: HumanResources.EmployeePayHistory
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.humanresources.employeepayhistory.foreignkey.fk_employeepayhistory_employee_businessentityid
+  description: Foreign key constraint referencing Employee.EmployeeID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_EmployeePayHistory_Employee_BusinessEntityID
+  columns:
+  - name: BusinessEntityID
+    id: table.humanresources.employeepayhistory.column.businessentityid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Employee_BusinessEntityID
+  referencedTable:
+    name: '[HumanResources].[Employee]'
+    id: table.humanresources.employee
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [HumanResources].[EmployeePayHistory]  WITH CHECK ADD  CONSTRAINT [FK_EmployeePayHistory_Employee_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+    REFERENCES [HumanResources].[Employee] ([BusinessEntityID])
+    GO
+
+    ALTER TABLE [HumanResources].[EmployeePayHistory] CHECK CONSTRAINT [FK_EmployeePayHistory_Employee_BusinessEntityID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +50,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_EmployeePayHistory_Employee_BusinessEntityID
+    id: table.humanresources.employeepayhistory.foreignkey.fk_employeepayhistory_employee_businessentityid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.humanresources.employeepayhistory.column.ratechangedate
@@ -43,14 +77,19 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.humanresources.employeepayhistory.column.rate
@@ -62,6 +101,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -69,7 +109,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.humanresources.employeepayhistory.column.payfrequency
@@ -81,6 +125,7 @@ columns:
   maxLengthBytes: 1
   precision: 3
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -88,7 +133,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.humanresources.employeepayhistory.column.modifieddate
@@ -100,6 +149,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -107,7 +157,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

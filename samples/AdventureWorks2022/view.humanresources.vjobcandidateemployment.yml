@@ -17,6 +17,7 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: true
@@ -24,7 +25,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.startdate
@@ -36,6 +41,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -43,7 +49,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.enddate
@@ -55,6 +65,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -62,7 +73,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.orgname
@@ -74,6 +89,7 @@ columns:
   maxLengthBytes: 100
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -81,7 +97,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.jobtitle
@@ -93,6 +113,7 @@ columns:
   maxLengthBytes: 100
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -100,7 +121,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.responsibility
@@ -112,6 +137,7 @@ columns:
   maxLengthBytes: -1
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -119,7 +145,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.functioncategory
@@ -131,6 +161,7 @@ columns:
   maxLengthBytes: -1
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -138,7 +169,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.industrycategory
@@ -150,6 +185,7 @@ columns:
   maxLengthBytes: -1
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -157,7 +193,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.loc.countryregion
@@ -169,6 +209,7 @@ columns:
   maxLengthBytes: -1
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -176,7 +217,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.loc.state
@@ -188,6 +233,7 @@ columns:
   maxLengthBytes: -1
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -195,7 +241,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.loc.city
@@ -207,6 +257,7 @@ columns:
   maxLengthBytes: -1
   precision: 0
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -214,7 +265,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

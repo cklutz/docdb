@@ -5,7 +5,85 @@ description: Cross-reference table mapping stores, vendors, and employees to peo
 createdAt: 2023-05-08T12:07:29.4170000
 lastModifiedAt: 2023-05-08T12:07:38.5630000
 name: Person.BusinessEntityContact
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.person.businessentitycontact.foreignkey.fk_businessentitycontact_businessentity_businessentityid
+  description: Foreign key constraint referencing BusinessEntity.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_BusinessEntityContact_BusinessEntity_BusinessEntityID
+  columns:
+  - name: BusinessEntityID
+    id: table.person.businessentitycontact.column.businessentityid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_BusinessEntity_BusinessEntityID
+  referencedTable:
+    name: '[Person].[BusinessEntity]'
+    id: table.person.businessentity
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Person].[BusinessEntityContact]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityContact_BusinessEntity_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+    REFERENCES [Person].[BusinessEntity] ([BusinessEntityID])
+    GO
+
+    ALTER TABLE [Person].[BusinessEntityContact] CHECK CONSTRAINT [FK_BusinessEntityContact_BusinessEntity_BusinessEntityID]
+    GO
+
+- type: ForeignKey
+  id: table.person.businessentitycontact.foreignkey.fk_businessentitycontact_contacttype_contacttypeid
+  description: Foreign key constraint referencing ContactType.ContactTypeID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_BusinessEntityContact_ContactType_ContactTypeID
+  columns:
+  - name: ContactTypeID
+    id: table.person.businessentitycontact.column.contacttypeid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_ContactType_ContactTypeID
+  referencedTable:
+    name: '[Person].[ContactType]'
+    id: table.person.contacttype
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Person].[BusinessEntityContact]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityContact_ContactType_ContactTypeID] FOREIGN KEY([ContactTypeID])
+    REFERENCES [Person].[ContactType] ([ContactTypeID])
+    GO
+
+    ALTER TABLE [Person].[BusinessEntityContact] CHECK CONSTRAINT [FK_BusinessEntityContact_ContactType_ContactTypeID]
+    GO
+
+- type: ForeignKey
+  id: table.person.businessentitycontact.foreignkey.fk_businessentitycontact_person_personid
+  description: Foreign key constraint referencing Person.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_BusinessEntityContact_Person_PersonID
+  columns:
+  - name: PersonID
+    id: table.person.businessentitycontact.column.personid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Person_BusinessEntityID
+  referencedTable:
+    name: '[Person].[Person]'
+    id: table.person.person
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Person].[BusinessEntityContact]  WITH CHECK ADD  CONSTRAINT [FK_BusinessEntityContact_Person_PersonID] FOREIGN KEY([PersonID])
+    REFERENCES [Person].[Person] ([BusinessEntityID])
+    GO
+
+    ALTER TABLE [Person].[BusinessEntityContact] CHECK CONSTRAINT [FK_BusinessEntityContact_Person_PersonID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +102,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_BusinessEntityContact_BusinessEntity_BusinessEntityID
+    id: table.person.businessentitycontact.foreignkey.fk_businessentitycontact_businessentity_businessentityid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.businessentitycontact.column.personid
@@ -43,14 +129,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_BusinessEntityContact_Person_PersonID
+    id: table.person.businessentitycontact.foreignkey.fk_businessentitycontact_person_personid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.businessentitycontact.column.contacttypeid
@@ -62,14 +156,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_BusinessEntityContact_ContactType_ContactTypeID
+    id: table.person.businessentitycontact.foreignkey.fk_businessentitycontact_contacttype_contacttypeid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.businessentitycontact.column.rowguid
@@ -81,6 +183,7 @@ columns:
   maxLengthBytes: 16
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -88,7 +191,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.businessentitycontact.column.modifieddate
@@ -100,6 +207,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -107,7 +215,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

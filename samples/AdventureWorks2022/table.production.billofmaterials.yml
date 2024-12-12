@@ -5,7 +5,85 @@ description: Items required to make bicycles and bicycle subassemblies. It ident
 createdAt: 2023-05-08T12:07:29.4100000
 lastModifiedAt: 2023-05-08T12:07:38.5300000
 name: Production.BillOfMaterials
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.production.billofmaterials.foreignkey.fk_billofmaterials_product_componentid
+  description: Foreign key constraint referencing Product.ComponentID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_BillOfMaterials_Product_ComponentID
+  columns:
+  - name: ComponentID
+    id: table.production.billofmaterials.column.componentid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Product_ProductID
+  referencedTable:
+    name: '[Production].[Product]'
+    id: table.production.product
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [FK_BillOfMaterials_Product_ComponentID] FOREIGN KEY([ComponentID])
+    REFERENCES [Production].[Product] ([ProductID])
+    GO
+
+    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [FK_BillOfMaterials_Product_ComponentID]
+    GO
+
+- type: ForeignKey
+  id: table.production.billofmaterials.foreignkey.fk_billofmaterials_product_productassemblyid
+  description: Foreign key constraint referencing Product.ProductAssemblyID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_BillOfMaterials_Product_ProductAssemblyID
+  columns:
+  - name: ProductAssemblyID
+    id: table.production.billofmaterials.column.productassemblyid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Product_ProductID
+  referencedTable:
+    name: '[Production].[Product]'
+    id: table.production.product
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [FK_BillOfMaterials_Product_ProductAssemblyID] FOREIGN KEY([ProductAssemblyID])
+    REFERENCES [Production].[Product] ([ProductID])
+    GO
+
+    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [FK_BillOfMaterials_Product_ProductAssemblyID]
+    GO
+
+- type: ForeignKey
+  id: table.production.billofmaterials.foreignkey.fk_billofmaterials_unitmeasure_unitmeasurecode
+  description: Foreign key constraint referencing UnitMeasure.UnitMeasureCode.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_BillOfMaterials_UnitMeasure_UnitMeasureCode
+  columns:
+  - name: UnitMeasureCode
+    id: table.production.billofmaterials.column.unitmeasurecode
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_UnitMeasure_UnitMeasureCode
+  referencedTable:
+    name: '[Production].[UnitMeasure]'
+    id: table.production.unitmeasure
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Production].[BillOfMaterials]  WITH CHECK ADD  CONSTRAINT [FK_BillOfMaterials_UnitMeasure_UnitMeasureCode] FOREIGN KEY([UnitMeasureCode])
+    REFERENCES [Production].[UnitMeasure] ([UnitMeasureCode])
+    GO
+
+    ALTER TABLE [Production].[BillOfMaterials] CHECK CONSTRAINT [FK_BillOfMaterials_UnitMeasure_UnitMeasureCode]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +102,19 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: true
   identityIncrement: 1
   identitySeed: 1
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.productassemblyid
@@ -43,14 +126,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_BillOfMaterials_Product_ProductAssemblyID
+    id: table.production.billofmaterials.foreignkey.fk_billofmaterials_product_productassemblyid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.componentid
@@ -62,14 +153,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_BillOfMaterials_Product_ComponentID
+    id: table.production.billofmaterials.foreignkey.fk_billofmaterials_product_componentid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.startdate
@@ -81,6 +180,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -88,7 +188,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.enddate
@@ -100,6 +204,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -107,7 +212,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.unitmeasurecode
@@ -119,14 +228,22 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_BillOfMaterials_UnitMeasure_UnitMeasureCode
+    id: table.production.billofmaterials.foreignkey.fk_billofmaterials_unitmeasure_unitmeasurecode
+    type: ForeignKeyRef
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.bomlevel
@@ -138,6 +255,7 @@ columns:
   maxLengthBytes: 2
   precision: 5
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -145,7 +263,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.perassemblyqty
@@ -157,6 +279,7 @@ columns:
   maxLengthBytes: 5
   precision: 8
   scale: 2
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -164,7 +287,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: ((1.00))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.modifieddate
@@ -176,6 +303,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -183,7 +311,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

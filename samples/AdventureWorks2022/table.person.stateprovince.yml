@@ -5,7 +5,59 @@ description: State and province lookup table.
 createdAt: 2023-05-08T12:07:29.6070000
 lastModifiedAt: 2023-05-08T12:07:39.5700000
 name: Person.StateProvince
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.person.stateprovince.foreignkey.fk_stateprovince_countryregion_countryregioncode
+  description: Foreign key constraint referencing CountryRegion.CountryRegionCode.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_StateProvince_CountryRegion_CountryRegionCode
+  columns:
+  - name: CountryRegionCode
+    id: table.person.stateprovince.column.countryregioncode
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_CountryRegion_CountryRegionCode
+  referencedTable:
+    name: '[Person].[CountryRegion]'
+    id: table.person.countryregion
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Person].[StateProvince]  WITH CHECK ADD  CONSTRAINT [FK_StateProvince_CountryRegion_CountryRegionCode] FOREIGN KEY([CountryRegionCode])
+    REFERENCES [Person].[CountryRegion] ([CountryRegionCode])
+    GO
+
+    ALTER TABLE [Person].[StateProvince] CHECK CONSTRAINT [FK_StateProvince_CountryRegion_CountryRegionCode]
+    GO
+
+- type: ForeignKey
+  id: table.person.stateprovince.foreignkey.fk_stateprovince_salesterritory_territoryid
+  description: Foreign key constraint referencing SalesTerritory.TerritoryID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_StateProvince_SalesTerritory_TerritoryID
+  columns:
+  - name: TerritoryID
+    id: table.person.stateprovince.column.territoryid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_SalesTerritory_TerritoryID
+  referencedTable:
+    name: '[Sales].[SalesTerritory]'
+    id: table.sales.salesterritory
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Person].[StateProvince]  WITH CHECK ADD  CONSTRAINT [FK_StateProvince_SalesTerritory_TerritoryID] FOREIGN KEY([TerritoryID])
+    REFERENCES [Sales].[SalesTerritory] ([TerritoryID])
+    GO
+
+    ALTER TABLE [Person].[StateProvince] CHECK CONSTRAINT [FK_StateProvince_SalesTerritory_TerritoryID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +76,19 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: true
   identityIncrement: 1
   identitySeed: 1
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.stateprovincecode
@@ -43,6 +100,7 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -50,7 +108,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.countryregioncode
@@ -62,14 +124,22 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_StateProvince_CountryRegion_CountryRegionCode
+    id: table.person.stateprovince.foreignkey.fk_stateprovince_countryregion_countryregioncode
+    type: ForeignKeyRef
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.isonlystateprovinceflag
@@ -81,6 +151,7 @@ columns:
   maxLengthBytes: 1
   precision: 1
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -88,7 +159,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: ((1))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.name
@@ -100,6 +175,7 @@ columns:
   maxLengthBytes: 50
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -107,7 +183,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.territoryid
@@ -119,14 +199,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_StateProvince_SalesTerritory_TerritoryID
+    id: table.person.stateprovince.foreignkey.fk_stateprovince_salesterritory_territoryid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.rowguid
@@ -138,6 +226,7 @@ columns:
   maxLengthBytes: 16
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -145,7 +234,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.modifieddate
@@ -157,6 +250,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -164,7 +258,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

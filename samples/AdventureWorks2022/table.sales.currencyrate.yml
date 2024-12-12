@@ -5,7 +5,59 @@ description: Currency exchange rates.
 createdAt: 2023-05-08T12:07:29.4370000
 lastModifiedAt: 2023-05-08T12:07:39.0100000
 name: Sales.CurrencyRate
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.sales.currencyrate.foreignkey.fk_currencyrate_currency_fromcurrencycode
+  description: Foreign key constraint referencing Currency.FromCurrencyCode.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_CurrencyRate_Currency_FromCurrencyCode
+  columns:
+  - name: FromCurrencyCode
+    id: table.sales.currencyrate.column.fromcurrencycode
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Currency_CurrencyCode
+  referencedTable:
+    name: '[Sales].[Currency]'
+    id: table.sales.currency
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[CurrencyRate]  WITH CHECK ADD  CONSTRAINT [FK_CurrencyRate_Currency_FromCurrencyCode] FOREIGN KEY([FromCurrencyCode])
+    REFERENCES [Sales].[Currency] ([CurrencyCode])
+    GO
+
+    ALTER TABLE [Sales].[CurrencyRate] CHECK CONSTRAINT [FK_CurrencyRate_Currency_FromCurrencyCode]
+    GO
+
+- type: ForeignKey
+  id: table.sales.currencyrate.foreignkey.fk_currencyrate_currency_tocurrencycode
+  description: Foreign key constraint referencing Currency.ToCurrencyCode.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_CurrencyRate_Currency_ToCurrencyCode
+  columns:
+  - name: ToCurrencyCode
+    id: table.sales.currencyrate.column.tocurrencycode
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Currency_CurrencyCode
+  referencedTable:
+    name: '[Sales].[Currency]'
+    id: table.sales.currency
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[CurrencyRate]  WITH CHECK ADD  CONSTRAINT [FK_CurrencyRate_Currency_ToCurrencyCode] FOREIGN KEY([ToCurrencyCode])
+    REFERENCES [Sales].[Currency] ([CurrencyCode])
+    GO
+
+    ALTER TABLE [Sales].[CurrencyRate] CHECK CONSTRAINT [FK_CurrencyRate_Currency_ToCurrencyCode]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +76,19 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: true
   identityIncrement: 1
   identitySeed: 1
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.currencyrate.column.currencyratedate
@@ -43,6 +100,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -50,7 +108,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.currencyrate.column.fromcurrencycode
@@ -62,14 +124,22 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_CurrencyRate_Currency_FromCurrencyCode
+    id: table.sales.currencyrate.foreignkey.fk_currencyrate_currency_fromcurrencycode
+    type: ForeignKeyRef
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.currencyrate.column.tocurrencycode
@@ -81,14 +151,22 @@ columns:
   maxLengthBytes: 3
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_CurrencyRate_Currency_ToCurrencyCode
+    id: table.sales.currencyrate.foreignkey.fk_currencyrate_currency_tocurrencycode
+    type: ForeignKeyRef
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.currencyrate.column.averagerate
@@ -100,6 +178,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -107,7 +186,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.currencyrate.column.endofdayrate
@@ -119,6 +202,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -126,7 +210,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.currencyrate.column.modifieddate
@@ -138,6 +226,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -145,7 +234,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

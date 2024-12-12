@@ -5,7 +5,33 @@ description: Sales performance tracking.
 createdAt: 2023-05-08T12:07:29.5700000
 lastModifiedAt: 2023-05-08T12:07:39.2400000
 name: Sales.SalesPersonQuotaHistory
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.sales.salespersonquotahistory.foreignkey.fk_salespersonquotahistory_salesperson_businessentityid
+  description: Foreign key constraint referencing SalesPerson.SalesPersonID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID
+  columns:
+  - name: BusinessEntityID
+    id: table.sales.salespersonquotahistory.column.businessentityid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_SalesPerson_BusinessEntityID
+  referencedTable:
+    name: '[Sales].[SalesPerson]'
+    id: table.sales.salesperson
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[SalesPersonQuotaHistory]  WITH CHECK ADD  CONSTRAINT [FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+    REFERENCES [Sales].[SalesPerson] ([BusinessEntityID])
+    GO
+
+    ALTER TABLE [Sales].[SalesPersonQuotaHistory] CHECK CONSTRAINT [FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +50,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID
+    id: table.sales.salespersonquotahistory.foreignkey.fk_salespersonquotahistory_salesperson_businessentityid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salespersonquotahistory.column.quotadate
@@ -43,14 +77,19 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salespersonquotahistory.column.salesquota
@@ -62,6 +101,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -69,7 +109,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salespersonquotahistory.column.rowguid
@@ -81,6 +125,7 @@ columns:
   maxLengthBytes: 16
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -88,7 +133,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salespersonquotahistory.column.modifieddate
@@ -100,6 +149,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -107,7 +157,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

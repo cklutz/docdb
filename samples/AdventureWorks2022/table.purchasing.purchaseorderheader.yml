@@ -5,7 +5,85 @@ description: General purchase order information. See PurchaseOrderDetail.
 createdAt: 2023-05-08T12:07:29.5430000
 lastModifiedAt: 2023-05-08T12:07:39.4200000
 name: Purchasing.PurchaseOrderHeader
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.purchasing.purchaseorderheader.foreignkey.fk_purchaseorderheader_employee_employeeid
+  description: Foreign key constraint referencing Employee.EmployeeID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_PurchaseOrderHeader_Employee_EmployeeID
+  columns:
+  - name: EmployeeID
+    id: table.purchasing.purchaseorderheader.column.employeeid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Employee_BusinessEntityID
+  referencedTable:
+    name: '[HumanResources].[Employee]'
+    id: table.humanresources.employee
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_PurchaseOrderHeader_Employee_EmployeeID] FOREIGN KEY([EmployeeID])
+    REFERENCES [HumanResources].[Employee] ([BusinessEntityID])
+    GO
+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [FK_PurchaseOrderHeader_Employee_EmployeeID]
+    GO
+
+- type: ForeignKey
+  id: table.purchasing.purchaseorderheader.foreignkey.fk_purchaseorderheader_shipmethod_shipmethodid
+  description: Foreign key constraint referencing ShipMethod.ShipMethodID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_PurchaseOrderHeader_ShipMethod_ShipMethodID
+  columns:
+  - name: ShipMethodID
+    id: table.purchasing.purchaseorderheader.column.shipmethodid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_ShipMethod_ShipMethodID
+  referencedTable:
+    name: '[Purchasing].[ShipMethod]'
+    id: table.purchasing.shipmethod
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_PurchaseOrderHeader_ShipMethod_ShipMethodID] FOREIGN KEY([ShipMethodID])
+    REFERENCES [Purchasing].[ShipMethod] ([ShipMethodID])
+    GO
+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [FK_PurchaseOrderHeader_ShipMethod_ShipMethodID]
+    GO
+
+- type: ForeignKey
+  id: table.purchasing.purchaseorderheader.foreignkey.fk_purchaseorderheader_vendor_vendorid
+  description: Foreign key constraint referencing Vendor.VendorID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_PurchaseOrderHeader_Vendor_VendorID
+  columns:
+  - name: VendorID
+    id: table.purchasing.purchaseorderheader.column.vendorid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Vendor_BusinessEntityID
+  referencedTable:
+    name: '[Purchasing].[Vendor]'
+    id: table.purchasing.vendor
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_PurchaseOrderHeader_Vendor_VendorID] FOREIGN KEY([VendorID])
+    REFERENCES [Purchasing].[Vendor] ([BusinessEntityID])
+    GO
+
+    ALTER TABLE [Purchasing].[PurchaseOrderHeader] CHECK CONSTRAINT [FK_PurchaseOrderHeader_Vendor_VendorID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +102,19 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: true
   identityIncrement: 1
   identitySeed: 1
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.revisionnumber
@@ -43,6 +126,7 @@ columns:
   maxLengthBytes: 1
   precision: 3
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -50,7 +134,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: ((0))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.status
@@ -62,6 +150,7 @@ columns:
   maxLengthBytes: 1
   precision: 3
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -69,7 +158,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: ((1))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.employeeid
@@ -81,14 +174,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_PurchaseOrderHeader_Employee_EmployeeID
+    id: table.purchasing.purchaseorderheader.foreignkey.fk_purchaseorderheader_employee_employeeid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.vendorid
@@ -100,14 +201,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_PurchaseOrderHeader_Vendor_VendorID
+    id: table.purchasing.purchaseorderheader.foreignkey.fk_purchaseorderheader_vendor_vendorid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.shipmethodid
@@ -119,14 +228,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_PurchaseOrderHeader_ShipMethod_ShipMethodID
+    id: table.purchasing.purchaseorderheader.foreignkey.fk_purchaseorderheader_shipmethod_shipmethodid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.orderdate
@@ -138,6 +255,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -145,7 +263,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.shipdate
@@ -157,6 +279,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -164,7 +287,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.subtotal
@@ -176,6 +303,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -183,7 +311,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: ((0.00))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.taxamt
@@ -195,6 +327,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -202,7 +335,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: ((0.00))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.freight
@@ -214,6 +351,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -221,7 +359,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: ((0.00))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.totaldue
@@ -233,6 +375,7 @@ columns:
   maxLengthBytes: 8
   precision: 19
   scale: 4
+  isNullable: false
   isComputed: true
   computedText: (isnull(([SubTotal]+[TaxAmt])+[Freight],(0)))
   isIdentity: false
@@ -240,7 +383,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.modifieddate
@@ -252,6 +399,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -259,7 +407,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

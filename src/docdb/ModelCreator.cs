@@ -1,9 +1,10 @@
 ﻿using DocDB.Contracts;
+using Microsoft.SqlServer.Management.HadrModel;
 using Microsoft.SqlServer.Management.Smo;
 using System;
+using System.ComponentModel;
 using System.Data.Common;
 using System.Linq;
-using System.Text;
 
 namespace DocDB;
 
@@ -122,19 +123,7 @@ internal class ModelCreator
 
         foreach (Column column in view.Columns)
         {
-            result.Columns.Add(InitBase(new DdbViewColumn()
-            {
-                IsComputed = column.Computed,
-                ComputedText = column.ComputedText,
-                DataType = column.DataType.PrettyName(),
-                MaxLengthBytes = column.DataType.MaximumLength,
-                Precision = column.DataType.NumericPrecision,
-                Scale = column.DataType.NumericScale,
-                IsIdentity = column.Identity,
-                IdentityIncrement = column.IdentityIncrement,
-                IdentitySeed = column.IdentitySeed,
-                Default = column.DefaultConstraint?.Text
-            }, column));
+            result.Columns.Add(InitBase(CreateColumn<DdbViewColumn>(column), column));
         }
 
         return result;
@@ -156,77 +145,91 @@ internal class ModelCreator
             result.PartitionInfo.FileGroup = table.FileGroup;
         }
 
+        foreach (ForeignKey foreignKey in table.ForeignKeys)
+        {
+            result.ForeignKeys.Add(InitBase(new DdbForeignKey
+            {
+                Columns = foreignKey.Columns.OfType<ForeignKeyColumn>().Select(c => CreateColumnRef(table, c.Name)).ToList(),
+                IsChecked = foreignKey.IsChecked,
+                ReferencedKey = foreignKey.ReferencedKey,
+                ReferencedTable = CreateTableRef(table.Parent, foreignKey.ReferencedTableSchema, foreignKey.ReferencedTable)
+            }, foreignKey));
+        }
+
         foreach (Column column in table.Columns)
         {
-            result.Columns.Add(InitBase(new DdbTableColumn()
+            var ddbCol = InitBase(CreateColumn<DdbTableColumn>(column), column);
+            if (ddbCol.IsForeignKey)
             {
-                IsComputed = column.Computed,
-                ComputedText = column.ComputedText,
-                DataType = column.DataType.PrettyName(),
-                MaxLengthBytes = column.DataType.MaximumLength,
-                Precision = column.DataType.NumericPrecision,
-                Scale = column.DataType.NumericScale,
-                IsIdentity = column.Identity,
-                IdentityIncrement = column.IdentityIncrement,
-                IdentitySeed = column.IdentitySeed,
-                Default = column.DefaultConstraint?.Text
-            }, column));
+                ddbCol.ForeignKeys = [.. result.ForeignKeys.Where(fk => fk.Columns.Any(c => c.Id == ddbCol.Id)).Select(fk => fk.ToRef())];
+            }
+
+            result.Columns.Add(ddbCol);
         }
 
         return result;
     }
-}
 
-internal static class ModelExtensions
-{
-    public static string GetModelId(this NamedSmoObject obj)
+    private static NamedDdbRef CreateColumnRef(Table table, string columnName)
     {
-        if (obj is ScriptSchemaObjectBase schemaObj)
+        var column = table.FindColumnByName(columnName);
+        return new NamedDdbRef
         {
-            return $"{schemaObj.Urn.Type.ToLowerInvariant()}.{schemaObj.AsIdentifier()}";
-        }
-
-        if (obj.ParentCollection?.ParentInstance is ScriptSchemaObjectBase parentObj)
-        {
-            // If we use the parent to fully qualify the name, we also include the
-            // type of the object (Urn.Type) because otherwise it might not be unique.
-            var sb = new ValueStringBuilder(stackalloc char[128]);
-            sb.Append(parentObj.GetModelId());
-            sb.Append('.');
-            sb.Append(obj.Urn.Type.ToLowerInvariant());
-            sb.Append('.');
-            sb.Append(obj.Name.ToLowerInvariant());
-            return sb.ToString().AsIdentifier();
-        }
-
-        return $"{obj.Urn.Type.ToLowerInvariant()}.{obj.AsIdentifier()}";
+            Id = column.GetModelId(),
+            Type = DdbObject.GetTypeTag<DdbTableColumn>(isRef: true),
+            Name = column.Name
+        };
     }
 
-    public static string PrettyName(this DataType dt)
+    private static NamedDdbRef CreateTableRef(Database database, string schemaName, string tableName)
     {
-        ArgumentNullException.ThrowIfNull(dt);
+        var table = database.FindTableByName(schemaName, tableName);
 
-        var sb = new ValueStringBuilder(stackalloc char[64]);
-        sb.Append(dt.Name.ToUpperInvariant());
-
-        if (dt.SqlDataType == SqlDataType.NVarCharMax ||
-            dt.SqlDataType == SqlDataType.VarCharMax ||
-            dt.SqlDataType == SqlDataType.VarBinaryMax)
+        return new NamedDdbRef
         {
-            sb.Append("(MAX)");
-        }
-        else if (dt.SqlDataType == SqlDataType.NVarChar ||
-            dt.SqlDataType == SqlDataType.VarChar ||
-            dt.SqlDataType == SqlDataType.VarBinary ||
-            dt.SqlDataType == SqlDataType.Char ||
-            dt.SqlDataType == SqlDataType.NChar ||
-            dt.SqlDataType == SqlDataType.Binary)
-        {
-            sb.Append("(");
-            sb.AppendSpanFormattable(dt.MaximumLength);
-            sb.Append(")");
-        }
+            Id = table.GetModelId(),
+            Type = DdbObject.GetTypeTag<DdbTable>(isRef: true),
+            Name = table.GetFullName()
+        };
+    }
 
-        return sb.ToString();
+    private static T CreateColumn<T>(Column column) where T : DdbColumnBase, new()
+    {
+        //if (column.IsForeignKey)
+        //{
+        //    using var dt = column.EnumForeignKeys();
+        //    var columns = dt.Columns;
+        //    Console.WriteLine("column: " + column.Name);
+        //    foreach (System.Data.DataRow row in dt.Rows)
+        //    {
+        //        var sb = new StringBuilder();
+        //        foreach (System.Data.DataColumn col in columns)
+        //        {
+        //            sb.Append(row[col.Ordinal]);
+        //            sb.Append(' ');
+        //        }
+        //        Console.WriteLine("\t" + sb);
+        //    }
+        //}
+
+        return new T()
+        {
+            IsNullable = column.Nullable,
+            IsComputed = column.Computed,
+            ComputedText = column.ComputedText,
+            DataType = column.DataType.PrettyName(),
+            MaxLengthBytes = column.DataType.MaximumLength,
+            Precision = column.DataType.NumericPrecision,
+            Scale = column.DataType.NumericScale,
+            IsIdentity = column.Identity,
+            IdentityIncrement = column.IdentityIncrement,
+            IdentitySeed = column.IdentitySeed,
+            Default = column.DefaultConstraint?.Text,
+            InPrimaryKey = column.InPrimaryKey,
+            IsForeignKey = column.IsForeignKey,
+            Collation = column.Collation,
+            IsFileStream = column.IsFileStream,
+
+        };
     }
 }

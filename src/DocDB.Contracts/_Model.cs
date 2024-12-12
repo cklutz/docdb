@@ -8,7 +8,54 @@ using System.Text.Json.Serialization;
 
 namespace DocDB.Contracts;
 
-public abstract class DdbObject
+public static class ModelExtensions
+{
+    public static DdbRef ToRef(this DdbObject obj)
+    {
+        return new DdbRef
+        {
+            Id = obj.Id,
+            Type = $"{obj.Type}Ref"
+        };
+    }
+
+    public static NamedDdbRef ToRef(this NamedDdbObject obj)
+    {
+        return new NamedDdbRef
+        {
+            Id = obj.Id,
+            Type = $"{obj.Type}Ref",
+            Name = obj.Name
+        };
+    }
+}
+
+public interface IDdbRef
+{
+    string Id { get; }
+    string Type { get; }
+}
+
+public interface INamedDdbRef : IDdbRef
+{
+    string Name { get; }
+}
+
+public class DdbRef : IDdbRef
+{
+    [JsonPropertyName("id"), JsonProperty("id")]
+    public string Id { get; set; } = null!;
+    [JsonPropertyName("type"), JsonProperty("type")]
+    public string Type { get; set; } = null!;
+}
+
+public class NamedDdbRef : DdbRef, INamedDdbRef
+{
+    [JsonPropertyName("name"), JsonProperty("name")]
+    public string Name { get; set; } = null!;
+}
+
+public abstract class DdbObject : IDdbRef
 {
     protected DdbObject()
     {
@@ -23,7 +70,7 @@ public abstract class DdbObject
     public string? Description { get; set; }
     [JsonPropertyName("script"), JsonProperty("script")]
     public string? Script { get; set; }
-    [JsonPropertyName("createdAt"), JsonProperty("createdAt")] 
+    [JsonPropertyName("createdAt"), JsonProperty("createdAt")]
     public DateTime CreatedAt { get; set; }
     [JsonPropertyName("lastModifiedAt"), JsonProperty("lastModifiedAt")]
     public DateTime LastModifiedAt { get; set; }
@@ -39,15 +86,21 @@ public abstract class DdbObject
             .ToDictionary(GetTypeTag, t => t);
     }
 
-    public static string GetTypeTag<T>() where T : DdbObject => GetTypeTag(typeof(T));
-
-    private static string GetTypeTag(Type type)
+    public static string GetTypeTag<T>(bool isRef = false) where T : DdbObject => GetTypeTag(typeof(T), isRef);
+    private static string GetTypeTag(Type type) => GetTypeTag(type, false);
+    private static string GetTypeTag(Type type, bool isRef)
     {
         var span = type.Name.AsSpan();
         if (span.StartsWith("Ddb"))
         {
             span = span.Slice(3);
         }
+
+        if (isRef)
+        {
+            return string.Concat(span, "Ref");
+        }
+
         return span.ToString();
     }
 
@@ -100,7 +153,7 @@ public abstract class DdbObject
     }
 }
 
-public abstract class NamedDdbObject : DdbObject
+public abstract class NamedDdbObject : DdbObject, INamedDdbRef
 {
     [JsonPropertyName("name"), JsonProperty("name")]
     public string Name { get; set; } = null!;
@@ -177,6 +230,8 @@ public abstract class DdbColumnBase : NamedDdbObject
     [JsonPropertyName("scale"), JsonProperty("scale")]
     public int? Scale { get; set; }
 
+    [JsonPropertyName("isNullable"), JsonProperty("isNullable")]
+    public bool IsNullable { get; set; }
     [JsonPropertyName("isComputed"), JsonProperty("isComputed")]
     public bool IsComputed { get; set; }
     [JsonPropertyName("computedText"), JsonProperty("computedText")]
@@ -191,12 +246,25 @@ public abstract class DdbColumnBase : NamedDdbObject
     public bool InPrimaryKey { get; set; }
     [JsonPropertyName("isForeignKey"), JsonProperty("isForeignKey")]
     public bool IsForeignKey { get; set; }
+    [JsonPropertyName("foreignKeys"), JsonProperty("foreignKeys")]
+    public List<NamedDdbRef> ForeignKeys { get; set; } = [];
     [JsonPropertyName("default"), JsonProperty("default")]
     public string? Default { get; set; }
+    [JsonPropertyName("collation"), JsonProperty("collation")]
+    public string? Collation { get; set; }
+    [JsonPropertyName("isFileStream"), JsonProperty("isFileStream")]
+    public bool IsFileStream { get; set; }
+    [JsonPropertyName("isFullTextIndexed"), JsonProperty("isFullTextIndexed")]
+    public bool IsFullTextIndexed { get; set; }
 
     public override bool Equals(object? obj) => obj is DdbColumnBase dbo && dbo.Name == Name;
     public override int GetHashCode() => Name.GetHashCode();
     public override string ToString() => Name;
+}
+
+public class DdbForeignKeyReference : NamedDdbObject
+{
+    public string TableName { get; set; } = null!;
 }
 
 public class DdbTableColumn : DdbColumnBase
@@ -222,9 +290,17 @@ public class DdbIndex : NamedDdbObject
 public class DdbForeignKey : NamedDdbObject
 {
     [JsonPropertyName("columns"), JsonProperty("columns")]
-    public List<string> Columns { get; set; } = [];
-    [JsonPropertyName("noCheck"), JsonProperty("noCheck")]
-    public bool NoCheck { get; set; }
+    public List<NamedDdbRef> Columns { get; set; } = [];
+    [JsonPropertyName("isChecked"), JsonProperty("isChecked")]
+    public bool IsChecked { get; set; }
+    [JsonPropertyName("referencedKey"), JsonProperty("referencedKey")]
+    public string? ReferencedKey { get; set; }
+    [JsonPropertyName("referencedTable"), JsonProperty("referencedTable")]
+    public NamedDdbRef? ReferencedTable { get; set; }
+    [JsonPropertyName("deleteAction"), JsonProperty("deleteAction")]
+    public string? DeleteAction { get; set; }
+    [JsonPropertyName("updateAction"), JsonProperty("updateAction")]
+    public string? UpdateAction { get; set; }
 }
 
 public class DdbCheckConstraint : NamedDdbObject
@@ -252,7 +328,7 @@ public abstract class TabularDdbObject<TColumn> : NamedDdbObject where TColumn :
     [JsonPropertyName("indexes"), JsonProperty("indexes")]
     public List<DdbIndex> Indexes { get; set; } = [];
     [JsonPropertyName("columns"), JsonProperty("columns")]
-    public List<TColumn> Columns { get; set;  } = [];
+    public List<TColumn> Columns { get; set; } = [];
 }
 
 public class DdbTable : TabularDdbObject<DdbTableColumn>

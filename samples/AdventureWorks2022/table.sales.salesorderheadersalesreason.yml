@@ -5,7 +5,60 @@ description: Cross-reference table mapping sales orders to sales reason codes.
 createdAt: 2023-05-08T12:07:29.5600000
 lastModifiedAt: 2023-05-08T12:07:39.1970000
 name: Sales.SalesOrderHeaderSalesReason
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.sales.salesorderheadersalesreason.foreignkey.fk_salesorderheadersalesreason_salesorderheader_salesorderid
+  description: Foreign key constraint referencing SalesOrderHeader.SalesOrderID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_SalesOrderHeaderSalesReason_SalesOrderHeader_SalesOrderID
+  columns:
+  - name: SalesOrderID
+    id: table.sales.salesorderheadersalesreason.column.salesorderid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_SalesOrderHeader_SalesOrderID
+  referencedTable:
+    name: '[Sales].[SalesOrderHeader]'
+    id: table.sales.salesorderheader
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[SalesOrderHeaderSalesReason]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeaderSalesReason_SalesOrderHeader_SalesOrderID] FOREIGN KEY([SalesOrderID])
+    REFERENCES [Sales].[SalesOrderHeader] ([SalesOrderID])
+    ON DELETE CASCADE
+    GO
+
+    ALTER TABLE [Sales].[SalesOrderHeaderSalesReason] CHECK CONSTRAINT [FK_SalesOrderHeaderSalesReason_SalesOrderHeader_SalesOrderID]
+    GO
+
+- type: ForeignKey
+  id: table.sales.salesorderheadersalesreason.foreignkey.fk_salesorderheadersalesreason_salesreason_salesreasonid
+  description: Foreign key constraint referencing SalesReason.SalesReasonID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_SalesOrderHeaderSalesReason_SalesReason_SalesReasonID
+  columns:
+  - name: SalesReasonID
+    id: table.sales.salesorderheadersalesreason.column.salesreasonid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_SalesReason_SalesReasonID
+  referencedTable:
+    name: '[Sales].[SalesReason]'
+    id: table.sales.salesreason
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[SalesOrderHeaderSalesReason]  WITH CHECK ADD  CONSTRAINT [FK_SalesOrderHeaderSalesReason_SalesReason_SalesReasonID] FOREIGN KEY([SalesReasonID])
+    REFERENCES [Sales].[SalesReason] ([SalesReasonID])
+    GO
+
+    ALTER TABLE [Sales].[SalesOrderHeaderSalesReason] CHECK CONSTRAINT [FK_SalesOrderHeaderSalesReason_SalesReason_SalesReasonID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +77,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_SalesOrderHeaderSalesReason_SalesOrderHeader_SalesOrderID
+    id: table.sales.salesorderheadersalesreason.foreignkey.fk_salesorderheadersalesreason_salesorderheader_salesorderid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheadersalesreason.column.salesreasonid
@@ -43,14 +104,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_SalesOrderHeaderSalesReason_SalesReason_SalesReasonID
+    id: table.sales.salesorderheadersalesreason.foreignkey.fk_salesorderheadersalesreason_salesreason_salesreasonid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheadersalesreason.column.modifieddate
@@ -62,6 +131,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -69,7 +139,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

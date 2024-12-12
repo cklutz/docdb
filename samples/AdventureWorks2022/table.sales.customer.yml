@@ -5,7 +5,85 @@ description: Current customer information. Also see the Person and Store tables.
 createdAt: 2023-05-08T12:07:29.4400000
 lastModifiedAt: 2023-05-08T12:07:39.0100000
 name: Sales.Customer
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.sales.customer.foreignkey.fk_customer_person_personid
+  description: Foreign key constraint referencing Person.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Customer_Person_PersonID
+  columns:
+  - name: PersonID
+    id: table.sales.customer.column.personid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Person_BusinessEntityID
+  referencedTable:
+    name: '[Person].[Person]'
+    id: table.person.person
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Person_PersonID] FOREIGN KEY([PersonID])
+    REFERENCES [Person].[Person] ([BusinessEntityID])
+    GO
+
+    ALTER TABLE [Sales].[Customer] CHECK CONSTRAINT [FK_Customer_Person_PersonID]
+    GO
+
+- type: ForeignKey
+  id: table.sales.customer.foreignkey.fk_customer_salesterritory_territoryid
+  description: Foreign key constraint referencing SalesTerritory.TerritoryID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Customer_SalesTerritory_TerritoryID
+  columns:
+  - name: TerritoryID
+    id: table.sales.customer.column.territoryid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_SalesTerritory_TerritoryID
+  referencedTable:
+    name: '[Sales].[SalesTerritory]'
+    id: table.sales.salesterritory
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_SalesTerritory_TerritoryID] FOREIGN KEY([TerritoryID])
+    REFERENCES [Sales].[SalesTerritory] ([TerritoryID])
+    GO
+
+    ALTER TABLE [Sales].[Customer] CHECK CONSTRAINT [FK_Customer_SalesTerritory_TerritoryID]
+    GO
+
+- type: ForeignKey
+  id: table.sales.customer.foreignkey.fk_customer_store_storeid
+  description: Foreign key constraint referencing Store.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_Customer_Store_StoreID
+  columns:
+  - name: StoreID
+    id: table.sales.customer.column.storeid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Store_BusinessEntityID
+  referencedTable:
+    name: '[Sales].[Store]'
+    id: table.sales.store
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Sales].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Store_StoreID] FOREIGN KEY([StoreID])
+    REFERENCES [Sales].[Store] ([BusinessEntityID])
+    GO
+
+    ALTER TABLE [Sales].[Customer] CHECK CONSTRAINT [FK_Customer_Store_StoreID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +102,19 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: true
   identityIncrement: 1
   identitySeed: 1
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.customer.column.personid
@@ -43,14 +126,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Customer_Person_PersonID
+    id: table.sales.customer.foreignkey.fk_customer_person_personid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.customer.column.storeid
@@ -62,14 +153,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Customer_Store_StoreID
+    id: table.sales.customer.foreignkey.fk_customer_store_storeid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.customer.column.territoryid
@@ -81,14 +180,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: true
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
   inPrimaryKey: false
-  isForeignKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_Customer_SalesTerritory_TerritoryID
+    id: table.sales.customer.foreignkey.fk_customer_salesterritory_territoryid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.customer.column.accountnumber
@@ -100,6 +207,7 @@ columns:
   maxLengthBytes: 10
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: true
   computedText: (isnull('AW'+[dbo].[ufnLeadingZeros]([CustomerID]),''))
   isIdentity: false
@@ -107,7 +215,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.customer.column.rowguid
@@ -119,6 +231,7 @@ columns:
   maxLengthBytes: 16
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -126,7 +239,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.sales.customer.column.modifieddate
@@ -138,6 +255,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -145,7 +263,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

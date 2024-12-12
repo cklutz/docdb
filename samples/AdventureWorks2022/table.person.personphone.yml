@@ -5,7 +5,59 @@ description: Telephone number and type of a person.
 createdAt: 2023-05-08T12:07:29.4830000
 lastModifiedAt: 2023-05-08T12:07:38.7530000
 name: Person.PersonPhone
-foreignKeys: []
+foreignKeys:
+- type: ForeignKey
+  id: table.person.personphone.foreignkey.fk_personphone_person_businessentityid
+  description: Foreign key constraint referencing Person.BusinessEntityID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_PersonPhone_Person_BusinessEntityID
+  columns:
+  - name: BusinessEntityID
+    id: table.person.personphone.column.businessentityid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Person_BusinessEntityID
+  referencedTable:
+    name: '[Person].[Person]'
+    id: table.person.person
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Person].[PersonPhone]  WITH CHECK ADD  CONSTRAINT [FK_PersonPhone_Person_BusinessEntityID] FOREIGN KEY([BusinessEntityID])
+    REFERENCES [Person].[Person] ([BusinessEntityID])
+    GO
+
+    ALTER TABLE [Person].[PersonPhone] CHECK CONSTRAINT [FK_PersonPhone_Person_BusinessEntityID]
+    GO
+
+- type: ForeignKey
+  id: table.person.personphone.foreignkey.fk_personphone_phonenumbertype_phonenumbertypeid
+  description: Foreign key constraint referencing PhoneNumberType.PhoneNumberTypeID.
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID
+  columns:
+  - name: PhoneNumberTypeID
+    id: table.person.personphone.column.phonenumbertypeid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_PhoneNumberType_PhoneNumberTypeID
+  referencedTable:
+    name: '[Person].[PhoneNumberType]'
+    id: table.person.phonenumbertype
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  script: |+
+    ALTER TABLE [Person].[PersonPhone]  WITH CHECK ADD  CONSTRAINT [FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID] FOREIGN KEY([PhoneNumberTypeID])
+    REFERENCES [Person].[PhoneNumberType] ([PhoneNumberTypeID])
+    GO
+
+    ALTER TABLE [Person].[PersonPhone] CHECK CONSTRAINT [FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID]
+    GO
+
 checks: []
 partitionInfo:
   isPartitioned: false
@@ -24,14 +76,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_PersonPhone_Person_BusinessEntityID
+    id: table.person.personphone.foreignkey.fk_personphone_person_businessentityid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.personphone.column.phonenumber
@@ -43,14 +103,19 @@ columns:
   maxLengthBytes: 25
   precision: 0
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
+  inPrimaryKey: true
   isForeignKey: false
+  foreignKeys: []
   default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.personphone.column.phonenumbertypeid
@@ -62,14 +127,22 @@ columns:
   maxLengthBytes: 4
   precision: 10
   scale: 0
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
   identityIncrement: 0
   identitySeed: 0
-  inPrimaryKey: false
-  isForeignKey: false
+  inPrimaryKey: true
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID
+    id: table.person.personphone.foreignkey.fk_personphone_phonenumbertype_phonenumbertypeid
+    type: ForeignKeyRef
   default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 - type: TableColumn
   id: table.person.personphone.column.modifieddate
@@ -81,6 +154,7 @@ columns:
   maxLengthBytes: 8
   precision: 23
   scale: 3
+  isNullable: false
   isComputed: false
   computedText: ''
   isIdentity: false
@@ -88,7 +162,11 @@ columns:
   identitySeed: 0
   inPrimaryKey: false
   isForeignKey: false
+  foreignKeys: []
   default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
   script: ""
 script: |+
   SET ANSI_NULLS ON

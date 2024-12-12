@@ -1,0 +1,35 @@
+{{#payload.foreignKeys.0}}
+<h2>{{__global.foreignKeys}}</h2>
+
+{{#payload.foreignKeys}}
+<h3 id="{{id}}">{{name}}</h3>
+
+<div class"markdown level0 summary">{{description}}</div>
+
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Columns</th>
+			<td>{{#columns}}<a href="#{{id}}">{{name}}</a>&nbsp;{{/columns}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Checked</th>
+			<td>
+			{{#isChecked}}{{{__global.symCheckMark}}}{{/isChecked}}
+			{{^isChecked}}{{{__global.symCross}}}{{/isChecked}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Referenced Table</th>
+			<td><a href="{{referencedTable.id}}.html">{{referencedTable.name}}</a></td>
+		</tr>
+	</tbody>
+</table>
+
+{{/payload.foreignKeys}}
+
+{{/payload.foreignKeys.0}}

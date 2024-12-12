@@ -275,6 +275,79 @@ public static class SmoExtensions
         // investigation it works at least for (table and view)
         return urn.Type.ToUpperInvariant();
     }
+
+    public static Table FindTableByName(this Database database, string schemaName, string tableName)
+    {
+        ArgumentNullException.ThrowIfNull(database);
+        ArgumentException.ThrowIfNullOrEmpty(schemaName);
+        ArgumentException.ThrowIfNullOrEmpty(tableName);
+
+        var tables = database.Tables.OfType<Table>();
+        var table = tables.FirstOrDefault(t => 
+            t.Name.Equals(tableName, StringComparison.OrdinalIgnoreCase) && 
+            t.Schema.Equals(schemaName, StringComparison.OrdinalIgnoreCase));
+        if (table == null)
+        {
+            throw new InvalidOperationException($"Database {database.Name} does not contain table {schemaName}.{table}.");
+        }
+        return table;
+    }
+
+    public static Column FindColumnByName(this Table table, string name)
+    {
+        ArgumentNullException.ThrowIfNull(table);
+        ArgumentException.ThrowIfNullOrEmpty(name);
+
+        var columns = table.Columns.OfType<Column>();
+        var column = columns.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        if (column == null)
+        {
+            throw new InvalidOperationException($"Table {table.GetFullName()} does not contain column {name}. " +
+                $"Valid columns are: {string.Join(", ", columns.Select(c => c.Name))}.");
+        }
+        return column;
+    }
+
+    public static string ToQuotedName(string arg0) => DoCreateQuotedName(arg0, null, null, null);
+    public static string ToQuotedName(string arg0, string arg1) => DoCreateQuotedName(arg0, arg1, null, null);
+    public static string ToQuotedName(string arg0, string arg1, string arg2) => DoCreateQuotedName(arg0, arg1, arg2, null);
+    public static string ToQuotedName(string arg0, string arg1, string arg2, string arg3) => DoCreateQuotedName(arg0, arg1, arg2, arg3);
+    private static string DoCreateQuotedName(string arg0, string? arg1, string? arg2, string? arg3)
+    {
+        ArgumentNullException.ThrowIfNull(arg0);
+
+        var sb = new ValueStringBuilder(stackalloc char[255]);
+        AddArg(ref sb, arg0);
+        if (arg1 != null)
+        {
+            AddArg(ref sb, arg1);
+            if (arg2 != null)
+            {
+                AddArg(ref sb, arg2);
+                if (arg3 != null)
+                {
+                    AddArg(ref sb, arg3);
+                }
+            }
+        }
+
+        return sb.ToString();
+
+        static void AddArg(ref ValueStringBuilder sb, string arg)
+        {
+            if (sb.Length > 0)
+            {
+                sb.Append('.');
+            }
+
+            if (arg.Length > 0)
+            {
+                sb.Append('[');
+                sb.Append(arg);
+                sb.Append(']');
+            }
+        }
+    }
 }
 
 public enum UrnObjectType
