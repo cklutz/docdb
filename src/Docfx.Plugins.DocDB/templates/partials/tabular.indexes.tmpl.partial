@@ -16,7 +16,7 @@
 			<td><a href="{{id}}">{{name}}</a></td>
 			<td>{{indexKeyType}} {{indexType}}</td>
 			<td>{{^isDisabled}}{{{__global.symCheckMark}}}{{/isDisabled}}</td>
-			<td>{{description}}</td>
+			<td class="pre-wrap">{{description}}</td>
 		</tr>
 {{/payload.indexes}}
 	</tbody>

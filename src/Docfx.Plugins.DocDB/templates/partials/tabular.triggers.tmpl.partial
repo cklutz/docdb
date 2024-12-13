@@ -21,7 +21,7 @@
 				{{#onUpdate}}UPDATE {{/onUpdate}}
 				{{#onDelete}}DELETE {{/onDelete}}
 			</td>
-			<td>{{description}}</td>
+			<td class="pre-wrap">{{description}}</td>
 {{/payload.triggers}}
 	</tbody>
 </table>

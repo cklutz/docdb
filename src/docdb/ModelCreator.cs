@@ -341,6 +341,7 @@ internal class ModelCreator
             LastModifiedAt = sp.DateLastModified
         }, sp);
 
+        
         foreach (StoredProcedureParameter parameter in sp.Parameters)
         {
             result.Parameters.Add(InitBase(new DdbStoredProcedureParameter()

@@ -34,7 +34,7 @@
 			<td>{{#default}}{{{__global.symCheckMark}}}{{/default}}</td>
 			<td>{{#isComputed}}{{{__global.symCheckMark}}}{{/isComputed}}</td>
 {{/isTable}}
-			<td>{{description}}</td>
+			<td class="pre-wrap">{{description}}</td>
 		</tr>
 {{/payload.columns}}
 {{#payload.columns.0}}

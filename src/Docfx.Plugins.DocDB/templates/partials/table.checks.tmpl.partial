@@ -16,7 +16,7 @@
 			<td>{{name}}</td>
 			<td>{{#isEnabled}}{{{__global.symCheckMark}}}{{/isEnabled}}</td>
 			<td>{{#isChecked}}{{{__global.symCheckMark}}}{{/isChecked}}</td>
-			<td>{{description}}</td>
+			<td class="pre-wrap">{{description}}</td>
 		</tr>
 {{/payload.checks}}
 	</tbody>

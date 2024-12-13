@@ -1,0 +1,73 @@
+{{#payload.parameters.0}}
+<h2>{{__global.parameters}}</h2>
+
+<table class="table table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th>Parameter Name</th>
+			<th>Data Type</th>
+			<th>Default</th>
+{{#isStoredProcedure}}
+			<th>Output</th>
+			<th>Cursor</th>
+{{/isStoredProcedure}}
+			<th>{{__global.description}}</th>
+		</tr>
+	</thead>
+	<tbody>
+{{#payload.parameters}}
+		<tr>
+			<td><a href="{{id}}">{{name}}</a></td>
+			<td>{{dataType}}</td>
+			<td>{{defaultValue}}</td>
+{{#isStoredProcedure}}
+			<td>{{#isOutputParameter}}{{{__global.symCheckMark}}}{{/isOutputParameter}}</td>
+			<td>{{#isCursorParameter}}{{{__global.symCheckMark}}}{{/isCursorParameter}}</td>
+{{/isStoredProcedure}}
+			<td class="pre-wrap">{{description}}</td>
+		</tr>
+{{/payload.parameters}}
+	</tbody>
+</table>
+
+{{#payload.parameters}}
+<h3 id="{{id}}">{{name}} parameter</h3>
+
+<div class"markdown level0 summary">{{description}}</div>
+
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Data type</th>
+			<td>{{dataType}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Default Value</th>
+			<td>{{defaultValue}}</td>
+		</tr>
+{{#isStoredProcedure}}
+		<tr>
+			<th class="nowrap">Output Parameter</th>
+			<td>
+			{{#isOutputParameter}}{{{__global.symCheckMark}}}{{/isOutputParameter}}
+			{{^isOutputParameter}}{{{__global.symCross}}}{{/isOutputParameter}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Cursor Parameter</th>
+			<td>
+			{{#isCursorParameter}}{{{__global.symCheckMark}}}{{/isCursorParameter}}
+			{{^isCursorParameter}}{{{__global.symCross}}}{{/isCursorParameter}}
+			</td>
+		</tr>
+{{/isStoredProcedure}}
+	</tbody>
+</table>
+
+{{/payload.parameters}}
+
+{{/payload.parameters.0}}
