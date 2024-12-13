@@ -36,6 +36,7 @@ namespace DocDB
         //          Roles
         //              Database Roles
         //              Application Roles
+        //          Schemas
         //  
 
 
@@ -97,6 +98,28 @@ namespace DocDB
                         emitter.Emit(SequenceEnd());
                     });
 
+                    emitter.Emit(SequenceEnd());
+                });
+
+
+                NamedComplexSequenceEntry(emitter, "Security", emitter =>
+                {
+                    emitter.Emit(new Scalar("items"));
+                    emitter.Emit(SequenceStart());
+
+                    AddNamedItemSequence(emitter, "Users", objects.OfType<DdbUser>());
+                    AddNamedItemSequence(emitter, "Schemas", objects.OfType<DdbSchema>());
+
+                    NamedComplexSequenceEntry(emitter, "Roles", emitter =>
+                    {
+                        emitter.Emit(new Scalar("items"));
+                        emitter.Emit(SequenceStart());
+
+                        AddNamedItemSequence(emitter, "Database Roles", objects.OfType<DdbDatabaseRole>());
+                        AddNamedItemSequence(emitter, "Application Roles", objects.OfType<DdbApplicationRole>());
+
+                        emitter.Emit(SequenceEnd());
+                    });
 
                     emitter.Emit(SequenceEnd());
                 });

@@ -284,6 +284,41 @@ public enum DdbGrowthType
 
 public class DdbSchema : NamedDdbObject
 {
+    [JsonPropertyName("owner"), JsonProperty("owner")]
+    public string? Owner { get; set; }
+}
+
+public class DdbUser : NamedDdbObject
+{
+    [JsonPropertyName("userType"), JsonProperty("userType")]
+    public string? UserType { get; set; }
+
+    [JsonPropertyName("authenticationType"), JsonProperty("authenticationType")]
+    public string? AuthenticationType { get; set; }
+
+    [JsonPropertyName("hasDbAccess"), JsonProperty("hasDbAccess")]
+    public bool HasDBAccess { get; set; }
+
+    [JsonPropertyName("loginType"), JsonProperty("loginType")]
+    public string? LoginType { get; set; }
+
+    [JsonPropertyName("login"), JsonProperty("login")]
+    public string? Login { get; set; }
+}
+
+public class DdbApplicationRole : NamedDdbObject
+{
+    [JsonPropertyName("defaultSchema"), JsonProperty("defaultSchema")]
+    public string? DefaultSchema { get; set; }
+}
+
+public class DdbDatabaseRole : NamedDdbObject
+{
+    [JsonPropertyName("owner"), JsonProperty("owner")]
+    public string? Owner { get; set; }
+
+    [JsonPropertyName("members"), JsonProperty("members")]
+    public List<string> Members { get; set; } = [];
 }
 
 public enum DdbUserDefinedFunctionType

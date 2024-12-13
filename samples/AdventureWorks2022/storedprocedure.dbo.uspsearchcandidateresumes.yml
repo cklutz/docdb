@@ -53,10 +53,10 @@ parameters:
 syntax: |2+
 
   dbo.uspSearchCandidateResumes
-      [@searchString ] = searchString ,
-     [  [@useInflectional ] = '0' ] ,
-     [  [@useThesaurus ] = '0' ] ,
-     [  [@language ] = '0' ]
+      [ @searchString ] = searchString ,
+     [  [ @useInflectional ] = '0' ] ,
+     [  [ @useThesaurus ] = '0' ] ,
+     [  [ @language ] = '0' ]
   [ ; ]
 script: |+
   SET ANSI_NULLS ON

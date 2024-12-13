@@ -1,0 +1,16 @@
+### YamlMime:DocDB
+type: User
+id: user.dbo
+description: 
+createdAt: 0001-01-01T00:00:00.0000000
+lastModifiedAt: 0001-01-01T00:00:00.0000000
+name: dbo
+userType: SqlLogin
+authenticationType: Instance
+hasDBAccess: true
+loginType: SqlLogin
+login: sa
+script: |+
+  CREATE USER [dbo] FOR LOGIN [sa] WITH DEFAULT_SCHEMA=[dbo]
+  GO
+

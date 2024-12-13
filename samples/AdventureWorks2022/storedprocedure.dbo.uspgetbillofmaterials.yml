@@ -31,8 +31,8 @@ parameters:
 syntax: |2+
 
   dbo.uspGetBillOfMaterials
-      [@StartProductID ] = StartProductID ,
-      [@CheckDate ] = CheckDate
+      [ @StartProductID ] = StartProductID ,
+      [ @CheckDate ] = CheckDate
   [ ; ]
 script: |+
   SET ANSI_NULLS ON

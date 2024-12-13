@@ -63,7 +63,7 @@ public sealed class SqlServerTarget : IDisposable
         return [];
     }
 
-    private Lazy<IEnumerable<Urn>> _userObjectUrns => new(() 
+    private Lazy<IEnumerable<Urn>> _userObjectUrns => new(()
         =>
         new[] { _database.Urn }
         .Union(AddUrns<Table>(_database.Tables, t => !t.IsSystemObject))
@@ -78,8 +78,9 @@ public sealed class SqlServerTarget : IDisposable
         //.Union(AddUrns<XmlSchemaCollection>(_database.XmlSchemaCollections))
         //.Union(AddUrns<PartitionFunction>(_database.PartitionFunctions))
         //.Union(AddUrns<PartitionScheme>(_database.PartitionSchemes))
-        //.Union(AddUrns<DatabaseRole>(_database.Roles, r => !r.IsFixedRole && !r.IsPublicRole()))
-        //.Union(AddUrns<ApplicationRole>(_database.ApplicationRoles))
+        .Union(AddUrns<DatabaseRole>(_database.Roles, r => true))
+        .Union(AddUrns<ApplicationRole>(_database.ApplicationRoles))
+        .Union(AddUrns<User>(_database.Users, t => t.IsSystemObject))
         .Union(AddUrns<Schema>(_database.Schemas, t => (!t.IsSystemSchema() && t.EnumOwnedObjects().Length > 0) || t.Name == "dbo"))
         , LazyThreadSafetyMode.ExecutionAndPublication);
 

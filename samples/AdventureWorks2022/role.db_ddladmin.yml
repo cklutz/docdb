@@ -1,12 +1,13 @@
 ### YamlMime:DocDB
-type: Schema
-id: schema.dbo
+type: DatabaseRole
+id: role.db_ddladmin
 description: 
 createdAt: 0001-01-01T00:00:00.0000000
 lastModifiedAt: 0001-01-01T00:00:00.0000000
-name: dbo
+name: db_ddladmin
 owner: dbo
+members: []
 script: |+
-  CREATE SCHEMA [dbo]
+  CREATE ROLE [db_ddladmin]
   GO
 

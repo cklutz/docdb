@@ -5,6 +5,20 @@
 
 <div class"markdown level0 summary">{{payload.description}}</div>
 
+{{#isUser}}
+{{>partials/user}}
+{{/isUser}}
+{{#isDatabaseRole}}
+{{>partials/databaserole}}
+{{/isDatabaseRole}}
+{{#isApplicationRole}}
+{{>partials/applicationrole}}
+{{/isApplicationRole}}
+
+{{#isSchema}}
+{{>partials/schema}}
+{{/isSchema}}
+
 {{#isDatabase}}
 {{>partials/database}}
 {{/isDatabase}}

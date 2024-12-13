@@ -1,0 +1,25 @@
+
+{{#payload}}
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Owner</th>
+			<td>{{owner}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Members</th>
+			<td>
+				<ul>
+			{{#members}}
+					<li>{{.}}</li>
+			{{/members}}
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{{/payload}}

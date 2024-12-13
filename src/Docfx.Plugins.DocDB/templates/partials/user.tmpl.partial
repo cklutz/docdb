@@ -1,0 +1,34 @@
+
+{{#payload}}
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Has Database Access</th>
+			<td>
+			{{#hasDbAccess}}{{{__global.symCheckMark}}}{{/hasDbAccess}}
+			{{^hasDbAccess}}{{{__global.symCross}}}{{/hasDbAccess}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">User type</th>
+			<td>{{userType}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Authentication type</th>
+			<td>{{authenticationType}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Login type</th>
+			<td>{{loginType}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Login</th>
+			<td>{{login}}</td>
+		</tr>
+	</tbody>
+</table>
+{{/payload}}

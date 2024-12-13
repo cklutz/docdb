@@ -19,7 +19,7 @@ parameters:
   script: ""
 syntax: |2+
 
-  dbo.uspGetEmployeeManagers  [@BusinessEntityID ] = BusinessEntityID
+  dbo.uspGetEmployeeManagers  [ @BusinessEntityID ] = BusinessEntityID
   [ ; ]
 script: |+
   SET ANSI_NULLS ON

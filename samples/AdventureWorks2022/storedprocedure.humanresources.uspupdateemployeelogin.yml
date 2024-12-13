@@ -75,12 +75,12 @@ parameters:
 syntax: |2+
 
   HumanResources.uspUpdateEmployeeLogin
-      [@BusinessEntityID ] = BusinessEntityID ,
-      [@OrganizationNode ] = OrganizationNode ,
-      [@LoginID ] = LoginID ,
-      [@JobTitle ] = JobTitle ,
-      [@HireDate ] = HireDate ,
-      [@CurrentFlag ] = CurrentFlag
+      [ @BusinessEntityID ] = BusinessEntityID ,
+      [ @OrganizationNode ] = OrganizationNode ,
+      [ @LoginID ] = LoginID ,
+      [ @JobTitle ] = JobTitle ,
+      [ @HireDate ] = HireDate ,
+      [ @CurrentFlag ] = CurrentFlag
   [ ; ]
 script: |+
   SET ANSI_NULLS ON

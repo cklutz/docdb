@@ -64,11 +64,11 @@ parameters:
 syntax: |2+
 
   HumanResources.uspUpdateEmployeePersonalInfo
-      [@BusinessEntityID ] = BusinessEntityID ,
-      [@NationalIDNumber ] = NationalIDNumber ,
-      [@BirthDate ] = BirthDate ,
-      [@MaritalStatus ] = MaritalStatus ,
-      [@Gender ] = Gender
+      [ @BusinessEntityID ] = BusinessEntityID ,
+      [ @NationalIDNumber ] = NationalIDNumber ,
+      [ @BirthDate ] = BirthDate ,
+      [ @MaritalStatus ] = MaritalStatus ,
+      [ @Gender ] = Gender
   [ ; ]
 script: |+
   SET ANSI_NULLS ON

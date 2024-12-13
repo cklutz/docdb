@@ -17,9 +17,12 @@ internal class ModelCreator
         return obj switch
         {
             Database database => CreateDatabase(database),
-            Schema schema => CreateSchema(schema),
             Table table => CreateTable(table),
             View view => CreateView(view),
+            Schema schema => CreateSchema(schema),
+            User user => CreateUser(user),
+            DatabaseRole databaseRole => CreateDatabaseRole(databaseRole),
+            ApplicationRole applicationRole => CreateApplicationRole(applicationRole),
             UserDefinedFunction udf => CreateUserDefinedFunction(udf),
             StoredProcedure sp => CreateStoredProcedure(sp),
             _ => throw new ArgumentOutOfRangeException(nameof(obj), obj.GetType(), null)
@@ -296,11 +299,51 @@ internal class ModelCreator
         return result;
     }
 
-   
-
     private DdbSchema CreateSchema(Schema schema)
     {
-        var result = InitBase(new DdbSchema(), schema);
+        var result = InitBase(new DdbSchema
+        {
+            Owner = schema.Owner,
+        }, schema);
+        return result;
+    }
+
+    private DdbUser CreateUser(User user)
+    {
+        // TODO: "OwningSchemas" (see comment in CreateDatabaseRole(), which also applies here)
+
+        var result = InitBase(new DdbUser
+        {
+            AuthenticationType = user.AuthenticationType.ToString(),
+            HasDBAccess = user.HasDBAccess,
+            LoginType = user.LoginType.ToString(),
+            Login = user.Login,
+            UserType = user.UserType.ToString()
+        }, user);
+        return result;
+    }
+
+    private DdbDatabaseRole CreateDatabaseRole(DatabaseRole role)
+    {
+        // TODO: "OwningSchemas" would need to be resolved by comparing the role's name with
+        // the schemas "Owner" property. However, that is not sufficient. There might by user
+        // by the same name as the role and that might be the owner instead.
+        // We would need the "Principal ID" (which should be unique between users and roles)
+        // and check for that.
+
+        var result = InitBase(new DdbDatabaseRole
+        {
+            Owner = role.Owner,
+            Members = role.EnumMembers().OfType<string>().ToList()
+        }, role);
+        return result;
+    }
+    private DdbApplicationRole CreateApplicationRole(ApplicationRole role)
+    {
+        var result = InitBase(new DdbApplicationRole
+        {
+            DefaultSchema = role.DefaultSchema,
+        }, role);
         return result;
     }
 

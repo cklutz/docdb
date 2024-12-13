@@ -86,13 +86,13 @@ parameters:
 syntax: |2+
 
   HumanResources.uspUpdateEmployeeHireInfo
-      [@BusinessEntityID ] = BusinessEntityID ,
-      [@JobTitle ] = JobTitle ,
-      [@HireDate ] = HireDate ,
-      [@RateChangeDate ] = RateChangeDate ,
-      [@Rate ] = Rate ,
-      [@PayFrequency ] = PayFrequency ,
-      [@CurrentFlag ] = CurrentFlag
+      [ @BusinessEntityID ] = BusinessEntityID ,
+      [ @JobTitle ] = JobTitle ,
+      [ @HireDate ] = HireDate ,
+      [ @RateChangeDate ] = RateChangeDate ,
+      [ @Rate ] = Rate ,
+      [ @PayFrequency ] = PayFrequency ,
+      [ @CurrentFlag ] = CurrentFlag
   [ ; ]
 script: |+
   SET ANSI_NULLS ON

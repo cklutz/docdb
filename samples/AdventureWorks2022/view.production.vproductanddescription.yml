@@ -3,7 +3,7 @@ type: View
 id: view.production.vproductanddescription
 description: Product names and descriptions. Product descriptions are provided in multiple languages.
 createdAt: 2023-05-08T12:07:39.5200000
-lastModifiedAt: 2023-05-08T12:07:39.5300000
+lastModifiedAt: 2024-12-13T16:37:17.7430000
 name: Production.vProductAndDescription
 indexes:
 - type: Index
