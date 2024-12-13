@@ -5,18 +5,19 @@
 
 <div class"markdown level0 summary">{{payload.description}}</div>
 
+{{#isDatabase}}
+{{>partials/database}}
+{{/isDatabase}}
+
 {{#isTabular}}
 {{>partials/tabular.columns}}
 {{/isTabular}}
-
 {{#isTable}}
 {{>partials/table.foreignkeys}}
 {{/isTable}}
-
 {{#isTable}}
 {{>partials/table.checks}}
 {{/isTable}}
-
 {{#isTabular}}
 {{>partials/tabular.triggers}}
 {{/isTabular}}

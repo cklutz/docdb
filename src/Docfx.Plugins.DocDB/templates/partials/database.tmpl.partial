@@ -1,0 +1,30 @@
+
+{{#payload}}
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Product</th>
+			<td>{{productInformation}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Default collation</th>
+			<td>{{collation}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Cloud hosted</th>
+			<td>
+			{{#isCloudHosted}}{{{__global.symCheckMark}}}{{/isCloudHosted}}
+			{{^isCloudHosted}}{{{__global.symCross}}}{{/isCloudHosted}}
+			</td>
+		</tr>
+	</tbody>
+</table>
+{{/payload}}
+
+{{>partials/database.files}}
+{{>partials/database.filegroups}}
+{{>partials/database.options}}

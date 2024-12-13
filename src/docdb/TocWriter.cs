@@ -11,35 +11,42 @@ namespace DocDB
 {
     internal static class TocWriter
     {
-        // Tables
-        // Views
-        // Programmability
-        //  Stored Procedures
-        //  Functions
-        //      Table-valued Functions
-        //      Scalar-valued Functions
-        //      Aggregate Functions
-        //  Database Triggers
-        //  Assemblies
-        //  Types
-        //      User-Defined Data Types
-        //      User-Defined Table Types
-        //      User-Defined Types
-        //      XML Schema Collections
-        //  Sequences
-        // Storage
-        //  Partition Schemas
-        //  Partition Functions
-        // Security
-        //  Users
-        //  Roles
-        //      Database Roles
-        //      Application Roles
+        // "Database"
+        //      Tables
+        //      Views
+        //      Programmability
+        //          Stored Procedures
+        //          Functions
+        //              Table-valued Functions
+        //              Scalar-valued Functions
+        //              Aggregate Functions
+        //          Database Triggers
+        //          Assemblies
+        //          Types
+        //              User-Defined Data Types
+        //              User-Defined Table Types
+        //              User-Defined Types
+        //              XML Schema Collections
+        //          Sequences
+        //      Storage
+        //          Partition Schemas
+        //          Partition Functions
+        //      Security
+        //          Users
+        //          Roles
+        //              Database Roles
+        //              Application Roles
         //  
 
 
         public static void WriteToc(string fileName, List<DdbObject> objects)
         {
+            var databaseObj = objects.OfType<DdbDatabase>().FirstOrDefault();
+            if (databaseObj == null)
+            {
+                throw new InvalidOperationException("Objects contain no database object.");
+            }
+
             using var stream = new StreamWriter(fileName, append: false);
             stream.WriteLine("### YamlMime:TableOfContent");
             var emitter = new Emitter(stream);
@@ -50,37 +57,49 @@ namespace DocDB
             emitter.Emit(new Scalar("items"));
             emitter.Emit(SequenceStart());
 
-            AddNamedItemSequence(emitter, "Tables", objects.OfType<DdbTable>());
-            AddNamedItemSequence(emitter, "Views", objects.OfType<DdbView>());
-
-            NamedComplexSequenceEntry(emitter, "Programmability", emitter =>
+            NamedComplexSequenceEntry(emitter, databaseObj.Name, emitter =>
             {
+                emitter.Emit(new Scalar("uid"));
+                emitter.Emit(new Scalar(databaseObj.Id));
+                emitter.Emit(new Scalar("type"));
+                emitter.Emit(new Scalar(databaseObj.Type));
                 emitter.Emit(new Scalar("items"));
                 emitter.Emit(SequenceStart());
 
-                AddNamedItemSequence(emitter, "Stored Procedures", objects.OfType<DdbStoredProcedure>());
+                AddNamedItemSequence(emitter, "Tables", objects.OfType<DdbTable>());
+                AddNamedItemSequence(emitter, "Views", objects.OfType<DdbView>());
 
-                NamedComplexSequenceEntry(emitter, "Functions", emitter =>
+                NamedComplexSequenceEntry(emitter, "Programmability", emitter =>
                 {
                     emitter.Emit(new Scalar("items"));
                     emitter.Emit(SequenceStart());
 
-                    var functions = objects.OfType<DdbUserDefinedFunction>();
+                    AddNamedItemSequence(emitter, "Stored Procedures", objects.OfType<DdbStoredProcedure>());
 
-                    // SSMS also treats "inline" as "table"
-                    var tableValued = functions.Where(u =>
-                            u.FunctionType == DdbUserDefinedFunctionType.Table ||
-                            u.FunctionType == DdbUserDefinedFunctionType.Inline)
-                            .ToList();
-                    var scalarValued = functions.Where(u => u.FunctionType == DdbUserDefinedFunctionType.Scalar).ToList();
+                    NamedComplexSequenceEntry(emitter, "Functions", emitter =>
+                    {
+                        emitter.Emit(new Scalar("items"));
+                        emitter.Emit(SequenceStart());
 
-                    AddNamedItemSequence(emitter, "Table-valued Functions", tableValued);
-                    AddNamedItemSequence(emitter, "Scalar-valued Functions", scalarValued);
-                    AddNamedItemSequence(emitter, "Aggregate Functions", objects.OfType<DbdUserDefinedAggregate>());
+                        var functions = objects.OfType<DdbUserDefinedFunction>();
+
+                        // SSMS also treats "inline" as "table"
+                        var tableValued = functions.Where(u =>
+                                u.FunctionType == DdbUserDefinedFunctionType.Table ||
+                                u.FunctionType == DdbUserDefinedFunctionType.Inline)
+                                .ToList();
+                        var scalarValued = functions.Where(u => u.FunctionType == DdbUserDefinedFunctionType.Scalar).ToList();
+
+                        AddNamedItemSequence(emitter, "Table-valued Functions", tableValued);
+                        AddNamedItemSequence(emitter, "Scalar-valued Functions", scalarValued);
+                        AddNamedItemSequence(emitter, "Aggregate Functions", objects.OfType<DbdUserDefinedAggregate>());
+
+                        emitter.Emit(SequenceEnd());
+                    });
+
 
                     emitter.Emit(SequenceEnd());
                 });
-
 
                 emitter.Emit(SequenceEnd());
             });

@@ -1,0 +1,103 @@
+{{#payload.files.0}}
+<h3>Files</h3>
+
+<table class="table table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th>Logical Name</th>
+			<th>Type</th>
+			<th>Filegroup</th>
+			<th>Size (MB)</th>
+			<th>Autogrowth / Maxsize</th>
+			<th>File Name</th>
+		</tr>
+	</thead>
+	<tbody>
+{{#payload.files}}
+	<tr>
+		<td>{{name}}</td>
+		<td>
+		{{#isData}}Data{{/isData}}
+		{{^isData}}Log{{/isData}}
+		</td>
+		<td>
+		{{#isData}}{{#fileGroup}}<a href="#{{id}}">{{name}}</a>{{/fileGroup}}{{/isData}}
+		{{^isData}}n.a.{{/isData}}
+		</td>
+		<td>{{sizeMB}}</td>
+		<td>{{growthDescription}}</td>
+		<td>{{fileName}}</td>
+	</tr>
+{{/payload.files}}
+	</tbody>
+</table>
+
+{{#payload.files}}
+{{#isData}}<h3 id="{{id}}">{{name}} data file</h3>{{/isData}}
+{{^isData}}<h3 id="{{id}}">{{name}} log file</h3>{{/isData}}
+
+<div class"markdown level0 summary">{{description}}</div>
+
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">File name</th>
+			<td>{{fileName}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">File Group</th>
+			<td>
+				{{#isData}}{{#fileGroup}}<a href="#{{id}}">{{name}}</a>{{/fileGroup}}{{/isData}}
+				{{^isData}}n.a.{{/isData}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Path</th>
+			<td>{{path}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Size</th>
+			<td>{{SizeMB}} MB</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Autogrowth / Maxsize</th>
+			<td>{{growthDescription}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Offline</th>
+			<td>
+			{{#isOffline}}{{{__global.symCheckMark}}}{{/isOffline}}
+			{{^isOffline}}{{{__global.symCross}}}{{/isOffline}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Sparse</th>
+			<td>
+			{{#isSparse}}{{{__global.symCheckMark}}}{{/isSparse}}
+			{{^isSparse}}{{{__global.symCross}}}{{/isSparse}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Read only</th>
+			<td>
+			{{#isReadOnly}}{{{__global.symCheckMark}}}{{/isReadOnly}}
+			{{^isReadOnly}}{{{__global.symCross}}}{{/isReadOnly}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">On read only media</th>
+			<td>
+			{{#isReadOnlyMedia}}{{{__global.symCheckMark}}}{{/isReadOnlyMedia}}
+			{{^isReadOnlyMedia}}{{{__global.symCross}}}{{/isReadOnlyMedia}}
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+{{/payload.files}}
+
+{{/payload.files.0}}

@@ -166,7 +166,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TSQL
   dataType: NVARCHAR(MAX)
-  maxLengthBytes: -1
+  maxLengthBytes: 
   precision: 0
   scale: 0
   isNullable: false
@@ -190,7 +190,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: XmlEvent
   dataType: ''
-  maxLengthBytes: -1
+  maxLengthBytes: 
   precision: 0
   scale: 0
   isNullable: false

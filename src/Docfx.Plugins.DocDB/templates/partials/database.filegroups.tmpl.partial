@@ -1,0 +1,26 @@
+{{#payload.fileGroups.0}}
+<h3>File Groups</h3>
+
+<table class="table table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Files</th>
+			<th>Default</th>
+			<td>File Stream</th>
+		</tr>
+	</thead>
+	<tbody>
+{{#payload.fileGroups}}
+	<tr>
+		<td><span id="{{id}}">{{name}}</span></td>
+		<td>{{fileGroupType}}</td>
+		<td>{{filesCount}}</td>
+		<td>{{#isDefault}}{{{__global.symCheckMark}}}{{/isDefault}}</td>
+		<td>{{#isFileStream}}{{{__global.symCheckMark}}}{{/isFileStream}}</td>
+	</tr>
+{{/payload.fileGroups}}
+	</tbody>
+</table>
+{{/payload.fileGroups.0}}

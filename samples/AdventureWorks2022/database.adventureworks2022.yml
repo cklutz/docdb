@@ -1,0 +1,449 @@
+### YamlMime:DocDB
+type: Database
+id: database.adventureworks2022
+description: AdventureWorks 2016 Sample OLTP Database
+createdAt: 0001-01-01T00:00:00.0000000
+lastModifiedAt: 0001-01-01T00:00:00.0000000
+name: AdventureWorks2022
+productInformation: Microsoft SQL Server 2022
+productType: SqlServer
+collation: SQL_Latin1_General_CP1_CI_AS
+isCloudHosted: false
+fileGroups:
+- type: FileGroup
+  id: filegroup.primary
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: PRIMARY
+  isDefault: true
+  isFileStream: false
+  fileGroupType: Rows
+  files:
+  - name: AdventureWorks2022
+    id: file.adventureworks2022
+    type: DataFileRef
+  script: ""
+dataFiles:
+- type: DataFile
+  id: file.adventureworks2022
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: AdventureWorks2022
+  fileGroup:
+    name: PRIMARY
+    id: filegroup.primary
+    type: FileGroupRef
+  fileName: C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\AdventureWorks2022.mdf
+  growth: 65536
+  growthType: KiloByte
+  isOffline: false
+  isReadOnly: false
+  isReadOnlyMedia: false
+  isSparse: false
+  maxSize: 
+  size: 204800
+  script: ""
+logFiles:
+- type: LogFile
+  id: logfile.adventureworks2022_log
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: AdventureWorks2022_log
+  fileName: C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\AdventureWorks2022_log.ldf
+  growth: 65536
+  growthType: KiloByte
+  isOffline: false
+  isReadOnly: false
+  isReadOnlyMedia: false
+  isSparse: false
+  maxSize: 2147483648
+  size: 73728
+  script: ""
+options:
+- name: engine
+  entries:
+  - name: databaseEngineType
+    value: Standalone
+    type: enum
+  - name: databaseEngineEdition
+    value: Enterprise
+    type: enum
+  - name: serverVersion
+    value: 16.0.1135
+    type: string
+  - name: serverVersionName
+    value: Microsoft SQL Server 2022
+    type: string
+- name: automatic
+  entries:
+  - name: autoClose
+    value: false
+    type: bool
+  - name: autoCreateIncrementalStatisticsEnabled
+    value: false
+    type: bool
+  - name: autoCreateStatisticsEnabled
+    value: true
+    type: bool
+  - name: autoUpdateStatisticsAsync
+    value: false
+    type: bool
+  - name: autoUpdateStatisticsEnabled
+    value: true
+    type: bool
+  - name: autoShrink
+    value: false
+    type: bool
+- name: containment
+  entries:
+  - name: containmentType
+    value: None
+    type: enum
+  - name: defaultFullTextLanguage
+    value: 1033
+    type: number
+  - name: defaultLanguage
+    value: us_english
+    type: string
+  - name: nestedTriggersEnabled
+    value: true
+    type: bool
+  - name: transformNoiseWords
+    value: false
+    type: bool
+  - name: twoDigitYearCutoff
+    value: 2049
+    type: number
+- name: cursor
+  entries:
+  - name: closeCursorsOnCommitEnabled
+    value: false
+    type: bool
+  - name: localCursorsDefault
+    value: false
+    type: bool
+- name: databaseScopedConfigurations
+  entries:
+  - name: legacyCardinalityEstimation
+    value: Off
+    type: enum
+  - name: legacyCardinalityEstimationForSecondary
+    value: Primary
+    type: enum
+  - name: maxDop
+    value: 0
+    type: number
+  - name: maxDopForSecondary
+    value: 
+    type: 
+  - name: parameterSniffing
+    value: On
+    type: enum
+  - name: parameterSniffingForSecondary
+    value: Primary
+    type: enum
+  - name: queryOptimizerHotfixes
+    value: Off
+    type: enum
+  - name: queryOptimizerHotfixesForSecondary
+    value: Primary
+    type: enum
+- name: fileStream
+  entries:
+  - name: filestreamDirectoryName
+    value: ''
+    type: string
+  - name: filestreamNonTransactedAccess
+    value: Off
+    type: enum
+- name: ledger
+  entries:
+  - name: isLedger
+    value: false
+    type: bool
+- name: miscellaneous
+  entries:
+  - name: compatibilityLevel
+    value: Version160
+    type: enum
+  - name: snapshotIsolationState
+    value: Disabled
+    type: enum
+  - name: ansiNullDefault
+    value: false
+    type: bool
+  - name: ansiNullsEnabled
+    value: true
+    type: bool
+  - name: ansiPaddingEnabled
+    value: true
+    type: bool
+  - name: ansiWarningsEnabled
+    value: true
+    type: bool
+  - name: arithmeticAbortEnabled
+    value: true
+    type: bool
+  - name: concatenateNullYieldsNull
+    value: true
+    type: bool
+  - name: databaseOwnershipChaining
+    value: false
+    type: bool
+  - name: dateCorrelationOptimization
+    value: false
+    type: bool
+  - name: delayedDurability
+    value: Disabled
+    type: enum
+  - name: isReadCommittedSnapshotOn
+    value: true
+    type: bool
+  - name: numericRoundAbortEnabled
+    value: false
+    type: bool
+  - name: isParameterizationForced
+    value: false
+    type: bool
+  - name: quotedIdentifiersEnabled
+    value: true
+    type: bool
+  - name: recursiveTriggersEnabled
+    value: false
+    type: bool
+  - name: trustworthy
+    value: false
+    type: bool
+  - name: isVarDecimalStorageFormatEnabled
+    value: true
+    type: bool
+  - name: isVarDecimalStorageFormatSupported
+    value: 
+    type: 
+- name: recovery
+  entries:
+  - name: recoveryModel
+    value: Simple
+    type: enum
+  - name: pageVerify
+    value: Checksum
+    type: enum
+  - name: targetRecoveryTime
+    value: 0
+    type: number
+- name: serviceBroker
+  entries:
+  - name: brokerEnabled
+    value: false
+    type: bool
+  - name: honorBrokerPriority
+    value: false
+    type: bool
+  - name: serviceBrokerGuid
+    value: 104bd1e5-5729-481c-818b-04c0e3216e68
+    type: guid
+- name: state
+  entries:
+  - name: readOnly
+    value: false
+    type: bool
+  - name: status
+    value: Normal
+    type: enum
+  - name: encryptionEnabled
+    value: false
+    type: bool
+- name: queryStore
+  entries:
+  - name: actualState
+    value: Off
+    type: enum
+  - name: dataFlushIntervalInSeconds
+    value: 900
+    type: number
+  - name: statisticsCollectionIntervalInMinutes
+    value: 60
+    type: number
+  - name: maxPlansPerQuery
+    value: 200
+    type: number
+  - name: maxStorageSizeInMb
+    value: 1000
+    type: number
+  - name: queryCaptureMode
+    value: Auto
+    type: enum
+  - name: sizeBasedCleanupMode
+    value: Auto
+    type: enum
+  - name: staleQueryThresholdInDays
+    value: 30
+    type: number
+  - name: waitStatsCaptureMode
+    value: On
+    type: enum
+  - name: capturePolicyExecutionCount
+    value: 30
+    type: number
+  - name: capturePolicyStaleThresholdInHrs
+    value: 1
+    type: number
+  - name: capturePolicyTotalCompileCpuTimeInMs
+    value: 1000
+    type: number
+  - name: capturePolicyTotalExecutionCpuTimeInMs
+    value: 100
+    type: number
+- name: changeTracking
+  entries:
+  - name: changeTrackingEnabled
+    value: false
+    type: bool
+  - name: changeTrackingRetentionPeriod
+    value: 0
+    type: number
+  - name: changeTrackingRetentionPeriodUnits
+    value: None
+    type: enum
+  - name: changeTrackingAutoCleanUp
+    value: false
+    type: bool
+- name: mirroring
+  entries:
+  - name: isMirroringEnabled
+    value: false
+    type: bool
+  - name: mirroringId
+    value: 00000000-0000-0000-0000-000000000000
+    type: guid
+  - name: mirroringPartner
+    value: ''
+    type: string
+  - name: mirroringPartnerInstance
+    value: ''
+    type: string
+  - name: mirroringRedoQueueMaxSize
+    value: 0
+    type: number
+  - name: mirroringSafetyLevel
+    value: None
+    type: enum
+  - name: mirroringWitness
+    value: ''
+    type: string
+script: |+
+  CREATE DATABASE [AdventureWorks2022]
+   CONTAINMENT = NONE
+   ON  PRIMARY
+  ( NAME = N'AdventureWorks2022', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\AdventureWorks2022.mdf' , SIZE = 204800KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+   LOG ON
+  ( NAME = N'AdventureWorks2022_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\AdventureWorks2022_log.ldf' , SIZE = 73728KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+   COLLATE SQL_Latin1_General_CP1_CI_AS
+   WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF
+  GO
+
+  IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+  begin
+  EXEC [AdventureWorks2022].[dbo].[sp_fulltext_database] @action = 'enable'
+  end
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET ANSI_NULL_DEFAULT OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET ANSI_NULLS ON
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET ANSI_PADDING ON
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET ANSI_WARNINGS ON
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET ARITHABORT ON
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET AUTO_CLOSE OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET AUTO_SHRINK OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET AUTO_UPDATE_STATISTICS ON
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET CURSOR_CLOSE_ON_COMMIT OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET CURSOR_DEFAULT  GLOBAL
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET CONCAT_NULL_YIELDS_NULL ON
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET NUMERIC_ROUNDABORT OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET QUOTED_IDENTIFIER ON
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET RECURSIVE_TRIGGERS OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET  DISABLE_BROKER
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET AUTO_UPDATE_STATISTICS_ASYNC OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET DATE_CORRELATION_OPTIMIZATION OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET TRUSTWORTHY OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET ALLOW_SNAPSHOT_ISOLATION OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET PARAMETERIZATION SIMPLE
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET READ_COMMITTED_SNAPSHOT ON
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET HONOR_BROKER_PRIORITY OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET RECOVERY SIMPLE
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET  MULTI_USER
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET PAGE_VERIFY CHECKSUM
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET DB_CHAINING OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF )
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET TARGET_RECOVERY_TIME = 0 SECONDS
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET DELAYED_DURABILITY = DISABLED
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET ACCELERATED_DATABASE_RECOVERY = OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET QUERY_STORE = OFF
+  GO
+
+  ALTER DATABASE [AdventureWorks2022] SET  READ_WRITE
+  GO
+

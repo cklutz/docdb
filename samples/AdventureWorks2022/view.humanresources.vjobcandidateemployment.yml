@@ -135,7 +135,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Responsibility
   dataType: NVARCHAR(MAX)
-  maxLengthBytes: -1
+  maxLengthBytes: 
   precision: 0
   scale: 0
   isNullable: true
@@ -159,7 +159,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.FunctionCategory
   dataType: NVARCHAR(MAX)
-  maxLengthBytes: -1
+  maxLengthBytes: 
   precision: 0
   scale: 0
   isNullable: true
@@ -183,7 +183,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.IndustryCategory
   dataType: NVARCHAR(MAX)
-  maxLengthBytes: -1
+  maxLengthBytes: 
   precision: 0
   scale: 0
   isNullable: true
@@ -207,7 +207,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Loc.CountryRegion
   dataType: NVARCHAR(MAX)
-  maxLengthBytes: -1
+  maxLengthBytes: 
   precision: 0
   scale: 0
   isNullable: true
@@ -231,7 +231,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Loc.State
   dataType: NVARCHAR(MAX)
-  maxLengthBytes: -1
+  maxLengthBytes: 
   precision: 0
   scale: 0
   isNullable: true
@@ -255,7 +255,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Loc.City
   dataType: NVARCHAR(MAX)
-  maxLengthBytes: -1
+  maxLengthBytes: 
   precision: 0
   scale: 0
   isNullable: true

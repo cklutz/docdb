@@ -1,0 +1,33 @@
+{{#payload.options.0}}
+<h3>Options</h3>
+
+<table class="table table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th>Option</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+{{#payload.options}}
+	<tr>
+		<th colspan="2">{{name}}</th>
+	</tr>
+	{{#entries}}
+	<tr>
+		<td>{{name}}</td>
+		<td>
+			{{#isBool}}
+			{{#isTrue}}{{{__global.symCheckMark}}}{{/isTrue}}
+			{{^isTrue}}{{{__global.symCross}}}{{/isTrue}}
+			{{/isBool}}
+			{{^isBool}}
+			{{value}}
+			{{/isBool}}
+		</td>
+	</tr>
+	{{/entries}}
+{{/payload.options}}
+	</tbody>
+</table>
+{{/payload.options.0}}

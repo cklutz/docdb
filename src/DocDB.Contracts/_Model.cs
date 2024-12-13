@@ -159,6 +159,133 @@ public abstract class NamedDdbObject : DdbObject, INamedDdbRef
     public string Name { get; set; } = null!;
 }
 
+public enum DdbServerProductType
+{
+    Unknown,
+    SqlServer,
+}
+
+public class DdbDatabase : NamedDdbObject
+{
+    [JsonPropertyName("productInformation"), JsonProperty("productInformation")]
+    public string? ProductInformation { get; set; }
+
+    [JsonPropertyName("productType"), JsonProperty("productType")]
+    public DdbServerProductType ProductType { get; set; }
+
+    [JsonPropertyName("collation"), JsonProperty("collation")]
+    public string? Collation { get; set; }
+
+    [JsonPropertyName("isCloudHosted"), JsonProperty("isCloudHosted")]
+    public bool IsCloudHosted { get; set; }
+
+    [JsonPropertyName("fileGroups"), JsonProperty("fileGroups")]
+    public List<DdbFileGroup> FileGroups { get; set; } = [];
+
+    [JsonPropertyName("dataFiles"), JsonProperty("dataFiles")]
+    public List<DdbDataFile> DataFiles { get; set; } = [];
+
+    [JsonPropertyName("logFiles"), JsonProperty("logFiles")]
+    public List<DdbLogFile> LogFiles { get; set; } = [];
+
+    [JsonPropertyName("options"), JsonProperty("options")]
+    public List<DdbOptionCategory> Options { get; set; } = [];
+}
+
+public class DdbOptionCategory
+{
+    public DdbOptionCategory()
+    {
+    }
+
+    public DdbOptionCategory(string name)
+    {
+        Name = name;
+    }
+
+    [JsonPropertyName("name"), JsonProperty("name")]
+    public string Name { get; set; } = null!;
+
+    [JsonPropertyName("entries"), JsonProperty("entries")]
+    public List<DdbOptionEntry> Entries { get; set; } = [];
+}
+
+public class DdbOptionEntry
+{
+    public DdbOptionEntry()
+    {
+    }
+
+    public DdbOptionEntry(string name, string? value, string? type)
+    {
+        Name = name;
+        Value = value;
+        Type = type;
+    }
+
+    [JsonPropertyName("name"), JsonProperty("name")]
+    public string Name { get; set; } = null!;
+
+    [JsonPropertyName("value"), JsonProperty("value")]
+    public string? Value { get; set; }
+
+    [JsonPropertyName("type"), JsonProperty("type")]
+    public string? Type { get; set; }
+}
+
+public class DdbFileGroup : NamedDdbObject
+{
+    [JsonPropertyName("isDefault"), JsonProperty("isDefault")]
+    public bool IsDefault { get; set; }
+    [JsonPropertyName("isFileStream"), JsonProperty("isFileStream")]
+    public bool IsFileStream { get; set; }
+    [JsonPropertyName("fileGroupType"), JsonProperty("fileGroupType")]
+    public string? FileGroupType { get; set; }
+    
+    [JsonPropertyName("files"), JsonProperty("files")]
+    public List<NamedDdbRef> Files { get; set; } = [];
+}
+
+public class DdbDataFile : DdbDatabaseFile
+{
+    [JsonPropertyName("fileGroup"), JsonProperty("fileGroup")]
+    public NamedDdbRef? FileGroup { get; set; }
+}
+
+public class DdbLogFile : DdbDatabaseFile
+{
+}
+
+public abstract class DdbDatabaseFile : NamedDdbObject
+{
+    [JsonPropertyName("fileName"), JsonProperty("fileName")]
+    public string? FileName { get; set; }
+    [JsonPropertyName("growth"), JsonProperty("growth")]
+    public double Growth { get; set; }
+    [JsonPropertyName("growthType"), JsonProperty("growthType")]
+    public DdbGrowthType GrowthType { get; set; }
+    [JsonPropertyName("isOffline"), JsonProperty("isOffline")]
+    public bool IsOffline { get; set; }
+    [JsonPropertyName("isReadOnly"), JsonProperty("isReadOnly")]
+    public bool IsReadOnly { get; set; }
+    [JsonPropertyName("isReadOnlyMedia"), JsonProperty("isReadOnlyMedia")]
+    public bool IsReadOnlyMedia { get; set; }
+    [JsonPropertyName("isSparse"), JsonProperty("isSparse")]
+    public bool IsSparse { get; set; }
+    [JsonPropertyName("maxSize"), JsonProperty("maxSize")]
+    public double? MaxSize { get; set; }
+    [JsonPropertyName("size"), JsonProperty("size")]
+    public double Size { get; set; }
+}
+
+public enum DdbGrowthType
+{
+    Unknown,
+    Fixed,
+    KiloByte,
+    Percent
+}
+
 public class DdbSchema : NamedDdbObject
 {
 }
@@ -364,3 +491,4 @@ public class DdbTable : TabularDdbObject<DdbTableColumn>
 public class DdbView : TabularDdbObject<DdbViewColumn>
 {
 }
+

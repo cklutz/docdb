@@ -52,12 +52,21 @@ public sealed class SqlServerTarget : IDisposable
         _server.SetDefaultInitFields(typeof(SqlAssembly), nameof(SqlAssembly.IsSystemObject));
     }
 
-    private static IEnumerable<Urn> AddUrns<T>(SmoCollectionBase source, Func<T, bool>? predicate = null) where T : SqlSmoObject
-        => predicate == null ? source.OfType<T>().Select(t => t.Urn) : source.OfType<T>().Where(predicate).Select(t => t.Urn);
+    private IEnumerable<Urn> AddUrns<T>(SmoCollectionBase source, Func<T, bool>? predicate = null) where T : SqlSmoObject
+    {
+        // Some objects are not supported on Azure or Standalone
+        if (_database.IsSupportedObject<T>())
+        {
+            return predicate == null ? source.OfType<T>().Select(t => t.Urn) : source.OfType<T>().Where(predicate).Select(t => t.Urn);
+        }
+
+        return [];
+    }
 
     private Lazy<IEnumerable<Urn>> _userObjectUrns => new(() 
-        => 
-        AddUrns<Table>(_database.Tables, t => !t.IsSystemObject)
+        =>
+        new[] { _database.Urn }
+        .Union(AddUrns<Table>(_database.Tables, t => !t.IsSystemObject))
         .Union(AddUrns<View>(_database.Views, t => !t.IsSystemObject))
         .Union(AddUrns<StoredProcedure>(_database.StoredProcedures, t => !t.IsSystemObject))
         .Union(AddUrns<UserDefinedFunction>(_database.UserDefinedFunctions, t => !t.IsSystemObject))

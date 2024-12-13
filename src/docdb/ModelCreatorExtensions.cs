@@ -56,4 +56,90 @@ internal static class ModelCreatorExtensions
 
         return sb.ToString();
     }
+
+    public static string ToCamelCase(ReadOnlySpan<char> input)
+    {
+        if (input.IsEmpty)
+            return string.Empty;
+
+        Span<char> result = input.Length < 255 ? stackalloc char[input.Length] : new char[input.Length];
+        int resultIndex = 0;
+
+        bool lastWasUpper = false;
+        bool lastWasLower = false;
+
+        for (int i = 0; i < input.Length; i++)
+        {
+            char current = input[i];
+            char next = i + 1 < input.Length ? input[i + 1] : '\0';
+
+            if (i == 0)
+            {
+                result[resultIndex++] = char.ToLower(current);
+                lastWasLower = char.IsLower(current);
+                lastWasUpper = char.IsUpper(current);
+                continue;
+            }
+
+            if (char.IsUpper(current))
+            {
+                if (lastWasUpper)
+                {
+                    // Multiple uppercase sequence: check if this is the last in the sequence.
+                    if (char.IsLower(next))
+                    {
+                        result[resultIndex++] = current;
+                        lastWasLower = false;
+                        lastWasUpper = true;
+                    }
+                    else
+                    {
+                        result[resultIndex++] = char.ToLower(current);
+                        lastWasLower = false;
+                        lastWasUpper = true;
+                    }
+                }
+                else
+                {
+                    // Single uppercase character, keep as uppercase.
+                    result[resultIndex++] = current;
+                    lastWasLower = false;
+                    lastWasUpper = true;
+                }
+            }
+            else
+            {
+                // Lowercase character, just append.
+                result[resultIndex++] = current;
+                lastWasLower = true;
+                lastWasUpper = false;
+            }
+        }
+
+        return new string(result.Slice(0, resultIndex));
+    }
+
+    public static bool IsNumeric(this Type type)
+    {
+        switch (Type.GetTypeCode(type))
+        {
+            case TypeCode.Int16:
+            case TypeCode.UInt16:
+            case TypeCode.Int32:
+            case TypeCode.UInt32:
+            case TypeCode.Int64:
+            case TypeCode.UInt64:
+            case TypeCode.Single:
+            case TypeCode.Double:
+            case TypeCode.Decimal:
+                return true;
+        }
+
+        if (type == typeof(Half))
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
