@@ -17,6 +17,9 @@ parameters:
   dataType: INT
   defaultValue: ''
   script: ""
+syntax: |2-
+
+  dbo.ufnLeadingZeros(Value)
 script: |+
   SET ANSI_NULLS ON
   GO

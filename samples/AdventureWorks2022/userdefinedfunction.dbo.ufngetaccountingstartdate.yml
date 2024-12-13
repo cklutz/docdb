@@ -8,6 +8,9 @@ name: dbo.ufnGetAccountingStartDate
 functionType: Scalar
 returnsNullOnNullInput: false
 parameters: []
+syntax: |2-
+
+  dbo.ufnGetAccountingStartDate()
 script: |+
   SET ANSI_NULLS ON
   GO

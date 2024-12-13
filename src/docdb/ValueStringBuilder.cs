@@ -5,6 +5,7 @@ using System.Buffers;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Xml;
 
 #nullable enable
 
@@ -183,6 +184,8 @@ namespace System.Text
                 GrowAndAppend(c);
             }
         }
+
+        public void AppendLine() => Append(Environment.NewLine);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Append(string? s)

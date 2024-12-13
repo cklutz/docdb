@@ -6,6 +6,10 @@ createdAt: 2023-05-08T12:07:29.2600000
 lastModifiedAt: 2023-05-08T12:07:29.2600000
 name: dbo.uspPrintError
 parameters: []
+syntax: |2+
+
+  dbo.uspPrintError
+  [ ; ]
 script: |+
   SET ANSI_NULLS ON
   GO

@@ -17,6 +17,10 @@ parameters:
   dataType: INT
   defaultValue: 0
   script: ""
+syntax: |2+
+
+  dbo.uspLogError [  [@ErrorLogID ] = '0' OUTPUT ]
+  [ ; ]
 script: |+
   SET ANSI_NULLS ON
   GO

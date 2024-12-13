@@ -28,6 +28,12 @@ parameters:
   dataType: DATETIME
   defaultValue: ''
   script: ""
+syntax: |2+
+
+  dbo.uspGetBillOfMaterials
+      [@StartProductID ] = StartProductID ,
+      [@CheckDate ] = CheckDate
+  [ ; ]
 script: |+
   SET ANSI_NULLS ON
   GO

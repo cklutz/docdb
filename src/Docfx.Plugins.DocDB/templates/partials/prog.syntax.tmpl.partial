@@ -1,0 +1,7 @@
+{{#payload.syntax}}
+<h2>{{__global.syntax}}</h2>
+
+<pre class="no-highlight"><code class="hljs">{{.}}</code></pre>
+
+
+{{/payload.syntax}}

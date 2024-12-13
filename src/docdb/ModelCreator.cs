@@ -317,7 +317,8 @@ internal class ModelCreator
                 UserDefinedFunctionType.Table => DdbUserDefinedFunctionType.Table,
                 UserDefinedFunctionType.Inline => DdbUserDefinedFunctionType.Inline,
                 _ => DdbUserDefinedFunctionType.Unknown,
-            }
+            },
+            Syntax = udf.GetSyntax()
         }, udf);
 
         foreach (UserDefinedFunctionParameter parameter in udf.Parameters)
@@ -338,7 +339,8 @@ internal class ModelCreator
         var result = InitBase(new DdbStoredProcedure
         {
             CreatedAt = sp.CreateDate,
-            LastModifiedAt = sp.DateLastModified
+            LastModifiedAt = sp.DateLastModified,
+            Syntax = sp.GetSyntax()
         }, sp);
 
         

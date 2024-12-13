@@ -324,6 +324,9 @@ public abstract class DdbProcedureOrFunctionObject<TParameter> : NamedDdbObject
 {
     [JsonPropertyName("parameters"), JsonProperty("parameters")]
     public List<TParameter> Parameters { get; set; } = [];
+
+    [JsonPropertyName("syntax"), JsonProperty("syntax")]
+    public string? Syntax { get; set; }
 }
 
 public class DdbStoredProcedure : DdbProcedureOrFunctionObject<DdbStoredProcedureParameter>

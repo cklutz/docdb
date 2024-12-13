@@ -59,6 +59,8 @@ public static class Program
                 .WithAttributeOverride<DdbObject>(o => o.CreatedAt!, new YamlMemberAttribute { Order = -7 })
                 .WithAttributeOverride<DdbObject>(o => o.LastModifiedAt!, new YamlMemberAttribute { Order = -6 })
                 .WithAttributeOverride<DdbObject>(o => o.Script!, new YamlMemberAttribute { Order = int.MaxValue - 10, ScalarStyle = YamlDotNet.Core.ScalarStyle.Literal })
+                .WithAttributeOverride<DdbStoredProcedure>(o => o.Syntax!, new YamlMemberAttribute { ScalarStyle = YamlDotNet.Core.ScalarStyle.Literal })
+                .WithAttributeOverride<DdbUserDefinedFunction>(o => o.Syntax!, new YamlMemberAttribute { ScalarStyle = YamlDotNet.Core.ScalarStyle.Literal })
                 .WithAttributeOverride<NamedDdbObject>(o => o.Name, new YamlMemberAttribute { Order = -5 })
                 .WithNamingConvention(CamelCaseNamingConvention.Instance);
 

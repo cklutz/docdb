@@ -17,6 +17,10 @@ parameters:
   dataType: INT
   defaultValue: ''
   script: ""
+syntax: |2+
+
+  dbo.uspGetManagerEmployees  [@BusinessEntityID ] = BusinessEntityID
+  [ ; ]
 script: |+
   SET ANSI_NULLS ON
   GO

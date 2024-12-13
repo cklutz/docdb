@@ -26,6 +26,9 @@ parameters:
   dataType: DATETIME
   defaultValue: ''
   script: ""
+syntax: |2-
+
+  dbo.ufnGetProductStandardCost(ProductID, OrderDate)
 script: |+
   SET ANSI_NULLS ON
   GO

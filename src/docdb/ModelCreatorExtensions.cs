@@ -1,6 +1,9 @@
-﻿using Microsoft.SqlServer.Management.Smo;
+﻿using DocDB.Contracts;
+using Microsoft.SqlServer.Management.Smo;
 using System;
+using System.Reflection.Metadata;
 using System.Text;
+using YamlDotNet.Serialization;
 
 namespace DocDB;
 
@@ -153,5 +156,135 @@ internal static class ModelCreatorExtensions
         }
 
         return false;
+    }
+
+    public static string GetSyntax(this UserDefinedFunction prog)
+    {
+        var sb = new ValueStringBuilder(stackalloc char[255]);
+
+        sb.AppendLine();
+        sb.Append(prog.Schema);
+        sb.Append('.');
+        sb.Append(prog.Name);
+        sb.Append('(');
+
+        for (int i = 0; i < prog.Parameters.Count; i++)
+        {
+            var parameter = prog.Parameters[i];
+            bool hasDefault = !string.IsNullOrEmpty(parameter.DefaultValue);
+            if (hasDefault)
+            {
+                sb.Append("[ ");
+            }
+
+            if (parameter.Name.StartsWith('@'))
+            {
+                sb.Append(parameter.Name.AsSpan().Slice(1));
+            }
+            else
+            {
+                sb.Append(parameter.Name);
+            }
+
+            if (hasDefault)
+            {
+                sb.Append(" ]");
+            }
+
+            if (i + 1 < prog.Parameters.Count)
+            {
+                sb.Append(", ");
+            }
+        }
+
+        sb.Append(')');
+
+
+        return sb.ToString();
+    }
+
+    public static string GetSyntax(this StoredProcedure prog)
+    {
+        var sb = new ValueStringBuilder(stackalloc char[255]);
+
+        sb.AppendLine();
+        sb.Append(prog.Schema);
+        sb.Append('.');
+        sb.Append(prog.Name);
+
+        bool hasMultiple = prog.Parameters.Count > 1;
+
+        for (int i = 0; i < prog.Parameters.Count; i++)
+        {
+            var parameter = prog.Parameters[i];
+            if (hasMultiple)
+            {
+                if (i == 0)
+                {
+                    sb.AppendLine();
+                }
+                sb.Append("   ");
+            }
+            else
+            {
+                sb.Append(' ');
+            }
+
+            bool hasDefault = !string.IsNullOrEmpty(parameter.DefaultValue);
+            if (hasDefault)
+            {
+                sb.Append("[ ");
+            }
+
+            sb.Append(" [ ");
+            sb.Append(parameter.Name);
+            sb.Append(" ] = ");
+
+            if (hasDefault)
+            {
+                sb.Append('\'');
+                sb.Append(parameter.DefaultValue);
+                sb.Append('\'');
+            }
+            else
+            {
+                if (parameter.Name.StartsWith('@'))
+                {
+                    sb.Append(parameter.Name.AsSpan().Slice(1));
+                }
+                else
+                {
+                    sb.Append('p');
+                    sb.Append(parameter.Name);
+                }
+            }
+
+            if (parameter.IsOutputParameter)
+            {
+                sb.Append(" OUTPUT");
+            }
+
+            if (hasDefault)
+            {
+                sb.Append(" ]");
+            }
+
+            if (i + 1 < prog.Parameters.Count)
+            {
+                sb.Append(" ,");
+            }
+
+            sb.AppendLine();
+        }
+
+        if (prog.Parameters.Count == 0)
+        {
+            sb.AppendLine();
+        }
+
+        sb.Append("[ ; ]");
+        sb.AppendLine();
+
+        return sb.ToString();
     }
 }
