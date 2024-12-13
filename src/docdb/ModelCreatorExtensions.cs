@@ -8,6 +8,18 @@ internal static class ModelCreatorExtensions
 {
     public static string GetModelId(this NamedSmoObject obj)
     {
+        if (obj is IndexedColumn ic)
+        {
+            // Fully qualify index columns with index id to prevent duplicates.
+            var sb = new ValueStringBuilder(stackalloc char[128]);
+            sb.Append(ic.Parent.GetModelId());
+            sb.Append('.');
+            sb.Append(obj.Urn.Type.ToLowerInvariant());
+            sb.Append('.');
+            sb.Append(obj.Name.ToLowerInvariant());
+            return sb.ToString().AsIdentifier();
+        }
+
         if (obj is ScriptSchemaObjectBase schemaObj)
         {
             return $"{schemaObj.Urn.Type.ToLowerInvariant()}.{schemaObj.AsIdentifier()}";

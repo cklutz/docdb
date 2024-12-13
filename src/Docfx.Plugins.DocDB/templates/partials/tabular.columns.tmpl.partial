@@ -8,7 +8,7 @@
 			<th>{{__global.colKey}}</th>
 {{/isTable}}
 			<th>{{__global.colColumnName}}</th>
-			<th><code>{{__global.colDataType}}</code></th>
+			<th>{{__global.colDataType}}</th>
 			<th>{{__global.colNullable}}</th>
 {{#isTable}}
 			<th>{{__global.colDefault}}</th>
@@ -27,7 +27,7 @@
 				{{#isForeignKey}}{{{__global.symForeignKey}}}{{/isForeignKey}}
 			</td>
 {{/isTable}}
-			<td><a href="#{{id}}"><code>{{name}}</code></a></td>
+			<td><a href="#{{id}}">{{name}}</a></td>
 			<td>{{dataType}} {{#isIdentity}}IDENTITY({{identitySeed}}, {{identityIncrement}}){{/isIdentity}}</td>
 			<td>{{#isNullable}}{{{__global.symCheckMark}}}{{/isNullable}}</td>
 {{#isTable}}

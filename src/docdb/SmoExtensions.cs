@@ -289,6 +289,37 @@ public static class SmoExtensions
         return urn.Type.ToUpperInvariant();
     }
 
+    public static Database GetDatabase(this TableViewBase tv)
+    {
+        ArgumentNullException.ThrowIfNull(tv);
+
+        if (tv is View view)
+        {
+            return view.Parent;
+        }
+
+        if (tv is Table table)
+        {
+            return table.Parent;
+        }
+
+        throw new ArgumentException($"Unexpected type {tv.GetType()}");
+    }
+
+    public static FileGroup FindFileGroupByName(this Database database, string name)
+    {
+        ArgumentNullException.ThrowIfNull(database);
+        ArgumentException.ThrowIfNullOrEmpty(name);
+
+        var fileGroups = database.FileGroups.OfType<FileGroup>();
+        var fileGroup = fileGroups.FirstOrDefault(t => t.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        if (fileGroup == null)
+        {
+            throw new InvalidOperationException($"Database {database.Name} does not contain file group {name}.");
+        }
+        return fileGroup;
+    }
+
     public static Table FindTableByName(this Database database, string schemaName, string tableName)
     {
         ArgumentNullException.ThrowIfNull(database);
@@ -306,7 +337,7 @@ public static class SmoExtensions
         return table;
     }
 
-    public static Column FindColumnByName(this Table table, string name)
+    public static Column FindColumnByName(this TableViewBase table, string name)
     {
         ArgumentNullException.ThrowIfNull(table);
         ArgumentException.ThrowIfNullOrEmpty(name);

@@ -1,0 +1,68 @@
+{{#payload.indexes.0}}
+<h2>{{__global.indexes}}</h2>
+
+<table class="table table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th>Index Name</th>
+			<th>Type</th>
+			<th>Enabled</th>
+			<th>{{__global.description}}</th>
+		</tr>
+	</thead>
+	<tbody>
+{{#payload.indexes}}
+		<tr>
+			<td><a href="{{id}}">{{name}}</a></td>
+			<td>{{indexKeyType}} {{indexType}}</td>
+			<td>{{^isDisabled}}{{{__global.symCheckMark}}}{{/isDisabled}}</td>
+			<td>{{description}}</td>
+		</tr>
+{{/payload.indexes}}
+	</tbody>
+</table>
+
+{{#payload.indexes}}
+<h3 id="{{id}}">{{name}} index</h3>
+
+<div class"markdown level0 summary">{{description}}</div>
+
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Enabled</th>
+			<td>
+			{{^isDisabled}}{{{__global.symCheckMark}}}{{/isDisabled}}
+			{{#isDisabled}}{{{__global.symCross}}}{{/isDisabled}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Columns</th>
+			<td>
+				<ul>
+			{{#columns}}
+				<li>
+				{{#isIncluded}}INCLUDE{{/isIncluded}}
+				<a href="#{{columnRef.id}}">{{columnRef.name}}</a>
+				{{#isDescending}}DESC{{/isDescending}}
+				{{^isDescending}}ASC{{/isDescending}}
+				&nbsp;
+				</li>
+			{{/columns}}
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Filter</th>
+			<td>{{#filter}}<pre class="sql pre-wrap"><code>{{filter}}</code></pre>{{/filter}}</td>
+		</tr>
+	</tbody>
+</table>
+
+{{/payload.indexes}}
+
+{{/payload.indexes.0}}

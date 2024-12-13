@@ -1,9 +1,10 @@
 ﻿using DocDB.Contracts;
 using Microsoft.SqlServer.Management.Smo;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using SmoIndex = Microsoft.SqlServer.Management.Smo.Index;
+
 
 namespace DocDB;
 
@@ -295,83 +296,7 @@ internal class ModelCreator
         return result;
     }
 
-    private static void SetOption<T>(Func<T> getSmoObject, DdbOptionCategory options, string propertyName,
-        Func<T, object?>? getter = null)
-        where T : SqlSmoObject
-    {
-        try
-        {
-            SetOption(getSmoObject(), options, propertyName, getter);
-        }
-        catch (UnsupportedVersionException)
-        {
-            string name = ModelCreatorExtensions.ToCamelCase(propertyName);
-            options.Entries.Add(new(name, null, null));
-        }
-    }
-
-    private static void SetOption<T>(T smoObject, DdbOptionCategory options, string propertyName,
-        Func<T, object?>? getter = null)
-        where T : SqlSmoObject
-    {
-        object? value = null;
-        string name = ModelCreatorExtensions.ToCamelCase(propertyName);
-        if (getter != null)
-        {
-            value = getter(smoObject);
-        }
-        else
-        {
-            if (smoObject.IsSupportedProperty(propertyName))
-            {
-                try
-                {
-                    var prop = smoObject.Properties[propertyName];
-                    value = prop == null || prop.IsNull ? null : prop.Value;
-                }
-                catch (PropertyCannotBeRetrievedException)
-                {
-                    // "Property ... is not available for Database '...'.
-                    // This property may not exist for this object, or may not be retrievable due to insufficient access rights."
-                }
-            }
-        }
-
-        if (value != null)
-        {
-            if (value is bool b)
-            {
-                options.Entries.Add(new(name, b ? "true" : "false", "bool"));
-            }
-            else if (value is DateTime dt)
-            {
-                options.Entries.Add(new(name, dt.ToString("0"), "datetime"));
-            }
-            else if (value.GetType().IsEnum)
-            {
-                // Separate case, so that it isn't caught be next one (formattable && numeric)
-                options.Entries.Add(new(name, value?.ToString(), "enum"));
-            }
-            else if (value is IFormattable formattable && value.GetType().IsNumeric())
-            {
-                options.Entries.Add(new(name, formattable.ToString(null, CultureInfo.InvariantCulture), "number"));
-            }
-            else
-            {
-                string typeName = "string";
-                if (value is Guid)
-                {
-                    typeName = "guid";
-                }
-
-                options.Entries.Add(new(name, value?.ToString(), typeName));
-            }
-        }
-        else
-        {
-            options.Entries.Add(new(name, null, null));
-        }
-    }
+   
 
     private DdbSchema CreateSchema(Schema schema)
     {
@@ -446,6 +371,7 @@ internal class ModelCreator
         }
 
         AddTriggers(view.Triggers, result);
+        AddIndex(view, view.Indexes, result);
 
         return result;
     }
@@ -500,8 +426,144 @@ internal class ModelCreator
         }
 
         AddTriggers(table.Triggers, result);
+        AddIndex(table, table.Indexes, result);
 
         return result;
+    }
+
+    public static void AddIndex<TColumn>(TableViewBase tableView, IndexCollection indexes, TabularDdbObject<TColumn> result) where TColumn : DdbColumnBase
+    {
+        foreach (SmoIndex index in indexes)
+        {
+            var idx = InitBase(new DdbIndex
+            {
+                IndexType = index.IndexType switch
+                {
+                    IndexType.ClusteredIndex => "CLUSTERED",
+                    IndexType.NonClusteredIndex => "NONCLUSTERED",
+                    IndexType.PrimaryXmlIndex => "PRIMARY XML",
+                    IndexType.SecondaryXmlIndex => "XML",
+                    IndexType.SpatialIndex => "SPATIAL",
+                    IndexType.ClusteredColumnStoreIndex => "CLUSTERED COLUMNSTORE",
+                    IndexType.NonClusteredColumnStoreIndex => "NONCLUSTERED COLUMNSTORE",
+                    IndexType.NonClusteredHashIndex => "NONCLUSTERED HASH",
+                    IndexType.SelectiveXmlIndex => "SELECTIVE XML",
+                    IndexType.SecondarySelectiveXmlIndex => "SECONDARY SELECTIVE XML",
+                    IndexType.HeapIndex => "HEAP",
+                    _ => index.IndexType.ToString()
+                },
+                IndexKeyType = index.IndexKeyType switch
+                {
+                    IndexKeyType.DriPrimaryKey => "PRIMARY",
+                    IndexKeyType.DriUniqueKey => "UNIQUE",
+                    _ => ""
+                },
+                IsDisabled = index.IsDisabled,
+                IsClustered = index.IsClustered,
+                IsPartitioned = index.IsPartitioned,
+                IsUnique = index.IsUnique,
+                Filter = index.FilterDefinition,
+                FileGroup = !string.IsNullOrEmpty(index.FileGroup) ? CreateFileGroupRef(tableView, index.FileGroup) : null,
+                FileStreamGroup = !string.IsNullOrEmpty(index.FileStreamFileGroup) ? CreateFileGroupRef(tableView, index.FileStreamFileGroup) : null,
+            }, index, noScript: true);
+
+            foreach (IndexedColumn indexColumn in index.IndexedColumns)
+            {
+                idx.Columns.Add(InitBase(new DdbIndexColumn
+                {
+                    ColumnRef = CreateColumnRef(tableView, indexColumn.Name),
+                    IsDescending = indexColumn.Descending,
+                    IsIncluded = indexColumn.IsIncluded,
+                    ColumnStoreOrderOrdinal = indexColumn.ColumnStoreOrderOrdinal,
+                }, indexColumn));
+            }
+
+            var general = new DdbOptionCategory("general");
+            SetOption(index, general, "AutoRecomputeStatistics", i => !i.NoAutomaticRecomputation);
+            SetOption(index, general, nameof(SmoIndex.IgnoreDuplicateKeys));
+            idx.Options.Add(general);
+
+            var storage = new DdbOptionCategory("storage");
+            SetOption(index, storage, nameof(SmoIndex.SortInTempdb));
+            SetOption(index, storage, nameof(SmoIndex.FillFactor));
+            SetOption(index, storage, nameof(SmoIndex.PadIndex));
+            idx.Options.Add(storage);
+
+            var operation = new DdbOptionCategory("operation");
+            SetOption(index, operation, nameof(SmoIndex.MaximumDegreeOfParallelism));
+            SetOption(index, operation, nameof(SmoIndex.IsOptimizedForSequentialKey));
+            idx.Options.Add(operation);
+
+            var locks = new DdbOptionCategory("locks");
+            SetOption(index, locks, "AllowPageLocks", i => !i.DisallowPageLocks);
+            SetOption(index, locks, "AllowRowLocks", i => !i.DisallowRowLocks);
+            idx.Options.Add(locks);
+
+            var spatial = new DdbOptionCategory("spatial");
+            SetOption(index, spatial, nameof(SmoIndex.IsSpatialIndex));
+            if (index.IsSpatialIndex)
+            {
+                SetOption(index, spatial, nameof(SmoIndex.SpatialIndexType));
+                SetOption(index, spatial, nameof(SmoIndex.Level1Grid));
+                SetOption(index, spatial, nameof(SmoIndex.Level2Grid));
+                SetOption(index, spatial, nameof(SmoIndex.Level3Grid));
+                SetOption(index, spatial, nameof(SmoIndex.Level4Grid));
+                SetOption(index, spatial, nameof(SmoIndex.BoundingBoxXMin));
+                SetOption(index, spatial, nameof(SmoIndex.BoundingBoxXMax));
+                SetOption(index, spatial, nameof(SmoIndex.BoundingBoxYMin));
+                SetOption(index, spatial, nameof(SmoIndex.BoundingBoxYMax));
+            }
+            idx.Options.Add(spatial);
+
+            var xml = new DdbOptionCategory("xml");
+            SetOption(index, xml, nameof(SmoIndex.IsXmlIndex));
+            if (index.IsXmlIndex)
+            {
+                SetOption(index, xml, nameof(SmoIndex.ParentXmlIndex));
+                SetOption(index, xml, nameof(SmoIndex.SecondaryXmlIndexType));
+            }
+            idx.Options.Add(xml);
+
+            // Miscellaneous Options
+            var miscellaneous = new DdbOptionCategory("miscellaneous");
+            SetOption(index, miscellaneous, nameof(SmoIndex.HasCompressedPartitions));
+            SetOption(index, miscellaneous, nameof(SmoIndex.HasXmlCompressedPartitions));
+
+            SetOption(index, miscellaneous, nameof(SmoIndex.CompressAllRowGroups));
+            SetOption(index, miscellaneous, nameof(SmoIndex.CompactLargeObjects));
+            SetOption(index, miscellaneous, nameof(SmoIndex.CompressionDelay));
+            SetOption(index, miscellaneous, nameof(SmoIndex.DropExistingIndex));
+            SetOption(index, miscellaneous, nameof(SmoIndex.HasSparseColumn));
+
+            SetOption(index, miscellaneous, nameof(SmoIndex.IsFileTableDefined));
+            SetOption(index, miscellaneous, nameof(SmoIndex.IsFullTextKey));
+            SetOption(index, miscellaneous, nameof(SmoIndex.IsIndexOnComputed));
+            SetOption(index, miscellaneous, nameof(SmoIndex.IsIndexOnTable));
+            SetOption(index, miscellaneous, nameof(SmoIndex.IsMemoryOptimized));
+            SetOption(index, miscellaneous, nameof(SmoIndex.IsOnlineRebuildSupported));
+            SetOption(index, miscellaneous, nameof(SmoIndex.IsOptimizedForSequentialKey));
+            SetOption(index, miscellaneous, nameof(SmoIndex.LowPriorityAbortAfterWait));
+            SetOption(index, miscellaneous, nameof(SmoIndex.LowPriorityMaxDuration));
+            SetOption(index, miscellaneous, nameof(SmoIndex.LowPriorityMaxDuration));
+            SetOption(index, miscellaneous, nameof(SmoIndex.OnlineIndexOperation));
+            SetOption(index, miscellaneous, nameof(SmoIndex.ResumableIndexOperation));
+            SetOption(index, miscellaneous, nameof(SmoIndex.ResumableMaxDuration));
+            SetOption(index, miscellaneous, nameof(SmoIndex.ResumableOperationState));
+            idx.Options.Add(miscellaneous);
+
+            // TODO:
+            //index.IndexedXmlPathName
+            //index.IndexedXmlPathNamespaces
+            //index.IndexedXmlPaths
+
+            // TODO:
+            //index.PartitionScheme
+            //index.PartitionSchemeParameters
+            //index.PhysicalPartitions
+
+
+            result.Indexes.Add(idx);
+        }
     }
 
     private static void AddTriggers<TColumn>(TriggerCollection triggers, TabularDdbObject<TColumn> result) where TColumn : DdbColumnBase
@@ -524,9 +586,20 @@ internal class ModelCreator
         }
     }
 
-    private static NamedDdbRef CreateColumnRef(Table table, string columnName)
+    private static NamedDdbRef CreateFileGroupRef(TableViewBase tableView, string fileGroupName)
     {
-        var column = table.FindColumnByName(columnName);
+        var fileGroup = tableView.GetDatabase().FindFileGroupByName(fileGroupName);
+        return new NamedDdbRef
+        {
+            Id = fileGroup.GetModelId(),
+            Type = DdbObject.GetTypeTag<DdbFileGroup>(isRef: true),
+            Name = fileGroup.Name
+        };
+    }
+
+    private static NamedDdbRef CreateColumnRef(TableViewBase tableView, string columnName)
+    {
+        var column = tableView.FindColumnByName(columnName);
         return new NamedDdbRef
         {
             Id = column.GetModelId(),
@@ -567,5 +640,83 @@ internal class ModelCreator
             Collation = column.Collation,
             IsFileStream = column.IsFileStream,
         };
+    }
+
+    private static void SetOption<T>(Func<T> getSmoObject, DdbOptionCategory options, string propertyName,
+       Func<T, object?>? getter = null)
+       where T : SqlSmoObject
+    {
+        try
+        {
+            SetOption(getSmoObject(), options, propertyName, getter);
+        }
+        catch (UnsupportedVersionException)
+        {
+            string name = ModelCreatorExtensions.ToCamelCase(propertyName);
+            options.Entries.Add(new(name, null, null));
+        }
+    }
+
+    private static void SetOption<T>(T smoObject, DdbOptionCategory options, string propertyName,
+        Func<T, object?>? getter = null)
+        where T : SqlSmoObject
+    {
+        object? value = null;
+        string name = ModelCreatorExtensions.ToCamelCase(propertyName);
+        if (getter != null)
+        {
+            value = getter(smoObject);
+        }
+        else
+        {
+            if (smoObject.IsSupportedProperty(propertyName))
+            {
+                try
+                {
+                    var prop = smoObject.Properties[propertyName];
+                    value = prop == null || prop.IsNull ? null : prop.Value;
+                }
+                catch (PropertyCannotBeRetrievedException)
+                {
+                    // "Property ... is not available for Database '...'.
+                    // This property may not exist for this object, or may not be retrievable due to insufficient access rights."
+                }
+            }
+        }
+
+        if (value != null)
+        {
+            if (value is bool b)
+            {
+                options.Entries.Add(new(name, b ? "true" : "false", "bool"));
+            }
+            else if (value is DateTime dt)
+            {
+                options.Entries.Add(new(name, dt.ToString("0"), "datetime"));
+            }
+            else if (value.GetType().IsEnum)
+            {
+                // Separate case, so that it isn't caught be next one (formattable && numeric)
+                options.Entries.Add(new(name, value?.ToString(), "enum"));
+            }
+            else if (value is IFormattable formattable && value.GetType().IsNumeric())
+            {
+                options.Entries.Add(new(name, formattable.ToString(null, CultureInfo.InvariantCulture), "number"));
+            }
+            else
+            {
+                string typeName = "string";
+                if (value is Guid)
+                {
+                    typeName = "guid";
+                }
+
+                options.Entries.Add(new(name, value?.ToString(), typeName));
+            }
+        }
+        else
+        {
+            options.Entries.Add(new(name, null, null));
+        }
     }
 }
