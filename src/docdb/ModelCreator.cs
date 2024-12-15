@@ -25,6 +25,7 @@ internal class ModelCreator
             ApplicationRole applicationRole => CreateApplicationRole(applicationRole),
             UserDefinedFunction udf => CreateUserDefinedFunction(udf),
             StoredProcedure sp => CreateStoredProcedure(sp),
+            Sequence sequence => CreateSequence(sequence),
             _ => throw new ArgumentOutOfRangeException(nameof(obj), obj.GetType(), null)
         };
     }
@@ -71,7 +72,7 @@ internal class ModelCreator
         foreach (FileGroup fileGroup in database.FileGroups)
         {
             var fg = CreateFileGroup(fileGroup);
-            
+
             foreach (DataFile dataFile in fileGroup.Files)
             {
                 var file = CreateDataFile(dataFile);
@@ -386,7 +387,7 @@ internal class ModelCreator
             Syntax = sp.GetSyntax()
         }, sp);
 
-        
+
         foreach (StoredProcedureParameter parameter in sp.Parameters)
         {
             result.Parameters.Add(InitBase(new DdbStoredProcedureParameter()
@@ -402,6 +403,23 @@ internal class ModelCreator
         return result;
     }
 
+    private DdbSequence CreateSequence(Sequence sequence)
+    {
+        var result = InitBase(new DdbSequence
+        {
+            DataType = sequence.DataType.PrettyName(),
+            IsCached = sequence.SequenceCacheType != SequenceCacheType.NoCache,
+            CacheSize = sequence.CacheSize,
+            IsSchemaOwned = sequence.IsSchemaOwned,
+            IsCycleEnabled = sequence.IsCycleEnabled,
+            IncrementValue = sequence.IncrementValue?.ToString(),
+            StartValue = sequence.StartValue?.ToString(),
+            MinValue = sequence.MinValue?.ToString(),
+            MaxValue = sequence.MaxValue?.ToString(),
+        }, sequence);
+
+        return result;
+    }
 
     private DdbView CreateView(View view)
     {

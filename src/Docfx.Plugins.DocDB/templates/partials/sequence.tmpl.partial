@@ -1,0 +1,52 @@
+
+{{#payload}}
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">{{__global.colDataType}}</th>
+			<td>{{dataType}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Cached</th>
+			<td>
+			{{#isCached}}{{{__global.symCheckMark}}}{{#cacheSize}}, size {{cacheSize}}{{/cacheSize}}{{/isCached}}
+			{{^isCached}}{{{__global.symCross}}}{{/isCached}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Cycled</th>
+			<td>
+			{{#isCycleEnabled}}{{{__global.symCheckMark}}}{{/isCycleEnabled}}
+			{{^isCycleEnabled}}{{{__global.symCross}}}{{/isCycleEnabled}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Increment By</th>
+			<td>{{incrementValue}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Start Value</th>
+			<td>{{startValue}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Minimum Value</th>
+			<td>{{minValue}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Maxium Value</th>
+			<td>{{maxValue}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Schema Owned</th>
+			<td>
+			{{#isSchemaOwned}}{{{__global.symCheckMark}}}{{/isSchemaOwned}}
+			{{^isSchemaOwned}}{{{__global.symCross}}}{{/isSchemaOwned}}
+			</td>
+		</tr>
+	</tbody>
+</table>
+{{/payload}}

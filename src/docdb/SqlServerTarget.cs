@@ -78,6 +78,7 @@ public sealed class SqlServerTarget : IDisposable
         //.Union(AddUrns<XmlSchemaCollection>(_database.XmlSchemaCollections))
         //.Union(AddUrns<PartitionFunction>(_database.PartitionFunctions))
         //.Union(AddUrns<PartitionScheme>(_database.PartitionSchemes))
+        .Union(AddUrns<Sequence>(_database.Sequences, r => true))
         .Union(AddUrns<DatabaseRole>(_database.Roles, r => true))
         .Union(AddUrns<ApplicationRole>(_database.ApplicationRoles))
         .Union(AddUrns<User>(_database.Users, t => t.IsSystemObject))

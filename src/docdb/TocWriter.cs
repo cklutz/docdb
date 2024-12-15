@@ -98,6 +98,8 @@ namespace DocDB
                         emitter.Emit(SequenceEnd());
                     });
 
+                    AddNamedItemSequence(emitter, "Sequences", objects.OfType<DdbSequence>());
+
                     emitter.Emit(SequenceEnd());
                 });
 
