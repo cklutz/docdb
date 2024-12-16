@@ -32,6 +32,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.businessentityid
@@ -57,6 +58,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.name.prefix
@@ -82,6 +84,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.name.first
@@ -107,6 +110,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.name.middle
@@ -132,6 +136,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.name.last
@@ -157,6 +162,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.name.suffix
@@ -182,6 +188,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.skills
@@ -207,6 +214,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.addr.type
@@ -232,6 +240,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.addr.loc.countryregion
@@ -257,6 +266,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.addr.loc.state
@@ -282,6 +292,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.addr.loc.city
@@ -307,6 +318,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.addr.postalcode
@@ -332,6 +344,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.email
@@ -357,6 +370,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.website
@@ -382,6 +396,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.humanresources.vjobcandidate.column.modifieddate
@@ -407,7 +422,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

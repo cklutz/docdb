@@ -24,6 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.purchasing.purchaseorderdetail.foreignkey.fk_purchaseorderdetail_purchaseorderheader_purchaseorderid
@@ -43,6 +44,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 checks:
 - type: CheckConstraint
@@ -54,6 +56,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([OrderQty]>(0))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.purchasing.purchaseorderdetail.check.ck_purchaseorderdetail_receivedqty
@@ -64,6 +67,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ReceivedQty]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.purchasing.purchaseorderdetail.check.ck_purchaseorderdetail_rejectedqty
@@ -74,6 +78,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([RejectedQty]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.purchasing.purchaseorderdetail.check.ck_purchaseorderdetail_unitprice
@@ -84,12 +89,24 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([UnitPrice]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
 indexes:
 - type: Index
   id: table.purchasing.purchaseorderdetail.index.ix_purchaseorderdetail_productid
@@ -117,6 +134,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -235,6 +253,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.purchasing.purchaseorderdetail.index.pk_purchaseorderdetail_purchaseorderid_purchaseorderdetailid
@@ -262,6 +281,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   - type: IndexColumn
     id: table.purchasing.purchaseorderdetail.index.pk_purchaseorderdetail_purchaseorderid_purchaseorderdetailid.indexedcolumn.purchaseorderdetailid
@@ -276,6 +296,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -394,6 +415,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers:
 - type: DmlTrigger
@@ -408,6 +430,7 @@ triggers:
   onDelete: false
   onUpdate: false
   onInsert: true
+  databaseId: database.adventureworks2022
   script: ""
 - type: DmlTrigger
   id: table.purchasing.purchaseorderdetail.trigger.upurchaseorderdetail
@@ -421,6 +444,7 @@ triggers:
   onDelete: false
   onUpdate: true
   onInsert: false
+  databaseId: database.adventureworks2022
   script: ""
 columns:
 - type: TableColumn
@@ -450,6 +474,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.purchaseorderdetailid
@@ -475,6 +500,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.duedate
@@ -500,6 +526,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.orderqty
@@ -525,6 +552,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.productid
@@ -553,6 +581,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.unitprice
@@ -578,6 +607,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.linetotal
@@ -603,6 +633,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.receivedqty
@@ -628,6 +659,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.rejectedqty
@@ -653,6 +685,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.stockedqty
@@ -678,6 +711,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.modifieddate
@@ -703,7 +737,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

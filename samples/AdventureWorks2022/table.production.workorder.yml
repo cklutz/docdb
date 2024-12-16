@@ -24,6 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.production.workorder.foreignkey.fk_workorder_scrapreason_scrapreasonid
@@ -43,6 +44,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 checks:
 - type: CheckConstraint
@@ -54,6 +56,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([EndDate]>=[StartDate] OR [EndDate] IS NULL)
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.production.workorder.check.ck_workorder_orderqty
@@ -64,6 +67,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([OrderQty]>(0))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.production.workorder.check.ck_workorder_scrappedqty
@@ -74,12 +78,24 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ScrappedQty]>=(0))
+  databaseId: database.adventureworks2022
   script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
 indexes:
 - type: Index
   id: table.production.workorder.index.ix_workorder_productid
@@ -107,6 +123,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -225,6 +242,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.production.workorder.index.ix_workorder_scrapreasonid
@@ -252,6 +270,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -370,6 +389,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.production.workorder.index.pk_workorder_workorderid
@@ -397,6 +417,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -515,6 +536,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers:
 - type: DmlTrigger
@@ -529,6 +551,7 @@ triggers:
   onDelete: false
   onUpdate: false
   onInsert: true
+  databaseId: database.adventureworks2022
   script: ""
 - type: DmlTrigger
   id: table.production.workorder.trigger.uworkorder
@@ -542,6 +565,7 @@ triggers:
   onDelete: false
   onUpdate: true
   onInsert: false
+  databaseId: database.adventureworks2022
   script: ""
 columns:
 - type: TableColumn
@@ -568,6 +592,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.productid
@@ -596,6 +621,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.orderqty
@@ -621,6 +647,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.stockedqty
@@ -646,6 +673,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.scrappedqty
@@ -671,6 +699,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.startdate
@@ -696,6 +725,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.enddate
@@ -721,6 +751,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.duedate
@@ -746,6 +777,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.scrapreasonid
@@ -774,6 +806,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorder.column.modifieddate
@@ -799,7 +832,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

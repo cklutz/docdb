@@ -24,6 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 checks:
 - type: CheckConstraint
@@ -35,12 +36,27 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([Status]>=(1) AND [Status]<=(3))
+  databaseId: database.adventureworks2022
   script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
 indexes:
 - type: Index
   id: table.production.document.index.ak_document_documentlevel_documentnode
@@ -68,6 +84,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   - type: IndexColumn
     id: table.production.document.index.ak_document_documentlevel_documentnode.indexedcolumn.documentnode
@@ -82,6 +99,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -200,6 +218,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.production.document.index.ak_document_rowguid
@@ -227,6 +246,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -345,6 +365,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.production.document.index.ix_document_filename_revision
@@ -372,6 +393,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   - type: IndexColumn
     id: table.production.document.index.ix_document_filename_revision.indexedcolumn.revision
@@ -386,6 +408,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -504,6 +527,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.production.document.index.pk_document_documentnode
@@ -531,6 +555,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -649,6 +674,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.production.document.index.uq__document__f73921f7c81c642f
@@ -676,6 +702,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -794,6 +821,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers: []
 columns:
@@ -821,6 +849,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.documentlevel
@@ -846,6 +875,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.title
@@ -871,6 +901,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.owner
@@ -899,6 +930,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.folderflag
@@ -924,6 +956,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.filename
@@ -949,6 +982,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.fileextension
@@ -974,6 +1008,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.revision
@@ -999,6 +1034,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.changenumber
@@ -1024,6 +1060,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.status
@@ -1049,6 +1086,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.documentsummary
@@ -1074,6 +1112,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.document
@@ -1099,6 +1138,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.rowguid
@@ -1124,6 +1164,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.document.column.modifieddate
@@ -1149,7 +1190,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

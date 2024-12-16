@@ -40,6 +40,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -158,6 +159,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers: []
 columns:
@@ -185,6 +187,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: userdefinedtabletype.dbo.my_tvp.column.col2
@@ -210,7 +213,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   CREATE TYPE [dbo].[my_tvp] AS TABLE(
   	[col1] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

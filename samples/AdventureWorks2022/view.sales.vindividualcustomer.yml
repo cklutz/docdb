@@ -32,6 +32,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.title
@@ -57,6 +58,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.firstname
@@ -85,6 +87,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.middlename
@@ -113,6 +116,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.lastname
@@ -141,6 +145,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.suffix
@@ -166,6 +171,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.phonenumber
@@ -194,6 +200,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.phonenumbertype
@@ -222,6 +229,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.emailaddress
@@ -247,6 +255,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.emailpromotion
@@ -272,6 +281,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.addresstype
@@ -300,6 +310,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.addressline1
@@ -325,6 +336,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.addressline2
@@ -350,6 +362,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.city
@@ -375,6 +388,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.stateprovincename
@@ -403,6 +417,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.postalcode
@@ -428,6 +443,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.countryregionname
@@ -456,6 +472,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vindividualcustomer.column.demographics
@@ -481,7 +498,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

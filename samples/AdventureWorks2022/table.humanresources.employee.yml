@@ -24,6 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 checks:
 - type: CheckConstraint
@@ -35,6 +36,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([BirthDate]>='1930-01-01' AND [BirthDate]<=dateadd(year,(-18),getdate()))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.humanresources.employee.check.ck_employee_gender
@@ -45,6 +47,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: (upper([Gender])='F' OR upper([Gender])='M')
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.humanresources.employee.check.ck_employee_hiredate
@@ -55,6 +58,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([HireDate]>='1996-07-01' AND [HireDate]<=dateadd(day,(1),getdate()))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.humanresources.employee.check.ck_employee_maritalstatus
@@ -65,6 +69,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: (upper([MaritalStatus])='S' OR upper([MaritalStatus])='M')
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.humanresources.employee.check.ck_employee_sickleavehours
@@ -75,6 +80,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([SickLeaveHours]>=(0) AND [SickLeaveHours]<=(120))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.humanresources.employee.check.ck_employee_vacationhours
@@ -85,12 +91,24 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([VacationHours]>=(-40) AND [VacationHours]<=(240))
+  databaseId: database.adventureworks2022
   script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
 indexes:
 - type: Index
   id: table.humanresources.employee.index.ak_employee_loginid
@@ -118,6 +136,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -236,6 +255,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.humanresources.employee.index.ak_employee_nationalidnumber
@@ -263,6 +283,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -381,6 +402,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.humanresources.employee.index.ak_employee_rowguid
@@ -408,6 +430,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -526,6 +549,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.humanresources.employee.index.ix_employee_organizationlevel_organizationnode
@@ -553,6 +577,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   - type: IndexColumn
     id: table.humanresources.employee.index.ix_employee_organizationlevel_organizationnode.indexedcolumn.organizationnode
@@ -567,6 +592,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -685,6 +711,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.humanresources.employee.index.ix_employee_organizationnode
@@ -712,6 +739,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -830,6 +858,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.humanresources.employee.index.pk_employee_businessentityid
@@ -857,6 +886,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -975,6 +1005,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers:
 - type: DmlTrigger
@@ -989,6 +1020,7 @@ triggers:
   onDelete: true
   onUpdate: false
   onInsert: false
+  databaseId: database.adventureworks2022
   script: ""
 columns:
 - type: TableColumn
@@ -1018,6 +1050,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.nationalidnumber
@@ -1043,6 +1076,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.loginid
@@ -1068,6 +1102,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.organizationnode
@@ -1093,6 +1128,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.organizationlevel
@@ -1118,6 +1154,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.jobtitle
@@ -1143,6 +1180,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.birthdate
@@ -1168,6 +1206,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.maritalstatus
@@ -1193,6 +1232,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.gender
@@ -1218,6 +1258,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.hiredate
@@ -1243,6 +1284,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.salariedflag
@@ -1271,6 +1313,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.vacationhours
@@ -1296,6 +1339,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.sickleavehours
@@ -1321,6 +1365,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.currentflag
@@ -1349,6 +1394,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.rowguid
@@ -1374,6 +1420,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.humanresources.employee.column.modifieddate
@@ -1399,7 +1446,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

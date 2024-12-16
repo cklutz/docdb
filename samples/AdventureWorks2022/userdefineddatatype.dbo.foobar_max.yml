@@ -18,6 +18,7 @@ owner: dbo
 ruleRef: 
 systemType: varchar
 isVariableLength: true
+databaseId: database.adventureworks2022
 script: |+
   CREATE TYPE [dbo].[FooBar_MAX] FROM [varchar](max) NULL
   GO

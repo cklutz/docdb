@@ -16,12 +16,24 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: (upper([TransactionType])='P' OR upper([TransactionType])='S' OR upper([TransactionType])='W')
+  databaseId: database.adventureworks2022
   script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
 indexes:
 - type: Index
   id: table.production.transactionhistoryarchive.index.ix_transactionhistoryarchive_productid
@@ -49,6 +61,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -167,6 +180,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.production.transactionhistoryarchive.index.ix_transactionhistoryarchive_referenceorderid_referenceorderlineid
@@ -194,6 +208,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   - type: IndexColumn
     id: table.production.transactionhistoryarchive.index.ix_transactionhistoryarchive_referenceorderid_referenceorderlineid.indexedcolumn.referenceorderlineid
@@ -208,6 +223,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -326,6 +342,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.production.transactionhistoryarchive.index.pk_transactionhistoryarchive_transactionid
@@ -353,6 +370,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -471,6 +489,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers: []
 columns:
@@ -498,6 +517,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.productid
@@ -523,6 +543,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.referenceorderid
@@ -548,6 +569,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.referenceorderlineid
@@ -573,6 +595,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.transactiondate
@@ -598,6 +621,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.transactiontype
@@ -623,6 +647,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.quantity
@@ -648,6 +673,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.actualcost
@@ -673,6 +699,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.modifieddate
@@ -698,7 +725,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

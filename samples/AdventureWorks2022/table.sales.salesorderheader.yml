@@ -24,6 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_address_shiptoaddressid
@@ -43,6 +44,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_creditcard_creditcardid
@@ -62,6 +64,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_currencyrate_currencyrateid
@@ -81,6 +84,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_customer_customerid
@@ -100,6 +104,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_salesperson_salespersonid
@@ -119,6 +124,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_salesterritory_territoryid
@@ -138,6 +144,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_shipmethod_shipmethodid
@@ -157,6 +164,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 checks:
 - type: CheckConstraint
@@ -168,6 +176,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([DueDate]>=[OrderDate])
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_freight
@@ -178,6 +187,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([Freight]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_shipdate
@@ -188,6 +198,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ShipDate]>=[OrderDate] OR [ShipDate] IS NULL)
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_status
@@ -198,6 +209,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([Status]>=(0) AND [Status]<=(8))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_subtotal
@@ -208,6 +220,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([SubTotal]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_taxamt
@@ -218,12 +231,24 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([TaxAmt]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
 indexes:
 - type: Index
   id: table.sales.salesorderheader.index.ak_salesorderheader_rowguid
@@ -251,6 +276,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -369,6 +395,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.sales.salesorderheader.index.ak_salesorderheader_salesordernumber
@@ -396,6 +423,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -514,6 +542,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.sales.salesorderheader.index.ix_salesorderheader_customerid
@@ -541,6 +570,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -659,6 +689,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.sales.salesorderheader.index.ix_salesorderheader_salespersonid
@@ -686,6 +717,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -804,6 +836,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.sales.salesorderheader.index.pk_salesorderheader_salesorderid
@@ -831,6 +864,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -949,6 +983,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers:
 - type: DmlTrigger
@@ -963,6 +998,7 @@ triggers:
   onDelete: false
   onUpdate: true
   onInsert: false
+  databaseId: database.adventureworks2022
   script: ""
 columns:
 - type: TableColumn
@@ -989,6 +1025,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.revisionnumber
@@ -1014,6 +1051,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.orderdate
@@ -1039,6 +1077,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.duedate
@@ -1064,6 +1103,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.shipdate
@@ -1089,6 +1129,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.status
@@ -1114,6 +1155,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.onlineorderflag
@@ -1142,6 +1184,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.salesordernumber
@@ -1167,6 +1210,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.purchaseordernumber
@@ -1195,6 +1239,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.accountnumber
@@ -1223,6 +1268,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.customerid
@@ -1251,6 +1297,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.salespersonid
@@ -1279,6 +1326,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.territoryid
@@ -1307,6 +1355,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.billtoaddressid
@@ -1335,6 +1384,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.shiptoaddressid
@@ -1363,6 +1413,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.shipmethodid
@@ -1391,6 +1442,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.creditcardid
@@ -1419,6 +1471,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.creditcardapprovalcode
@@ -1444,6 +1497,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.currencyrateid
@@ -1472,6 +1526,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.subtotal
@@ -1497,6 +1552,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.taxamt
@@ -1522,6 +1578,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.freight
@@ -1547,6 +1604,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.totaldue
@@ -1572,6 +1630,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.comment
@@ -1597,6 +1656,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.rowguid
@@ -1622,6 +1682,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderheader.column.modifieddate
@@ -1647,7 +1708,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

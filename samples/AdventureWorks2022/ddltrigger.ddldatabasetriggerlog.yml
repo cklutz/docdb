@@ -63,6 +63,7 @@ assemblyName: ''
 assemblyRef: 
 className: ''
 methodName: ''
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

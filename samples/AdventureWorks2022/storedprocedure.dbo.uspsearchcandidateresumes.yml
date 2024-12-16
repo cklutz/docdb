@@ -17,6 +17,7 @@ parameters:
   dataType: NVARCHAR(1000)
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspsearchcandidateresumes.param.@useinflectional
@@ -29,6 +30,7 @@ parameters:
   dataType: BIT
   dataTypeRef: 
   defaultValue: 0
+  databaseId: database.adventureworks2022
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspsearchcandidateresumes.param.@usethesaurus
@@ -41,6 +43,7 @@ parameters:
   dataType: BIT
   dataTypeRef: 
   defaultValue: 0
+  databaseId: database.adventureworks2022
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspsearchcandidateresumes.param.@language
@@ -53,6 +56,7 @@ parameters:
   dataType: INT
   dataTypeRef: 
   defaultValue: 0
+  databaseId: database.adventureworks2022
   script: ""
 syntax: |2+
 
@@ -62,6 +66,7 @@ syntax: |2+
      [  [ @useThesaurus ] = '0' ] ,
      [  [ @language ] = '0' ]
   [ ; ]
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

@@ -32,6 +32,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.name
@@ -60,6 +61,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.annualsales
@@ -85,6 +87,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.annualrevenue
@@ -110,6 +113,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.bankname
@@ -135,6 +139,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.businesstype
@@ -160,6 +165,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.yearopened
@@ -185,6 +191,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.specialty
@@ -210,6 +217,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.squarefeet
@@ -235,6 +243,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.brands
@@ -260,6 +269,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.internet
@@ -285,6 +295,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: ViewColumn
   id: view.sales.vstorewithdemographics.column.numberemployees
@@ -310,7 +321,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

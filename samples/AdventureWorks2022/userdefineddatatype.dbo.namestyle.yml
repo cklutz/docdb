@@ -18,6 +18,7 @@ owner: dbo
 ruleRef: 
 systemType: bit
 isVariableLength: false
+databaseId: database.adventureworks2022
 script: |+
   CREATE TYPE [dbo].[NameStyle] FROM [bit] NOT NULL
   GO

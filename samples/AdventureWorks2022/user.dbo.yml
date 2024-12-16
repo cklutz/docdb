@@ -10,6 +10,7 @@ authenticationType: Instance
 hasDBAccess: true
 loginType: SqlLogin
 login: sa
+databaseId: database.adventureworks2022
 script: |+
   CREATE USER [dbo] FOR LOGIN [sa] WITH DEFAULT_SCHEMA=[dbo]
   GO

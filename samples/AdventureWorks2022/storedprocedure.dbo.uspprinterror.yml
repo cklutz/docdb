@@ -10,6 +10,7 @@ syntax: |2+
 
   dbo.uspPrintError
   [ ; ]
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

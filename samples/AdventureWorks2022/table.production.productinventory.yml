@@ -24,6 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.production.productinventory.foreignkey.fk_productinventory_product_productid
@@ -43,6 +44,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 checks:
 - type: CheckConstraint
@@ -54,6 +56,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([Bin]>=(0) AND [Bin]<=(100))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.production.productinventory.check.ck_productinventory_shelf
@@ -64,12 +67,24 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([Shelf] like '[A-Za-z]' OR [Shelf]='N/A')
+  databaseId: database.adventureworks2022
   script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
 indexes:
 - type: Index
   id: table.production.productinventory.index.pk_productinventory_productid_locationid
@@ -97,6 +112,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   - type: IndexColumn
     id: table.production.productinventory.index.pk_productinventory_productid_locationid.indexedcolumn.locationid
@@ -111,6 +127,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -229,6 +246,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers: []
 columns:
@@ -259,6 +277,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.productinventory.column.locationid
@@ -287,6 +306,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.productinventory.column.shelf
@@ -312,6 +332,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.productinventory.column.bin
@@ -337,6 +358,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.productinventory.column.quantity
@@ -362,6 +384,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.productinventory.column.rowguid
@@ -387,6 +410,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.productinventory.column.modifieddate
@@ -412,7 +436,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

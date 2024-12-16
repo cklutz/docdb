@@ -299,26 +299,26 @@ public static class SmoExtensions
         return urn.Type.ToUpperInvariant();
     }
 
-    public static Database GetDatabase(this TableViewTableTypeBase tv)
+    public static Database GetDatabase(this SmoObjectBase obj)
     {
-        ArgumentNullException.ThrowIfNull(tv);
+        ArgumentNullException.ThrowIfNull(obj);
 
-        if (tv is View view)
+        if (obj is View view)
         {
             return view.Parent;
         }
 
-        if (tv is Table table)
+        if (obj is Table table)
         {
             return table.Parent;
         }
 
-        if (tv is UserDefinedTableType tableType)
+        if (obj is UserDefinedTableType tableType)
         {
             return tableType.Parent;
         }
 
-        throw new ArgumentException($"Unexpected type {tv.GetType()}");
+        throw new ArgumentException($"Unexpected type {obj.GetType()} or no UserData.Database present");
     }
 
     public static Default FindDefaultByName(this Database database, string schemaName, string defaultName)

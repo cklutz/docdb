@@ -89,6 +89,7 @@ public sealed class SqlServerTarget : IDisposable
         , LazyThreadSafetyMode.ExecutionAndPublication);
 
     public IEnumerable<Urn> Objects => _userObjectUrns.Value;
+    public Database Database => _database;
 
     public NamedSmoObject GetSmoObject(Urn urn)
     {

@@ -1,0 +1,24 @@
+{{#payload}}
+<h2>Storage</h2>
+
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">File group</th>
+			<td>{{#fileGroup}}<a href="{{databaseId}}.html#{{id}}">{{name}}</a>{{/fileGroup}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">File stream group</th>
+			<td>{{#fileStreamGroup}}<a href="{{databaseId}}.html#{{id}}">{{name}}</a>{{/fileStreamGroup}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Text file group</th>
+			<td>{{#textFileGroup}}<a href="{{databaseId}}.html#{{id}}">{{name}}</a>{{/textFileGroup}}</td>
+		</tr>
+	</tbody>
+</table>
+{{/payload}}

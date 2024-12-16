@@ -11,6 +11,7 @@ parameters: []
 syntax: |2-
 
   dbo.ufnGetAccountingEndDate()
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

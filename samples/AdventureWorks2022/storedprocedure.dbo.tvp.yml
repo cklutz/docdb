@@ -20,11 +20,13 @@ parameters:
     id: userdefinedtabletype.dbo.my_tvp
     type: UserDefinedTableTypeRef
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 syntax: |2+
 
   dbo.Tvp  [ @p0 ] = p0
   [ ; ]
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

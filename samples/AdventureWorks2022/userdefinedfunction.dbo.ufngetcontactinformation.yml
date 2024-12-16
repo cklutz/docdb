@@ -17,10 +17,12 @@ parameters:
   dataType: INT
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 syntax: |2-
 
   dbo.ufnGetContactInformation(PersonID)
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

@@ -17,6 +17,7 @@ parameters:
   dataType: INT
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeelogin.param.@organizationnode
@@ -29,6 +30,7 @@ parameters:
   dataType: HIERARCHYID
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeelogin.param.@loginid
@@ -41,6 +43,7 @@ parameters:
   dataType: NVARCHAR(256)
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeelogin.param.@jobtitle
@@ -53,6 +56,7 @@ parameters:
   dataType: NVARCHAR(50)
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeelogin.param.@hiredate
@@ -65,6 +69,7 @@ parameters:
   dataType: DATETIME
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeelogin.param.@currentflag
@@ -80,6 +85,7 @@ parameters:
     id: userdefineddatatype.dbo.flag
     type: UserDefinedDataTypeRef
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 syntax: |2+
 
@@ -91,6 +97,7 @@ syntax: |2+
       [ @HireDate ] = HireDate ,
       [ @CurrentFlag ] = CurrentFlag
   [ ; ]
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

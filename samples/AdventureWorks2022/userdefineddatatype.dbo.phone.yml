@@ -18,6 +18,7 @@ owner: dbo
 ruleRef: 
 systemType: nvarchar
 isVariableLength: true
+databaseId: database.adventureworks2022
 script: |+
   CREATE TYPE [dbo].[Phone] FROM [nvarchar](25) NULL
   GO

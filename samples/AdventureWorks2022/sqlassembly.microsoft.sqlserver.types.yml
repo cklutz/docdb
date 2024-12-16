@@ -14,6 +14,7 @@ publicKey: 89845DCD8080CC91
 version: 16.0.0.0
 fileNames:
 - microsoft.sqlserver.types.dll
+databaseId: database.adventureworks2022
 script: |+
   CREATE ASSEMBLY [Microsoft.SqlServer.Types]
   FROM

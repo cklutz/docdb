@@ -17,10 +17,12 @@ parameters:
   dataType: TINYINT
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 syntax: |2-
 
   dbo.ufnGetPurchaseOrderStatusText(Status)
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

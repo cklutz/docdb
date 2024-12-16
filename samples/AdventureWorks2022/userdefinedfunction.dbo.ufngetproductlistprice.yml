@@ -17,6 +17,7 @@ parameters:
   dataType: INT
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 - type: UserDefinedFunctionParameter
   id: userdefinedfunction.dbo.ufngetproductlistprice.param.@orderdate
@@ -27,10 +28,12 @@ parameters:
   dataType: DATETIME
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 syntax: |2-
 
   dbo.ufnGetProductListPrice(ProductID, OrderDate)
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

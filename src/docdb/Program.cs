@@ -49,7 +49,7 @@ public static class Program
 
         using (var target = new SqlServerTarget(connectionString))
         {
-            var modelCreator = new ModelCreator();
+            var modelCreator = new ModelCreator(target.Database);
             var objects = new List<DdbObject>();
 
             var serializerBuilder = new SerializerBuilder()

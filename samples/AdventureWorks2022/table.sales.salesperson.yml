@@ -24,6 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.sales.salesperson.foreignkey.fk_salesperson_salesterritory_territoryid
@@ -43,6 +44,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 checks:
 - type: CheckConstraint
@@ -54,6 +56,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([Bonus]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.sales.salesperson.check.ck_salesperson_commissionpct
@@ -64,6 +67,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([CommissionPct]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.sales.salesperson.check.ck_salesperson_saleslastyear
@@ -74,6 +78,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([SalesLastYear]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.sales.salesperson.check.ck_salesperson_salesquota
@@ -84,6 +89,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([SalesQuota]>(0.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.sales.salesperson.check.ck_salesperson_salesytd
@@ -94,12 +100,24 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([SalesYTD]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
 indexes:
 - type: Index
   id: table.sales.salesperson.index.ak_salesperson_rowguid
@@ -127,6 +145,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -245,6 +264,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.sales.salesperson.index.pk_salesperson_businessentityid
@@ -272,6 +292,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -390,6 +411,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers: []
 columns:
@@ -420,6 +442,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesperson.column.territoryid
@@ -448,6 +471,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesperson.column.salesquota
@@ -473,6 +497,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesperson.column.bonus
@@ -498,6 +523,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesperson.column.commissionpct
@@ -523,6 +549,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesperson.column.salesytd
@@ -548,6 +575,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesperson.column.saleslastyear
@@ -573,6 +601,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesperson.column.rowguid
@@ -598,6 +627,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesperson.column.modifieddate
@@ -623,7 +653,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

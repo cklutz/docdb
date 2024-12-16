@@ -1,13 +1,9 @@
 ﻿using DocDB.Contracts;
-using Docfx.Common;
 using Microsoft.SqlServer.Management.Smo;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Xml;
 using System.Xml.Linq;
 using SmoIndex = Microsoft.SqlServer.Management.Smo.Index;
 
@@ -16,6 +12,13 @@ namespace DocDB;
 
 internal class ModelCreator
 {
+    private readonly string _databaseId;
+
+    public ModelCreator(Database database)
+    {
+        _databaseId = database.GetModelId();
+    }
+
     public DdbObject? CreateObject(NamedSmoObject obj)
     {
         ArgumentNullException.ThrowIfNull(obj);
@@ -45,8 +48,11 @@ internal class ModelCreator
         };
     }
 
-    private static T InitBase<T>(T obj, NamedSmoObject smo, bool noScript = false) where T : DdbObject
+    private T InitBase<T>(T obj, NamedSmoObject smo, bool noScript = false) where T : DdbObject
     {
+        // TODO: Via reflection (no common base class?) set the CreatedAt, LastModifiedAt members
+
+        obj.DatabaseId = _databaseId;
         obj.Id = smo.GetModelId();
 
         if (obj is NamedDdbObject named)
@@ -682,6 +688,9 @@ internal class ModelCreator
         {
             CreatedAt = table.CreateDate,
             LastModifiedAt = table.DateLastModified,
+            FileGroup = table.Parent.FileGroups.FindFirstOrDefault<FileGroup>(table.FileGroup)?.ToNamedRef<DdbFileGroup>(),
+            FileStreamGroup = table.Parent.FileGroups.FindFirstOrDefault<FileGroup>(table.FileStreamFileGroup)?.ToNamedRef<DdbFileGroup>(),
+            TextFileGroup = table.Parent.FileGroups.FindFirstOrDefault<FileGroup>(table.TextFileGroup)?.ToNamedRef<DdbFileGroup>()
         }, table);
 
         if (table.IsPartitioned)
@@ -689,7 +698,14 @@ internal class ModelCreator
             result.PartitionInfo.IsPartitioned = true;
             result.PartitionInfo.PartitionScheme = table.PartitionScheme;
             result.PartitionInfo.Columns.AddRange(table.PartitionSchemeParameters.OfType<PartitionSchemeParameter>().Select(x => x.Name));
-            result.PartitionInfo.FileGroup = table.FileGroup;
+        }
+
+        if (table.IsFileTable)
+        {
+            result.FileTableInfo.IsFileTable = true;
+            result.FileTableInfo.DirectoryName = table.FileTableDirectoryName;
+            result.FileTableInfo.NameColumnCollation = table.FileTableNameColumnCollation;
+            result.FileTableInfo.NamespaceEnabled = table.FileTableNamespaceEnabled;
         }
 
         foreach (ForeignKey foreignKey in table.ForeignKeys)
@@ -731,7 +747,7 @@ internal class ModelCreator
         return result;
     }
 
-    public static void AddIndex<TColumn>(TableViewTableTypeBase tv, IndexCollection indexes, TabularDdbObject<TColumn> result) where TColumn : DdbColumnBase
+    public void AddIndex<TColumn>(TableViewTableTypeBase tv, IndexCollection indexes, TabularDdbObject<TColumn> result) where TColumn : DdbColumnBase
     {
         foreach (SmoIndex index in indexes)
         {
@@ -866,7 +882,7 @@ internal class ModelCreator
         }
     }
 
-    private static void AddTriggers<TColumn>(TriggerCollection triggers, TabularDdbObject<TColumn> result) where TColumn : DdbColumnBase
+    private void AddTriggers<TColumn>(TriggerCollection triggers, TabularDdbObject<TColumn> result) where TColumn : DdbColumnBase
     {
         foreach (Trigger trigger in triggers)
         {
@@ -886,7 +902,7 @@ internal class ModelCreator
         }
     }
 
-    private static NamedDdbRef CreateDefaultRef(Database database, string schemaName, string defaultName)
+    private NamedDdbRef CreateDefaultRef(Database database, string schemaName, string defaultName)
     {
         var def = database.FindDefaultByName(schemaName, defaultName);
 
@@ -898,7 +914,7 @@ internal class ModelCreator
         };
     }
 
-    private static NamedDdbRef CreateRuleRef(Database database, string schemaName, string ruleName)
+    private NamedDdbRef CreateRuleRef(Database database, string schemaName, string ruleName)
     {
         var rule = database.FindRuleByName(schemaName, ruleName);
 
@@ -910,7 +926,7 @@ internal class ModelCreator
         };
     }
 
-    private static NamedDdbRef CreateFileGroupRef(Database database, string fileGroupName)
+    private NamedDdbRef CreateFileGroupRef(Database database, string fileGroupName)
     {
         var fileGroup = database.FindFileGroupByName(fileGroupName);
         return new NamedDdbRef
@@ -921,7 +937,7 @@ internal class ModelCreator
         };
     }
 
-    private static NamedDdbRef CreateColumnRef(TableViewTableTypeBase tableView, string columnName)
+    private NamedDdbRef CreateColumnRef(TableViewTableTypeBase tableView, string columnName)
     {
         var column = tableView.FindColumnByName(columnName);
         return new NamedDdbRef
@@ -932,7 +948,7 @@ internal class ModelCreator
         };
     }
 
-    private static NamedDdbRef CreateTableRef(Database database, string schemaName, string tableName)
+    private NamedDdbRef CreateTableRef(Database database, string schemaName, string tableName)
     {
         var table = database.FindTableByName(schemaName, tableName);
 
@@ -944,7 +960,7 @@ internal class ModelCreator
         };
     }
 
-    private static T CreateColumn<T>(Database database, Column column) where T : DdbColumnBase, new()
+    private T CreateColumn<T>(Database database, Column column) where T : DdbColumnBase, new()
     {
         return new T()
         {
@@ -967,7 +983,7 @@ internal class ModelCreator
         };
     }
 
-    private static void SetOption<T>(Func<T> getSmoObject, DdbOptionCategory options, string propertyName,
+    private void SetOption<T>(Func<T> getSmoObject, DdbOptionCategory options, string propertyName,
        Func<T, object?>? getter = null)
        where T : SqlSmoObject
     {
@@ -982,7 +998,7 @@ internal class ModelCreator
         }
     }
 
-    private static void SetOption<T>(T smoObject, DdbOptionCategory options, string propertyName,
+    private void SetOption<T>(T smoObject, DdbOptionCategory options, string propertyName,
         Func<T, object?>? getter = null)
         where T : SqlSmoObject
     {
@@ -1045,7 +1061,7 @@ internal class ModelCreator
         }
     }
 
-    private static NamedDdbRef? ResolveDataType(Database database, DataType dataType)
+    private NamedDdbRef? ResolveDataType(Database database, DataType dataType)
     {
         NamedDdbRef? dataTypeRef = null;
         switch (dataType.SqlDataType)

@@ -37,6 +37,9 @@ public abstract class DdbObject : IDdbRef
         Type = GetTypeTag(GetType());
     }
 
+    [JsonPropertyName("databaseId"), JsonProperty("databaseId")]
+    public string DatabaseId { get; set; } = null!;
+
     [JsonPropertyName("id"), JsonProperty("id")]
     public string Id { get; set; } = null!;
     [JsonPropertyName("type"), JsonProperty("type")]
@@ -585,8 +588,30 @@ public class DdbTable : TabularDdbObject<DdbTableColumn>
     public List<DdbForeignKey> ForeignKeys { get; set; } = [];
     [JsonPropertyName("checks"), JsonProperty("checks")]
     public List<DdbCheckConstraint> Checks { get; set; } = [];
+
+    [JsonPropertyName("fileGroup"), JsonProperty("fileGroup")]
+    public NamedDdbRef? FileGroup { get; set; }
+    [JsonPropertyName("fileStreamGroup"), JsonProperty("fileStreamGroup")]
+    public NamedDdbRef? FileStreamGroup { get; set; }
+    [JsonPropertyName("textFileGroup"), JsonProperty("textFileGroup")]
+    public NamedDdbRef? TextFileGroup { get; set; }
+
     [JsonPropertyName("partitionInfo"), JsonProperty("partitionInfo")]
     public DdbTablePartitionInfo PartitionInfo { get; set; } = new();
+    [JsonPropertyName("fileTableInfo"), JsonProperty("fileTableInfo")]
+    public DdbFileTableInfo FileTableInfo { get; set; } = new();
+}
+
+public class DdbFileTableInfo
+{
+    [JsonPropertyName("isFileTable"), JsonProperty("isFileTable")]
+    public bool IsFileTable { get; set; }
+    [JsonPropertyName("directoryName"), JsonProperty("directoryName")]
+    public string? DirectoryName { get; set; }
+    [JsonPropertyName("nameColumnCollation"), JsonProperty("nameColumnCollation")]
+    public string? NameColumnCollation { get; set; }
+    [JsonPropertyName("namespaceEnabled"), JsonProperty("namespaceEnabled")]
+    public bool NamespaceEnabled { get; set; }
 }
 
 public class DdbView : TabularDdbObject<DdbViewColumn>

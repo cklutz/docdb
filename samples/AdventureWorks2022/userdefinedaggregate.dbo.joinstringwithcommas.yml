@@ -25,10 +25,12 @@ parameters:
   dataType: NVARCHAR(4000)
   dataTypeRef: 
   defaultValue: 
+  databaseId: database.adventureworks2022
   script: ""
 syntax: >2-
 
   dbo.JoinStringWithCommas(value)
+databaseId: database.adventureworks2022
 script: |+
   CREATE AGGREGATE [dbo].[JoinStringWithCommas]
   (@value [nvarchar](4000))

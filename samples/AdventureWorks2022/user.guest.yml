@@ -10,6 +10,7 @@ authenticationType: None
 hasDBAccess: false
 loginType: SqlLogin
 login: ''
+databaseId: database.adventureworks2022
 script: |+
   CREATE USER [guest] WITH DEFAULT_SCHEMA=[guest]
   GO

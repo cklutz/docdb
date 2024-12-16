@@ -24,6 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.sales.salesorderdetail.foreignkey.fk_salesorderdetail_specialofferproduct_specialofferidproductid
@@ -46,6 +47,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 checks:
 - type: CheckConstraint
@@ -57,6 +59,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([OrderQty]>(0))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.sales.salesorderdetail.check.ck_salesorderdetail_unitprice
@@ -67,6 +70,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([UnitPrice]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.sales.salesorderdetail.check.ck_salesorderdetail_unitpricediscount
@@ -77,12 +81,24 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([UnitPriceDiscount]>=(0.00))
+  databaseId: database.adventureworks2022
   script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
 indexes:
 - type: Index
   id: table.sales.salesorderdetail.index.ak_salesorderdetail_rowguid
@@ -110,6 +126,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -228,6 +245,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.sales.salesorderdetail.index.ix_salesorderdetail_productid
@@ -255,6 +273,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -373,6 +392,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.sales.salesorderdetail.index.pk_salesorderdetail_salesorderid_salesorderdetailid
@@ -400,6 +420,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   - type: IndexColumn
     id: table.sales.salesorderdetail.index.pk_salesorderdetail_salesorderid_salesorderdetailid.indexedcolumn.salesorderdetailid
@@ -414,6 +435,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -532,6 +554,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers:
 - type: DmlTrigger
@@ -546,6 +569,7 @@ triggers:
   onDelete: true
   onUpdate: true
   onInsert: true
+  databaseId: database.adventureworks2022
   script: ""
 columns:
 - type: TableColumn
@@ -575,6 +599,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.salesorderdetailid
@@ -600,6 +625,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.carriertrackingnumber
@@ -625,6 +651,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.orderqty
@@ -650,6 +677,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.productid
@@ -678,6 +706,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.specialofferid
@@ -706,6 +735,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.unitprice
@@ -731,6 +761,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.unitpricediscount
@@ -756,6 +787,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.linetotal
@@ -781,6 +813,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.rowguid
@@ -806,6 +839,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.sales.salesorderdetail.column.modifieddate
@@ -831,7 +865,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

@@ -8,6 +8,7 @@ name: db_owner
 owner: dbo
 members:
 - dbo
+databaseId: database.adventureworks2022
 script: |+
   CREATE ROLE [db_owner]
   GO

@@ -6,6 +6,7 @@ createdAt: 0001-01-01T00:00:00.0000000
 lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: testAppRole
 defaultSchema: dbo
+databaseId: database.adventureworks2022
 script: |+
   /* To avoid disclosure of passwords, the password is generated in script. */
   declare @idx as int

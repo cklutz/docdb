@@ -24,6 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.production.workorderrouting.foreignkey.fk_workorderrouting_workorder_workorderid
@@ -43,6 +44,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 checks:
 - type: CheckConstraint
@@ -54,6 +56,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ActualCost]>(0.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_actualenddate
@@ -64,6 +67,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ActualEndDate]>=[ActualStartDate] OR [ActualEndDate] IS NULL OR [ActualStartDate] IS NULL)
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_actualresourcehrs
@@ -74,6 +78,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ActualResourceHrs]>=(0.0000))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_plannedcost
@@ -84,6 +89,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([PlannedCost]>(0.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_scheduledenddate
@@ -94,12 +100,24 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ScheduledEndDate]>=[ScheduledStartDate])
+  databaseId: database.adventureworks2022
   script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
 indexes:
 - type: Index
   id: table.production.workorderrouting.index.ix_workorderrouting_productid
@@ -127,6 +145,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -245,6 +264,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.production.workorderrouting.index.pk_workorderrouting_workorderid_productid_operationsequence
@@ -272,6 +292,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   - type: IndexColumn
     id: table.production.workorderrouting.index.pk_workorderrouting_workorderid_productid_operationsequence.indexedcolumn.productid
@@ -286,6 +307,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   - type: IndexColumn
     id: table.production.workorderrouting.index.pk_workorderrouting_workorderid_productid_operationsequence.indexedcolumn.operationsequence
@@ -300,6 +322,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -418,6 +441,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers: []
 columns:
@@ -448,6 +472,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorderrouting.column.productid
@@ -473,6 +498,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorderrouting.column.operationsequence
@@ -498,6 +524,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorderrouting.column.locationid
@@ -526,6 +553,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorderrouting.column.scheduledstartdate
@@ -551,6 +579,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorderrouting.column.scheduledenddate
@@ -576,6 +605,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorderrouting.column.actualstartdate
@@ -601,6 +631,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorderrouting.column.actualenddate
@@ -626,6 +657,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorderrouting.column.actualresourcehrs
@@ -651,6 +683,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorderrouting.column.plannedcost
@@ -676,6 +709,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorderrouting.column.actualcost
@@ -701,6 +735,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.workorderrouting.column.modifieddate
@@ -726,7 +761,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

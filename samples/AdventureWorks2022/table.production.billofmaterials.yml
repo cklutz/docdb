@@ -24,6 +24,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.production.billofmaterials.foreignkey.fk_billofmaterials_product_productassemblyid
@@ -43,6 +44,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 - type: ForeignKey
   id: table.production.billofmaterials.foreignkey.fk_billofmaterials_unitmeasure_unitmeasurecode
@@ -62,6 +64,7 @@ foreignKeys:
     type: TableRef
   deleteAction: 
   updateAction: 
+  databaseId: database.adventureworks2022
   script: ""
 checks:
 - type: CheckConstraint
@@ -73,6 +76,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ProductAssemblyID] IS NULL AND [BOMLevel]=(0) AND [PerAssemblyQty]=(1.00) OR [ProductAssemblyID] IS NOT NULL AND [BOMLevel]>=(1))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.production.billofmaterials.check.ck_billofmaterials_enddate
@@ -83,6 +87,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([EndDate]>[StartDate] OR [EndDate] IS NULL)
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.production.billofmaterials.check.ck_billofmaterials_perassemblyqty
@@ -93,6 +98,7 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([PerAssemblyQty]>=(1.00))
+  databaseId: database.adventureworks2022
   script: ""
 - type: CheckConstraint
   id: table.production.billofmaterials.check.ck_billofmaterials_productassemblyid
@@ -103,12 +109,24 @@ checks:
   isChecked: true
   isEnabled: true
   constraintText: ([ProductAssemblyID]<>[ComponentID])
+  databaseId: database.adventureworks2022
   script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
 partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
   fileGroup: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
 indexes:
 - type: Index
   id: table.production.billofmaterials.index.ak_billofmaterials_productassemblyid_componentid_startdate
@@ -136,6 +154,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   - type: IndexColumn
     id: table.production.billofmaterials.index.ak_billofmaterials_productassemblyid_componentid_startdate.indexedcolumn.componentid
@@ -150,6 +169,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   - type: IndexColumn
     id: table.production.billofmaterials.index.ak_billofmaterials_productassemblyid_componentid_startdate.indexedcolumn.startdate
@@ -164,6 +184,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -282,6 +303,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.production.billofmaterials.index.ix_billofmaterials_unitmeasurecode
@@ -309,6 +331,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -427,6 +450,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 - type: Index
   id: table.production.billofmaterials.index.pk_billofmaterials_billofmaterialsid
@@ -454,6 +478,7 @@ indexes:
     isDescending: false
     isIncluded: false
     columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
     script: ""
   isPartitioned: false
   fileGroup:
@@ -572,6 +597,7 @@ indexes:
     - name: resumableOperationState
       value: None
       type: enum
+  databaseId: database.adventureworks2022
   script: ""
 triggers: []
 columns:
@@ -599,6 +625,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.productassemblyid
@@ -627,6 +654,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.componentid
@@ -655,6 +683,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.startdate
@@ -680,6 +709,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.enddate
@@ -705,6 +735,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.unitmeasurecode
@@ -733,6 +764,7 @@ columns:
   collation: SQL_Latin1_General_CP1_CI_AS
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.bomlevel
@@ -758,6 +790,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.perassemblyqty
@@ -783,6 +816,7 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
 - type: TableColumn
   id: table.production.billofmaterials.column.modifieddate
@@ -808,7 +842,9 @@ columns:
   collation: ''
   isFileStream: false
   isFullTextIndexed: false
+  databaseId: database.adventureworks2022
   script: ""
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

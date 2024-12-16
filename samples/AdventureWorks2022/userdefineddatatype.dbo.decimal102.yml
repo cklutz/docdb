@@ -18,6 +18,7 @@ owner: dbo
 ruleRef: 
 systemType: decimal
 isVariableLength: false
+databaseId: database.adventureworks2022
 script: |+
   CREATE TYPE [dbo].[Decimal102] FROM [decimal](10, 2) NULL
   GO

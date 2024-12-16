@@ -23,6 +23,7 @@ fileGroups:
   - name: AdventureWorks2022
     id: file.adventureworks2022
     type: DataFileRef
+  databaseId: database.adventureworks2022
   script: ""
 dataFiles:
 - type: DataFile
@@ -44,6 +45,7 @@ dataFiles:
   isSparse: false
   maxSize: 
   size: 204800
+  databaseId: database.adventureworks2022
   script: ""
 logFiles:
 - type: LogFile
@@ -61,6 +63,7 @@ logFiles:
   isSparse: false
   maxSize: 2147483648
   size: 73728
+  databaseId: database.adventureworks2022
   script: ""
 options:
 - name: engine
@@ -334,6 +337,7 @@ options:
   - name: mirroringWitness
     value: ''
     type: string
+databaseId: database.adventureworks2022
 script: |+
   CREATE DATABASE [AdventureWorks2022]
    CONTAINMENT = NONE

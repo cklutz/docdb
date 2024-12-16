@@ -17,6 +17,7 @@ parameters:
   dataType: INT
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspgetbillofmaterials.param.@checkdate
@@ -29,6 +30,7 @@ parameters:
   dataType: DATETIME
   dataTypeRef: 
   defaultValue: ''
+  databaseId: database.adventureworks2022
   script: ""
 syntax: |2+
 
@@ -36,6 +38,7 @@ syntax: |2+
       [ @StartProductID ] = StartProductID ,
       [ @CheckDate ] = CheckDate
   [ ; ]
+databaseId: database.adventureworks2022
 script: |+
   SET ANSI_NULLS ON
   GO

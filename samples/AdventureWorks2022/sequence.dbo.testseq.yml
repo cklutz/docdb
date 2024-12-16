@@ -15,6 +15,7 @@ incrementValue: 1
 startValue: 1000
 minValue: 1000
 maxValue: 9999
+databaseId: database.adventureworks2022
 script: |+
   CREATE SEQUENCE [dbo].[TestSeq] 
    AS [bigint]
