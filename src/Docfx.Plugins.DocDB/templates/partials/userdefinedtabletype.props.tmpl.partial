@@ -1,0 +1,60 @@
+{{#payload}}
+<h3>Properties</h3>
+
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Collation</th>
+			<td>{{collation}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Nullable</th>
+			<td>
+			{{#isNullable}}{{{__global.symCheckMark}}}{{/isNullable}}
+			{{^isNullable}}{{{__global.symCross}}}{{/isNullable}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Memory optimized</th>
+			<td>
+			{{#isMemoryOptimized}}{{{__global.symCheckMark}}}{{/isMemoryOptimized}}
+			{{^isMemoryOptimized}}{{{__global.symCross}}}{{/isMemoryOptimized}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">User defined</th>
+			<td>
+			{{#isUserDefined}}{{{__global.symCheckMark}}}{{/isUserDefined}}
+			{{^isUserDefined}}{{{__global.symCross}}}{{/isUserDefined}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Schema owned</th>
+			<td>
+			{{#isSchemaOwned}}{{{__global.symCheckMark}}}{{/isSchemaOwned}}
+			{{^isSchemaOwned}}{{{__global.symCross}}}{{/isSchemaOwned}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Owner</th>
+			<td>{{owner}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Max length</th>
+			<td>{{#maxLength}}{{maxLength}}{{/maxLength}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Login type</th>
+			<td>{{loginType}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Login</th>
+			<td>{{login}}</td>
+		</tr>
+	</tbody>
+</table>
+{{/payload}}

@@ -2,6 +2,7 @@
 using Docfx.Common;
 using Microsoft.SqlServer.Management.Smo;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -30,6 +31,7 @@ internal class ModelCreator
             ApplicationRole applicationRole => CreateApplicationRole(applicationRole),
             UserDefinedFunction udf => CreateUserDefinedFunction(udf),
             UserDefinedDataType udt => CreateUserDefinedDataType(udt),
+            UserDefinedTableType udt => CreateUserDefinedTableType(udt),
             StoredProcedure sp => CreateStoredProcedure(sp),
             SqlAssembly assembly => CreateAssembly(assembly),
             UserDefinedType udt => CreateUserDefinedType(udt),
@@ -568,6 +570,42 @@ internal class ModelCreator
         return result;
     }
 
+    private DdbUserDefinedTableType CreateUserDefinedTableType(UserDefinedTableType udt)
+    {
+        var result = InitBase(new DdbUserDefinedTableType
+        {
+            CreatedAt = udt.CreateDate,
+            LastModifiedAt = udt.DateLastModified,
+            Collation = udt.Collation,
+            IsMemoryOptimized = udt.IsMemoryOptimized,
+            IsUserDefined = udt.IsUserDefined,
+            IsSchemaOwned = udt.IsSchemaOwned,
+            Owner = udt.Owner,
+            MaxLength = udt.MaxLength == 0 || udt.MaxLength == -1 ? null : udt.MaxLength,
+            IsNullable = udt.Nullable,
+        }, udt);
+
+        foreach (Column column in udt.Columns)
+        {
+            result.Columns.Add(InitBase(CreateColumn<DdbTableColumn>(udt.Parent, column), column));
+        }
+
+        foreach (Check check in udt.Checks)
+        {
+            var c = InitBase(new DdbCheckConstraint
+            {
+                ConstraintText = check.Text,
+                IsChecked = check.IsChecked,
+                IsEnabled = check.IsEnabled
+            }, check, noScript: true);
+            result.Checks.Add(c);
+        }
+
+        AddIndex(udt, udt.Indexes, result);
+
+        return result;
+    }
+
     private DdbView CreateView(View view)
     {
         var result = InitBase(new DdbView
@@ -642,7 +680,7 @@ internal class ModelCreator
         return result;
     }
 
-    public static void AddIndex<TColumn>(TableViewBase tableView, IndexCollection indexes, TabularDdbObject<TColumn> result) where TColumn : DdbColumnBase
+    public static void AddIndex<TColumn>(TableViewTableTypeBase tv, IndexCollection indexes, TabularDdbObject<TColumn> result) where TColumn : DdbColumnBase
     {
         foreach (SmoIndex index in indexes)
         {
@@ -674,15 +712,15 @@ internal class ModelCreator
                 IsPartitioned = index.IsPartitioned,
                 IsUnique = index.IsUnique,
                 Filter = index.FilterDefinition,
-                FileGroup = !string.IsNullOrEmpty(index.FileGroup) ? CreateFileGroupRef(tableView, index.FileGroup) : null,
-                FileStreamGroup = !string.IsNullOrEmpty(index.FileStreamFileGroup) ? CreateFileGroupRef(tableView, index.FileStreamFileGroup) : null,
+                FileGroup = !string.IsNullOrEmpty(index.FileGroup) ? CreateFileGroupRef(tv.GetDatabase(), index.FileGroup) : null,
+                FileStreamGroup = !string.IsNullOrEmpty(index.FileStreamFileGroup) ? CreateFileGroupRef(tv.GetDatabase(), index.FileStreamFileGroup) : null,
             }, index, noScript: true);
 
             foreach (IndexedColumn indexColumn in index.IndexedColumns)
             {
                 idx.Columns.Add(InitBase(new DdbIndexColumn
                 {
-                    ColumnRef = CreateColumnRef(tableView, indexColumn.Name),
+                    ColumnRef = CreateColumnRef(tv, indexColumn.Name),
                     IsDescending = indexColumn.Descending,
                     IsIncluded = indexColumn.IsIncluded,
                     ColumnStoreOrderOrdinal = indexColumn.ColumnStoreOrderOrdinal,
@@ -821,9 +859,9 @@ internal class ModelCreator
         };
     }
 
-    private static NamedDdbRef CreateFileGroupRef(TableViewBase tableView, string fileGroupName)
+    private static NamedDdbRef CreateFileGroupRef(Database database, string fileGroupName)
     {
-        var fileGroup = tableView.GetDatabase().FindFileGroupByName(fileGroupName);
+        var fileGroup = database.FindFileGroupByName(fileGroupName);
         return new NamedDdbRef
         {
             Id = fileGroup.GetModelId(),
@@ -832,7 +870,7 @@ internal class ModelCreator
         };
     }
 
-    private static NamedDdbRef CreateColumnRef(TableViewBase tableView, string columnName)
+    private static NamedDdbRef CreateColumnRef(TableViewTableTypeBase tableView, string columnName)
     {
         var column = tableView.FindColumnByName(columnName);
         return new NamedDdbRef
@@ -970,6 +1008,11 @@ internal class ModelCreator
                 dataTypeRef = database.UserDefinedDataTypes
                     .FindFirstOrDefault<UserDefinedType>(dataType.Schema, dataType.Name)?
                     .ToNamedRef<DdbUserDefinedType>();
+                break;
+            case SqlDataType.UserDefinedTableType:
+                dataTypeRef = database.UserDefinedTableTypes
+                    .FindFirstOrDefault<UserDefinedTableType>(dataType.Schema, dataType.Name)?
+                    .ToNamedRef<DdbUserDefinedTableType>();
                 break;
         }
         return dataTypeRef;

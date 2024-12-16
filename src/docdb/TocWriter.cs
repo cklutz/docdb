@@ -106,7 +106,7 @@ namespace DocDB
                         emitter.Emit(SequenceStart());
 
                         AddNamedItemSequence(emitter, "User-Defined Data Types", objects.OfType<DdbUserDefinedDataType>());
-                        //AddNamedItemSequence(emitter, "User-Defined Table Types", objects.OfType<DdbUserDefinedTableType>());
+                        AddNamedItemSequence(emitter, "User-Defined Table Types", objects.OfType<DdbUserDefinedTableType>());
                         AddNamedItemSequence(emitter, "User-Defined Types", objects.OfType<DdbUserDefinedType>());
                         AddNamedItemSequence(emitter, "XML Schema Collections", objects.OfType<DdbXmlSchemaCollection>());
 

@@ -210,6 +210,15 @@ public static class SmoExtensions
     {
         ArgumentNullException.ThrowIfNull(obj);
 
+        // Seen this with "Index": we get exceptions attempting to access the extended
+        // properties for "system named" ones.
+        if (obj is SqlSmoObject sql && sql.IsSupportedProperty("IsSystemNamed") && 
+            sql.Properties["IsSystemNamed"]?.Value is bool isSystemNamed &&
+            isSystemNamed)
+        {
+            return null;
+        }
+
         if (obj.ExtendedProperties != null && obj.ExtendedProperties.Contains(MSDescriptionPropertyName))
         {
             object val = obj.ExtendedProperties[MSDescriptionPropertyName].Value;
@@ -290,7 +299,7 @@ public static class SmoExtensions
         return urn.Type.ToUpperInvariant();
     }
 
-    public static Database GetDatabase(this TableViewBase tv)
+    public static Database GetDatabase(this TableViewTableTypeBase tv)
     {
         ArgumentNullException.ThrowIfNull(tv);
 
@@ -302,6 +311,11 @@ public static class SmoExtensions
         if (tv is Table table)
         {
             return table.Parent;
+        }
+
+        if (tv is UserDefinedTableType tableType)
+        {
+            return tableType.Parent;
         }
 
         throw new ArgumentException($"Unexpected type {tv.GetType()}");
@@ -362,7 +376,7 @@ public static class SmoExtensions
         return table;
     }
 
-    public static Column FindColumnByName(this TableViewBase table, string name)
+    public static Column FindColumnByName(this TableViewTableTypeBase table, string name)
     {
         ArgumentNullException.ThrowIfNull(table);
         ArgumentException.ThrowIfNullOrEmpty(name);

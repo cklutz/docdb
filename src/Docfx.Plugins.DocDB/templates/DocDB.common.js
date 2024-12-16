@@ -61,6 +61,7 @@ exports.transform = function (model) {
         switch (model.payload.type.toLowerCase()) {
             case 'table':
             case 'view':
+            case 'userdefinedtabletype':
                 model.isTabular = true;
                 break;
             case 'userdefinedfunction':

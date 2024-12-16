@@ -1,0 +1,224 @@
+### YamlMime:DocDB
+type: UserDefinedTableType
+id: userdefinedtabletype.dbo.my_tvp
+description: Test
+createdAt: 2024-12-16T11:20:04.7100000
+lastModifiedAt: 2024-12-16T11:20:04.7100000
+name: dbo.my_tvp
+collation: ''
+checks: []
+isMemoryOptimized: false
+isUserDefined: true
+isSchemaOwned: true
+owner: dbo
+maxLength: 
+isNullable: false
+indexes:
+- type: Index
+  id: userdefinedtabletype.dbo.my_tvp.index.pk__tt_my_tv__357d0d3eba86bdbb
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: PK__TT_my_tv__357D0D3EBA86BDBB
+  indexType: CLUSTERED
+  indexKeyType: PRIMARY
+  isDisabled: false
+  isUnique: true
+  isClustered: true
+  filter: ''
+  columns:
+  - type: IndexColumn
+    id: userdefinedtabletype.dbo.my_tvp.index.pk__tt_my_tv__357d0d3eba86bdbb.indexedcolumn.col1
+    description: 
+    createdAt: 0001-01-01T00:00:00.0000000
+    lastModifiedAt: 0001-01-01T00:00:00.0000000
+    name: col1
+    columnRef:
+      name: col1
+      id: userdefinedtabletype.dbo.my_tvp.column.col1
+      type: TableColumnRef
+    isDescending: false
+    isIncluded: false
+    columnStoreOrderOrdinal: 0
+    script: ""
+  isPartitioned: false
+  fileGroup:
+    name: PRIMARY
+    id: filegroup.primary
+    type: FileGroupRef
+  fileStreamGroup: 
+  options:
+  - name: general
+    entries:
+    - name: autoRecomputeStatistics
+      value: true
+      type: bool
+    - name: ignoreDuplicateKeys
+      value: false
+      type: bool
+  - name: storage
+    entries:
+    - name: sortInTempdb
+      value: 
+      type: 
+    - name: fillFactor
+      value: 0
+      type: string
+    - name: padIndex
+      value: false
+      type: bool
+  - name: operation
+    entries:
+    - name: maximumDegreeOfParallelism
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+  - name: locks
+    entries:
+    - name: allowPageLocks
+      value: true
+      type: bool
+    - name: allowRowLocks
+      value: true
+      type: bool
+  - name: spatial
+    entries:
+    - name: isSpatialIndex
+      value: false
+      type: bool
+  - name: xml
+    entries:
+    - name: isXmlIndex
+      value: false
+      type: bool
+  - name: miscellaneous
+    entries:
+    - name: hasCompressedPartitions
+      value: false
+      type: bool
+    - name: hasXmlCompressedPartitions
+      value: false
+      type: bool
+    - name: compressAllRowGroups
+      value: 
+      type: 
+    - name: compactLargeObjects
+      value: 
+      type: 
+    - name: compressionDelay
+      value: 
+      type: 
+    - name: dropExistingIndex
+      value: 
+      type: 
+    - name: hasSparseColumn
+      value: false
+      type: bool
+    - name: isFileTableDefined
+      value: false
+      type: bool
+    - name: isFullTextKey
+      value: false
+      type: bool
+    - name: isIndexOnComputed
+      value: 
+      type: 
+    - name: isIndexOnTable
+      value: 
+      type: 
+    - name: isMemoryOptimized
+      value: false
+      type: bool
+    - name: isOnlineRebuildSupported
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+    - name: lowPriorityAbortAfterWait
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: onlineIndexOperation
+      value: 
+      type: 
+    - name: resumableIndexOperation
+      value: 
+      type: 
+    - name: resumableMaxDuration
+      value: 
+      type: 
+    - name: resumableOperationState
+      value: None
+      type: enum
+  script: ""
+triggers: []
+columns:
+- type: TableColumn
+  id: userdefinedtabletype.dbo.my_tvp.column.col1
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: col1
+  dataType: VARCHAR(255)
+  dataTypeRef: 
+  maxLengthBytes: 255
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+- type: TableColumn
+  id: userdefinedtabletype.dbo.my_tvp.column.col2
+  description: 
+  createdAt: 0001-01-01T00:00:00.0000000
+  lastModifiedAt: 0001-01-01T00:00:00.0000000
+  name: col2
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  script: ""
+script: |+
+  CREATE TYPE [dbo].[my_tvp] AS TABLE(
+  	[col1] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[col2] [int] NULL,
+  	PRIMARY KEY CLUSTERED 
+  (
+  	[col1] ASC
+  )WITH (IGNORE_DUP_KEY = OFF)
+  )
+  GO
+

@@ -51,6 +51,9 @@
 {{>partials/prog.xmlschemacollection}}
 {{/isXmlSchemaCollection}}
 
+{{#isUserDefinedTableType}}
+{{>partials/userdefinedtabletype.props}}
+{{/isUserDefinedTableType}}
 {{#isTabular}}
 {{>partials/tabular.columns}}
 {{/isTabular}}
@@ -63,6 +66,9 @@
 {{#isTable}}
 {{>partials/table.checks}}
 {{/isTable}}
+{{#isUserDefinedTableType}}
+{{>partials/table.checks}}
+{{/isUserDefinedTableType}}
 {{#isTabular}}
 {{>partials/tabular.triggers}}
 {{/isTabular}}
