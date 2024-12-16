@@ -101,7 +101,6 @@ partitionInfo:
   isPartitioned: false
   columns: []
   partitionScheme: 
-  fileGroup: 
 fileTableInfo:
   isFileTable: false
   directoryName: 

@@ -1,0 +1,23 @@
+
+{{#payload}}
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">File groups</th>
+			<td><ul>{{#fileGroups}}<li><a href="{{databaseId}}.html#{{id}}">{{name}}</a></li>{{/fileGroups}}</ul></td>
+		</tr>
+		<tr>
+			<th class="nowrap">Next used file group</th>
+			<td>{{#nextUsedFileGroup}}<a href="{{nextUsedFileGroup.id}}.html">{{nextUsedFileGroup.name}}</a>{{/nextUsedFileGroup}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Partition Function</th>
+			<td><a href="{{partitionFunction.id}}.html">{{partitionFunction.name}}</a></td>
+		</tr>
+	</tbody>
+</table>
+{{/payload}}

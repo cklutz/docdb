@@ -565,11 +565,45 @@ public class DdbTablePartitionInfo
     [JsonPropertyName("isPartitioned"), JsonProperty("isPartitioned")]
     public bool IsPartitioned { get; set; }
     [JsonPropertyName("columns"), JsonProperty("columns")]
-    public List<string> Columns { get; set; } = [];
+    public List<NamedDdbRef> Columns { get; set; } = [];
     [JsonPropertyName("partitionScheme"), JsonProperty("partitionScheme")]
-    public string? PartitionScheme { get; set; }
-    [JsonPropertyName("fileGroup"), JsonProperty("fileGroup")]
-    public string? FileGroup { get; set; }
+    public NamedDdbRef? PartitionScheme { get; set; }
+}
+
+public class DdbPartitionScheme : NamedDdbObject
+{
+    [JsonPropertyName("fileGroups"), JsonProperty("fileGroups")]
+    public List<NamedDdbRef?> FileGroups { get; set; } = [];
+
+    [JsonPropertyName("nextUsedFileGroup"), JsonProperty("nextUsedFileGroup")]
+    public NamedDdbRef? NextUsedFileGroup { get; set; }
+
+    [JsonPropertyName("partitionFunction"), JsonProperty("partitionFunction")]
+    public NamedDdbRef? PartitionFunction { get; set; }
+}
+
+public class DdbPartitionFunction : NamedDdbObject
+{
+    [JsonPropertyName("numberOfPartitions"), JsonProperty("numberOfPartitions")]
+    public int NumberOfPartitions { get; set; }
+    [JsonPropertyName("rangeType"), JsonProperty("rangeType")]
+    public string? RangeType { get; set; }
+    [JsonPropertyName("rangeValues"), JsonProperty("rangeValues")]
+    public List<string> RangeValues { get; set; } = [];
+    [JsonPropertyName("parameters"), JsonProperty("parameters")]
+    public List<DdbPartitionFunctionParameter> Parameters { get; set; } = [];
+}
+
+public class DdbPartitionFunctionParameter : NamedDdbObject
+{
+    [JsonPropertyName("collation"), JsonProperty("collation")]
+    public string? Collation { get; set; }
+    [JsonPropertyName("length"), JsonProperty("length")]
+    public int? Length { get; set; }
+    [JsonPropertyName("numericPrecision"), JsonProperty("numericPrecision")]
+    public int NumericPrecision { get; set; }
+    [JsonPropertyName("numericScale"), JsonProperty("numericScale")]
+    public int NumericScale { get; set; }
 }
 
 public abstract class TabularDdbObject<TColumn> : NamedDdbObject where TColumn : DdbColumnBase

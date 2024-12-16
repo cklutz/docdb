@@ -15,6 +15,13 @@
 {{>partials/applicationrole}}
 {{/isApplicationRole}}
 
+{{#isPartitionScheme}}
+{{>partials/partitionscheme}}
+{{/isPartitionScheme}}
+{{#isPartitionFunction}}
+{{>partials/partitionfunction}}
+{{/isPartitionFunction}}
+
 {{#isSequence}}
 {{>partials/sequence}}
 {{/isSequence}}

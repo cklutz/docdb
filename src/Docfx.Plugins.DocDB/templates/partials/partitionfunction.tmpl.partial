@@ -1,0 +1,64 @@
+
+{{#payload}}
+<h2>Properties</h2>
+
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Range type</th>
+			<td>{{rangeType}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Range values</th>
+			<td><ul>{{#rangeValues}}<li>{{.}}</li>{{/rangeValues}}</ul></td>
+		</tr>
+		<tr>
+			<th class="nowrap">Nubmer of partitions</th>
+			<td>{{numberOfPartitions}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Next used file group</th>
+			<td>{{#nextUsedFileGroup}}<a href="{{nextUsedFileGroup.id}}.html">{{nextUsedFileGroup.name}}</a>{{/nextUsedFileGroup}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Partition Function</th>
+			<td><a href="{{partitionFunction.id}}.html">{{partitionFunction.name}}</a></td>
+		</tr>
+		<tr>
+			<th class="nowrap">Collation</th>
+			<td>{{collation}}</td>
+		</tr>
+	</tbody>
+</table>
+
+{{#payload.parameters.0}}
+<h2>{{__global.parameters}}</h2>
+<table class="table table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th>Parameter Name</th>
+			<th>Length</th>
+			<th>Precision</th>
+			<th>Scale</th>
+			<th>{{__global.description}}</th>
+		</tr>
+	</thead>
+	<tbody>
+{{#payload.parameters}}
+		<tr>
+			<td>{{name}}</td>
+			<td>{{length}}</td>
+			<td>{{numericPrecision}}</td>
+			<td>{{numericScale}}</td>
+			<td class="pre-wrap">{{description}}</td>
+		</tr>
+{{/payload.parameters}}
+	</tbody>
+</table>
+{{/payload.parameters.0}}
+
+{{/payload}}

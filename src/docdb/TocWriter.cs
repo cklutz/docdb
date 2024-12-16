@@ -29,7 +29,7 @@ namespace DocDB
         //              XML Schema Collections
         //          Sequences
         //      Storage
-        //          Partition Schemas
+        //          Partition Schemes
         //          Partition Functions
         //      Security
         //          Users
@@ -121,6 +121,16 @@ namespace DocDB
                     emitter.Emit(SequenceEnd());
                 });
 
+                NamedComplexSequenceEntry(emitter, "Storage", emitter =>
+                {
+                    emitter.Emit(new Scalar("items"));
+                    emitter.Emit(SequenceStart());
+
+                    AddNamedItemSequence(emitter, "Partition Schemes ", objects.OfType<DdbPartitionScheme>());
+                    AddNamedItemSequence(emitter, "Partition Functions", objects.OfType<DdbPartitionFunction>());
+
+                    emitter.Emit(SequenceEnd());
+                });
 
                 NamedComplexSequenceEntry(emitter, "Security", emitter =>
                 {

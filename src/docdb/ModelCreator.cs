@@ -44,6 +44,8 @@ internal class ModelCreator
             Default def => CreateDefault(def),
             Sequence sequence => CreateSequence(sequence),
             XmlSchemaCollection collection => CreateXmlSchemaCollection(collection),
+            PartitionScheme ps => CreatePartitionScheme(ps),
+            PartitionFunction pf => CreatePartitionFunction(pf),
             _ => throw new ArgumentOutOfRangeException(nameof(obj), obj.GetType(), null)
         };
     }
@@ -663,6 +665,38 @@ internal class ModelCreator
         return result;
     }
 
+    private DdbPartitionScheme CreatePartitionScheme(PartitionScheme ps)
+    {
+        var result = InitBase(new DdbPartitionScheme
+        {
+            FileGroups = ps.FileGroups.OfType<string>().Select(fg => ps.Parent.FileGroups.FindFirstOrDefault<FileGroup>(fg)?.ToNamedRef<DdbFileGroup>()).ToList(),
+            NextUsedFileGroup = ps.Parent.FileGroups.FindFirstOrDefault<FileGroup>(ps.NextUsedFileGroup)?.ToNamedRef<DdbFileGroup>(),
+            PartitionFunction = ps.Parent.PartitionFunctions.FindFirstOrDefault<PartitionFunction>(ps.PartitionFunction)?.ToNamedRef<DdbPartitionFunction>()
+        }, ps);
+        return result;
+    }
+
+    private DdbPartitionFunction CreatePartitionFunction(PartitionFunction pf)
+    {
+        var result = InitBase(new DdbPartitionFunction
+        {
+            NumberOfPartitions = pf.NumberOfPartitions,
+            RangeType = pf.RangeType.ToString(),
+            RangeValues = pf.RangeValues.Select(v => v?.ToString() ?? "").ToList(),
+            Parameters = pf.PartitionFunctionParameters.OfType<PartitionFunctionParameter>()
+                .Select(p => 
+                InitBase(new DdbPartitionFunctionParameter
+                {
+                    Collation = p.Collation,
+                    NumericPrecision = p.NumericPrecision,
+                    NumericScale = p.NumericScale,
+                    Length = p.Length
+                }, p)).ToList()
+        }, pf);
+        return result;
+    }
+
+
     private DdbView CreateView(View view)
     {
         var result = InitBase(new DdbView
@@ -696,8 +730,8 @@ internal class ModelCreator
         if (table.IsPartitioned)
         {
             result.PartitionInfo.IsPartitioned = true;
-            result.PartitionInfo.PartitionScheme = table.PartitionScheme;
-            result.PartitionInfo.Columns.AddRange(table.PartitionSchemeParameters.OfType<PartitionSchemeParameter>().Select(x => x.Name));
+            result.PartitionInfo.PartitionScheme = table.Parent.PartitionSchemes.FindFirstOrDefault<PartitionScheme>(table.PartitionScheme)?.ToNamedRef<DdbPartitionScheme>();
+            result.PartitionInfo.Columns = table.PartitionSchemeParameters.OfType<PartitionSchemeParameter>().Select(c => CreateColumnRef(table, c.Name)).ToList();
         }
 
         if (table.IsFileTable)
