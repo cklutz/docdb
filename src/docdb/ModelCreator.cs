@@ -30,6 +30,7 @@ internal class ModelCreator
             DatabaseRole databaseRole => CreateDatabaseRole(databaseRole),
             ApplicationRole applicationRole => CreateApplicationRole(applicationRole),
             UserDefinedFunction udf => CreateUserDefinedFunction(udf),
+            UserDefinedAggregate uda => CreateUserDefinedAggregate(uda),
             UserDefinedDataType udt => CreateUserDefinedDataType(udt),
             UserDefinedTableType udt => CreateUserDefinedTableType(udt),
             StoredProcedure sp => CreateStoredProcedure(sp),
@@ -358,6 +359,34 @@ internal class ModelCreator
         {
             DefaultSchema = role.DefaultSchema,
         }, role);
+        return result;
+    }
+
+    private DdbUserDefinedAggregate CreateUserDefinedAggregate(UserDefinedAggregate uda)
+    {
+        var result = InitBase(new DdbUserDefinedAggregate
+        {
+            AssemblyName = uda.AssemblyName,
+            AssemblyRef = uda.Parent.Assemblies.FindFirstOrDefault<SqlAssembly>(uda.AssemblyName)?.ToNamedRef<DdbAssembly>(),
+            ClassName = uda.ClassName,
+            IsSchemaOwned = uda.IsSchemaOwned,
+            Owner = uda.Owner,
+            ReturnDataType = uda.DataType.PrettyName(),
+            ReturnDataTypeRef = ResolveDataType(uda.Parent, uda.DataType),
+            Syntax = uda.GetSyntax()
+        }, uda);
+
+        foreach (UserDefinedAggregateParameter parameter in uda.Parameters)
+        {
+            result.Parameters.Add(InitBase(new DdbUserDefinedAggregateParameter()
+            {
+                DataType = parameter.DataType.PrettyName(),
+                DataTypeRef = ResolveDataType(uda.Parent, parameter.DataType),
+                Description = parameter.GetMSDescription(),
+                DefaultValue = null,
+            }, parameter));
+        }
+
         return result;
     }
 

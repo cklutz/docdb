@@ -93,7 +93,7 @@ namespace DocDB
 
                         AddNamedItemSequence(emitter, "Table-valued Functions", tableValued);
                         AddNamedItemSequence(emitter, "Scalar-valued Functions", scalarValued);
-                        AddNamedItemSequence(emitter, "Aggregate Functions", objects.OfType<DbdUserDefinedAggregate>());
+                        AddNamedItemSequence(emitter, "Aggregate Functions", objects.OfType<DdbUserDefinedAggregate>());
 
                         emitter.Emit(SequenceEnd());
                     });

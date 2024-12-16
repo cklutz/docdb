@@ -66,6 +66,7 @@ exports.transform = function (model) {
                 break;
             case 'userdefinedfunction':
             case 'storedprocedure':
+            case 'userdefinedaggregate':
                 model.isProcOrFunction = true;
                 break;
             case 'database':

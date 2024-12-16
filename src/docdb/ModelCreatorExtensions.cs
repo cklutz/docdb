@@ -219,6 +219,41 @@ internal static class ModelCreatorExtensions
         return false;
     }
 
+    public static string GetSyntax(this UserDefinedAggregate prog)
+    {
+        var sb = new ValueStringBuilder(stackalloc char[255]);
+
+        sb.AppendLine();
+        sb.Append(prog.Schema);
+        sb.Append('.');
+        sb.Append(prog.Name);
+        sb.Append('(');
+
+        for (int i = 0; i < prog.Parameters.Count; i++)
+        {
+            var parameter = prog.Parameters[i];
+
+            if (parameter.Name.StartsWith('@'))
+            {
+                sb.Append(parameter.Name.AsSpan().Slice(1));
+            }
+            else
+            {
+                sb.Append(parameter.Name);
+            }
+
+            if (i + 1 < prog.Parameters.Count)
+            {
+                sb.Append(", ");
+            }
+        }
+
+        sb.Append(')');
+
+
+        return sb.ToString();
+    }
+
     public static string GetSyntax(this UserDefinedFunction prog)
     {
         var sb = new ValueStringBuilder(stackalloc char[255]);

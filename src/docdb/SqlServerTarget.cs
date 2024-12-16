@@ -70,7 +70,7 @@ public sealed class SqlServerTarget : IDisposable
         .Union(AddUrns<View>(_database.Views, t => !t.IsSystemObject))
         .Union(AddUrns<StoredProcedure>(_database.StoredProcedures, t => !t.IsSystemObject))
         .Union(AddUrns<UserDefinedFunction>(_database.UserDefinedFunctions, t => !t.IsSystemObject))
-        //.Union(AddUrns<UserDefinedAggregate>(_database.UserDefinedAggregates))
+        .Union(AddUrns<UserDefinedAggregate>(_database.UserDefinedAggregates))
         .Union(AddUrns<UserDefinedTableType>(_database.UserDefinedTableTypes))
         .Union(AddUrns<UserDefinedDataType>(_database.UserDefinedDataTypes))
         .Union(AddUrns<UserDefinedType>(_database.UserDefinedTypes))

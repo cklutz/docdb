@@ -6,7 +6,9 @@
 		<tr>
 			<th>Parameter Name</th>
 			<th>Data Type</th>
+{{^isUserDefinedAggregate}}
 			<th>Default</th>
+{{/isUserDefinedAggregate}}
 {{#isStoredProcedure}}
 			<th>Output</th>
 			<th>Cursor</th>
@@ -51,10 +53,12 @@
 			{{^dataTypeRef}}{{dataType}}{{/dataTypeRef}}
 			</td>
 		</tr>
+{{^isUserDefinedAggregate}}
 		<tr>
 			<th class="nowrap">Default Value</th>
 			<td>{{defaultValue}}</td>
 		</tr>
+{{/isUserDefinedAggregate}}
 {{#isStoredProcedure}}
 		<tr>
 			<th class="nowrap">Output Parameter</th>
