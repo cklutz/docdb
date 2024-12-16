@@ -1,0 +1,12 @@
+### YamlMime:DocDB
+type: Default
+id: default.dbo.testdefault
+description: 
+createdAt: 0001-01-01T00:00:00.0000000
+lastModifiedAt: 0001-01-01T00:00:00.0000000
+name: dbo.testDefault
+textBody: 42
+script: |+
+  CREATE DEFAULT dbo.testDefault AS 42
+  GO
+

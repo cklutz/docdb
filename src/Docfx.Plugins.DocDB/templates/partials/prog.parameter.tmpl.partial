@@ -18,7 +18,10 @@
 {{#payload.parameters}}
 		<tr>
 			<td><a href="{{id}}">{{name}}</a></td>
-			<td>{{dataType}}</td>
+			<td>
+			{{#dataTypeRef}}<a href="{{id}}.html">{{name}}</a>{{/dataTypeRef}}
+			{{^dataTypeRef}}{{dataType}}{{/dataTypeRef}}
+			</td>
 			<td>{{defaultValue}}</td>
 {{#isStoredProcedure}}
 			<td>{{#isOutputParameter}}{{{__global.symCheckMark}}}{{/isOutputParameter}}</td>
@@ -43,7 +46,10 @@
 	<tbody>
 		<tr>
 			<th class="nowrap">Data type</th>
-			<td>{{dataType}}</td>
+			<td>
+			{{#dataTypeRef}}<a href="{{id}}.html">{{name}}</a>{{/dataTypeRef}}
+			{{^dataTypeRef}}{{dataType}}{{/dataTypeRef}}
+			</td>
 		</tr>
 		<tr>
 			<th class="nowrap">Default Value</th>

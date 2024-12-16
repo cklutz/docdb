@@ -1,8 +1,13 @@
 ﻿using DocDB.Contracts;
+using Docfx.Common;
 using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Xml;
+using System.Xml.Linq;
 using SmoIndex = Microsoft.SqlServer.Management.Smo.Index;
 
 
@@ -24,8 +29,14 @@ internal class ModelCreator
             DatabaseRole databaseRole => CreateDatabaseRole(databaseRole),
             ApplicationRole applicationRole => CreateApplicationRole(applicationRole),
             UserDefinedFunction udf => CreateUserDefinedFunction(udf),
+            UserDefinedDataType udt => CreateUserDefinedDataType(udt),
             StoredProcedure sp => CreateStoredProcedure(sp),
+            SqlAssembly assembly => CreateAssembly(assembly),
+            UserDefinedType udt => CreateUserDefinedType(udt),
+            Rule rule => CreateRule(rule),
+            Default def => CreateDefault(def),
             Sequence sequence => CreateSequence(sequence),
+            XmlSchemaCollection collection => CreateXmlSchemaCollection(collection),
             _ => throw new ArgumentOutOfRangeException(nameof(obj), obj.GetType(), null)
         };
     }
@@ -76,8 +87,8 @@ internal class ModelCreator
             foreach (DataFile dataFile in fileGroup.Files)
             {
                 var file = CreateDataFile(dataFile);
-                file.FileGroup = fg.ToRef();
-                fg.Files.Add(file.ToRef());
+                file.FileGroup = fg.ToNamedRef();
+                fg.Files.Add(file.ToNamedRef());
                 result.DataFiles.Add(file);
             }
 
@@ -370,6 +381,7 @@ internal class ModelCreator
             result.Parameters.Add(InitBase(new DdbUserDefinedFunctionParameter()
             {
                 DataType = parameter.DataType.PrettyName(),
+                DataTypeRef = ResolveDataType(udf.Parent, parameter.DataType),
                 Description = parameter.GetMSDescription(),
                 DefaultValue = parameter.DefaultValue,
             }, parameter));
@@ -393,6 +405,7 @@ internal class ModelCreator
             result.Parameters.Add(InitBase(new DdbStoredProcedureParameter()
             {
                 DataType = parameter.DataType.PrettyName(),
+                DataTypeRef = ResolveDataType(sp.Parent, parameter.DataType),
                 IsOutputParameter = parameter.IsOutputParameter,
                 IsCursorParameter = parameter.IsCursorParameter,
                 Description = parameter.GetMSDescription(),
@@ -403,11 +416,145 @@ internal class ModelCreator
         return result;
     }
 
+    private DdbAssembly CreateAssembly(SqlAssembly assembly)
+    {
+        string? assemblyName = null;
+        try
+        {
+            var an = new AssemblyName(assembly.Name)
+            {
+                CultureName = assembly.Culture,
+                Version = assembly.Version
+            };
+            an.SetPublicKeyToken(assembly.PublicKey);
+            assemblyName = an.ToString();
+        }
+        catch (Exception)
+        {
+            // We cannot trust the individual values that make up the assembly name.
+        }
+
+        // TODO: Use ILSpy "lib" to decompile assembly? ;-)
+
+        var result = InitBase(new DdbAssembly
+        {
+            AssemblyName = assemblyName,
+            AssemblySecurityLevel = assembly.AssemblySecurityLevel.ToString(),
+            Culture = assembly.Culture,
+            IsVisible = assembly.IsVisible,
+            Owner = assembly.Owner,
+            PublicKey = assembly.PublicKey.ToHexString(),
+            Version = assembly.Version.ToString(4),
+            FileNames = assembly.SqlAssemblyFiles.OfType<SqlAssemblyFile>().Select(f => f.Name).ToList()
+        }, assembly);
+
+        return result;
+    }
+
+    private DdbUserDefinedType CreateUserDefinedType(UserDefinedType type)
+    {
+        var result = InitBase(new DdbUserDefinedType
+        {
+            AssemblyName = type.AssemblyName,
+            AssemblyRef = type.Parent.Assemblies.FindFirstOrDefault<SqlAssembly>(type.AssemblyName)?.ToNamedRef<DdbAssembly>(),
+            ClassName = type.ClassName,
+            Collation = type.Collation,
+            UserDefinedTypeFormat = type.UserDefinedTypeFormat.ToString(),
+            BinaryTypeIdentifier = type.BinaryTypeIdentifier.ToHexString(),
+            IsComVisible = type.IsComVisible,
+            IsBinaryOrdered = type.IsBinaryOrdered,
+            IsFixedLength = type.IsFixedLength,
+            IsSchemaOwned = type.IsSchemaOwned,
+            MaxLength = type.MaxLength == 0 || type.MaxLength == -1 ? null : type.MaxLength,
+            IsNullable = type.IsNullable,
+            NumericPrecision = type.NumericPrecision,
+            NumericScale = type.NumericScale,
+            Owner = type.Owner,
+        }, type);
+
+        return result;
+    }
+
+    private DdbXmlSchemaCollection CreateXmlSchemaCollection(XmlSchemaCollection collection)
+    {
+        var result = InitBase(new DdbXmlSchemaCollection(), collection);
+
+        try
+        {
+            int i = 0;
+            var doc = XDocument.Parse("<__root__>" + collection.Text + "</__root__>");
+            foreach (var schema in doc.Root!.Elements(XName.Get("{http://www.w3.org/2001/XMLSchema}schema")))
+            {
+                string? targetNamespace = schema.Attribute(XName.Get("targetNamespace"))?.Value;
+
+                i++;
+                result.Schemas.Add(new DdbXmlSchema
+                {
+                    Id = $"schema_{i}",
+                    Namespace = targetNamespace,
+                    Text = schema.ToString()
+                });
+            }
+        }
+        catch (Exception ex)
+        {
+            result.Schemas.Clear();
+            result.Schemas.Add(new DdbXmlSchema { Namespace = "", Text = collection.Text });
+            result.SchemasError = ex.GetAllMessages();
+        }
+
+        return result;
+    }
+
+    private DdbRule CreateRule(Rule rule)
+    {
+        var result = InitBase(new DdbRule
+        {
+            TextBody = rule.TextBody
+        }, rule);
+
+        return result;
+    }
+
+    private DdbDefault CreateDefault(Default def)
+    {
+        var result = InitBase(new DdbDefault
+        {
+            TextBody = def.TextBody
+        }, def);
+
+        return result;
+    }
+
+    private DdbUserDefinedDataType CreateUserDefinedDataType(UserDefinedDataType udt)
+    {
+        // TODO: MaxLength vs. Storage (SSMS)?
+        var result = InitBase(new DdbUserDefinedDataType
+        {
+            AllowIdentity = udt.AllowIdentity,
+            Collation = udt.Collation,
+            DefaultRef = !string.IsNullOrEmpty(udt.Default) ? CreateDefaultRef(udt.Parent, udt.DefaultSchema, udt.Default) : null,
+            IsSchemaOwned = udt.IsSchemaOwned,
+            Length = udt.Length == 0 || udt.Length == -1 ? null : udt.Length,
+            MaxLength = udt.MaxLength == 0 || udt.MaxLength == -1 ? null : udt.MaxLength,
+            IsNullable = udt.Nullable,
+            NumericPrecision = udt.NumericPrecision,
+            NumericScale = udt.NumericScale,
+            Owner = udt.Owner,
+            RuleRef = !string.IsNullOrEmpty(udt.Rule) ? CreateRuleRef(udt.Parent, udt.RuleSchema, udt.Rule) : null,
+            SystemType = udt.SystemType,
+            IsVariableLength = udt.VariableLength
+        }, udt);
+
+        return result;
+    }
+
     private DdbSequence CreateSequence(Sequence sequence)
     {
         var result = InitBase(new DdbSequence
         {
             DataType = sequence.DataType.PrettyName(),
+            DataTypeRef = ResolveDataType(sequence.Parent, sequence.DataType),
             IsCached = sequence.SequenceCacheType != SequenceCacheType.NoCache,
             CacheSize = sequence.CacheSize,
             IsSchemaOwned = sequence.IsSchemaOwned,
@@ -431,7 +578,7 @@ internal class ModelCreator
 
         foreach (Column column in view.Columns)
         {
-            result.Columns.Add(InitBase(CreateColumn<DdbViewColumn>(column), column));
+            result.Columns.Add(InitBase(CreateColumn<DdbViewColumn>(view.Parent, column), column));
         }
 
         AddTriggers(view.Triggers, result);
@@ -469,10 +616,10 @@ internal class ModelCreator
 
         foreach (Column column in table.Columns)
         {
-            var ddbCol = InitBase(CreateColumn<DdbTableColumn>(column), column);
+            var ddbCol = InitBase(CreateColumn<DdbTableColumn>(table.Parent, column), column);
             if (ddbCol.IsForeignKey)
             {
-                ddbCol.ForeignKeys = [.. result.ForeignKeys.Where(fk => fk.Columns.Any(c => c.Id == ddbCol.Id)).Select(fk => fk.ToRef())];
+                ddbCol.ForeignKeys = [.. result.ForeignKeys.Where(fk => fk.Columns.Any(c => c.Id == ddbCol.Id)).Select(fk => fk.ToNamedRef())];
             }
 
             result.Columns.Add(ddbCol);
@@ -650,6 +797,30 @@ internal class ModelCreator
         }
     }
 
+    private static NamedDdbRef CreateDefaultRef(Database database, string schemaName, string defaultName)
+    {
+        var def = database.FindDefaultByName(schemaName, defaultName);
+
+        return new NamedDdbRef
+        {
+            Id = def.GetModelId(),
+            Type = DdbObject.GetTypeTag<DdbDefault>(isRef: true),
+            Name = def.GetFullName()
+        };
+    }
+
+    private static NamedDdbRef CreateRuleRef(Database database, string schemaName, string ruleName)
+    {
+        var rule = database.FindRuleByName(schemaName, ruleName);
+
+        return new NamedDdbRef
+        {
+            Id = rule.GetModelId(),
+            Type = DdbObject.GetTypeTag<DdbRule>(isRef: true),
+            Name = rule.GetFullName()
+        };
+    }
+
     private static NamedDdbRef CreateFileGroupRef(TableViewBase tableView, string fileGroupName)
     {
         var fileGroup = tableView.GetDatabase().FindFileGroupByName(fileGroupName);
@@ -684,7 +855,7 @@ internal class ModelCreator
         };
     }
 
-    private static T CreateColumn<T>(Column column) where T : DdbColumnBase, new()
+    private static T CreateColumn<T>(Database database, Column column) where T : DdbColumnBase, new()
     {
         return new T()
         {
@@ -692,7 +863,8 @@ internal class ModelCreator
             IsComputed = column.Computed,
             ComputedText = column.ComputedText,
             DataType = column.DataType.PrettyName(),
-            MaxLengthBytes = column.DataType.MaximumLength == -1 ? null : column.DataType.MaximumLength,
+            DataTypeRef = ResolveDataType(database, column.DataType),
+            MaxLengthBytes = column.DataType.MaximumLength == -1 || column.DataType.MaximumLength == 0 ? null : column.DataType.MaximumLength,
             Precision = column.DataType.NumericPrecision,
             Scale = column.DataType.NumericScale,
             IsIdentity = column.Identity,
@@ -782,5 +954,24 @@ internal class ModelCreator
         {
             options.Entries.Add(new(name, null, null));
         }
+    }
+
+    private static NamedDdbRef? ResolveDataType(Database database, DataType dataType)
+    {
+        NamedDdbRef? dataTypeRef = null;
+        switch (dataType.SqlDataType)
+        {
+            case SqlDataType.UserDefinedDataType:
+                dataTypeRef = database.UserDefinedDataTypes
+                    .FindFirstOrDefault<UserDefinedDataType>(dataType.Schema, dataType.Name)?
+                    .ToNamedRef<DdbUserDefinedDataType>();
+                break;
+            case SqlDataType.UserDefinedType:
+                dataTypeRef = database.UserDefinedDataTypes
+                    .FindFirstOrDefault<UserDefinedType>(dataType.Schema, dataType.Name)?
+                    .ToNamedRef<DdbUserDefinedType>();
+                break;
+        }
+        return dataTypeRef;
     }
 }

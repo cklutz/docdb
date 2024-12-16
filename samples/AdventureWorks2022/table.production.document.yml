@@ -804,6 +804,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DocumentNode
   dataType: HIERARCHYID
+  dataTypeRef: 
   maxLengthBytes: 892
   precision: 0
   scale: 0
@@ -828,6 +829,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DocumentLevel
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -852,6 +854,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Title
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -876,6 +879,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Owner
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -903,6 +907,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FolderFlag
   dataType: BIT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 1
   scale: 0
@@ -927,6 +932,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FileName
   dataType: NVARCHAR(400)
+  dataTypeRef: 
   maxLengthBytes: 400
   precision: 0
   scale: 0
@@ -951,6 +957,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FileExtension
   dataType: NVARCHAR(8)
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 0
   scale: 0
@@ -975,6 +982,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Revision
   dataType: NCHAR(5)
+  dataTypeRef: 
   maxLengthBytes: 5
   precision: 0
   scale: 0
@@ -999,6 +1007,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ChangeNumber
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1023,6 +1032,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Status
   dataType: TINYINT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 3
   scale: 0
@@ -1047,6 +1057,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DocumentSummary
   dataType: NVARCHAR(MAX)
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -1071,6 +1082,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Document
   dataType: VARBINARY(MAX)
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -1095,6 +1107,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -1119,6 +1132,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

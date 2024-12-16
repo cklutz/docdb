@@ -400,6 +400,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -427,6 +428,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -454,6 +456,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesQuota
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -478,6 +481,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Bonus
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -502,6 +506,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CommissionPct
   dataType: SMALLMONEY
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 4
@@ -526,6 +531,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesYTD
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -550,6 +556,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesLastYear
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -574,6 +581,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -598,6 +606,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

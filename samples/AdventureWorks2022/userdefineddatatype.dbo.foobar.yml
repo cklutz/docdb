@@ -1,0 +1,27 @@
+### YamlMime:DocDB
+type: UserDefinedDataType
+id: userdefineddatatype.dbo.foobar
+description: 
+createdAt: 0001-01-01T00:00:00.0000000
+lastModifiedAt: 0001-01-01T00:00:00.0000000
+name: dbo.FooBar
+allowIdentity: true
+collation: ''
+defaultRef:
+  name: '[dbo].[testDefault]'
+  id: default.dbo.testdefault
+  type: DefaultRef
+isSchemaOwned: true
+length: 4
+maxLength: 4
+isNullable: true
+numericPrecision: 10
+numericScale: 0
+owner: dbo
+ruleRef: 
+systemType: int
+isVariableLength: false
+script: |+
+  CREATE TYPE [dbo].[FooBar] FROM [int] NULL
+  GO
+

@@ -2,6 +2,7 @@
 using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Buffers;
+using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -306,13 +307,40 @@ public static class SmoExtensions
         throw new ArgumentException($"Unexpected type {tv.GetType()}");
     }
 
+    public static Default FindDefaultByName(this Database database, string schemaName, string defaultName)
+    {
+        ArgumentNullException.ThrowIfNull(database);
+        ArgumentException.ThrowIfNullOrEmpty(schemaName);
+        ArgumentException.ThrowIfNullOrEmpty(defaultName);
+
+        var @default = database.Defaults.FindFirstOrDefault<Default>(schemaName, defaultName);
+        if (@default == null)
+        {
+            throw new InvalidOperationException($"Database {database.Name} does not contain default {schemaName}.{defaultName}.");
+        }
+        return @default;
+    }
+
+    public static Rule FindRuleByName(this Database database, string schemaName, string ruleName)
+    {
+        ArgumentNullException.ThrowIfNull(database);
+        ArgumentException.ThrowIfNullOrEmpty(schemaName);
+        ArgumentException.ThrowIfNullOrEmpty(ruleName);
+
+        var @rule = database.Rules.FindFirstOrDefault<Rule>(schemaName, ruleName);
+        if (@rule == null)
+        {
+            throw new InvalidOperationException($"Database {database.Name} does not contain rule {schemaName}.{ruleName}.");
+        }
+        return @rule;
+    }
+
     public static FileGroup FindFileGroupByName(this Database database, string name)
     {
         ArgumentNullException.ThrowIfNull(database);
         ArgumentException.ThrowIfNullOrEmpty(name);
 
-        var fileGroups = database.FileGroups.OfType<FileGroup>();
-        var fileGroup = fileGroups.FirstOrDefault(t => t.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        var fileGroup = database.FileGroups.FindFirstOrDefault<FileGroup>(name);
         if (fileGroup == null)
         {
             throw new InvalidOperationException($"Database {database.Name} does not contain file group {name}.");
@@ -326,10 +354,7 @@ public static class SmoExtensions
         ArgumentException.ThrowIfNullOrEmpty(schemaName);
         ArgumentException.ThrowIfNullOrEmpty(tableName);
 
-        var tables = database.Tables.OfType<Table>();
-        var table = tables.FirstOrDefault(t =>
-            t.Name.Equals(tableName, StringComparison.OrdinalIgnoreCase) &&
-            t.Schema.Equals(schemaName, StringComparison.OrdinalIgnoreCase));
+        var table = database.Tables.FindFirstOrDefault<Table>(schemaName, tableName);
         if (table == null)
         {
             throw new InvalidOperationException($"Database {database.Name} does not contain table {schemaName}.{table}.");
@@ -342,15 +367,33 @@ public static class SmoExtensions
         ArgumentNullException.ThrowIfNull(table);
         ArgumentException.ThrowIfNullOrEmpty(name);
 
-        var columns = table.Columns.OfType<Column>();
-        var column = columns.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        var column = table.Columns.FindFirstOrDefault<Column>(name);
         if (column == null)
         {
-            throw new InvalidOperationException($"Table {table.GetFullName()} does not contain column {name}. " +
-                $"Valid columns are: {string.Join(", ", columns.Select(c => c.Name))}.");
+            throw new InvalidOperationException($"Table {table.GetFullName()} does not contain column {name}.");
         }
         return column;
     }
+
+    public static T? FindFirstOrDefault<T>(this SmoCollectionBase source, string name) where T : NamedSmoObject =>
+        source.OfType<T>().FirstOrDefault(o => AreSame(o, name));
+
+    public static T? FindFirstOrDefault<T>(this SmoCollectionBase source, string schemaName, string objectName) where T : ScriptSchemaObjectBase =>
+        source.OfType<T>().FirstOrDefault(o => AreSame(o, schemaName, objectName));
+
+    public static bool AreSame(NamedSmoObject obj1, NamedSmoObject obj2) =>
+        obj1.GetStringComparer().Compare(obj1.Name, obj2.Name) == 0;
+
+    public static bool AreSame(NamedSmoObject obj1, string name) =>
+        obj1.GetStringComparer().Compare(obj1.Name, name) == 0;
+
+    public static bool AreSame(ScriptSchemaObjectBase obj1, ScriptSchemaObjectBase obj2) =>
+        obj1.GetStringComparer().Compare(obj1.Schema, obj2.Schema) == 0 &&
+        obj1.GetStringComparer().Compare(obj1.Name, obj2.Name) == 0;
+
+    public static bool AreSame(ScriptSchemaObjectBase obj1, string schemaName, string objectName) =>
+        obj1.GetStringComparer().Compare(obj1.Schema, schemaName) == 0 &&
+        obj1.GetStringComparer().Compare(obj1.Name, objectName) == 0;
 
     public static string ToQuotedName(string arg0) => DoCreateQuotedName(arg0, null, null, null);
     public static string ToQuotedName(string arg0, string arg1) => DoCreateQuotedName(arg0, arg1, null, null);

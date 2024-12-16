@@ -1,0 +1,24 @@
+### YamlMime:DocDB
+type: UserDefinedDataType
+id: userdefineddatatype.dbo.foobar_max
+description: 
+createdAt: 0001-01-01T00:00:00.0000000
+lastModifiedAt: 0001-01-01T00:00:00.0000000
+name: dbo.FooBar_MAX
+allowIdentity: false
+collation: SQL_Latin1_General_CP1_CI_AS
+defaultRef: 
+isSchemaOwned: true
+length: 
+maxLength: 
+isNullable: true
+numericPrecision: 0
+numericScale: 0
+owner: dbo
+ruleRef: 
+systemType: varchar
+isVariableLength: true
+script: |+
+  CREATE TYPE [dbo].[FooBar_MAX] FROM [varchar](max) NULL
+  GO
+

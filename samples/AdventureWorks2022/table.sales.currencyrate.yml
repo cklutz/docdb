@@ -378,6 +378,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CurrencyRateID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -402,6 +403,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CurrencyRateDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -426,6 +428,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FromCurrencyCode
   dataType: NCHAR(3)
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 0
   scale: 0
@@ -453,6 +456,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ToCurrencyCode
   dataType: NCHAR(3)
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 0
   scale: 0
@@ -480,6 +484,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AverageRate
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -504,6 +509,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EndOfDayRate
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -528,6 +534,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

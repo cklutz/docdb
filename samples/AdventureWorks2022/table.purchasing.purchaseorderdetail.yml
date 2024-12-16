@@ -430,6 +430,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PurchaseOrderID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -457,6 +458,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PurchaseOrderDetailID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -481,6 +483,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DueDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -505,6 +508,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrderQty
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -529,6 +533,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -556,6 +561,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: UnitPrice
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -580,6 +586,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LineTotal
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -604,6 +611,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ReceivedQty
   dataType: DECIMAL
+  dataTypeRef: 
   maxLengthBytes: 5
   precision: 8
   scale: 2
@@ -628,6 +636,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: RejectedQty
   dataType: DECIMAL
+  dataTypeRef: 
   maxLengthBytes: 5
   precision: 8
   scale: 2
@@ -652,6 +661,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StockedQty
   dataType: DECIMAL
+  dataTypeRef: 
   maxLengthBytes: 5
   precision: 9
   scale: 2
@@ -676,6 +686,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

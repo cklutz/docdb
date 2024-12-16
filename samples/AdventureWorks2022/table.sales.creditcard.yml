@@ -312,6 +312,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CreditCardID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -336,6 +337,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CardType
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -360,6 +362,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CardNumber
   dataType: NVARCHAR(25)
+  dataTypeRef: 
   maxLengthBytes: 25
   precision: 0
   scale: 0
@@ -384,6 +387,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ExpMonth
   dataType: TINYINT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 3
   scale: 0
@@ -408,6 +412,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ExpYear
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -432,6 +437,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

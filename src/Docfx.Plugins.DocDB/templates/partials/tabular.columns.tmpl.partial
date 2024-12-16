@@ -28,7 +28,14 @@
 			</td>
 {{/isTable}}
 			<td><a href="#{{id}}">{{name}}</a></td>
-			<td>{{dataType}} {{#isIdentity}}IDENTITY({{identitySeed}}, {{identityIncrement}}){{/isIdentity}}</td>
+			<td>
+			{{#dataTypeRef}}
+			<a href="{{id}}.html">{{name}}</a>
+			{{/dataTypeRef}}
+			{{^dataTypeRef}}
+			{{dataType}} {{#isIdentity}}IDENTITY({{identitySeed}}, {{identityIncrement}}){{/isIdentity}}
+			{{/dataTypeRef}}
+			</td>
 			<td>{{#isNullable}}{{{__global.symCheckMark}}}{{/isNullable}}</td>
 {{#isTable}}
 			<td>{{#default}}{{{__global.symCheckMark}}}{{/default}}</td>
@@ -54,7 +61,14 @@
 	<tbody>
 		<tr>
 			<th class="nowrap">{{__global.colDataType}}</th>
-			<td>{{dataType}}</td>
+			<td>
+			{{#dataTypeRef}}
+			<a href="{{id}}.html">{{name}}</a>
+			{{/dataTypeRef}}
+			{{^dataTypeRef}}
+			{{dataType}} {{#isIdentity}}IDENTITY({{identitySeed}}, {{identityIncrement}}){{/isIdentity}}
+			{{/dataTypeRef}}
+			</td>
 		</tr>
 		<tr>
 			<th class="nowrap">Nullable</th>
@@ -76,7 +90,7 @@
 		</tr>
 		<tr>
 			<th class="nowrap">Maximum Size</th>
-			<td>{{maxLengthBytes}} bytes</td>
+			<td>{{#maxLengthBytes}}{{maxLengthBytes}} bytes{{/maxLengthBytes}}</td>
 		</tr>
 		<tr>
 			<th class="nowrap">Precision</th>
@@ -110,11 +124,7 @@
 		</tr>
 		<tr>
 			<th class="nowrap">Foreign Keys</th>
-			<td>
-			{{#foreignKeys}}
-			<a href="#{{id}}">{{name}}</a>
-			{{/foreignKeys}}
-			</td>
+			<td><ul>{{#foreignKeys}}<li><a href="#{{id}}">{{name}}</a></li>{{/foreignKeys}}</ul></td>
 		</tr>
 	</tbody>
 </table>

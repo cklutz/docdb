@@ -312,6 +312,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CultureID
   dataType: NCHAR(6)
+  dataTypeRef: 
   maxLengthBytes: 6
   precision: 0
   scale: 0
@@ -335,7 +336,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -360,6 +365,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

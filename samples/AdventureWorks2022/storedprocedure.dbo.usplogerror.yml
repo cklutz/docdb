@@ -15,6 +15,7 @@ parameters:
   isOutputParameter: true
   isCursorParameter: false
   dataType: INT
+  dataTypeRef: 
   defaultValue: 0
   script: ""
 syntax: |2+

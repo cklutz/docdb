@@ -8,7 +8,10 @@
 	<tbody>
 		<tr>
 			<th class="nowrap">{{__global.colDataType}}</th>
-			<td>{{dataType}}</td>
+			<td>
+			{{#dataTypeRef}}<a href="{{id}}.html">{{name}}</a>{{/dataTypeRef}}
+			{{^dataTypeRef}}{{dataType}}{{/dataTypeRef}}
+			</td>
 		</tr>
 		<tr>
 			<th class="nowrap">Cached</th>

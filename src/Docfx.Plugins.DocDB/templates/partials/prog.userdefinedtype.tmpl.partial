@@ -1,0 +1,80 @@
+{{#payload}}
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Assembly</th>
+			<td>
+			{{#assemblyRef}}<a href="{{id}}.html">{{name}}</a>{{/assemblyRef}}
+			{{^assemblyRef}}{{assemblyName}}{{/assemblyRef}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Class</th>
+			<td>{{className}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Type format</th>
+			<td>{{userDefinedTypeFormat}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Binary identifier</th>
+			<td>{{binaryTypeIdentifier}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Precision</th>
+			<td>{{numericPrecision}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Scale</th>
+			<td>{{numericScale}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Fixed length</th>
+			<td>
+			{{#isFixedLength}}{{{__global.symCheckMark}}}{{/isFixedLength}}
+			{{^isFixedLength}}{{{__global.symCross}}}{{/isFixedLength}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Binary ordered</th>
+			<td>
+			{{#isBinaryOrdered}}{{{__global.symCheckMark}}}{{/isBinaryOrdered}}
+			{{^isBinaryOrdered}}{{{__global.symCross}}}{{/isBinaryOrdered}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">COM Visibile</th>
+			<td>
+			{{#isComVisible}}{{{__global.symCheckMark}}}{{/isComVisible}}
+			{{^isComVisible}}{{{__global.symCross}}}{{/isComVisible}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Nullable</th>
+			<td>
+			{{#isNullable}}{{{__global.symCheckMark}}}{{/isNullable}}
+			{{^isNullable}}{{{__global.symCross}}}{{/isNullable}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Collation</th>
+			<td>{{collation}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Owner</th>
+			<td>{{owner}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Schema Owned</th>
+			<td>
+			{{#isSchemaOwned}}{{{__global.symCheckMark}}}{{/isSchemaOwned}}
+			{{^isSchemaOwned}}{{{__global.symCross}}}{{/isSchemaOwned}}
+			</td>
+		</tr>
+	</tbody>
+</table>
+{{/payload}}

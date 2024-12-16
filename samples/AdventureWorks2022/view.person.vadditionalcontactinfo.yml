@@ -15,6 +15,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -38,7 +39,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FirstName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -62,7 +67,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MiddleName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -86,7 +95,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LastName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -111,6 +124,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TelephoneNumber
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -135,6 +149,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TelephoneSpecialInstructions
   dataType: NVARCHAR(MAX)
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -159,6 +174,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Street
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -183,6 +199,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: City
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -207,6 +224,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvince
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -231,6 +249,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PostalCode
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -255,6 +274,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegion
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -279,6 +299,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: HomeAddressSpecialInstructions
   dataType: NVARCHAR(MAX)
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -303,6 +324,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EMailAddress
   dataType: NVARCHAR(128)
+  dataTypeRef: 
   maxLengthBytes: 128
   precision: 0
   scale: 0
@@ -327,6 +349,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EMailSpecialInstructions
   dataType: NVARCHAR(MAX)
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -351,6 +374,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EMailTelephoneNumber
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -375,6 +399,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -399,6 +424,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

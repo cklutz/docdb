@@ -219,6 +219,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -246,6 +247,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductPhotoID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -272,7 +274,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Primary
-  dataType: FLAG
+  dataType: '[dbo].[Flag]'
+  dataTypeRef:
+    name: '[dbo].[Flag]'
+    id: userdefineddatatype.dbo.flag
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 1
   precision: 1
   scale: 0
@@ -297,6 +303,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

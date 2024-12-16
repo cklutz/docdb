@@ -500,6 +500,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesTaxRateID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -524,6 +525,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -551,6 +553,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TaxType
   dataType: TINYINT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 3
   scale: 0
@@ -575,6 +578,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TaxRate
   dataType: SMALLMONEY
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 4
@@ -598,7 +602,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -623,6 +631,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -647,6 +656,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

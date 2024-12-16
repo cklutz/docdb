@@ -15,6 +15,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesPersonID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -39,6 +40,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FullName
   dataType: NVARCHAR(152)
+  dataTypeRef: 
   maxLengthBytes: 152
   precision: 0
   scale: 0
@@ -63,6 +65,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: JobTitle
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -86,7 +89,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesTerritory
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -111,6 +118,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: 2002
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -135,6 +143,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: 2003
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -159,6 +168,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: 2004
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4

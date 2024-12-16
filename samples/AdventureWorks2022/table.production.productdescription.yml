@@ -312,6 +312,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductDescriptionID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -336,6 +337,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Description
   dataType: NVARCHAR(400)
+  dataTypeRef: 
   maxLengthBytes: 400
   precision: 0
   scale: 0
@@ -360,6 +362,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -384,6 +387,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

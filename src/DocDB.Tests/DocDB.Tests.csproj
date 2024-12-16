@@ -1,0 +1,16 @@
+<Project Sdk="MSTest.Sdk/3.6.3">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseVSTest>true</UseVSTest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DocDB.Contracts\DocDB.Contracts.csproj" />
+    <ProjectReference Include="..\docdb\docdb.csproj" />
+  </ItemGroup>
+
+</Project>

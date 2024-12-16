@@ -1,0 +1,24 @@
+### YamlMime:DocDB
+type: UserDefinedDataType
+id: userdefineddatatype.dbo.flag
+description: 
+createdAt: 0001-01-01T00:00:00.0000000
+lastModifiedAt: 0001-01-01T00:00:00.0000000
+name: dbo.Flag
+allowIdentity: false
+collation: ''
+defaultRef: 
+isSchemaOwned: true
+length: 1
+maxLength: 1
+isNullable: false
+numericPrecision: 1
+numericScale: 0
+owner: dbo
+ruleRef: 
+systemType: bit
+isVariableLength: false
+script: |+
+  CREATE TYPE [dbo].[Flag] FROM [bit] NOT NULL
+  GO
+

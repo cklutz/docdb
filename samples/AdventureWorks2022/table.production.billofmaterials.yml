@@ -582,6 +582,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BillOfMaterialsID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -606,6 +607,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductAssemblyID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -633,6 +635,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ComponentID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -660,6 +663,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StartDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -684,6 +688,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EndDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -708,6 +713,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: UnitMeasureCode
   dataType: NCHAR(3)
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 0
   scale: 0
@@ -735,6 +741,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BOMLevel
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -759,6 +766,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PerAssemblyQty
   dataType: DECIMAL
+  dataTypeRef: 
   maxLengthBytes: 5
   precision: 8
   scale: 2
@@ -783,6 +791,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

@@ -677,6 +677,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AddressID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -701,6 +702,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AddressLine1
   dataType: NVARCHAR(60)
+  dataTypeRef: 
   maxLengthBytes: 60
   precision: 0
   scale: 0
@@ -725,6 +727,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AddressLine2
   dataType: NVARCHAR(60)
+  dataTypeRef: 
   maxLengthBytes: 60
   precision: 0
   scale: 0
@@ -749,6 +752,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: City
   dataType: NVARCHAR(30)
+  dataTypeRef: 
   maxLengthBytes: 30
   precision: 0
   scale: 0
@@ -773,6 +777,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -800,6 +805,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PostalCode
   dataType: NVARCHAR(15)
+  dataTypeRef: 
   maxLengthBytes: 15
   precision: 0
   scale: 0
@@ -824,6 +830,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SpatialLocation
   dataType: GEOGRAPHY
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -848,6 +855,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -872,6 +880,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

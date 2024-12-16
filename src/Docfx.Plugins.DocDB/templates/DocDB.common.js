@@ -65,7 +65,7 @@ exports.transform = function (model) {
                 break;
             case 'userdefinedfunction':
             case 'storedprocedure':
-                model.isProgrammability = true;
+                model.isProcOrFunction = true;
                 break;
             case 'database':
                 model.payload.files = [...(model.payload.dataFiles || []), ...(model.payload.logFiles || [])];

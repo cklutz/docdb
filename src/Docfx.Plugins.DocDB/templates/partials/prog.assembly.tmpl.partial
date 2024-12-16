@@ -1,0 +1,37 @@
+{{#payload}}
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Security Level</th>
+			<td>{{assemblySecurityLevel}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Visible</th>
+			<td>
+			{{#isVisible}}{{{__global.symCheckMark}}}{{/isVisible}}
+			{{^isVisible}}{{{__global.symCross}}}{{/isVisible}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Assembly Name</th>
+			<td>{{assemblyName}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Owner</th>
+			<td>{{owner}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Files</th>
+			<td>
+			<ul>
+				{{#fileNames}}<li>{{.}}</li>{{/fileNames}}
+			</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{{/payload}}

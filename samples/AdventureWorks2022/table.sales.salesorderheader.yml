@@ -972,6 +972,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesOrderID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -996,6 +997,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: RevisionNumber
   dataType: TINYINT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 3
   scale: 0
@@ -1020,6 +1022,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrderDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -1044,6 +1047,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DueDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -1068,6 +1072,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -1092,6 +1097,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Status
   dataType: TINYINT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 3
   scale: 0
@@ -1115,7 +1121,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OnlineOrderFlag
-  dataType: FLAG
+  dataType: '[dbo].[Flag]'
+  dataTypeRef:
+    name: '[dbo].[Flag]'
+    id: userdefineddatatype.dbo.flag
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 1
   precision: 1
   scale: 0
@@ -1140,6 +1150,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesOrderNumber
   dataType: NVARCHAR(25)
+  dataTypeRef: 
   maxLengthBytes: 25
   precision: 0
   scale: 0
@@ -1163,7 +1174,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PurchaseOrderNumber
-  dataType: ORDERNUMBER
+  dataType: '[dbo].[OrderNumber]'
+  dataTypeRef:
+    name: '[dbo].[OrderNumber]'
+    id: userdefineddatatype.dbo.ordernumber
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 25
   precision: 0
   scale: 0
@@ -1187,7 +1202,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AccountNumber
-  dataType: ACCOUNTNUMBER
+  dataType: '[dbo].[AccountNumber]'
+  dataTypeRef:
+    name: '[dbo].[AccountNumber]'
+    id: userdefineddatatype.dbo.accountnumber
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 15
   precision: 0
   scale: 0
@@ -1212,6 +1231,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CustomerID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1239,6 +1259,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesPersonID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1266,6 +1287,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1293,6 +1315,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BillToAddressID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1320,6 +1343,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipToAddressID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1347,6 +1371,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipMethodID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1374,6 +1399,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CreditCardID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1401,6 +1427,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CreditCardApprovalCode
   dataType: VARCHAR(15)
+  dataTypeRef: 
   maxLengthBytes: 15
   precision: 0
   scale: 0
@@ -1425,6 +1452,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CurrencyRateID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1452,6 +1480,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SubTotal
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -1476,6 +1505,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TaxAmt
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -1500,6 +1530,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Freight
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -1524,6 +1555,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TotalDue
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -1548,6 +1580,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Comment
   dataType: NVARCHAR(128)
+  dataTypeRef: 
   maxLengthBytes: 128
   precision: 0
   scale: 0
@@ -1572,6 +1605,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -1596,6 +1630,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

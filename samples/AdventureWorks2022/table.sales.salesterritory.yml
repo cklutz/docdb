@@ -516,6 +516,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -539,7 +540,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -564,6 +569,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegionCode
   dataType: NVARCHAR(3)
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 0
   scale: 0
@@ -591,6 +597,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Group
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -615,6 +622,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesYTD
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -639,6 +647,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesLastYear
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -663,6 +672,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CostYTD
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -687,6 +697,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CostLastYear
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -711,6 +722,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -735,6 +747,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

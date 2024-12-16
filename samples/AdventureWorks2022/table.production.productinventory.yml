@@ -239,6 +239,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -266,6 +267,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LocationID
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -293,6 +295,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Shelf
   dataType: NVARCHAR(10)
+  dataTypeRef: 
   maxLengthBytes: 10
   precision: 0
   scale: 0
@@ -317,6 +320,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Bin
   dataType: TINYINT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 3
   scale: 0
@@ -341,6 +345,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Quantity
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -365,6 +370,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -389,6 +395,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

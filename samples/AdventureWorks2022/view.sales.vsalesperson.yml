@@ -15,6 +15,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -39,6 +40,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Title
   dataType: NVARCHAR(8)
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 0
   scale: 0
@@ -62,7 +64,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FirstName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -86,7 +92,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MiddleName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -110,7 +120,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LastName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -135,6 +149,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Suffix
   dataType: NVARCHAR(10)
+  dataTypeRef: 
   maxLengthBytes: 10
   precision: 0
   scale: 0
@@ -159,6 +174,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: JobTitle
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -182,7 +198,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PhoneNumber
-  dataType: PHONE
+  dataType: '[dbo].[Phone]'
+  dataTypeRef:
+    name: '[dbo].[Phone]'
+    id: userdefineddatatype.dbo.phone
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 25
   precision: 0
   scale: 0
@@ -206,7 +226,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PhoneNumberType
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -231,6 +255,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmailAddress
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -255,6 +280,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmailPromotion
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -279,6 +305,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AddressLine1
   dataType: NVARCHAR(60)
+  dataTypeRef: 
   maxLengthBytes: 60
   precision: 0
   scale: 0
@@ -303,6 +330,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AddressLine2
   dataType: NVARCHAR(60)
+  dataTypeRef: 
   maxLengthBytes: 60
   precision: 0
   scale: 0
@@ -327,6 +355,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: City
   dataType: NVARCHAR(30)
+  dataTypeRef: 
   maxLengthBytes: 30
   precision: 0
   scale: 0
@@ -350,7 +379,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -375,6 +408,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PostalCode
   dataType: NVARCHAR(15)
+  dataTypeRef: 
   maxLengthBytes: 15
   precision: 0
   scale: 0
@@ -398,7 +432,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegionName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -422,7 +460,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -447,6 +489,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryGroup
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -471,6 +514,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesQuota
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -495,6 +539,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesYTD
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -519,6 +564,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesLastYear
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4

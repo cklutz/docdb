@@ -1,0 +1,74 @@
+{{#payload}}
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">System type</th>
+			<td>{{systemType}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Length</th>
+			<td>{{#length}}{{length}}{{/length}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Max Size</th>
+			<td>{{#maxLength}}{{maxLength}}{{/maxLength}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Precision</th>
+			<td>{{numericPrecision}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Scale</th>
+			<td>{{numericScale}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Nullable</th>
+			<td>
+			{{#isNullable}}{{{__global.symCheckMark}}}{{/isNullable}}
+			{{^isNullable}}{{{__global.symCross}}}{{/isNullable}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Variable Length</th>
+			<td>
+			{{#isVariableLength}}{{{__global.symCheckMark}}}{{/isVariableLength}}
+			{{^isVariableLength}}{{{__global.symCross}}}{{/isVariableLength}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Allow identity</th>
+			<td>
+			{{#allowIdentity}}{{{__global.symCheckMark}}}{{/allowIdentity}}
+			{{^allowIdentity}}{{{__global.symCross}}}{{/allowIdentity}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Collation</th>
+			<td>{{collation}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Default</th>
+			<td>{{#defaultRef}}<a href="{{id}}.html">{{name}}</a>{{/defaultRef}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Rule</th>
+			<td>{{#ruleRef}}<a href="{{id}}.html">{{name}}</a>{{/ruleRef}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Owner</th>
+			<td>{{owner}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Schema Owned</th>
+			<td>
+			{{#isSchemaOwned}}{{{__global.symCheckMark}}}{{/isSchemaOwned}}
+			{{^isSchemaOwned}}{{{__global.symCross}}}{{/isSchemaOwned}}
+			</td>
+		</tr>
+	</tbody>
+</table>
+{{/payload}}

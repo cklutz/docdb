@@ -566,6 +566,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -593,6 +594,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DepartmentID
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -620,6 +622,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShiftID
   dataType: TINYINT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 3
   scale: 0
@@ -647,6 +650,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StartDate
   dataType: DATE
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 10
   scale: 0
@@ -671,6 +675,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EndDate
   dataType: DATE
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 10
   scale: 0
@@ -695,6 +700,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

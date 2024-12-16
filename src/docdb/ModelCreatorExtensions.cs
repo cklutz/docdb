@@ -2,6 +2,7 @@
 using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Reflection.Metadata;
+using System.Security.AccessControl;
 using System.Text;
 using YamlDotNet.Serialization;
 
@@ -9,6 +10,43 @@ namespace DocDB;
 
 internal static class ModelCreatorExtensions
 {
+    public static string GetAllMessages(this Exception? ex)
+    {
+        var sb = new StringBuilder();
+        while (ex != null)
+        {
+            if (sb.Length > 0)
+            {
+                sb.Append(" ---> ");
+            }
+
+            sb.Append(ex.Message);
+            ex = ex.InnerException;
+        }
+
+        return sb.ToString();
+    }
+
+    public static NamedDdbRef ToNamedRef(this NamedDdbObject obj)
+    {
+        return new NamedDdbRef
+        {
+            Id = obj.Id,
+            Type = $"{obj.Type}Ref",
+            Name = obj.Name
+        };
+    }
+
+    public static NamedDdbRef ToNamedRef<T>(this NamedSmoObject obj) where T : DdbObject
+    {
+        return new NamedDdbRef
+        {
+            Id = obj.GetModelId(),
+            Type = DdbObject.GetTypeTag(typeof(T), true),
+            Name = obj.GetFullName()
+        };
+    }
+
     public static string GetModelId(this NamedSmoObject obj)
     {
         if (obj is IndexedColumn ic)
@@ -49,7 +87,33 @@ internal static class ModelCreatorExtensions
         ArgumentNullException.ThrowIfNull(dt);
 
         var sb = new ValueStringBuilder(stackalloc char[64]);
-        sb.Append(dt.Name.ToUpperInvariant());
+
+        if (dt.SqlDataType == SqlDataType.UserDefinedDataType ||
+            dt.SqlDataType == SqlDataType.UserDefinedTableType ||
+            dt.SqlDataType == SqlDataType.UserDefinedType)
+        {
+            sb.Append('[');
+            sb.Append(dt.Schema);
+            sb.Append(']');
+            sb.Append('.');
+            sb.Append('[');
+            sb.Append(dt.Name);
+            sb.Append(']');
+            return sb.ToString();
+        }
+
+        string name = dt.Name;
+        if (string.IsNullOrEmpty(name) && dt.SqlDataType == SqlDataType.Xml)
+        {
+            // SqlDataType.Xml does not set the "Name" property.
+            name = "XML";
+        }
+        else
+        {
+            name = name.ToUpperInvariant();
+        }
+
+        sb.Append(name);
 
         if (dt.SqlDataType == SqlDataType.NVarCharMax ||
             dt.SqlDataType == SqlDataType.VarCharMax ||
@@ -286,5 +350,25 @@ internal static class ModelCreatorExtensions
         sb.AppendLine();
 
         return sb.ToString();
+    }
+
+    public static string ToHexString(this byte[] bytes)
+    {
+        if (bytes == null || bytes.Length == 0)
+        {
+            return "";
+        }
+
+        int len = bytes.Length * 2 + 2;
+        ValueStringBuilder sb = len < 255 ? new(stackalloc char[len]) : new(len);
+        foreach (byte b in bytes)
+        {
+            sb.Append(GetHexCharacter(b >> 4));
+            sb.Append(GetHexCharacter(b & 0x0f));
+        }
+
+        return sb.ToString();
+
+        static char GetHexCharacter(int nibble) => (char)(nibble < 10 ? '0' + nibble : 'A' + (nibble - 10));
     }
 }

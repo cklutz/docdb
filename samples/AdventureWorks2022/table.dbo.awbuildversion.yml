@@ -167,6 +167,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SystemInformationID
   dataType: TINYINT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 3
   scale: 0
@@ -191,6 +192,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Database Version
   dataType: NVARCHAR(25)
+  dataTypeRef: 
   maxLengthBytes: 25
   precision: 0
   scale: 0
@@ -215,6 +217,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: VersionDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -239,6 +242,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

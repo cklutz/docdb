@@ -15,6 +15,7 @@ parameters:
   isOutputParameter: false
   isCursorParameter: false
   dataType: INT
+  dataTypeRef: 
   defaultValue: ''
   script: ""
 - type: StoredProcedureParameter
@@ -26,6 +27,7 @@ parameters:
   isOutputParameter: false
   isCursorParameter: false
   dataType: HIERARCHYID
+  dataTypeRef: 
   defaultValue: ''
   script: ""
 - type: StoredProcedureParameter
@@ -37,6 +39,7 @@ parameters:
   isOutputParameter: false
   isCursorParameter: false
   dataType: NVARCHAR(256)
+  dataTypeRef: 
   defaultValue: ''
   script: ""
 - type: StoredProcedureParameter
@@ -48,6 +51,7 @@ parameters:
   isOutputParameter: false
   isCursorParameter: false
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   defaultValue: ''
   script: ""
 - type: StoredProcedureParameter
@@ -59,6 +63,7 @@ parameters:
   isOutputParameter: false
   isCursorParameter: false
   dataType: DATETIME
+  dataTypeRef: 
   defaultValue: ''
   script: ""
 - type: StoredProcedureParameter
@@ -69,7 +74,11 @@ parameters:
   name: '@CurrentFlag'
   isOutputParameter: false
   isCursorParameter: false
-  dataType: FLAG
+  dataType: '[dbo].[Flag]'
+  dataTypeRef:
+    name: '[dbo].[Flag]'
+    id: userdefineddatatype.dbo.flag
+    type: UserDefinedDataTypeRef
   defaultValue: ''
   script: ""
 syntax: |2+

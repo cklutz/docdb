@@ -364,6 +364,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegionCode
   dataType: NVARCHAR(3)
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 0
   scale: 0
@@ -391,6 +392,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CurrencyCode
   dataType: NCHAR(3)
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 0
   scale: 0
@@ -418,6 +420,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

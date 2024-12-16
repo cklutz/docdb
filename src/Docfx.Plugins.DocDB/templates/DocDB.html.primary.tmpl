@@ -27,10 +27,29 @@
 {{>partials/database}}
 {{/isDatabase}}
 
-{{#isProgrammability}}
+{{#isProcOrFunction}}
 {{>partials/prog.syntax}}
 {{>partials/prog.parameter}}
-{{/isProgrammability}}
+{{/isProcOrFunction}}
+
+{{#isDefault}}
+{{>partials/prog.default}}
+{{/isDefault}}
+{{#isRule}}
+{{>partials/prog.rule}}
+{{/isRule}}
+{{#isUserDefinedDataType}}
+{{>partials/prog.userdefineddatatype}}
+{{/isUserDefinedDataType}}
+{{#isUserDefinedType}}
+{{>partials/prog.userdefinedtype}}
+{{/isUserDefinedType}}
+{{#isAssembly}}
+{{>partials/prog.assembly}}
+{{/isAssembly}}
+{{#isXmlSchemaCollection}}
+{{>partials/prog.xmlschemacollection}}
+{{/isXmlSchemaCollection}}
 
 {{#isTabular}}
 {{>partials/tabular.columns}}

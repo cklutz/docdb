@@ -428,6 +428,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: WorkOrderID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -455,6 +456,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -479,6 +481,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OperationSequence
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -503,6 +506,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LocationID
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -530,6 +534,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ScheduledStartDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -554,6 +559,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ScheduledEndDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -578,6 +584,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ActualStartDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -602,6 +609,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ActualEndDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -626,6 +634,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ActualResourceHrs
   dataType: DECIMAL
+  dataTypeRef: 
   maxLengthBytes: 5
   precision: 9
   scale: 4
@@ -650,6 +659,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PlannedCost
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -674,6 +684,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ActualCost
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -698,6 +709,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

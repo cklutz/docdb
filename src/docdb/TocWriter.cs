@@ -98,6 +98,23 @@ namespace DocDB
                         emitter.Emit(SequenceEnd());
                     });
 
+                    AddNamedItemSequence(emitter, "Assemblies", objects.OfType<DdbAssembly>());
+
+                    NamedComplexSequenceEntry(emitter, "Types", emitter =>
+                    {
+                        emitter.Emit(new Scalar("items"));
+                        emitter.Emit(SequenceStart());
+
+                        AddNamedItemSequence(emitter, "User-Defined Data Types", objects.OfType<DdbUserDefinedDataType>());
+                        //AddNamedItemSequence(emitter, "User-Defined Table Types", objects.OfType<DdbUserDefinedTableType>());
+                        AddNamedItemSequence(emitter, "User-Defined Types", objects.OfType<DdbUserDefinedType>());
+                        AddNamedItemSequence(emitter, "XML Schema Collections", objects.OfType<DdbXmlSchemaCollection>());
+
+                        emitter.Emit(SequenceEnd());
+                    });
+
+                    AddNamedItemSequence(emitter, "Rules", objects.OfType<DdbRule>());
+                    AddNamedItemSequence(emitter, "Defaults", objects.OfType<DdbDefault>());
                     AddNamedItemSequence(emitter, "Sequences", objects.OfType<DdbSequence>());
 
                     emitter.Emit(SequenceEnd());

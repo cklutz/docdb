@@ -1,0 +1,15 @@
+{{#payload}}
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Value</th>
+			<td>
+				<pre class="sql pre-wrap"><code>{{textBody}}</code></pre>
+			</td>
+		</tr>
+</table>
+{{/payload}}

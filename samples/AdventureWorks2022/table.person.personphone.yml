@@ -378,6 +378,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -404,7 +405,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PhoneNumber
-  dataType: PHONE
+  dataType: '[dbo].[Phone]'
+  dataTypeRef:
+    name: '[dbo].[Phone]'
+    id: userdefineddatatype.dbo.phone
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 25
   precision: 0
   scale: 0
@@ -429,6 +434,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PhoneNumberTypeID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -456,6 +462,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

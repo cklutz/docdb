@@ -1,0 +1,27 @@
+{{#payload.schemas.0}}
+<h2>Schemas</h2>
+
+{{#payload.schemaErrors}}
+<pre class="xml pre-wrap"><code>{{payload.schemas.0}}</code></pre>
+{{/payload.schemaErrors}}
+{{^payload.schemaErrors}}
+<table class="table table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th>Schema Namespace</th>
+		</tr>
+	</thead>
+	<tbody>
+{{#payload.schemas}}
+		<tr><td><a href="#{{id}}">{{namespace}}</a></td></tr>
+{{/payload.schemas}}
+	</tbody>
+</table>
+{{#payload.schemas}}
+<h3 id="{{id}}">{{namespace}} schema</h3>
+<div class"markdown level0 summary">{{namespace}}</div>
+<pre class="xml pre-wrap"><code>{{text}}</code></pre>
+{{/payload.schemas}}
+{{/payload.schemaErrors}}
+
+{{/payload.schemas.0}}

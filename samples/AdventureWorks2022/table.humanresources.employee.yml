@@ -998,6 +998,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1025,6 +1026,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: NationalIDNumber
   dataType: NVARCHAR(15)
+  dataTypeRef: 
   maxLengthBytes: 15
   precision: 0
   scale: 0
@@ -1049,6 +1051,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LoginID
   dataType: NVARCHAR(256)
+  dataTypeRef: 
   maxLengthBytes: 256
   precision: 0
   scale: 0
@@ -1073,6 +1076,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrganizationNode
   dataType: HIERARCHYID
+  dataTypeRef: 
   maxLengthBytes: 892
   precision: 0
   scale: 0
@@ -1097,6 +1101,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrganizationLevel
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -1121,6 +1126,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: JobTitle
   dataType: NVARCHAR(50)
+  dataTypeRef: 
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -1145,6 +1151,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BirthDate
   dataType: DATE
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 10
   scale: 0
@@ -1169,6 +1176,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MaritalStatus
   dataType: NCHAR(1)
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 0
   scale: 0
@@ -1193,6 +1201,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Gender
   dataType: NCHAR(1)
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 0
   scale: 0
@@ -1217,6 +1226,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: HireDate
   dataType: DATE
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 10
   scale: 0
@@ -1240,7 +1250,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalariedFlag
-  dataType: FLAG
+  dataType: '[dbo].[Flag]'
+  dataTypeRef:
+    name: '[dbo].[Flag]'
+    id: userdefineddatatype.dbo.flag
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 1
   precision: 1
   scale: 0
@@ -1265,6 +1279,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: VacationHours
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -1289,6 +1304,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SickLeaveHours
   dataType: SMALLINT
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 5
   scale: 0
@@ -1312,7 +1328,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CurrentFlag
-  dataType: FLAG
+  dataType: '[dbo].[Flag]'
+  dataTypeRef:
+    name: '[dbo].[Flag]'
+    id: userdefineddatatype.dbo.flag
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 1
   precision: 1
   scale: 0
@@ -1337,6 +1357,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -1361,6 +1382,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

@@ -654,6 +654,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -678,6 +679,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceCode
   dataType: NCHAR(3)
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 0
   scale: 0
@@ -702,6 +704,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegionCode
   dataType: NVARCHAR(3)
+  dataTypeRef: 
   maxLengthBytes: 3
   precision: 0
   scale: 0
@@ -728,7 +731,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IsOnlyStateProvinceFlag
-  dataType: FLAG
+  dataType: '[dbo].[Flag]'
+  dataTypeRef:
+    name: '[dbo].[Flag]'
+    id: userdefineddatatype.dbo.flag
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 1
   precision: 1
   scale: 0
@@ -752,7 +759,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -777,6 +788,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -804,6 +816,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -828,6 +841,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

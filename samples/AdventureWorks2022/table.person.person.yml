@@ -1292,6 +1292,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1319,6 +1320,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PersonType
   dataType: NCHAR(2)
+  dataTypeRef: 
   maxLengthBytes: 2
   precision: 0
   scale: 0
@@ -1342,7 +1344,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: NameStyle
-  dataType: NAMESTYLE
+  dataType: '[dbo].[NameStyle]'
+  dataTypeRef:
+    name: '[dbo].[NameStyle]'
+    id: userdefineddatatype.dbo.namestyle
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 1
   precision: 1
   scale: 0
@@ -1367,6 +1373,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Title
   dataType: NVARCHAR(8)
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 0
   scale: 0
@@ -1390,7 +1397,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FirstName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -1414,7 +1425,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MiddleName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -1438,7 +1453,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LastName
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -1463,6 +1482,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Suffix
   dataType: NVARCHAR(10)
+  dataTypeRef: 
   maxLengthBytes: 10
   precision: 0
   scale: 0
@@ -1487,6 +1507,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmailPromotion
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -1511,6 +1532,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AdditionalContactInfo
   dataType: ADDITIONALCONTACTINFOSCHEMACOLLECTION
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -1535,6 +1557,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Demographics
   dataType: INDIVIDUALSURVEYSCHEMACOLLECTION
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -1559,6 +1582,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
   maxLengthBytes: 16
   precision: 0
   scale: 0
@@ -1583,6 +1607,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

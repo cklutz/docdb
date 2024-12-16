@@ -577,6 +577,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PurchaseOrderID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -601,6 +602,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: RevisionNumber
   dataType: TINYINT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 3
   scale: 0
@@ -625,6 +627,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Status
   dataType: TINYINT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 3
   scale: 0
@@ -649,6 +652,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmployeeID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -676,6 +680,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: VendorID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -703,6 +708,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipMethodID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -730,6 +736,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrderDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -754,6 +761,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -778,6 +786,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SubTotal
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -802,6 +811,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TaxAmt
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -826,6 +836,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Freight
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -850,6 +861,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TotalDue
   dataType: MONEY
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 19
   scale: 4
@@ -874,6 +886,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

@@ -471,6 +471,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShiftID
   dataType: TINYINT
+  dataTypeRef: 
   maxLengthBytes: 1
   precision: 3
   scale: 0
@@ -494,7 +495,11 @@ columns:
   createdAt: 0001-01-01T00:00:00.0000000
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
-  dataType: NAME
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
   maxLengthBytes: 50
   precision: 0
   scale: 0
@@ -519,6 +524,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StartTime
   dataType: TIME
+  dataTypeRef: 
   maxLengthBytes: 5
   precision: 16
   scale: 7
@@ -543,6 +549,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EndTime
   dataType: TIME
+  dataTypeRef: 
   maxLengthBytes: 5
   precision: 16
   scale: 7
@@ -567,6 +574,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3

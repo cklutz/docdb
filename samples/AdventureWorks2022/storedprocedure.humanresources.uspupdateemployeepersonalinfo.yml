@@ -15,6 +15,7 @@ parameters:
   isOutputParameter: false
   isCursorParameter: false
   dataType: INT
+  dataTypeRef: 
   defaultValue: ''
   script: ""
 - type: StoredProcedureParameter
@@ -26,6 +27,7 @@ parameters:
   isOutputParameter: false
   isCursorParameter: false
   dataType: NVARCHAR(15)
+  dataTypeRef: 
   defaultValue: ''
   script: ""
 - type: StoredProcedureParameter
@@ -37,6 +39,7 @@ parameters:
   isOutputParameter: false
   isCursorParameter: false
   dataType: DATETIME
+  dataTypeRef: 
   defaultValue: ''
   script: ""
 - type: StoredProcedureParameter
@@ -48,6 +51,7 @@ parameters:
   isOutputParameter: false
   isCursorParameter: false
   dataType: NCHAR(1)
+  dataTypeRef: 
   defaultValue: ''
   script: ""
 - type: StoredProcedureParameter
@@ -59,6 +63,7 @@ parameters:
   isOutputParameter: false
   isCursorParameter: false
   dataType: NCHAR(1)
+  dataTypeRef: 
   defaultValue: ''
   script: ""
 syntax: |2+

@@ -15,6 +15,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: JobCandidateID
   dataType: INT
+  dataTypeRef: 
   maxLengthBytes: 4
   precision: 10
   scale: 0
@@ -39,6 +40,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.StartDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -63,6 +65,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.EndDate
   dataType: DATETIME
+  dataTypeRef: 
   maxLengthBytes: 8
   precision: 23
   scale: 3
@@ -87,6 +90,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.OrgName
   dataType: NVARCHAR(100)
+  dataTypeRef: 
   maxLengthBytes: 100
   precision: 0
   scale: 0
@@ -111,6 +115,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.JobTitle
   dataType: NVARCHAR(100)
+  dataTypeRef: 
   maxLengthBytes: 100
   precision: 0
   scale: 0
@@ -135,6 +140,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Responsibility
   dataType: NVARCHAR(MAX)
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -159,6 +165,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.FunctionCategory
   dataType: NVARCHAR(MAX)
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -183,6 +190,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.IndustryCategory
   dataType: NVARCHAR(MAX)
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -207,6 +215,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Loc.CountryRegion
   dataType: NVARCHAR(MAX)
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -231,6 +240,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Loc.State
   dataType: NVARCHAR(MAX)
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0
@@ -255,6 +265,7 @@ columns:
   lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Loc.City
   dataType: NVARCHAR(MAX)
+  dataTypeRef: 
   maxLengthBytes: 
   precision: 0
   scale: 0

@@ -5,28 +5,6 @@ using System.Text.Json.Serialization;
 
 namespace DocDB.Contracts;
 
-public static class ModelExtensions
-{
-    public static DdbRef ToRef(this DdbObject obj)
-    {
-        return new DdbRef
-        {
-            Id = obj.Id,
-            Type = $"{obj.Type}Ref"
-        };
-    }
-
-    public static NamedDdbRef ToRef(this NamedDdbObject obj)
-    {
-        return new NamedDdbRef
-        {
-            Id = obj.Id,
-            Type = $"{obj.Type}Ref",
-            Name = obj.Name
-        };
-    }
-}
-
 public interface IDdbRef
 {
     string Id { get; }
@@ -83,9 +61,9 @@ public abstract class DdbObject : IDdbRef
             .ToDictionary(GetTypeTag, t => t);
     }
 
-    public static string GetTypeTag<T>(bool isRef = false) where T : DdbObject => GetTypeTag(typeof(T), isRef);
     private static string GetTypeTag(Type type) => GetTypeTag(type, false);
-    private static string GetTypeTag(Type type, bool isRef)
+    public static string GetTypeTag<T>(bool isRef = false) where T : DdbObject => GetTypeTag(typeof(T), isRef);
+    public static string GetTypeTag(Type type, bool isRef)
     {
         var span = type.Name.AsSpan();
         if (span.StartsWith("Ddb"))
@@ -335,6 +313,8 @@ public abstract class DdbParameterBase : NamedDdbObject
 {
     [JsonPropertyName("dataType"), JsonProperty("dataType")]
     public string? DataType { get; set; }
+    [JsonPropertyName("dataTypeRef"), JsonProperty("dataTypeRef")]
+    public NamedDdbRef? DataTypeRef { get; set; }
     [JsonPropertyName("defaultValue"), JsonProperty("defaultValue")]
     public string? DefaultValue { get; set; }
 
@@ -385,6 +365,8 @@ public abstract class DdbColumnBase : NamedDdbObject
 {
     [JsonPropertyName("dataType"), JsonProperty("dataType")]
     public string? DataType { get; set; }
+    [JsonPropertyName("dataTypeRef"), JsonProperty("dataTypeRef")]
+    public NamedDdbRef? DataTypeRef { get; set; }
     [JsonPropertyName("maxLengthBytes"), JsonProperty("maxLengthBytes")]
     public int? MaxLengthBytes { get; set; }
     [JsonPropertyName("precision"), JsonProperty("precision")]
@@ -570,6 +552,8 @@ public class DdbSequence : NamedDdbObject
 {
     [JsonPropertyName("dataType"), JsonProperty("dataType")]
     public string? DataType { get; set; }
+    [JsonPropertyName("dataTypeRef"), JsonProperty("dataTypeRef")]
+    public NamedDdbRef? DataTypeRef { get; set; }
     [JsonPropertyName("isCached"), JsonProperty("isCached")]
     public bool IsCached { get; set; }
     [JsonPropertyName("isCycleEnabled"), JsonProperty("isCycleEnabled")]
@@ -586,4 +570,118 @@ public class DdbSequence : NamedDdbObject
     public string? MinValue { get; set; }
     [JsonPropertyName("maxValue"), JsonProperty("maxValue")]
     public string? MaxValue { get; set; }
+}
+
+public class DdbRule : NamedDdbObject
+{
+    [JsonPropertyName("textBody"), JsonProperty("textBody")]
+    public string? TextBody { get; set; }
+}
+
+public class DdbDefault : NamedDdbObject
+{
+    [JsonPropertyName("textBody"), JsonProperty("textBody")]
+    public string? TextBody { get; set; }
+}
+
+public class DdbUserDefinedType : NamedDdbObject
+{
+    [JsonPropertyName("assemblyName"), JsonProperty("assemblyName")]
+    public string? AssemblyName { get; set; }
+    [JsonPropertyName("assemblyRef"), JsonProperty("assemblyRef")]
+    public NamedDdbRef? AssemblyRef { get; set; }
+    [JsonPropertyName("className"), JsonProperty("className")]
+    public string? ClassName { get; set; }
+    [JsonPropertyName("userDefinedTypeFormat"), JsonProperty("userDefinedTypeFormat")]
+    public string? UserDefinedTypeFormat { get; set; }
+    [JsonPropertyName("binaryTypeIdentifier"), JsonProperty("binaryTypeIdentifier")]
+    public string? BinaryTypeIdentifier { get; set; }
+    [JsonPropertyName("isComVisible"), JsonProperty("isComVisible")]
+    public bool IsComVisible { get; set; }
+    [JsonPropertyName("isBinaryOrdered"), JsonProperty("isBinaryOrdered")]
+    public bool IsBinaryOrdered { get; set; }
+    [JsonPropertyName("isFixedLength"), JsonProperty("isFixedLength")]
+    public bool IsFixedLength { get; set; }
+    [JsonPropertyName("collation"), JsonProperty("collation")]
+    public string? Collation { get; set; }
+    [JsonPropertyName("isSchemaOwned"), JsonProperty("isSchemaOwned")]
+    public bool IsSchemaOwned { get; set; }
+    [JsonPropertyName("maxLength"), JsonProperty("maxLength")]
+    public int? MaxLength { get; set; }
+    [JsonPropertyName("isNullable"), JsonProperty("isNullable")]
+    public bool IsNullable { get; set; }
+    [JsonPropertyName("numericPrecision"), JsonProperty("numericPrecision")]
+    public int NumericPrecision { get; set; }
+    [JsonPropertyName("numericScale"), JsonProperty("numericScale")]
+    public int NumericScale { get; set; }
+    [JsonPropertyName("owner"), JsonProperty("owner")]
+    public string? Owner { get; set; }
+}
+
+public class DdbAssembly : NamedDdbObject
+{
+    [JsonPropertyName("assemblyName"), JsonProperty("assemblyName")]
+    public string? AssemblyName { get; set; }
+    [JsonPropertyName("assemblySecurityLevel"), JsonProperty("assemblySecurityLevel")]
+    public string? AssemblySecurityLevel { get; set; }
+    [JsonPropertyName("culture"), JsonProperty("culture")]
+    public string? Culture { get; set; }
+    [JsonPropertyName("isVisible"), JsonProperty("isVisible")]
+    public bool IsVisible { get; set; }
+    [JsonPropertyName("owner"), JsonProperty("owner")]
+    public string? Owner { get; set; }
+    [JsonPropertyName("publicKey"), JsonProperty("publicKey")]
+    public string? PublicKey { get; set; }
+    [JsonPropertyName("version"), JsonProperty("version")]
+    public string? Version { get; set; }
+    [JsonPropertyName("fileNames"), JsonProperty("fileNames")]
+    public List<string> FileNames { get; set; } = [];
+}
+
+public class DdbUserDefinedDataType : NamedDdbObject
+{
+    [JsonPropertyName("allowIdentity"), JsonProperty("allowIdentity")]
+    public bool AllowIdentity { get; set; }
+    [JsonPropertyName("collation"), JsonProperty("collation")]
+    public string? Collation { get; set; }
+    [JsonPropertyName("default"), JsonProperty("defaultRef")]
+    public NamedDdbRef? DefaultRef { get; set; }
+    [JsonPropertyName("isSchemaOwned"), JsonProperty("isSchemaOwned")]
+    public bool IsSchemaOwned { get; set; }
+    [JsonPropertyName("length"), JsonProperty("length")]
+    public int? Length { get; set; }
+    [JsonPropertyName("maxLength"), JsonProperty("maxLength")]
+    public int? MaxLength { get; set; }
+    [JsonPropertyName("isNullable"), JsonProperty("isNullable")]
+    public bool IsNullable { get; set; }
+    [JsonPropertyName("numericPrecision"), JsonProperty("numericPrecision")]
+    public int NumericPrecision { get; set; }
+    [JsonPropertyName("numericScale"), JsonProperty("numericScale")]
+    public int NumericScale { get; set; }
+    [JsonPropertyName("owner"), JsonProperty("owner")]
+    public string? Owner { get; set; }
+    [JsonPropertyName("rule"), JsonProperty("ruleRef")]
+    public NamedDdbRef? RuleRef { get; set; }
+    [JsonPropertyName("systemType"), JsonProperty("systemType")]
+    public string? SystemType { get; set; }
+    [JsonPropertyName("isVariableLength"), JsonProperty("isVariableLength")]
+    public bool IsVariableLength { get; set; }
+}
+
+public class DdbXmlSchemaCollection : NamedDdbObject
+{
+    [JsonPropertyName("schemas"), JsonProperty("schemas")]
+    public List<DdbXmlSchema> Schemas { get; set; } = [];
+    [JsonPropertyName("schemasError"), JsonProperty("schemasError")]
+    public string? SchemasError { get; set; }
+}
+
+public class DdbXmlSchema
+{
+    [JsonPropertyName("id"), JsonProperty("id")]
+    public string? Id { get; set; }
+    [JsonPropertyName("namespace"), JsonProperty("namespace")]
+    public string? Namespace { get; set; }
+    [JsonPropertyName("text"), JsonProperty("text")]
+    public string? Text { get; set; }
 }

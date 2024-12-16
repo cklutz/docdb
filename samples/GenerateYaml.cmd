@@ -1,4 +1,6 @@
 @echo off
 setlocal 
 set mydir=%~dp0
-%mydir%..\artifacts\bin\docdb\debug\docdb.exe "Data Source=.;Initial Catalog=AdventureWorks2022;Integrated Security=True;Encrypt=False" %mydir%AdventureWorks2022 "AdventureWorks2022"
+set dbName=%~1
+if not defined dbName set dbName=AdventureWorks2022
+%mydir%..\artifacts\bin\docdb\debug\docdb.exe "Data Source=.;Initial Catalog=%dbName%;Integrated Security=True;Encrypt=False" %mydir%%dbName% "%dbName%"

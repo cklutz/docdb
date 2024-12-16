@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Docfx.Plugins.DocDB", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocDB.Contracts", "src\DocDB.Contracts\DocDB.Contracts.csproj", "{43732FDE-9948-4A1B-808A-D7A5A4E193D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocDB.Tests", "src\DocDB.Tests\DocDB.Tests.csproj", "{9E17909B-9F36-44E2-8F17-37807AB8F558}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{43732FDE-9948-4A1B-808A-D7A5A4E193D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43732FDE-9948-4A1B-808A-D7A5A4E193D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43732FDE-9948-4A1B-808A-D7A5A4E193D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E17909B-9F36-44E2-8F17-37807AB8F558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E17909B-9F36-44E2-8F17-37807AB8F558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E17909B-9F36-44E2-8F17-37807AB8F558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E17909B-9F36-44E2-8F17-37807AB8F558}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
