@@ -2,15 +2,11 @@
 type: Table
 id: table.humanresources.employeedepartmenthistory
 description: Employee department transfers.
-createdAt: 2023-05-08T12:07:29.4600000
-lastModifiedAt: 2023-05-08T12:07:38.6800000
 name: HumanResources.EmployeeDepartmentHistory
 foreignKeys:
 - type: ForeignKey
   id: table.humanresources.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_department_departmentid
   description: Foreign key constraint referencing Department.DepartmentID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_EmployeeDepartmentHistory_Department_DepartmentID
   columns:
   - name: DepartmentID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.humanresources.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_employee_businessentityid
   description: Foreign key constraint referencing Employee.EmployeeID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_EmployeeDepartmentHistory_Employee_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -49,8 +43,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.humanresources.employeedepartmenthistory.foreignkey.fk_employeedepartmenthistory_shift_shiftid
   description: Foreign key constraint referencing Shift.ShiftID
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_EmployeeDepartmentHistory_Shift_ShiftID
   columns:
   - name: ShiftID
@@ -70,8 +62,6 @@ checks:
 - type: CheckConstraint
   id: table.humanresources.employeedepartmenthistory.check.ck_employeedepartmenthistory_enddate
   description: Check constraint [EndDate] >= [StartDate] OR [EndDate] IS NUL
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_EmployeeDepartmentHistory_EndDate
   isChecked: true
   isEnabled: true
@@ -97,8 +87,6 @@ indexes:
 - type: Index
   id: table.humanresources.employeedepartmenthistory.index.ix_employeedepartmenthistory_departmentid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_EmployeeDepartmentHistory_DepartmentID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -110,8 +98,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employeedepartmenthistory.index.ix_employeedepartmenthistory_departmentid.indexedcolumn.departmentid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: DepartmentID
     columnRef:
       name: DepartmentID
@@ -244,8 +230,6 @@ indexes:
 - type: Index
   id: table.humanresources.employeedepartmenthistory.index.ix_employeedepartmenthistory_shiftid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_EmployeeDepartmentHistory_ShiftID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -257,8 +241,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employeedepartmenthistory.index.ix_employeedepartmenthistory_shiftid.indexedcolumn.shiftid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ShiftID
     columnRef:
       name: ShiftID
@@ -391,8 +373,6 @@ indexes:
 - type: Index
   id: table.humanresources.employeedepartmenthistory.index.pk_employeedepartmenthistory_businessentityid_startdate_departmentid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_EmployeeDepartmentHistory_BusinessEntityID_StartDate_DepartmentID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -404,8 +384,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employeedepartmenthistory.index.pk_employeedepartmenthistory_businessentityid_startdate_departmentid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -419,8 +397,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employeedepartmenthistory.index.pk_employeedepartmenthistory_businessentityid_startdate_departmentid.indexedcolumn.startdate
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: StartDate
     columnRef:
       name: StartDate
@@ -434,8 +410,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employeedepartmenthistory.index.pk_employeedepartmenthistory_businessentityid_startdate_departmentid.indexedcolumn.departmentid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: DepartmentID
     columnRef:
       name: DepartmentID
@@ -449,8 +423,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employeedepartmenthistory.index.pk_employeedepartmenthistory_businessentityid_startdate_departmentid.indexedcolumn.shiftid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ShiftID
     columnRef:
       name: ShiftID
@@ -585,8 +557,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employeedepartmenthistory.column.businessentityid
   description: Employee identification number. Foreign key to Employee.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -614,8 +584,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employeedepartmenthistory.column.departmentid
   description: Department in which the employee worked including currently. Foreign key to Department.DepartmentID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DepartmentID
   dataType: SMALLINT
   dataTypeRef: 
@@ -643,8 +611,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employeedepartmenthistory.column.shiftid
   description: Identifies which 8-hour shift the employee works. Foreign key to Shift.Shift.ID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShiftID
   dataType: TINYINT
   dataTypeRef: 
@@ -672,8 +638,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employeedepartmenthistory.column.startdate
   description: Date the employee started work in the department.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StartDate
   dataType: DATE
   dataTypeRef: 
@@ -698,8 +662,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employeedepartmenthistory.column.enddate
   description: Date the employee left the department. NULL = Current department.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EndDate
   dataType: DATE
   dataTypeRef: 
@@ -724,8 +686,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employeedepartmenthistory.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.countryregioncurrency
 description: Cross-reference table mapping ISO currency codes to a country or region.
-createdAt: 2023-05-08T12:07:29.4230000
-lastModifiedAt: 2023-05-08T12:07:38.5730000
 name: Sales.CountryRegionCurrency
 foreignKeys:
 - type: ForeignKey
   id: table.sales.countryregioncurrency.foreignkey.fk_countryregioncurrency_countryregion_countryregioncode
   description: Foreign key constraint referencing CountryRegion.CountryRegionCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_CountryRegionCurrency_CountryRegion_CountryRegionCode
   columns:
   - name: CountryRegionCode
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.countryregioncurrency.foreignkey.fk_countryregioncurrency_currency_currencycode
   description: Foreign key constraint referencing Currency.CurrencyCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_CountryRegionCurrency_Currency_CurrencyCode
   columns:
   - name: CurrencyCode
@@ -66,8 +60,6 @@ indexes:
 - type: Index
   id: table.sales.countryregioncurrency.index.ix_countryregioncurrency_currencycode
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_CountryRegionCurrency_CurrencyCode
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -79,8 +71,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.countryregioncurrency.index.ix_countryregioncurrency_currencycode.indexedcolumn.currencycode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CurrencyCode
     columnRef:
       name: CurrencyCode
@@ -213,8 +203,6 @@ indexes:
 - type: Index
   id: table.sales.countryregioncurrency.index.pk_countryregioncurrency_countryregioncode_currencycode
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_CountryRegionCurrency_CountryRegionCode_CurrencyCode
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -226,8 +214,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.countryregioncurrency.index.pk_countryregioncurrency_countryregioncode_currencycode.indexedcolumn.countryregioncode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CountryRegionCode
     columnRef:
       name: CountryRegionCode
@@ -241,8 +227,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.countryregioncurrency.index.pk_countryregioncurrency_countryregioncode_currencycode.indexedcolumn.currencycode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CurrencyCode
     columnRef:
       name: CurrencyCode
@@ -377,8 +361,6 @@ columns:
 - type: TableColumn
   id: table.sales.countryregioncurrency.column.countryregioncode
   description: ISO code for countries and regions. Foreign key to CountryRegion.CountryRegionCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegionCode
   dataType: NVARCHAR(3)
   dataTypeRef: 
@@ -406,8 +388,6 @@ columns:
 - type: TableColumn
   id: table.sales.countryregioncurrency.column.currencycode
   description: ISO standard currency code. Foreign key to Currency.CurrencyCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CurrencyCode
   dataType: NCHAR(3)
   dataTypeRef: 
@@ -435,8 +415,6 @@ columns:
 - type: TableColumn
   id: table.sales.countryregioncurrency.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

@@ -2,8 +2,6 @@
 type: Table
 id: table.person.phonenumbertype
 description: Type of phone number of a person.
-createdAt: 2023-05-08T12:07:29.4870000
-lastModifiedAt: 2023-05-08T12:07:38.7530000
 name: Person.PhoneNumberType
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.person.phonenumbertype.index.pk_phonenumbertype_phonenumbertypeid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_PhoneNumberType_PhoneNumberTypeID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.person.phonenumbertype.index.pk_phonenumbertype_phonenumbertypeid.indexedcolumn.phonenumbertypeid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: PhoneNumberTypeID
     columnRef:
       name: PhoneNumberTypeID
@@ -175,8 +169,6 @@ columns:
 - type: TableColumn
   id: table.person.phonenumbertype.column.phonenumbertypeid
   description: Primary key for telephone number type records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PhoneNumberTypeID
   dataType: INT
   dataTypeRef: 
@@ -201,8 +193,6 @@ columns:
 - type: TableColumn
   id: table.person.phonenumbertype.column.name
   description: Name of the telephone number type
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -230,8 +220,6 @@ columns:
 - type: TableColumn
   id: table.person.phonenumbertype.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

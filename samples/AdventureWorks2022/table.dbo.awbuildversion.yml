@@ -2,8 +2,6 @@
 type: Table
 id: table.dbo.awbuildversion
 description: 'Current version number of the AdventureWorks 2016 sample database. '
-createdAt: 2023-05-08T12:07:29.4070000
-lastModifiedAt: 2023-05-08T12:07:32.8530000
 name: dbo.AWBuildVersion
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.dbo.awbuildversion.index.pk_awbuildversion_systeminformationid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_AWBuildVersion_SystemInformationID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.dbo.awbuildversion.index.pk_awbuildversion_systeminformationid.indexedcolumn.systeminformationid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: SystemInformationID
     columnRef:
       name: SystemInformationID
@@ -175,8 +169,6 @@ columns:
 - type: TableColumn
   id: table.dbo.awbuildversion.column.systeminformationid
   description: Primary key for AWBuildVersion records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SystemInformationID
   dataType: TINYINT
   dataTypeRef: 
@@ -201,8 +193,6 @@ columns:
 - type: TableColumn
   id: table.dbo.awbuildversion.column.database_version
   description: Version number of the database in 9.yy.mm.dd.00 format.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Database Version
   dataType: NVARCHAR(25)
   dataTypeRef: 
@@ -227,8 +217,6 @@ columns:
 - type: TableColumn
   id: table.dbo.awbuildversion.column.versiondate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: VersionDate
   dataType: DATETIME
   dataTypeRef: 
@@ -253,8 +241,6 @@ columns:
 - type: TableColumn
   id: table.dbo.awbuildversion.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

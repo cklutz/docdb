@@ -2,8 +2,6 @@
 type: Table
 id: table.production.illustration
 description: Bicycle assembly diagrams.
-createdAt: 2023-05-08T12:07:29.4630000
-lastModifiedAt: 2023-05-08T12:07:38.8130000
 name: Production.Illustration
 foreignKeys: []
 checks: []
@@ -29,8 +27,6 @@ indexes:
 - type: Index
   id: table.production.illustration.index.pk_illustration_illustrationid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Illustration_IllustrationID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -42,8 +38,6 @@ indexes:
   - type: IndexColumn
     id: table.production.illustration.index.pk_illustration_illustrationid.indexedcolumn.illustrationid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: IllustrationID
     columnRef:
       name: IllustrationID
@@ -178,8 +172,6 @@ columns:
 - type: TableColumn
   id: table.production.illustration.column.illustrationid
   description: Primary key for Illustration records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IllustrationID
   dataType: INT
   dataTypeRef: 
@@ -204,8 +196,6 @@ columns:
 - type: TableColumn
   id: table.production.illustration.column.diagram
   description: Illustrations used in manufacturing instructions. Stored as XML.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Diagram
   dataType: XML
   dataTypeRef: 
@@ -230,8 +220,6 @@ columns:
 - type: TableColumn
   id: table.production.illustration.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

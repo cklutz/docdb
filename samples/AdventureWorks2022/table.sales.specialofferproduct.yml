@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.specialofferproduct
 description: Cross-reference table mapping products to special offer discounts.
-createdAt: 2023-05-08T12:07:29.6030000
-lastModifiedAt: 2023-05-08T12:07:39.2630000
 name: Sales.SpecialOfferProduct
 foreignKeys:
 - type: ForeignKey
   id: table.sales.specialofferproduct.foreignkey.fk_specialofferproduct_product_productid
   description: Foreign key constraint referencing Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SpecialOfferProduct_Product_ProductID
   columns:
   - name: ProductID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.specialofferproduct.foreignkey.fk_specialofferproduct_specialoffer_specialofferid
   description: Foreign key constraint referencing SpecialOffer.SpecialOfferID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SpecialOfferProduct_SpecialOffer_SpecialOfferID
   columns:
   - name: SpecialOfferID
@@ -66,8 +60,6 @@ indexes:
 - type: Index
   id: table.sales.specialofferproduct.index.ak_specialofferproduct_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SpecialOfferProduct_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -79,8 +71,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.specialofferproduct.index.ak_specialofferproduct_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -213,8 +203,6 @@ indexes:
 - type: Index
   id: table.sales.specialofferproduct.index.ix_specialofferproduct_productid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_SpecialOfferProduct_ProductID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -226,8 +214,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.specialofferproduct.index.ix_specialofferproduct_productid.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -360,8 +346,6 @@ indexes:
 - type: Index
   id: table.sales.specialofferproduct.index.pk_specialofferproduct_specialofferid_productid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_SpecialOfferProduct_SpecialOfferID_ProductID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -373,8 +357,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.specialofferproduct.index.pk_specialofferproduct_specialofferid_productid.indexedcolumn.specialofferid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: SpecialOfferID
     columnRef:
       name: SpecialOfferID
@@ -388,8 +370,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.specialofferproduct.index.pk_specialofferproduct_specialofferid_productid.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -524,8 +504,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialofferproduct.column.specialofferid
   description: Primary key for SpecialOfferProduct records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SpecialOfferID
   dataType: INT
   dataTypeRef: 
@@ -553,8 +531,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialofferproduct.column.productid
   description: Product identification number. Foreign key to Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -582,8 +558,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialofferproduct.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -608,8 +582,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialofferproduct.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

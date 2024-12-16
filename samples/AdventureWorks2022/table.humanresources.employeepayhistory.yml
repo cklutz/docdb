@@ -2,15 +2,11 @@
 type: Table
 id: table.humanresources.employeepayhistory
 description: Employee pay history.
-createdAt: 2023-05-08T12:07:29.4600000
-lastModifiedAt: 2023-05-08T12:07:38.6870000
 name: HumanResources.EmployeePayHistory
 foreignKeys:
 - type: ForeignKey
   id: table.humanresources.employeepayhistory.foreignkey.fk_employeepayhistory_employee_businessentityid
   description: Foreign key constraint referencing Employee.EmployeeID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_EmployeePayHistory_Employee_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -30,8 +26,6 @@ checks:
 - type: CheckConstraint
   id: table.humanresources.employeepayhistory.check.ck_employeepayhistory_payfrequency
   description: Check constraint [PayFrequency]=(3) OR [PayFrequency]=(2) OR [PayFrequency]=(1)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_EmployeePayHistory_PayFrequency
   isChecked: true
   isEnabled: true
@@ -41,8 +35,6 @@ checks:
 - type: CheckConstraint
   id: table.humanresources.employeepayhistory.check.ck_employeepayhistory_rate
   description: Check constraint [Rate] >= (6.50) AND [Rate] <= (200.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_EmployeePayHistory_Rate
   isChecked: true
   isEnabled: true
@@ -68,8 +60,6 @@ indexes:
 - type: Index
   id: table.humanresources.employeepayhistory.index.pk_employeepayhistory_businessentityid_ratechangedate
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_EmployeePayHistory_BusinessEntityID_RateChangeDate
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -81,8 +71,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employeepayhistory.index.pk_employeepayhistory_businessentityid_ratechangedate.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -96,8 +84,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employeepayhistory.index.pk_employeepayhistory_businessentityid_ratechangedate.indexedcolumn.ratechangedate
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: RateChangeDate
     columnRef:
       name: RateChangeDate
@@ -232,8 +218,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employeepayhistory.column.businessentityid
   description: Employee identification number. Foreign key to Employee.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -261,8 +245,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employeepayhistory.column.ratechangedate
   description: Date the change in pay is effective
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: RateChangeDate
   dataType: DATETIME
   dataTypeRef: 
@@ -287,8 +269,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employeepayhistory.column.rate
   description: Salary hourly rate.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Rate
   dataType: MONEY
   dataTypeRef: 
@@ -313,8 +293,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employeepayhistory.column.payfrequency
   description: 1 = Salary received monthly, 2 = Salary received biweekly
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PayFrequency
   dataType: TINYINT
   dataTypeRef: 
@@ -339,8 +317,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employeepayhistory.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

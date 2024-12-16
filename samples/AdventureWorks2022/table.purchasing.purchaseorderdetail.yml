@@ -2,15 +2,11 @@
 type: Table
 id: table.purchasing.purchaseorderdetail
 description: Individual products associated with a specific purchase order. See PurchaseOrderHeader.
-createdAt: 2023-05-08T12:07:29.5400000
-lastModifiedAt: 2023-05-08T12:07:39.4200000
 name: Purchasing.PurchaseOrderDetail
 foreignKeys:
 - type: ForeignKey
   id: table.purchasing.purchaseorderdetail.foreignkey.fk_purchaseorderdetail_product_productid
   description: Foreign key constraint referencing Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_PurchaseOrderDetail_Product_ProductID
   columns:
   - name: ProductID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.purchasing.purchaseorderdetail.foreignkey.fk_purchaseorderdetail_purchaseorderheader_purchaseorderid
   description: Foreign key constraint referencing PurchaseOrderHeader.PurchaseOrderID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_PurchaseOrderDetail_PurchaseOrderHeader_PurchaseOrderID
   columns:
   - name: PurchaseOrderID
@@ -50,8 +44,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.purchaseorderdetail.check.ck_purchaseorderdetail_orderqty
   description: Check constraint [OrderQty] > (0)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_PurchaseOrderDetail_OrderQty
   isChecked: true
   isEnabled: true
@@ -61,8 +53,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.purchaseorderdetail.check.ck_purchaseorderdetail_receivedqty
   description: Check constraint [ReceivedQty] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_PurchaseOrderDetail_ReceivedQty
   isChecked: true
   isEnabled: true
@@ -72,8 +62,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.purchaseorderdetail.check.ck_purchaseorderdetail_rejectedqty
   description: Check constraint [RejectedQty] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_PurchaseOrderDetail_RejectedQty
   isChecked: true
   isEnabled: true
@@ -83,8 +71,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.purchaseorderdetail.check.ck_purchaseorderdetail_unitprice
   description: Check constraint [UnitPrice] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_PurchaseOrderDetail_UnitPrice
   isChecked: true
   isEnabled: true
@@ -110,8 +96,6 @@ indexes:
 - type: Index
   id: table.purchasing.purchaseorderdetail.index.ix_purchaseorderdetail_productid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_PurchaseOrderDetail_ProductID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -123,8 +107,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.purchaseorderdetail.index.ix_purchaseorderdetail_productid.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -257,8 +239,6 @@ indexes:
 - type: Index
   id: table.purchasing.purchaseorderdetail.index.pk_purchaseorderdetail_purchaseorderid_purchaseorderdetailid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_PurchaseOrderDetail_PurchaseOrderID_PurchaseOrderDetailID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -270,8 +250,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.purchaseorderdetail.index.pk_purchaseorderdetail_purchaseorderid_purchaseorderdetailid.indexedcolumn.purchaseorderid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: PurchaseOrderID
     columnRef:
       name: PurchaseOrderID
@@ -285,8 +263,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.purchaseorderdetail.index.pk_purchaseorderdetail_purchaseorderid_purchaseorderdetailid.indexedcolumn.purchaseorderdetailid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: PurchaseOrderDetailID
     columnRef:
       name: PurchaseOrderDetailID
@@ -420,8 +396,6 @@ triggers:
 - type: DmlTrigger
   id: table.purchasing.purchaseorderdetail.trigger.ipurchaseorderdetail
   description: AFTER INSERT trigger that inserts a row in the TransactionHistory table and updates the PurchaseOrderHeader.SubTotal column.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Purchasing.iPurchaseOrderDetail
   isEnabled: true
   isSchemaBound: false
@@ -434,8 +408,6 @@ triggers:
 - type: DmlTrigger
   id: table.purchasing.purchaseorderdetail.trigger.upurchaseorderdetail
   description: AFTER UPDATE trigger that inserts a row in the TransactionHistory table, updates ModifiedDate in PurchaseOrderDetail and updates the PurchaseOrderHeader.SubTotal column.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Purchasing.uPurchaseOrderDetail
   isEnabled: true
   isSchemaBound: false
@@ -449,8 +421,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.purchaseorderid
   description: Primary key. Foreign key to PurchaseOrderHeader.PurchaseOrderID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PurchaseOrderID
   dataType: INT
   dataTypeRef: 
@@ -478,8 +448,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.purchaseorderdetailid
   description: Primary key. One line number per purchased product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PurchaseOrderDetailID
   dataType: INT
   dataTypeRef: 
@@ -504,8 +472,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.duedate
   description: Date the product is expected to be received.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DueDate
   dataType: DATETIME
   dataTypeRef: 
@@ -530,8 +496,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.orderqty
   description: Quantity ordered.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrderQty
   dataType: SMALLINT
   dataTypeRef: 
@@ -556,8 +520,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.productid
   description: Product identification number. Foreign key to Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -585,8 +547,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.unitprice
   description: Vendor's selling price of a single product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: UnitPrice
   dataType: MONEY
   dataTypeRef: 
@@ -611,8 +571,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.linetotal
   description: Per product subtotal. Computed as OrderQty * UnitPrice.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LineTotal
   dataType: MONEY
   dataTypeRef: 
@@ -637,8 +595,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.receivedqty
   description: Quantity actually received from the vendor.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ReceivedQty
   dataType: DECIMAL
   dataTypeRef: 
@@ -663,8 +619,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.rejectedqty
   description: Quantity rejected during inspection.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: RejectedQty
   dataType: DECIMAL
   dataTypeRef: 
@@ -689,8 +643,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.stockedqty
   description: Quantity accepted into inventory. Computed as ReceivedQty - RejectedQty.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StockedQty
   dataType: DECIMAL
   dataTypeRef: 
@@ -715,8 +667,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.salesorderdetail
 description: Individual products associated with a specific sales order. See SalesOrderHeader.
-createdAt: 2023-05-08T12:07:29.5500000
-lastModifiedAt: 2023-05-08T12:07:39.4270000
 name: Sales.SalesOrderDetail
 foreignKeys:
 - type: ForeignKey
   id: table.sales.salesorderdetail.foreignkey.fk_salesorderdetail_salesorderheader_salesorderid
   description: Foreign key constraint referencing SalesOrderHeader.PurchaseOrderID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID
   columns:
   - name: SalesOrderID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.salesorderdetail.foreignkey.fk_salesorderdetail_specialofferproduct_specialofferidproductid
   description: Foreign key constraint referencing SpecialOfferProduct.SpecialOfferIDProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID
   columns:
   - name: SpecialOfferID
@@ -53,8 +47,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesorderdetail.check.ck_salesorderdetail_orderqty
   description: Check constraint [OrderQty] > (0)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesOrderDetail_OrderQty
   isChecked: true
   isEnabled: true
@@ -64,8 +56,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesorderdetail.check.ck_salesorderdetail_unitprice
   description: Check constraint [UnitPrice] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesOrderDetail_UnitPrice
   isChecked: true
   isEnabled: true
@@ -75,8 +65,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesorderdetail.check.ck_salesorderdetail_unitpricediscount
   description: Check constraint [UnitPriceDiscount] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesOrderDetail_UnitPriceDiscount
   isChecked: true
   isEnabled: true
@@ -102,8 +90,6 @@ indexes:
 - type: Index
   id: table.sales.salesorderdetail.index.ak_salesorderdetail_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SalesOrderDetail_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -115,8 +101,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesorderdetail.index.ak_salesorderdetail_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -249,8 +233,6 @@ indexes:
 - type: Index
   id: table.sales.salesorderdetail.index.ix_salesorderdetail_productid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_SalesOrderDetail_ProductID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -262,8 +244,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesorderdetail.index.ix_salesorderdetail_productid.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -396,8 +376,6 @@ indexes:
 - type: Index
   id: table.sales.salesorderdetail.index.pk_salesorderdetail_salesorderid_salesorderdetailid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_SalesOrderDetail_SalesOrderID_SalesOrderDetailID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -409,8 +387,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesorderdetail.index.pk_salesorderdetail_salesorderid_salesorderdetailid.indexedcolumn.salesorderid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: SalesOrderID
     columnRef:
       name: SalesOrderID
@@ -424,8 +400,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesorderdetail.index.pk_salesorderdetail_salesorderid_salesorderdetailid.indexedcolumn.salesorderdetailid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: SalesOrderDetailID
     columnRef:
       name: SalesOrderDetailID
@@ -559,8 +533,6 @@ triggers:
 - type: DmlTrigger
   id: table.sales.salesorderdetail.trigger.idusalesorderdetail
   description: AFTER INSERT, DELETE, UPDATE trigger that inserts a row in the TransactionHistory table, updates ModifiedDate in SalesOrderDetail and updates the SalesOrderHeader.SubTotal column.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Sales.iduSalesOrderDetail
   isEnabled: true
   isSchemaBound: false
@@ -574,8 +546,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderdetail.column.salesorderid
   description: Primary key. Foreign key to SalesOrderHeader.SalesOrderID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesOrderID
   dataType: INT
   dataTypeRef: 
@@ -603,8 +573,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderdetail.column.salesorderdetailid
   description: Primary key. One incremental unique number per product sold.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesOrderDetailID
   dataType: INT
   dataTypeRef: 
@@ -629,8 +597,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderdetail.column.carriertrackingnumber
   description: Shipment tracking number supplied by the shipper.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CarrierTrackingNumber
   dataType: NVARCHAR(25)
   dataTypeRef: 
@@ -655,8 +621,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderdetail.column.orderqty
   description: Quantity ordered per product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrderQty
   dataType: SMALLINT
   dataTypeRef: 
@@ -681,8 +645,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderdetail.column.productid
   description: Product sold to customer. Foreign key to Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -710,8 +672,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderdetail.column.specialofferid
   description: Promotional code. Foreign key to SpecialOffer.SpecialOfferID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SpecialOfferID
   dataType: INT
   dataTypeRef: 
@@ -739,8 +699,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderdetail.column.unitprice
   description: Selling price of a single product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: UnitPrice
   dataType: MONEY
   dataTypeRef: 
@@ -765,8 +723,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderdetail.column.unitpricediscount
   description: Discount amount.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: UnitPriceDiscount
   dataType: MONEY
   dataTypeRef: 
@@ -791,8 +747,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderdetail.column.linetotal
   description: Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LineTotal
   dataType: NUMERIC
   dataTypeRef: 
@@ -817,8 +771,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderdetail.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -843,8 +795,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderdetail.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.salesperson
 description: Sales representative current information.
-createdAt: 2023-05-08T12:07:29.5630000
-lastModifiedAt: 2023-05-08T12:07:39.2770000
 name: Sales.SalesPerson
 foreignKeys:
 - type: ForeignKey
   id: table.sales.salesperson.foreignkey.fk_salesperson_employee_businessentityid
   description: Foreign key constraint referencing Employee.EmployeeID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesPerson_Employee_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.salesperson.foreignkey.fk_salesperson_salesterritory_territoryid
   description: Foreign key constraint referencing SalesTerritory.TerritoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesPerson_SalesTerritory_TerritoryID
   columns:
   - name: TerritoryID
@@ -50,8 +44,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesperson.check.ck_salesperson_bonus
   description: Check constraint [Bonus] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesPerson_Bonus
   isChecked: true
   isEnabled: true
@@ -61,8 +53,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesperson.check.ck_salesperson_commissionpct
   description: Check constraint [CommissionPct] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesPerson_CommissionPct
   isChecked: true
   isEnabled: true
@@ -72,8 +62,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesperson.check.ck_salesperson_saleslastyear
   description: Check constraint [SalesLastYear] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesPerson_SalesLastYear
   isChecked: true
   isEnabled: true
@@ -83,8 +71,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesperson.check.ck_salesperson_salesquota
   description: Check constraint [SalesQuota] > (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesPerson_SalesQuota
   isChecked: true
   isEnabled: true
@@ -94,8 +80,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesperson.check.ck_salesperson_salesytd
   description: Check constraint [SalesYTD] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesPerson_SalesYTD
   isChecked: true
   isEnabled: true
@@ -121,8 +105,6 @@ indexes:
 - type: Index
   id: table.sales.salesperson.index.ak_salesperson_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SalesPerson_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -134,8 +116,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesperson.index.ak_salesperson_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -268,8 +248,6 @@ indexes:
 - type: Index
   id: table.sales.salesperson.index.pk_salesperson_businessentityid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_SalesPerson_BusinessEntityID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -281,8 +259,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesperson.index.pk_salesperson_businessentityid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -417,8 +393,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesperson.column.businessentityid
   description: Primary key for SalesPerson records. Foreign key to Employee.BusinessEntityID
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -446,8 +420,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesperson.column.territoryid
   description: Territory currently assigned to. Foreign key to SalesTerritory.SalesTerritoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryID
   dataType: INT
   dataTypeRef: 
@@ -475,8 +447,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesperson.column.salesquota
   description: Projected yearly sales.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesQuota
   dataType: MONEY
   dataTypeRef: 
@@ -501,8 +471,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesperson.column.bonus
   description: Bonus due if quota is met.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Bonus
   dataType: MONEY
   dataTypeRef: 
@@ -527,8 +495,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesperson.column.commissionpct
   description: Commision percent received per sale.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CommissionPct
   dataType: SMALLMONEY
   dataTypeRef: 
@@ -553,8 +519,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesperson.column.salesytd
   description: Sales total year to date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesYTD
   dataType: MONEY
   dataTypeRef: 
@@ -579,8 +543,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesperson.column.saleslastyear
   description: Sales total of previous year.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesLastYear
   dataType: MONEY
   dataTypeRef: 
@@ -605,8 +567,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesperson.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -631,8 +591,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesperson.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

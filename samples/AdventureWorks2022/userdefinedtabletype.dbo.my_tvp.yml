@@ -2,8 +2,6 @@
 type: UserDefinedTableType
 id: userdefinedtabletype.dbo.my_tvp
 description: Test
-createdAt: 2024-12-16T11:20:04.7100000
-lastModifiedAt: 2024-12-16T11:20:04.7100000
 name: dbo.my_tvp
 collation: ''
 checks: []
@@ -17,8 +15,6 @@ indexes:
 - type: Index
   id: userdefinedtabletype.dbo.my_tvp.index.pk__tt_my_tv__357d0d3eba86bdbb
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK__TT_my_tv__357D0D3EBA86BDBB
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -30,8 +26,6 @@ indexes:
   - type: IndexColumn
     id: userdefinedtabletype.dbo.my_tvp.index.pk__tt_my_tv__357d0d3eba86bdbb.indexedcolumn.col1
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: col1
     columnRef:
       name: col1
@@ -166,8 +160,6 @@ columns:
 - type: TableColumn
   id: userdefinedtabletype.dbo.my_tvp.column.col1
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: col1
   dataType: VARCHAR(255)
   dataTypeRef: 
@@ -192,8 +184,6 @@ columns:
 - type: TableColumn
   id: userdefinedtabletype.dbo.my_tvp.column.col2
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: col2
   dataType: INT
   dataTypeRef: 

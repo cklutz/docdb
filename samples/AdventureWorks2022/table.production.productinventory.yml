@@ -2,15 +2,11 @@
 type: Table
 id: table.production.productinventory
 description: Product inventory information.
-createdAt: 2023-05-08T12:07:29.5070000
-lastModifiedAt: 2023-05-08T12:07:38.8030000
 name: Production.ProductInventory
 foreignKeys:
 - type: ForeignKey
   id: table.production.productinventory.foreignkey.fk_productinventory_location_locationid
   description: Foreign key constraint referencing Location.LocationID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductInventory_Location_LocationID
   columns:
   - name: LocationID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.production.productinventory.foreignkey.fk_productinventory_product_productid
   description: Foreign key constraint referencing Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductInventory_Product_ProductID
   columns:
   - name: ProductID
@@ -50,8 +44,6 @@ checks:
 - type: CheckConstraint
   id: table.production.productinventory.check.ck_productinventory_bin
   description: Check constraint [Bin] BETWEEN (0) AND (100)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_ProductInventory_Bin
   isChecked: true
   isEnabled: true
@@ -61,8 +53,6 @@ checks:
 - type: CheckConstraint
   id: table.production.productinventory.check.ck_productinventory_shelf
   description: Check constraint [Shelf] like '[A-Za-z]' OR [Shelf]='N/A'
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_ProductInventory_Shelf
   isChecked: true
   isEnabled: true
@@ -88,8 +78,6 @@ indexes:
 - type: Index
   id: table.production.productinventory.index.pk_productinventory_productid_locationid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ProductInventory_ProductID_LocationID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -101,8 +89,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productinventory.index.pk_productinventory_productid_locationid.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -116,8 +102,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productinventory.index.pk_productinventory_productid_locationid.indexedcolumn.locationid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: LocationID
     columnRef:
       name: LocationID
@@ -252,8 +236,6 @@ columns:
 - type: TableColumn
   id: table.production.productinventory.column.productid
   description: Product identification number. Foreign key to Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -281,8 +263,6 @@ columns:
 - type: TableColumn
   id: table.production.productinventory.column.locationid
   description: 'Inventory location identification number. Foreign key to Location.LocationID. '
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LocationID
   dataType: SMALLINT
   dataTypeRef: 
@@ -310,8 +290,6 @@ columns:
 - type: TableColumn
   id: table.production.productinventory.column.shelf
   description: Storage compartment within an inventory location.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Shelf
   dataType: NVARCHAR(10)
   dataTypeRef: 
@@ -336,8 +314,6 @@ columns:
 - type: TableColumn
   id: table.production.productinventory.column.bin
   description: Storage container on a shelf in an inventory location.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Bin
   dataType: TINYINT
   dataTypeRef: 
@@ -362,8 +338,6 @@ columns:
 - type: TableColumn
   id: table.production.productinventory.column.quantity
   description: Quantity of products in the inventory location.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Quantity
   dataType: SMALLINT
   dataTypeRef: 
@@ -388,8 +362,6 @@ columns:
 - type: TableColumn
   id: table.production.productinventory.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -414,8 +386,6 @@ columns:
 - type: TableColumn
   id: table.production.productinventory.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

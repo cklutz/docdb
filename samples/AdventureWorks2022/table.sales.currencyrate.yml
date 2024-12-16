@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.currencyrate
 description: Currency exchange rates.
-createdAt: 2023-05-08T12:07:29.4370000
-lastModifiedAt: 2023-05-08T12:07:39.0100000
 name: Sales.CurrencyRate
 foreignKeys:
 - type: ForeignKey
   id: table.sales.currencyrate.foreignkey.fk_currencyrate_currency_fromcurrencycode
   description: Foreign key constraint referencing Currency.FromCurrencyCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_CurrencyRate_Currency_FromCurrencyCode
   columns:
   - name: FromCurrencyCode
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.currencyrate.foreignkey.fk_currencyrate_currency_tocurrencycode
   description: Foreign key constraint referencing Currency.ToCurrencyCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_CurrencyRate_Currency_ToCurrencyCode
   columns:
   - name: ToCurrencyCode
@@ -66,8 +60,6 @@ indexes:
 - type: Index
   id: table.sales.currencyrate.index.ak_currencyrate_currencyratedate_fromcurrencycode_tocurrencycode
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_CurrencyRate_CurrencyRateDate_FromCurrencyCode_ToCurrencyCode
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -79,8 +71,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.currencyrate.index.ak_currencyrate_currencyratedate_fromcurrencycode_tocurrencycode.indexedcolumn.currencyratedate
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CurrencyRateDate
     columnRef:
       name: CurrencyRateDate
@@ -94,8 +84,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.currencyrate.index.ak_currencyrate_currencyratedate_fromcurrencycode_tocurrencycode.indexedcolumn.fromcurrencycode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: FromCurrencyCode
     columnRef:
       name: FromCurrencyCode
@@ -109,8 +97,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.currencyrate.index.ak_currencyrate_currencyratedate_fromcurrencycode_tocurrencycode.indexedcolumn.tocurrencycode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ToCurrencyCode
     columnRef:
       name: ToCurrencyCode
@@ -243,8 +229,6 @@ indexes:
 - type: Index
   id: table.sales.currencyrate.index.pk_currencyrate_currencyrateid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_CurrencyRate_CurrencyRateID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -256,8 +240,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.currencyrate.index.pk_currencyrate_currencyrateid.indexedcolumn.currencyrateid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CurrencyRateID
     columnRef:
       name: CurrencyRateID
@@ -392,8 +374,6 @@ columns:
 - type: TableColumn
   id: table.sales.currencyrate.column.currencyrateid
   description: Primary key for CurrencyRate records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CurrencyRateID
   dataType: INT
   dataTypeRef: 
@@ -418,8 +398,6 @@ columns:
 - type: TableColumn
   id: table.sales.currencyrate.column.currencyratedate
   description: Date and time the exchange rate was obtained.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CurrencyRateDate
   dataType: DATETIME
   dataTypeRef: 
@@ -444,8 +422,6 @@ columns:
 - type: TableColumn
   id: table.sales.currencyrate.column.fromcurrencycode
   description: Exchange rate was converted from this currency code.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FromCurrencyCode
   dataType: NCHAR(3)
   dataTypeRef: 
@@ -473,8 +449,6 @@ columns:
 - type: TableColumn
   id: table.sales.currencyrate.column.tocurrencycode
   description: Exchange rate was converted to this currency code.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ToCurrencyCode
   dataType: NCHAR(3)
   dataTypeRef: 
@@ -502,8 +476,6 @@ columns:
 - type: TableColumn
   id: table.sales.currencyrate.column.averagerate
   description: Average exchange rate for the day.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AverageRate
   dataType: MONEY
   dataTypeRef: 
@@ -528,8 +500,6 @@ columns:
 - type: TableColumn
   id: table.sales.currencyrate.column.endofdayrate
   description: Final exchange rate for the day.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EndOfDayRate
   dataType: MONEY
   dataTypeRef: 
@@ -554,8 +524,6 @@ columns:
 - type: TableColumn
   id: table.sales.currencyrate.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

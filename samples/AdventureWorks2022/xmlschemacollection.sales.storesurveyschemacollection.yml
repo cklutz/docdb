@@ -2,8 +2,6 @@
 type: XmlSchemaCollection
 id: xmlschemacollection.sales.storesurveyschemacollection
 description: Collection of XML schemas for the Demographics column in the Sales.Store table.
-createdAt: 0001-01-01T00:00:00.0000000
-lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: Sales.StoreSurveySchemaCollection
 schemas:
 - id: schema_1

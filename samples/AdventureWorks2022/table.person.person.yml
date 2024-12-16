@@ -2,15 +2,11 @@
 type: Table
 id: table.person.person
 description: 'Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.'
-createdAt: 2023-05-08T12:07:29.4770000
-lastModifiedAt: 2023-05-08T12:07:39.4100000
 name: Person.Person
 foreignKeys:
 - type: ForeignKey
   id: table.person.person.foreignkey.fk_person_businessentity_businessentityid
   description: Foreign key constraint referencing BusinessEntity.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_Person_BusinessEntity_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -30,8 +26,6 @@ checks:
 - type: CheckConstraint
   id: table.person.person.check.ck_person_emailpromotion
   description: Check constraint [EmailPromotion] >= (0) AND [EmailPromotion] <= (2)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Person_EmailPromotion
   isChecked: true
   isEnabled: true
@@ -41,8 +35,6 @@ checks:
 - type: CheckConstraint
   id: table.person.person.check.ck_person_persontype
   description: Check constraint [PersonType] is one of SC, VC, IN, EM or SP.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Person_PersonType
   isChecked: true
   isEnabled: true
@@ -71,8 +63,6 @@ indexes:
 - type: Index
   id: table.person.person.index.ak_person_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Person_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -84,8 +74,6 @@ indexes:
   - type: IndexColumn
     id: table.person.person.index.ak_person_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -218,8 +206,6 @@ indexes:
 - type: Index
   id: table.person.person.index.ix_person_lastname_firstname_middlename
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_Person_LastName_FirstName_MiddleName
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -231,8 +217,6 @@ indexes:
   - type: IndexColumn
     id: table.person.person.index.ix_person_lastname_firstname_middlename.indexedcolumn.lastname
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: LastName
     columnRef:
       name: LastName
@@ -246,8 +230,6 @@ indexes:
   - type: IndexColumn
     id: table.person.person.index.ix_person_lastname_firstname_middlename.indexedcolumn.firstname
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: FirstName
     columnRef:
       name: FirstName
@@ -261,8 +243,6 @@ indexes:
   - type: IndexColumn
     id: table.person.person.index.ix_person_lastname_firstname_middlename.indexedcolumn.middlename
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: MiddleName
     columnRef:
       name: MiddleName
@@ -395,8 +375,6 @@ indexes:
 - type: Index
   id: table.person.person.index.pk_person_businessentityid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Person_BusinessEntityID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -408,8 +386,6 @@ indexes:
   - type: IndexColumn
     id: table.person.person.index.pk_person_businessentityid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -542,8 +518,6 @@ indexes:
 - type: Index
   id: table.person.person.index.pxml_person_addcontact
   description: Primary XML index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PXML_Person_AddContact
   indexType: PRIMARY XML
   indexKeyType: ''
@@ -555,8 +529,6 @@ indexes:
   - type: IndexColumn
     id: table.person.person.index.pxml_person_addcontact.indexedcolumn.additionalcontactinfo
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: AdditionalContactInfo
     columnRef:
       name: AdditionalContactInfo
@@ -695,8 +667,6 @@ indexes:
 - type: Index
   id: table.person.person.index.pxml_person_demographics
   description: Primary XML index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PXML_Person_Demographics
   indexType: PRIMARY XML
   indexKeyType: ''
@@ -708,8 +678,6 @@ indexes:
   - type: IndexColumn
     id: table.person.person.index.pxml_person_demographics.indexedcolumn.demographics
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Demographics
     columnRef:
       name: Demographics
@@ -848,8 +816,6 @@ indexes:
 - type: Index
   id: table.person.person.index.xmlpath_person_demographics
   description: Secondary XML index for path.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: XMLPATH_Person_Demographics
   indexType: XML
   indexKeyType: ''
@@ -861,8 +827,6 @@ indexes:
   - type: IndexColumn
     id: table.person.person.index.xmlpath_person_demographics.indexedcolumn.demographics
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Demographics
     columnRef:
       name: Demographics
@@ -1001,8 +965,6 @@ indexes:
 - type: Index
   id: table.person.person.index.xmlproperty_person_demographics
   description: Secondary XML index for property.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: XMLPROPERTY_Person_Demographics
   indexType: XML
   indexKeyType: ''
@@ -1014,8 +976,6 @@ indexes:
   - type: IndexColumn
     id: table.person.person.index.xmlproperty_person_demographics.indexedcolumn.demographics
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Demographics
     columnRef:
       name: Demographics
@@ -1154,8 +1114,6 @@ indexes:
 - type: Index
   id: table.person.person.index.xmlvalue_person_demographics
   description: Secondary XML index for value.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: XMLVALUE_Person_Demographics
   indexType: XML
   indexKeyType: ''
@@ -1167,8 +1125,6 @@ indexes:
   - type: IndexColumn
     id: table.person.person.index.xmlvalue_person_demographics.indexedcolumn.demographics
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Demographics
     columnRef:
       name: Demographics
@@ -1308,8 +1264,6 @@ triggers:
 - type: DmlTrigger
   id: table.person.person.trigger.iuperson
   description: AFTER INSERT, UPDATE trigger inserting Individual only if the Customer does not exist in the Store table and setting the ModifiedDate column in the Person table to the current date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Person.iuPerson
   isEnabled: true
   isSchemaBound: false
@@ -1323,8 +1277,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.businessentityid
   description: Primary key for Person records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -1352,8 +1304,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.persontype
   description: 'Primary type of person: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact'
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PersonType
   dataType: NCHAR(2)
   dataTypeRef: 
@@ -1378,8 +1328,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.namestyle
   description: 0 = The data in FirstName and LastName are stored in western style (first name, last name) order.  1 = Eastern style (last name, first name) order.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: NameStyle
   dataType: '[dbo].[NameStyle]'
   dataTypeRef:
@@ -1407,8 +1355,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.title
   description: A courtesy title. For example, Mr. or Ms.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Title
   dataType: NVARCHAR(8)
   dataTypeRef: 
@@ -1433,8 +1379,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.firstname
   description: First name of the person.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FirstName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -1462,8 +1406,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.middlename
   description: Middle name or middle initial of the person.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MiddleName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -1491,8 +1433,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.lastname
   description: Last name of the person.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LastName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -1520,8 +1460,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.suffix
   description: Surname suffix. For example, Sr. or Jr.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Suffix
   dataType: NVARCHAR(10)
   dataTypeRef: 
@@ -1546,8 +1484,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.emailpromotion
   description: '0 = Contact does not wish to receive e-mail promotions, 1 = Contact does wish to receive e-mail promotions from AdventureWorks, 2 = Contact does wish to receive e-mail promotions from AdventureWorks and selected partners. '
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmailPromotion
   dataType: INT
   dataTypeRef: 
@@ -1572,8 +1508,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.additionalcontactinfo
   description: 'Additional contact information about the person stored in xml format. '
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AdditionalContactInfo
   dataType: ADDITIONALCONTACTINFOSCHEMACOLLECTION
   dataTypeRef: 
@@ -1598,8 +1532,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.demographics
   description: Personal information such as hobbies, and income collected from online shoppers. Used for sales analysis.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Demographics
   dataType: INDIVIDUALSURVEYSCHEMACOLLECTION
   dataTypeRef: 
@@ -1624,8 +1556,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -1650,8 +1580,6 @@ columns:
 - type: TableColumn
   id: table.person.person.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

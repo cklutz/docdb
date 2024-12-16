@@ -2,15 +2,11 @@
 type: Table
 id: table.purchasing.vendor
 description: Companies from whom Adventure Works Cycles purchases parts or other goods.
-createdAt: 2023-05-08T12:07:29.6230000
-lastModifiedAt: 2023-05-08T12:07:39.4330000
 name: Purchasing.Vendor
 foreignKeys:
 - type: ForeignKey
   id: table.purchasing.vendor.foreignkey.fk_vendor_businessentity_businessentityid
   description: Foreign key constraint referencing BusinessEntity.BusinessEntityID
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_Vendor_BusinessEntity_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -30,8 +26,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.vendor.check.ck_vendor_creditrating
   description: Check constraint [CreditRating] BETWEEN (1) AND (5)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Vendor_CreditRating
   isChecked: true
   isEnabled: true
@@ -57,8 +51,6 @@ indexes:
 - type: Index
   id: table.purchasing.vendor.index.ak_vendor_accountnumber
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Vendor_AccountNumber
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -70,8 +62,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.vendor.index.ak_vendor_accountnumber.indexedcolumn.accountnumber
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: AccountNumber
     columnRef:
       name: AccountNumber
@@ -204,8 +194,6 @@ indexes:
 - type: Index
   id: table.purchasing.vendor.index.pk_vendor_businessentityid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Vendor_BusinessEntityID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -217,8 +205,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.vendor.index.pk_vendor_businessentityid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -352,8 +338,6 @@ triggers:
 - type: DmlTrigger
   id: table.purchasing.vendor.trigger.dvendor
   description: INSTEAD OF DELETE trigger which keeps Vendors from being deleted.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Purchasing.dVendor
   isEnabled: true
   isSchemaBound: false
@@ -367,8 +351,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.vendor.column.businessentityid
   description: Primary key for Vendor records.  Foreign key to BusinessEntity.BusinessEntityID
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -396,8 +378,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.vendor.column.accountnumber
   description: Vendor account (identification) number.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AccountNumber
   dataType: '[dbo].[AccountNumber]'
   dataTypeRef:
@@ -425,8 +405,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.vendor.column.name
   description: Company name.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -454,8 +432,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.vendor.column.creditrating
   description: 1 = Superior, 2 = Excellent, 3 = Above average, 4 = Average, 5 = Below average
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CreditRating
   dataType: TINYINT
   dataTypeRef: 
@@ -480,8 +456,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.vendor.column.preferredvendorstatus
   description: 0 = Do not use if another vendor is available. 1 = Preferred over other vendors supplying the same product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PreferredVendorStatus
   dataType: '[dbo].[Flag]'
   dataTypeRef:
@@ -509,8 +483,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.vendor.column.activeflag
   description: 0 = Vendor no longer used. 1 = Vendor is actively used.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ActiveFlag
   dataType: '[dbo].[Flag]'
   dataTypeRef:
@@ -538,8 +510,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.vendor.column.purchasingwebserviceurl
   description: Vendor URL.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PurchasingWebServiceURL
   dataType: NVARCHAR(1024)
   dataTypeRef: 
@@ -564,8 +534,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.vendor.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

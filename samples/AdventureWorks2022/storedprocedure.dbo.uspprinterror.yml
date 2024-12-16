@@ -2,8 +2,6 @@
 type: StoredProcedure
 id: storedprocedure.dbo.uspprinterror
 description: Prints error information about the error that caused execution to jump to the CATCH block of a TRY...CATCH construct. Should be executed from within the scope of a CATCH block otherwise it will return without printing any error information.
-createdAt: 2023-05-08T12:07:29.2600000
-lastModifiedAt: 2023-05-08T12:07:29.2600000
 name: dbo.uspPrintError
 parameters: []
 syntax: |2+

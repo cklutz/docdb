@@ -2,15 +2,11 @@
 type: Table
 id: table.person.emailaddress
 description: Where to send a person email.
-createdAt: 2023-05-08T12:07:29.4500000
-lastModifiedAt: 2023-05-08T12:07:38.6530000
 name: Person.EmailAddress
 foreignKeys:
 - type: ForeignKey
   id: table.person.emailaddress.foreignkey.fk_emailaddress_person_businessentityid
   description: Foreign key constraint referencing Person.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_EmailAddress_Person_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -46,8 +42,6 @@ indexes:
 - type: Index
   id: table.person.emailaddress.index.ix_emailaddress_emailaddress
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_EmailAddress_EmailAddress
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -59,8 +53,6 @@ indexes:
   - type: IndexColumn
     id: table.person.emailaddress.index.ix_emailaddress_emailaddress.indexedcolumn.emailaddress
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: EmailAddress
     columnRef:
       name: EmailAddress
@@ -193,8 +185,6 @@ indexes:
 - type: Index
   id: table.person.emailaddress.index.pk_emailaddress_businessentityid_emailaddressid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_EmailAddress_BusinessEntityID_EmailAddressID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -206,8 +196,6 @@ indexes:
   - type: IndexColumn
     id: table.person.emailaddress.index.pk_emailaddress_businessentityid_emailaddressid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -221,8 +209,6 @@ indexes:
   - type: IndexColumn
     id: table.person.emailaddress.index.pk_emailaddress_businessentityid_emailaddressid.indexedcolumn.emailaddressid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: EmailAddressID
     columnRef:
       name: EmailAddressID
@@ -357,8 +343,6 @@ columns:
 - type: TableColumn
   id: table.person.emailaddress.column.businessentityid
   description: Primary key. Person associated with this email address.  Foreign key to Person.BusinessEntityID
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -386,8 +370,6 @@ columns:
 - type: TableColumn
   id: table.person.emailaddress.column.emailaddressid
   description: Primary key. ID of this email address.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmailAddressID
   dataType: INT
   dataTypeRef: 
@@ -412,8 +394,6 @@ columns:
 - type: TableColumn
   id: table.person.emailaddress.column.emailaddress
   description: E-mail address for the person.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmailAddress
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -438,8 +418,6 @@ columns:
 - type: TableColumn
   id: table.person.emailaddress.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -464,8 +442,6 @@ columns:
 - type: TableColumn
   id: table.person.emailaddress.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

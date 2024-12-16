@@ -2,8 +2,6 @@
 type: UserDefinedFunction
 id: userdefinedfunction.dbo.ufngetstock
 description: Scalar function returning the quantity of inventory in LocationID 6 (Miscellaneous Storage)for a specified ProductID.
-createdAt: 2023-05-08T12:07:39.6070000
-lastModifiedAt: 2023-05-08T12:07:39.6070000
 name: dbo.ufnGetStock
 functionType: Scalar
 returnsNullOnNullInput: false
@@ -11,8 +9,6 @@ parameters:
 - type: UserDefinedFunctionParameter
   id: userdefinedfunction.dbo.ufngetstock.param.@productid
   description: Input parameter for the scalar function ufnGetStock. Enter a valid ProductID from the Production.ProductInventory table.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: '@ProductID'
   dataType: INT
   dataTypeRef: 

@@ -2,16 +2,12 @@
 type: Table
 id: table.production.location
 description: Product inventory and manufacturing locations.
-createdAt: 2023-05-08T12:07:29.4700000
-lastModifiedAt: 2023-05-08T12:07:39.3200000
 name: Production.Location
 foreignKeys: []
 checks:
 - type: CheckConstraint
   id: table.production.location.check.ck_location_availability
   description: Check constraint [Availability] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Location_Availability
   isChecked: true
   isEnabled: true
@@ -21,8 +17,6 @@ checks:
 - type: CheckConstraint
   id: table.production.location.check.ck_location_costrate
   description: Check constraint [CostRate] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Location_CostRate
   isChecked: true
   isEnabled: true
@@ -48,8 +42,6 @@ indexes:
 - type: Index
   id: table.production.location.index.ak_location_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Location_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -61,8 +53,6 @@ indexes:
   - type: IndexColumn
     id: table.production.location.index.ak_location_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -195,8 +185,6 @@ indexes:
 - type: Index
   id: table.production.location.index.pk_location_locationid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Location_LocationID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -208,8 +196,6 @@ indexes:
   - type: IndexColumn
     id: table.production.location.index.pk_location_locationid.indexedcolumn.locationid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: LocationID
     columnRef:
       name: LocationID
@@ -344,8 +330,6 @@ columns:
 - type: TableColumn
   id: table.production.location.column.locationid
   description: Primary key for Location records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LocationID
   dataType: SMALLINT
   dataTypeRef: 
@@ -370,8 +354,6 @@ columns:
 - type: TableColumn
   id: table.production.location.column.name
   description: Location description.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -399,8 +381,6 @@ columns:
 - type: TableColumn
   id: table.production.location.column.costrate
   description: Standard hourly cost of the manufacturing location.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CostRate
   dataType: SMALLMONEY
   dataTypeRef: 
@@ -425,8 +405,6 @@ columns:
 - type: TableColumn
   id: table.production.location.column.availability
   description: Work capacity (in hours) of the manufacturing location.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Availability
   dataType: DECIMAL
   dataTypeRef: 
@@ -451,8 +429,6 @@ columns:
 - type: TableColumn
   id: table.production.location.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

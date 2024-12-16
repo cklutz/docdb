@@ -2,8 +2,6 @@
 type: Table
 id: table.dbo.errorlog
 description: Audit table tracking errors in the the AdventureWorks database that are caught by the CATCH block of a TRY...CATCH construct. Data is inserted by stored procedure dbo.uspLogError when it is executed from inside the CATCH block of a TRY...CATCH construct.
-createdAt: 2023-05-08T12:07:29.2430000
-lastModifiedAt: 2023-05-08T12:07:29.2600000
 name: dbo.ErrorLog
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.dbo.errorlog.index.pk_errorlog_errorlogid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ErrorLog_ErrorLogID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.dbo.errorlog.index.pk_errorlog_errorlogid.indexedcolumn.errorlogid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ErrorLogID
     columnRef:
       name: ErrorLogID
@@ -175,8 +169,6 @@ columns:
 - type: TableColumn
   id: table.dbo.errorlog.column.errorlogid
   description: Primary key for ErrorLog records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ErrorLogID
   dataType: INT
   dataTypeRef: 
@@ -201,8 +193,6 @@ columns:
 - type: TableColumn
   id: table.dbo.errorlog.column.errortime
   description: The date and time at which the error occurred.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ErrorTime
   dataType: DATETIME
   dataTypeRef: 
@@ -227,8 +217,6 @@ columns:
 - type: TableColumn
   id: table.dbo.errorlog.column.username
   description: The user who executed the batch in which the error occurred.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: UserName
   dataType: SYSNAME
   dataTypeRef: 
@@ -253,8 +241,6 @@ columns:
 - type: TableColumn
   id: table.dbo.errorlog.column.errornumber
   description: The error number of the error that occurred.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ErrorNumber
   dataType: INT
   dataTypeRef: 
@@ -279,8 +265,6 @@ columns:
 - type: TableColumn
   id: table.dbo.errorlog.column.errorseverity
   description: The severity of the error that occurred.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ErrorSeverity
   dataType: INT
   dataTypeRef: 
@@ -305,8 +289,6 @@ columns:
 - type: TableColumn
   id: table.dbo.errorlog.column.errorstate
   description: The state number of the error that occurred.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ErrorState
   dataType: INT
   dataTypeRef: 
@@ -331,8 +313,6 @@ columns:
 - type: TableColumn
   id: table.dbo.errorlog.column.errorprocedure
   description: The name of the stored procedure or trigger where the error occurred.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ErrorProcedure
   dataType: NVARCHAR(126)
   dataTypeRef: 
@@ -357,8 +337,6 @@ columns:
 - type: TableColumn
   id: table.dbo.errorlog.column.errorline
   description: The line number at which the error occurred.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ErrorLine
   dataType: INT
   dataTypeRef: 
@@ -383,8 +361,6 @@ columns:
 - type: TableColumn
   id: table.dbo.errorlog.column.errormessage
   description: The message text of the error that occurred.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ErrorMessage
   dataType: NVARCHAR(4000)
   dataTypeRef: 

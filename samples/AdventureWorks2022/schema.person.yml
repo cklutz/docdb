@@ -2,8 +2,6 @@
 type: Schema
 id: schema.person
 description: Contains objects related to names and addresses of customers, vendors, and employees
-createdAt: 0001-01-01T00:00:00.0000000
-lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: Person
 owner: dbo
 databaseId: database.adventureworks2022

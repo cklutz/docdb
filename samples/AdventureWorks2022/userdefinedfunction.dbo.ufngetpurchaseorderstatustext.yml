@@ -2,8 +2,6 @@
 type: UserDefinedFunction
 id: userdefinedfunction.dbo.ufngetpurchaseorderstatustext
 description: Scalar function returning the text representation of the Status column in the PurchaseOrderHeader table.
-createdAt: 2023-05-08T12:07:39.6100000
-lastModifiedAt: 2023-05-08T12:07:39.6100000
 name: dbo.ufnGetPurchaseOrderStatusText
 functionType: Scalar
 returnsNullOnNullInput: false
@@ -11,8 +9,6 @@ parameters:
 - type: UserDefinedFunctionParameter
   id: userdefinedfunction.dbo.ufngetpurchaseorderstatustext.param.@status
   description: Input parameter for the scalar function ufnGetPurchaseOrdertStatusText. Enter a valid integer.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: '@Status'
   dataType: TINYINT
   dataTypeRef: 

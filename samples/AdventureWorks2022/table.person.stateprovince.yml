@@ -2,15 +2,11 @@
 type: Table
 id: table.person.stateprovince
 description: State and province lookup table.
-createdAt: 2023-05-08T12:07:29.6070000
-lastModifiedAt: 2023-05-08T12:07:39.5700000
 name: Person.StateProvince
 foreignKeys:
 - type: ForeignKey
   id: table.person.stateprovince.foreignkey.fk_stateprovince_countryregion_countryregioncode
   description: Foreign key constraint referencing CountryRegion.CountryRegionCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_StateProvince_CountryRegion_CountryRegionCode
   columns:
   - name: CountryRegionCode
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.person.stateprovince.foreignkey.fk_stateprovince_salesterritory_territoryid
   description: Foreign key constraint referencing SalesTerritory.TerritoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_StateProvince_SalesTerritory_TerritoryID
   columns:
   - name: TerritoryID
@@ -66,8 +60,6 @@ indexes:
 - type: Index
   id: table.person.stateprovince.index.ak_stateprovince_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_StateProvince_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -79,8 +71,6 @@ indexes:
   - type: IndexColumn
     id: table.person.stateprovince.index.ak_stateprovince_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -213,8 +203,6 @@ indexes:
 - type: Index
   id: table.person.stateprovince.index.ak_stateprovince_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_StateProvince_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -226,8 +214,6 @@ indexes:
   - type: IndexColumn
     id: table.person.stateprovince.index.ak_stateprovince_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -360,8 +346,6 @@ indexes:
 - type: Index
   id: table.person.stateprovince.index.ak_stateprovince_stateprovincecode_countryregioncode
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_StateProvince_StateProvinceCode_CountryRegionCode
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -373,8 +357,6 @@ indexes:
   - type: IndexColumn
     id: table.person.stateprovince.index.ak_stateprovince_stateprovincecode_countryregioncode.indexedcolumn.stateprovincecode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: StateProvinceCode
     columnRef:
       name: StateProvinceCode
@@ -388,8 +370,6 @@ indexes:
   - type: IndexColumn
     id: table.person.stateprovince.index.ak_stateprovince_stateprovincecode_countryregioncode.indexedcolumn.countryregioncode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CountryRegionCode
     columnRef:
       name: CountryRegionCode
@@ -522,8 +502,6 @@ indexes:
 - type: Index
   id: table.person.stateprovince.index.pk_stateprovince_stateprovinceid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_StateProvince_StateProvinceID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -535,8 +513,6 @@ indexes:
   - type: IndexColumn
     id: table.person.stateprovince.index.pk_stateprovince_stateprovinceid.indexedcolumn.stateprovinceid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: StateProvinceID
     columnRef:
       name: StateProvinceID
@@ -671,8 +647,6 @@ columns:
 - type: TableColumn
   id: table.person.stateprovince.column.stateprovinceid
   description: Primary key for StateProvince records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceID
   dataType: INT
   dataTypeRef: 
@@ -697,8 +671,6 @@ columns:
 - type: TableColumn
   id: table.person.stateprovince.column.stateprovincecode
   description: ISO standard state or province code.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceCode
   dataType: NCHAR(3)
   dataTypeRef: 
@@ -723,8 +695,6 @@ columns:
 - type: TableColumn
   id: table.person.stateprovince.column.countryregioncode
   description: 'ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. '
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegionCode
   dataType: NVARCHAR(3)
   dataTypeRef: 
@@ -752,8 +722,6 @@ columns:
 - type: TableColumn
   id: table.person.stateprovince.column.isonlystateprovinceflag
   description: 0 = StateProvinceCode exists. 1 = StateProvinceCode unavailable, using CountryRegionCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IsOnlyStateProvinceFlag
   dataType: '[dbo].[Flag]'
   dataTypeRef:
@@ -781,8 +749,6 @@ columns:
 - type: TableColumn
   id: table.person.stateprovince.column.name
   description: State or province description.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -810,8 +776,6 @@ columns:
 - type: TableColumn
   id: table.person.stateprovince.column.territoryid
   description: ID of the territory in which the state or province is located. Foreign key to SalesTerritory.SalesTerritoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryID
   dataType: INT
   dataTypeRef: 
@@ -839,8 +803,6 @@ columns:
 - type: TableColumn
   id: table.person.stateprovince.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -865,8 +827,6 @@ columns:
 - type: TableColumn
   id: table.person.stateprovince.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.salesorderheader
 description: General sales order information.
-createdAt: 2023-05-08T12:07:29.5530000
-lastModifiedAt: 2023-05-08T12:07:39.4330000
 name: Sales.SalesOrderHeader
 foreignKeys:
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_address_billtoaddressid
   description: Foreign key constraint referencing Address.AddressID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesOrderHeader_Address_BillToAddressID
   columns:
   - name: BillToAddressID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_address_shiptoaddressid
   description: Foreign key constraint referencing Address.AddressID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesOrderHeader_Address_ShipToAddressID
   columns:
   - name: ShipToAddressID
@@ -49,8 +43,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_creditcard_creditcardid
   description: Foreign key constraint referencing CreditCard.CreditCardID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesOrderHeader_CreditCard_CreditCardID
   columns:
   - name: CreditCardID
@@ -69,8 +61,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_currencyrate_currencyrateid
   description: Foreign key constraint referencing CurrencyRate.CurrencyRateID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesOrderHeader_CurrencyRate_CurrencyRateID
   columns:
   - name: CurrencyRateID
@@ -89,8 +79,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_customer_customerid
   description: Foreign key constraint referencing Customer.CustomerID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesOrderHeader_Customer_CustomerID
   columns:
   - name: CustomerID
@@ -109,8 +97,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_salesperson_salespersonid
   description: Foreign key constraint referencing SalesPerson.SalesPersonID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesOrderHeader_SalesPerson_SalesPersonID
   columns:
   - name: SalesPersonID
@@ -129,8 +115,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_salesterritory_territoryid
   description: Foreign key constraint referencing SalesTerritory.TerritoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesOrderHeader_SalesTerritory_TerritoryID
   columns:
   - name: TerritoryID
@@ -149,8 +133,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.salesorderheader.foreignkey.fk_salesorderheader_shipmethod_shipmethodid
   description: Foreign key constraint referencing ShipMethod.ShipMethodID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesOrderHeader_ShipMethod_ShipMethodID
   columns:
   - name: ShipMethodID
@@ -170,8 +152,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_duedate
   description: Check constraint [DueDate] >= [OrderDate]
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesOrderHeader_DueDate
   isChecked: true
   isEnabled: true
@@ -181,8 +161,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_freight
   description: Check constraint [Freight] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesOrderHeader_Freight
   isChecked: true
   isEnabled: true
@@ -192,8 +170,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_shipdate
   description: Check constraint [ShipDate] >= [OrderDate] OR [ShipDate] IS NULL
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesOrderHeader_ShipDate
   isChecked: true
   isEnabled: true
@@ -203,8 +179,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_status
   description: Check constraint [Status] BETWEEN (0) AND (8)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesOrderHeader_Status
   isChecked: true
   isEnabled: true
@@ -214,8 +188,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_subtotal
   description: Check constraint [SubTotal] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesOrderHeader_SubTotal
   isChecked: true
   isEnabled: true
@@ -225,8 +197,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesorderheader.check.ck_salesorderheader_taxamt
   description: Check constraint [TaxAmt] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesOrderHeader_TaxAmt
   isChecked: true
   isEnabled: true
@@ -252,8 +222,6 @@ indexes:
 - type: Index
   id: table.sales.salesorderheader.index.ak_salesorderheader_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SalesOrderHeader_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -265,8 +233,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesorderheader.index.ak_salesorderheader_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -399,8 +365,6 @@ indexes:
 - type: Index
   id: table.sales.salesorderheader.index.ak_salesorderheader_salesordernumber
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SalesOrderHeader_SalesOrderNumber
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -412,8 +376,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesorderheader.index.ak_salesorderheader_salesordernumber.indexedcolumn.salesordernumber
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: SalesOrderNumber
     columnRef:
       name: SalesOrderNumber
@@ -546,8 +508,6 @@ indexes:
 - type: Index
   id: table.sales.salesorderheader.index.ix_salesorderheader_customerid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_SalesOrderHeader_CustomerID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -559,8 +519,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesorderheader.index.ix_salesorderheader_customerid.indexedcolumn.customerid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CustomerID
     columnRef:
       name: CustomerID
@@ -693,8 +651,6 @@ indexes:
 - type: Index
   id: table.sales.salesorderheader.index.ix_salesorderheader_salespersonid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_SalesOrderHeader_SalesPersonID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -706,8 +662,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesorderheader.index.ix_salesorderheader_salespersonid.indexedcolumn.salespersonid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: SalesPersonID
     columnRef:
       name: SalesPersonID
@@ -840,8 +794,6 @@ indexes:
 - type: Index
   id: table.sales.salesorderheader.index.pk_salesorderheader_salesorderid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_SalesOrderHeader_SalesOrderID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -853,8 +805,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesorderheader.index.pk_salesorderheader_salesorderid.indexedcolumn.salesorderid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: SalesOrderID
     columnRef:
       name: SalesOrderID
@@ -988,8 +938,6 @@ triggers:
 - type: DmlTrigger
   id: table.sales.salesorderheader.trigger.usalesorderheader
   description: AFTER UPDATE trigger that updates the RevisionNumber and ModifiedDate columns in the SalesOrderHeader table.Updates the SalesYTD column in the SalesPerson and SalesTerritory tables.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Sales.uSalesOrderHeader
   isEnabled: true
   isSchemaBound: false
@@ -1003,8 +951,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.salesorderid
   description: Primary key.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesOrderID
   dataType: INT
   dataTypeRef: 
@@ -1029,8 +975,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.revisionnumber
   description: Incremental number to track changes to the sales order over time.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: RevisionNumber
   dataType: TINYINT
   dataTypeRef: 
@@ -1055,8 +999,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.orderdate
   description: Dates the sales order was created.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrderDate
   dataType: DATETIME
   dataTypeRef: 
@@ -1081,8 +1023,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.duedate
   description: Date the order is due to the customer.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DueDate
   dataType: DATETIME
   dataTypeRef: 
@@ -1107,8 +1047,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.shipdate
   description: Date the order was shipped to the customer.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipDate
   dataType: DATETIME
   dataTypeRef: 
@@ -1133,8 +1071,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.status
   description: Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Status
   dataType: TINYINT
   dataTypeRef: 
@@ -1159,8 +1095,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.onlineorderflag
   description: 0 = Order placed by sales person. 1 = Order placed online by customer.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OnlineOrderFlag
   dataType: '[dbo].[Flag]'
   dataTypeRef:
@@ -1188,8 +1122,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.salesordernumber
   description: Unique sales order identification number.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesOrderNumber
   dataType: NVARCHAR(25)
   dataTypeRef: 
@@ -1214,8 +1146,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.purchaseordernumber
   description: 'Customer purchase order number reference. '
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PurchaseOrderNumber
   dataType: '[dbo].[OrderNumber]'
   dataTypeRef:
@@ -1243,8 +1173,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.accountnumber
   description: Financial accounting number reference.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AccountNumber
   dataType: '[dbo].[AccountNumber]'
   dataTypeRef:
@@ -1272,8 +1200,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.customerid
   description: Customer identification number. Foreign key to Customer.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CustomerID
   dataType: INT
   dataTypeRef: 
@@ -1301,8 +1227,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.salespersonid
   description: Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesPersonID
   dataType: INT
   dataTypeRef: 
@@ -1330,8 +1254,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.territoryid
   description: Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryID
   dataType: INT
   dataTypeRef: 
@@ -1359,8 +1281,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.billtoaddressid
   description: Customer billing address. Foreign key to Address.AddressID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BillToAddressID
   dataType: INT
   dataTypeRef: 
@@ -1388,8 +1308,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.shiptoaddressid
   description: Customer shipping address. Foreign key to Address.AddressID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipToAddressID
   dataType: INT
   dataTypeRef: 
@@ -1417,8 +1335,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.shipmethodid
   description: Shipping method. Foreign key to ShipMethod.ShipMethodID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipMethodID
   dataType: INT
   dataTypeRef: 
@@ -1446,8 +1362,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.creditcardid
   description: Credit card identification number. Foreign key to CreditCard.CreditCardID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CreditCardID
   dataType: INT
   dataTypeRef: 
@@ -1475,8 +1389,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.creditcardapprovalcode
   description: Approval code provided by the credit card company.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CreditCardApprovalCode
   dataType: VARCHAR(15)
   dataTypeRef: 
@@ -1501,8 +1413,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.currencyrateid
   description: Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CurrencyRateID
   dataType: INT
   dataTypeRef: 
@@ -1530,8 +1440,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.subtotal
   description: Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SubTotal
   dataType: MONEY
   dataTypeRef: 
@@ -1556,8 +1464,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.taxamt
   description: Tax amount.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TaxAmt
   dataType: MONEY
   dataTypeRef: 
@@ -1582,8 +1488,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.freight
   description: Shipping cost.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Freight
   dataType: MONEY
   dataTypeRef: 
@@ -1608,8 +1512,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.totaldue
   description: Total due from customer. Computed as Subtotal + TaxAmt + Freight.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TotalDue
   dataType: MONEY
   dataTypeRef: 
@@ -1634,8 +1536,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.comment
   description: Sales representative comments.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Comment
   dataType: NVARCHAR(128)
   dataTypeRef: 
@@ -1660,8 +1560,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -1686,8 +1584,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesorderheader.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

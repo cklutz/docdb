@@ -2,8 +2,6 @@
 type: View
 id: view.humanresources.vjobcandidateeducation
 description: Displays the content from each education related element in the xml column Resume in the HumanResources.JobCandidate table. The content has been localized into French, Simplified Chinese and Thai. Some data may not display correctly unless supplemental language support is installed.
-createdAt: 2023-05-08T12:07:39.5170000
-lastModifiedAt: 2023-05-08T12:07:39.5170000
 name: HumanResources.vJobCandidateEducation
 indexes: []
 triggers: []
@@ -11,8 +9,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.jobcandidateid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: JobCandidateID
   dataType: INT
   dataTypeRef: 
@@ -37,8 +33,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.level
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.Level
   dataType: NVARCHAR(MAX)
   dataTypeRef: 
@@ -63,8 +57,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.startdate
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.StartDate
   dataType: DATETIME
   dataTypeRef: 
@@ -89,8 +81,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.enddate
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.EndDate
   dataType: DATETIME
   dataTypeRef: 
@@ -115,8 +105,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.degree
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.Degree
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -141,8 +129,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.major
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.Major
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -167,8 +153,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.minor
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.Minor
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -193,8 +177,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.gpa
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.GPA
   dataType: NVARCHAR(5)
   dataTypeRef: 
@@ -219,8 +201,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.gpascale
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.GPAScale
   dataType: NVARCHAR(5)
   dataTypeRef: 
@@ -245,8 +225,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.school
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.School
   dataType: NVARCHAR(100)
   dataTypeRef: 
@@ -271,8 +249,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.loc.countryregion
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.Loc.CountryRegion
   dataType: NVARCHAR(100)
   dataTypeRef: 
@@ -297,8 +273,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.loc.state
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.Loc.State
   dataType: NVARCHAR(100)
   dataTypeRef: 
@@ -323,8 +297,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateeducation.column.edu.loc.city
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Edu.Loc.City
   dataType: NVARCHAR(100)
   dataTypeRef: 

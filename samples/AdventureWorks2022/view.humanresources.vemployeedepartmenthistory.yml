@@ -2,8 +2,6 @@
 type: View
 id: view.humanresources.vemployeedepartmenthistory
 description: Returns employee name and current and previous departments.
-createdAt: 2023-05-08T12:07:39.4630000
-lastModifiedAt: 2023-05-08T12:07:39.4630000
 name: HumanResources.vEmployeeDepartmentHistory
 indexes: []
 triggers: []
@@ -11,8 +9,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployeedepartmenthistory.column.businessentityid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -37,8 +33,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployeedepartmenthistory.column.title
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Title
   dataType: NVARCHAR(8)
   dataTypeRef: 
@@ -63,8 +57,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployeedepartmenthistory.column.firstname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FirstName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -92,8 +84,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployeedepartmenthistory.column.middlename
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MiddleName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -121,8 +111,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployeedepartmenthistory.column.lastname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LastName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -150,8 +138,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployeedepartmenthistory.column.suffix
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Suffix
   dataType: NVARCHAR(10)
   dataTypeRef: 
@@ -176,8 +162,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployeedepartmenthistory.column.shift
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Shift
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -205,8 +189,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployeedepartmenthistory.column.department
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Department
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -234,8 +216,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployeedepartmenthistory.column.groupname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: GroupName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -263,8 +243,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployeedepartmenthistory.column.startdate
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StartDate
   dataType: DATE
   dataTypeRef: 
@@ -289,8 +267,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployeedepartmenthistory.column.enddate
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EndDate
   dataType: DATE
   dataTypeRef: 

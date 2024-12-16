@@ -2,15 +2,11 @@
 type: Table
 id: table.humanresources.employee
 description: Employee information such as salary, department, and title.
-createdAt: 2023-05-08T12:07:29.4530000
-lastModifiedAt: 2023-05-08T12:07:39.4030000
 name: HumanResources.Employee
 foreignKeys:
 - type: ForeignKey
   id: table.humanresources.employee.foreignkey.fk_employee_person_businessentityid
   description: Foreign key constraint referencing Person.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_Employee_Person_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -30,8 +26,6 @@ checks:
 - type: CheckConstraint
   id: table.humanresources.employee.check.ck_employee_birthdate
   description: Check constraint [BirthDate] >= '1930-01-01' AND [BirthDate] <= dateadd(year,(-18),GETDATE())
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Employee_BirthDate
   isChecked: true
   isEnabled: true
@@ -41,8 +35,6 @@ checks:
 - type: CheckConstraint
   id: table.humanresources.employee.check.ck_employee_gender
   description: Check constraint [Gender]='f' OR [Gender]='m' OR [Gender]='F' OR [Gender]='M'
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Employee_Gender
   isChecked: true
   isEnabled: true
@@ -52,8 +44,6 @@ checks:
 - type: CheckConstraint
   id: table.humanresources.employee.check.ck_employee_hiredate
   description: Check constraint [HireDate] >= '1996-07-01' AND [HireDate] <= dateadd(day,(1),GETDATE())
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Employee_HireDate
   isChecked: true
   isEnabled: true
@@ -63,8 +53,6 @@ checks:
 - type: CheckConstraint
   id: table.humanresources.employee.check.ck_employee_maritalstatus
   description: Check constraint [MaritalStatus]='s' OR [MaritalStatus]='m' OR [MaritalStatus]='S' OR [MaritalStatus]='M'
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Employee_MaritalStatus
   isChecked: true
   isEnabled: true
@@ -74,8 +62,6 @@ checks:
 - type: CheckConstraint
   id: table.humanresources.employee.check.ck_employee_sickleavehours
   description: Check constraint [SickLeaveHours] >= (0) AND [SickLeaveHours] <= (120)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Employee_SickLeaveHours
   isChecked: true
   isEnabled: true
@@ -85,8 +71,6 @@ checks:
 - type: CheckConstraint
   id: table.humanresources.employee.check.ck_employee_vacationhours
   description: Check constraint [VacationHours] >= (-40) AND [VacationHours] <= (240)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Employee_VacationHours
   isChecked: true
   isEnabled: true
@@ -112,8 +96,6 @@ indexes:
 - type: Index
   id: table.humanresources.employee.index.ak_employee_loginid
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Employee_LoginID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -125,8 +107,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employee.index.ak_employee_loginid.indexedcolumn.loginid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: LoginID
     columnRef:
       name: LoginID
@@ -259,8 +239,6 @@ indexes:
 - type: Index
   id: table.humanresources.employee.index.ak_employee_nationalidnumber
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Employee_NationalIDNumber
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -272,8 +250,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employee.index.ak_employee_nationalidnumber.indexedcolumn.nationalidnumber
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: NationalIDNumber
     columnRef:
       name: NationalIDNumber
@@ -406,8 +382,6 @@ indexes:
 - type: Index
   id: table.humanresources.employee.index.ak_employee_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Employee_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -419,8 +393,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employee.index.ak_employee_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -553,8 +525,6 @@ indexes:
 - type: Index
   id: table.humanresources.employee.index.ix_employee_organizationlevel_organizationnode
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_Employee_OrganizationLevel_OrganizationNode
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -566,8 +536,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employee.index.ix_employee_organizationlevel_organizationnode.indexedcolumn.organizationlevel
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: OrganizationLevel
     columnRef:
       name: OrganizationLevel
@@ -581,8 +549,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employee.index.ix_employee_organizationlevel_organizationnode.indexedcolumn.organizationnode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: OrganizationNode
     columnRef:
       name: OrganizationNode
@@ -715,8 +681,6 @@ indexes:
 - type: Index
   id: table.humanresources.employee.index.ix_employee_organizationnode
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_Employee_OrganizationNode
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -728,8 +692,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employee.index.ix_employee_organizationnode.indexedcolumn.organizationnode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: OrganizationNode
     columnRef:
       name: OrganizationNode
@@ -862,8 +824,6 @@ indexes:
 - type: Index
   id: table.humanresources.employee.index.pk_employee_businessentityid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Employee_BusinessEntityID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -875,8 +835,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.employee.index.pk_employee_businessentityid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -1010,8 +968,6 @@ triggers:
 - type: DmlTrigger
   id: table.humanresources.employee.trigger.demployee
   description: INSTEAD OF DELETE trigger which keeps Employees from being deleted.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: HumanResources.dEmployee
   isEnabled: true
   isSchemaBound: false
@@ -1025,8 +981,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.businessentityid
   description: Primary key for Employee records.  Foreign key to BusinessEntity.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -1054,8 +1008,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.nationalidnumber
   description: Unique national identification number such as a social security number.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: NationalIDNumber
   dataType: NVARCHAR(15)
   dataTypeRef: 
@@ -1080,8 +1032,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.loginid
   description: Network login.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LoginID
   dataType: NVARCHAR(256)
   dataTypeRef: 
@@ -1106,8 +1056,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.organizationnode
   description: Where the employee is located in corporate hierarchy.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrganizationNode
   dataType: HIERARCHYID
   dataTypeRef: 
@@ -1132,8 +1080,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.organizationlevel
   description: The depth of the employee in the corporate hierarchy.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrganizationLevel
   dataType: SMALLINT
   dataTypeRef: 
@@ -1158,8 +1104,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.jobtitle
   description: Work title such as Buyer or Sales Representative.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: JobTitle
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -1184,8 +1128,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.birthdate
   description: Date of birth.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BirthDate
   dataType: DATE
   dataTypeRef: 
@@ -1210,8 +1152,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.maritalstatus
   description: M = Married, S = Single
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MaritalStatus
   dataType: NCHAR(1)
   dataTypeRef: 
@@ -1236,8 +1176,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.gender
   description: M = Male, F = Female
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Gender
   dataType: NCHAR(1)
   dataTypeRef: 
@@ -1262,8 +1200,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.hiredate
   description: Employee hired on this date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: HireDate
   dataType: DATE
   dataTypeRef: 
@@ -1288,8 +1224,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.salariedflag
   description: Job classification. 0 = Hourly, not exempt from collective bargaining. 1 = Salaried, exempt from collective bargaining.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalariedFlag
   dataType: '[dbo].[Flag]'
   dataTypeRef:
@@ -1317,8 +1251,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.vacationhours
   description: Number of available vacation hours.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: VacationHours
   dataType: SMALLINT
   dataTypeRef: 
@@ -1343,8 +1275,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.sickleavehours
   description: Number of available sick leave hours.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SickLeaveHours
   dataType: SMALLINT
   dataTypeRef: 
@@ -1369,8 +1299,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.currentflag
   description: 0 = Inactive, 1 = Active
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CurrentFlag
   dataType: '[dbo].[Flag]'
   dataTypeRef:
@@ -1398,8 +1326,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -1424,8 +1350,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.employee.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

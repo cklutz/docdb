@@ -2,14 +2,12 @@
 type: Synonym
 id: synonym.dbo.foo
 description: 
-createdAt: 0001-01-01T00:00:00.0000000
-lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: dbo.foo
 baseRef:
   name: '[dbo].[Customers]'
   id: table.dbo.customers
   type: TableRef
-baseType: 
+baseType: Table
 baseIsInSameDatabase: true
 isSchemaOwned: true
 owner: dbo

@@ -2,15 +2,11 @@
 type: Table
 id: table.person.businessentitycontact
 description: Cross-reference table mapping stores, vendors, and employees to people
-createdAt: 2023-05-08T12:07:29.4170000
-lastModifiedAt: 2023-05-08T12:07:38.5630000
 name: Person.BusinessEntityContact
 foreignKeys:
 - type: ForeignKey
   id: table.person.businessentitycontact.foreignkey.fk_businessentitycontact_businessentity_businessentityid
   description: Foreign key constraint referencing BusinessEntity.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_BusinessEntityContact_BusinessEntity_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.person.businessentitycontact.foreignkey.fk_businessentitycontact_contacttype_contacttypeid
   description: Foreign key constraint referencing ContactType.ContactTypeID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_BusinessEntityContact_ContactType_ContactTypeID
   columns:
   - name: ContactTypeID
@@ -49,8 +43,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.person.businessentitycontact.foreignkey.fk_businessentitycontact_person_personid
   description: Foreign key constraint referencing Person.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_BusinessEntityContact_Person_PersonID
   columns:
   - name: PersonID
@@ -86,8 +78,6 @@ indexes:
 - type: Index
   id: table.person.businessentitycontact.index.ak_businessentitycontact_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_BusinessEntityContact_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -99,8 +89,6 @@ indexes:
   - type: IndexColumn
     id: table.person.businessentitycontact.index.ak_businessentitycontact_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -233,8 +221,6 @@ indexes:
 - type: Index
   id: table.person.businessentitycontact.index.ix_businessentitycontact_contacttypeid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_BusinessEntityContact_ContactTypeID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -246,8 +232,6 @@ indexes:
   - type: IndexColumn
     id: table.person.businessentitycontact.index.ix_businessentitycontact_contacttypeid.indexedcolumn.contacttypeid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ContactTypeID
     columnRef:
       name: ContactTypeID
@@ -380,8 +364,6 @@ indexes:
 - type: Index
   id: table.person.businessentitycontact.index.ix_businessentitycontact_personid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_BusinessEntityContact_PersonID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -393,8 +375,6 @@ indexes:
   - type: IndexColumn
     id: table.person.businessentitycontact.index.ix_businessentitycontact_personid.indexedcolumn.personid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: PersonID
     columnRef:
       name: PersonID
@@ -527,8 +507,6 @@ indexes:
 - type: Index
   id: table.person.businessentitycontact.index.pk_businessentitycontact_businessentityid_personid_contacttypeid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_BusinessEntityContact_BusinessEntityID_PersonID_ContactTypeID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -540,8 +518,6 @@ indexes:
   - type: IndexColumn
     id: table.person.businessentitycontact.index.pk_businessentitycontact_businessentityid_personid_contacttypeid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -555,8 +531,6 @@ indexes:
   - type: IndexColumn
     id: table.person.businessentitycontact.index.pk_businessentitycontact_businessentityid_personid_contacttypeid.indexedcolumn.personid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: PersonID
     columnRef:
       name: PersonID
@@ -570,8 +544,6 @@ indexes:
   - type: IndexColumn
     id: table.person.businessentitycontact.index.pk_businessentitycontact_businessentityid_personid_contacttypeid.indexedcolumn.contacttypeid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ContactTypeID
     columnRef:
       name: ContactTypeID
@@ -706,8 +678,6 @@ columns:
 - type: TableColumn
   id: table.person.businessentitycontact.column.businessentityid
   description: Primary key. Foreign key to BusinessEntity.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -735,8 +705,6 @@ columns:
 - type: TableColumn
   id: table.person.businessentitycontact.column.personid
   description: Primary key. Foreign key to Person.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PersonID
   dataType: INT
   dataTypeRef: 
@@ -764,8 +732,6 @@ columns:
 - type: TableColumn
   id: table.person.businessentitycontact.column.contacttypeid
   description: Primary key.  Foreign key to ContactType.ContactTypeID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ContactTypeID
   dataType: INT
   dataTypeRef: 
@@ -793,8 +759,6 @@ columns:
 - type: TableColumn
   id: table.person.businessentitycontact.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -819,8 +783,6 @@ columns:
 - type: TableColumn
   id: table.person.businessentitycontact.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

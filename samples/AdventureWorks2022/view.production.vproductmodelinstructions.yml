@@ -2,8 +2,6 @@
 type: View
 id: view.production.vproductmodelinstructions
 description: Displays the content from each element in the xml column Instructions for each product in the Production.ProductModel table that has manufacturing instructions.
-createdAt: 2023-05-08T12:07:39.5570000
-lastModifiedAt: 2024-12-13T16:37:17.7430000
 name: Production.vProductModelInstructions
 indexes: []
 triggers: []
@@ -11,8 +9,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.productmodelid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductModelID
   dataType: INT
   dataTypeRef: 
@@ -37,8 +33,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.name
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -66,8 +60,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.instructions
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Instructions
   dataType: NVARCHAR(MAX)
   dataTypeRef: 
@@ -92,8 +84,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.locationid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LocationID
   dataType: INT
   dataTypeRef: 
@@ -118,8 +108,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.setuphours
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SetupHours
   dataType: DECIMAL
   dataTypeRef: 
@@ -144,8 +132,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.machinehours
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MachineHours
   dataType: DECIMAL
   dataTypeRef: 
@@ -170,8 +156,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.laborhours
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LaborHours
   dataType: DECIMAL
   dataTypeRef: 
@@ -196,8 +180,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.lotsize
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LotSize
   dataType: INT
   dataTypeRef: 
@@ -222,8 +204,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.step
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Step
   dataType: NVARCHAR(1024)
   dataTypeRef: 
@@ -248,8 +228,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.rowguid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -274,8 +252,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductmodelinstructions.column.modifieddate
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

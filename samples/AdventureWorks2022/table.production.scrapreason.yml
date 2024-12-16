@@ -2,8 +2,6 @@
 type: Table
 id: table.production.scrapreason
 description: Manufacturing failure reasons lookup table.
-createdAt: 2023-05-08T12:07:29.5870000
-lastModifiedAt: 2023-05-08T12:07:39.3000000
 name: Production.ScrapReason
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.production.scrapreason.index.ak_scrapreason_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_ScrapReason_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.production.scrapreason.index.ak_scrapreason_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -173,8 +167,6 @@ indexes:
 - type: Index
   id: table.production.scrapreason.index.pk_scrapreason_scrapreasonid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ScrapReason_ScrapReasonID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -186,8 +178,6 @@ indexes:
   - type: IndexColumn
     id: table.production.scrapreason.index.pk_scrapreason_scrapreasonid.indexedcolumn.scrapreasonid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ScrapReasonID
     columnRef:
       name: ScrapReasonID
@@ -322,8 +312,6 @@ columns:
 - type: TableColumn
   id: table.production.scrapreason.column.scrapreasonid
   description: Primary key for ScrapReason records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ScrapReasonID
   dataType: SMALLINT
   dataTypeRef: 
@@ -348,8 +336,6 @@ columns:
 - type: TableColumn
   id: table.production.scrapreason.column.name
   description: Failure description.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -377,8 +363,6 @@ columns:
 - type: TableColumn
   id: table.production.scrapreason.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

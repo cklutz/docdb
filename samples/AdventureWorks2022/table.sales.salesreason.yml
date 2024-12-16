@@ -2,8 +2,6 @@
 type: Table
 id: table.sales.salesreason
 description: Lookup table of customer purchase reasons.
-createdAt: 2023-05-08T12:07:29.5700000
-lastModifiedAt: 2023-05-08T12:07:39.1970000
 name: Sales.SalesReason
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.sales.salesreason.index.pk_salesreason_salesreasonid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_SalesReason_SalesReasonID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesreason.index.pk_salesreason_salesreasonid.indexedcolumn.salesreasonid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: SalesReasonID
     columnRef:
       name: SalesReasonID
@@ -175,8 +169,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesreason.column.salesreasonid
   description: Primary key for SalesReason records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesReasonID
   dataType: INT
   dataTypeRef: 
@@ -201,8 +193,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesreason.column.name
   description: Sales reason description.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -230,8 +220,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesreason.column.reasontype
   description: Category the sales reason belongs to.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ReasonType
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -259,8 +247,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesreason.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

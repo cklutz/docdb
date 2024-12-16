@@ -2,8 +2,6 @@
 type: Table
 id: table.humanresources.shift
 description: Work shift lookup table.
-createdAt: 2023-05-08T12:07:29.5900000
-lastModifiedAt: 2023-05-08T12:07:38.6800000
 name: HumanResources.Shift
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.humanresources.shift.index.ak_shift_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Shift_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.shift.index.ak_shift_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -173,8 +167,6 @@ indexes:
 - type: Index
   id: table.humanresources.shift.index.ak_shift_starttime_endtime
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Shift_StartTime_EndTime
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -186,8 +178,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.shift.index.ak_shift_starttime_endtime.indexedcolumn.starttime
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: StartTime
     columnRef:
       name: StartTime
@@ -201,8 +191,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.shift.index.ak_shift_starttime_endtime.indexedcolumn.endtime
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: EndTime
     columnRef:
       name: EndTime
@@ -335,8 +323,6 @@ indexes:
 - type: Index
   id: table.humanresources.shift.index.pk_shift_shiftid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Shift_ShiftID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -348,8 +334,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.shift.index.pk_shift_shiftid.indexedcolumn.shiftid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ShiftID
     columnRef:
       name: ShiftID
@@ -484,8 +468,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.shift.column.shiftid
   description: Primary key for Shift records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShiftID
   dataType: TINYINT
   dataTypeRef: 
@@ -510,8 +492,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.shift.column.name
   description: Shift description.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -539,8 +519,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.shift.column.starttime
   description: Shift start time.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StartTime
   dataType: TIME
   dataTypeRef: 
@@ -565,8 +543,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.shift.column.endtime
   description: Shift end time.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EndTime
   dataType: TIME
   dataTypeRef: 
@@ -591,8 +567,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.shift.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

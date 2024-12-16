@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.salespersonquotahistory
 description: Sales performance tracking.
-createdAt: 2023-05-08T12:07:29.5700000
-lastModifiedAt: 2023-05-08T12:07:39.2400000
 name: Sales.SalesPersonQuotaHistory
 foreignKeys:
 - type: ForeignKey
   id: table.sales.salespersonquotahistory.foreignkey.fk_salespersonquotahistory_salesperson_businessentityid
   description: Foreign key constraint referencing SalesPerson.SalesPersonID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -30,8 +26,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salespersonquotahistory.check.ck_salespersonquotahistory_salesquota
   description: Check constraint [SalesQuota] > (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesPersonQuotaHistory_SalesQuota
   isChecked: true
   isEnabled: true
@@ -57,8 +51,6 @@ indexes:
 - type: Index
   id: table.sales.salespersonquotahistory.index.ak_salespersonquotahistory_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SalesPersonQuotaHistory_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -70,8 +62,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salespersonquotahistory.index.ak_salespersonquotahistory_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -204,8 +194,6 @@ indexes:
 - type: Index
   id: table.sales.salespersonquotahistory.index.pk_salespersonquotahistory_businessentityid_quotadate
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_SalesPersonQuotaHistory_BusinessEntityID_QuotaDate
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -217,8 +205,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salespersonquotahistory.index.pk_salespersonquotahistory_businessentityid_quotadate.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -232,8 +218,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salespersonquotahistory.index.pk_salespersonquotahistory_businessentityid_quotadate.indexedcolumn.quotadate
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: QuotaDate
     columnRef:
       name: QuotaDate
@@ -368,8 +352,6 @@ columns:
 - type: TableColumn
   id: table.sales.salespersonquotahistory.column.businessentityid
   description: Sales person identification number. Foreign key to SalesPerson.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -397,8 +379,6 @@ columns:
 - type: TableColumn
   id: table.sales.salespersonquotahistory.column.quotadate
   description: Sales quota date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: QuotaDate
   dataType: DATETIME
   dataTypeRef: 
@@ -423,8 +403,6 @@ columns:
 - type: TableColumn
   id: table.sales.salespersonquotahistory.column.salesquota
   description: Sales quota amount.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesQuota
   dataType: MONEY
   dataTypeRef: 
@@ -449,8 +427,6 @@ columns:
 - type: TableColumn
   id: table.sales.salespersonquotahistory.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -475,8 +451,6 @@ columns:
 - type: TableColumn
   id: table.sales.salespersonquotahistory.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

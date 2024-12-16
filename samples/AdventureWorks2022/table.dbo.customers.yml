@@ -2,8 +2,6 @@
 type: Table
 id: table.dbo.customers
 description: 
-createdAt: 2024-12-16T13:30:05.3470000
-lastModifiedAt: 2024-12-16T13:30:05.3470000
 name: dbo.Customers
 foreignKeys: []
 checks: []
@@ -29,8 +27,6 @@ indexes:
 - type: Index
   id: table.dbo.customers.index.pk_customers
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_CUSTOMERS
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -42,8 +38,6 @@ indexes:
   - type: IndexColumn
     id: table.dbo.customers.index.pk_customers.indexedcolumn.id
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: id
     columnRef:
       name: id
@@ -57,8 +51,6 @@ indexes:
   - type: IndexColumn
     id: table.dbo.customers.index.pk_customers.indexedcolumn.age
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: age
     columnRef:
       name: age
@@ -190,8 +182,6 @@ columns:
 - type: TableColumn
   id: table.dbo.customers.column.id
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: id
   dataType: INT
   dataTypeRef: 
@@ -216,8 +206,6 @@ columns:
 - type: TableColumn
   id: table.dbo.customers.column.name
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: name
   dataType: VARCHAR(255)
   dataTypeRef: 
@@ -242,8 +230,6 @@ columns:
 - type: TableColumn
   id: table.dbo.customers.column.age
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: age
   dataType: INT
   dataTypeRef: 

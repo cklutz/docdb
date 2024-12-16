@@ -2,16 +2,12 @@
 type: Table
 id: table.purchasing.shipmethod
 description: Shipping company lookup table.
-createdAt: 2023-05-08T12:07:29.5930000
-lastModifiedAt: 2023-05-08T12:07:39.0100000
 name: Purchasing.ShipMethod
 foreignKeys: []
 checks:
 - type: CheckConstraint
   id: table.purchasing.shipmethod.check.ck_shipmethod_shipbase
   description: Check constraint [ShipBase] > (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_ShipMethod_ShipBase
   isChecked: true
   isEnabled: true
@@ -21,8 +17,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.shipmethod.check.ck_shipmethod_shiprate
   description: Check constraint [ShipRate] > (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_ShipMethod_ShipRate
   isChecked: true
   isEnabled: true
@@ -48,8 +42,6 @@ indexes:
 - type: Index
   id: table.purchasing.shipmethod.index.ak_shipmethod_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_ShipMethod_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -61,8 +53,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.shipmethod.index.ak_shipmethod_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -195,8 +185,6 @@ indexes:
 - type: Index
   id: table.purchasing.shipmethod.index.ak_shipmethod_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_ShipMethod_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -208,8 +196,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.shipmethod.index.ak_shipmethod_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -342,8 +328,6 @@ indexes:
 - type: Index
   id: table.purchasing.shipmethod.index.pk_shipmethod_shipmethodid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ShipMethod_ShipMethodID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -355,8 +339,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.shipmethod.index.pk_shipmethod_shipmethodid.indexedcolumn.shipmethodid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ShipMethodID
     columnRef:
       name: ShipMethodID
@@ -491,8 +473,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.shipmethod.column.shipmethodid
   description: Primary key for ShipMethod records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipMethodID
   dataType: INT
   dataTypeRef: 
@@ -517,8 +497,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.shipmethod.column.name
   description: Shipping company name.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -546,8 +524,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.shipmethod.column.shipbase
   description: Minimum shipping charge.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipBase
   dataType: MONEY
   dataTypeRef: 
@@ -572,8 +548,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.shipmethod.column.shiprate
   description: Shipping charge per pound.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipRate
   dataType: MONEY
   dataTypeRef: 
@@ -598,8 +572,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.shipmethod.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -624,8 +596,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.shipmethod.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

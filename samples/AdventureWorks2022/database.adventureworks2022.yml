@@ -2,8 +2,6 @@
 type: Database
 id: database.adventureworks2022
 description: AdventureWorks 2016 Sample OLTP Database
-createdAt: 0001-01-01T00:00:00.0000000
-lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: AdventureWorks2022
 productInformation: Microsoft SQL Server 2022
 productType: SqlServer
@@ -13,8 +11,6 @@ fileGroups:
 - type: FileGroup
   id: filegroup.primary
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PRIMARY
   isDefault: true
   isFileStream: false
@@ -29,8 +25,6 @@ dataFiles:
 - type: DataFile
   id: file.adventureworks2022
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AdventureWorks2022
   fileGroup:
     name: PRIMARY
@@ -51,8 +45,6 @@ logFiles:
 - type: LogFile
   id: logfile.adventureworks2022_log
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AdventureWorks2022_log
   fileName: C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\AdventureWorks2022_log.ldf
   growth: 65536

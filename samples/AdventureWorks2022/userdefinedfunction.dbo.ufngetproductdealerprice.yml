@@ -2,8 +2,6 @@
 type: UserDefinedFunction
 id: userdefinedfunction.dbo.ufngetproductdealerprice
 description: Scalar function returning the dealer price for a given product on a particular order date.
-createdAt: 2023-05-08T12:07:39.6000000
-lastModifiedAt: 2023-05-08T12:07:39.6000000
 name: dbo.ufnGetProductDealerPrice
 functionType: Scalar
 returnsNullOnNullInput: false
@@ -11,8 +9,6 @@ parameters:
 - type: UserDefinedFunctionParameter
   id: userdefinedfunction.dbo.ufngetproductdealerprice.param.@productid
   description: Input parameter for the scalar function ufnGetProductDealerPrice. Enter a valid ProductID from the Production.Product table.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: '@ProductID'
   dataType: INT
   dataTypeRef: 
@@ -22,8 +18,6 @@ parameters:
 - type: UserDefinedFunctionParameter
   id: userdefinedfunction.dbo.ufngetproductdealerprice.param.@orderdate
   description: Input parameter for the scalar function ufnGetProductDealerPrice. Enter a valid order date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: '@OrderDate'
   dataType: DATETIME
   dataTypeRef: 

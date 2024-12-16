@@ -2,8 +2,6 @@
 type: View
 id: view.person.vadditionalcontactinfo
 description: Displays the contact name and content from each element in the xml column AdditionalContactInfo for that person.
-createdAt: 2023-05-08T12:07:39.4530000
-lastModifiedAt: 2024-12-13T16:40:50.3800000
 name: Person.vAdditionalContactInfo
 indexes: []
 triggers: []
@@ -11,8 +9,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.businessentityid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -37,8 +33,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.firstname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FirstName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -66,8 +60,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.middlename
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MiddleName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -95,8 +87,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.lastname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LastName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -124,8 +114,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.telephonenumber
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TelephoneNumber
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -150,8 +138,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.telephonespecialinstructions
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TelephoneSpecialInstructions
   dataType: NVARCHAR(MAX)
   dataTypeRef: 
@@ -176,8 +162,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.street
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Street
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -202,8 +186,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.city
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: City
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -228,8 +210,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.stateprovince
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvince
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -254,8 +234,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.postalcode
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PostalCode
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -280,8 +258,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.countryregion
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegion
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -306,8 +282,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.homeaddressspecialinstructions
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: HomeAddressSpecialInstructions
   dataType: NVARCHAR(MAX)
   dataTypeRef: 
@@ -332,8 +306,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.emailaddress
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EMailAddress
   dataType: NVARCHAR(128)
   dataTypeRef: 
@@ -358,8 +330,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.emailspecialinstructions
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EMailSpecialInstructions
   dataType: NVARCHAR(MAX)
   dataTypeRef: 
@@ -384,8 +354,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.emailtelephonenumber
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EMailTelephoneNumber
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -410,8 +378,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.rowguid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -436,8 +402,6 @@ columns:
 - type: ViewColumn
   id: view.person.vadditionalcontactinfo.column.modifieddate
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

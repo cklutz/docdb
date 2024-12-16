@@ -2,15 +2,11 @@
 type: View
 id: view.person.vstateprovincecountryregion
 description: Joins StateProvince table with CountryRegion table.
-createdAt: 2023-05-08T12:07:39.5670000
-lastModifiedAt: 2024-12-13T16:40:50.3800000
 name: Person.vStateProvinceCountryRegion
 indexes:
 - type: Index
   id: view.person.vstateprovincecountryregion.index.ix_vstateprovincecountryregion
   description: Clustered index on the view vStateProvinceCountryRegion.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_vStateProvinceCountryRegion
   indexType: CLUSTERED
   indexKeyType: ''
@@ -22,8 +18,6 @@ indexes:
   - type: IndexColumn
     id: view.person.vstateprovincecountryregion.index.ix_vstateprovincecountryregion.indexedcolumn.stateprovinceid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: StateProvinceID
     columnRef:
       name: StateProvinceID
@@ -37,8 +31,6 @@ indexes:
   - type: IndexColumn
     id: view.person.vstateprovincecountryregion.index.ix_vstateprovincecountryregion.indexedcolumn.countryregioncode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CountryRegionCode
     columnRef:
       name: CountryRegionCode
@@ -173,8 +165,6 @@ columns:
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.stateprovinceid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceID
   dataType: INT
   dataTypeRef: 
@@ -199,8 +189,6 @@ columns:
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.stateprovincecode
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceCode
   dataType: NCHAR(3)
   dataTypeRef: 
@@ -225,8 +213,6 @@ columns:
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.isonlystateprovinceflag
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IsOnlyStateProvinceFlag
   dataType: '[dbo].[Flag]'
   dataTypeRef:
@@ -254,8 +240,6 @@ columns:
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.stateprovincename
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -283,8 +267,6 @@ columns:
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.territoryid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryID
   dataType: INT
   dataTypeRef: 
@@ -309,8 +291,6 @@ columns:
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.countryregioncode
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegionCode
   dataType: NVARCHAR(3)
   dataTypeRef: 
@@ -335,8 +315,6 @@ columns:
 - type: ViewColumn
   id: view.person.vstateprovincecountryregion.column.countryregionname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegionName
   dataType: '[dbo].[Name]'
   dataTypeRef:

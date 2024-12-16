@@ -2,8 +2,6 @@
 type: Table
 id: table.production.productmodel
 description: Product model classification.
-createdAt: 2023-05-08T12:07:29.5130000
-lastModifiedAt: 2023-05-08T12:07:39.5300000
 name: Production.ProductModel
 foreignKeys: []
 checks: []
@@ -29,8 +27,6 @@ indexes:
 - type: Index
   id: table.production.productmodel.index.ak_productmodel_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_ProductModel_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -42,8 +38,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productmodel.index.ak_productmodel_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -176,8 +170,6 @@ indexes:
 - type: Index
   id: table.production.productmodel.index.ak_productmodel_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_ProductModel_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -189,8 +181,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productmodel.index.ak_productmodel_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -323,8 +313,6 @@ indexes:
 - type: Index
   id: table.production.productmodel.index.pk_productmodel_productmodelid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ProductModel_ProductModelID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -336,8 +324,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productmodel.index.pk_productmodel_productmodelid.indexedcolumn.productmodelid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductModelID
     columnRef:
       name: ProductModelID
@@ -470,8 +456,6 @@ indexes:
 - type: Index
   id: table.production.productmodel.index.pxml_productmodel_catalogdescription
   description: Primary XML index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PXML_ProductModel_CatalogDescription
   indexType: PRIMARY XML
   indexKeyType: ''
@@ -483,8 +467,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productmodel.index.pxml_productmodel_catalogdescription.indexedcolumn.catalogdescription
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CatalogDescription
     columnRef:
       name: CatalogDescription
@@ -623,8 +605,6 @@ indexes:
 - type: Index
   id: table.production.productmodel.index.pxml_productmodel_instructions
   description: Primary XML index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PXML_ProductModel_Instructions
   indexType: PRIMARY XML
   indexKeyType: ''
@@ -636,8 +616,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productmodel.index.pxml_productmodel_instructions.indexedcolumn.instructions
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Instructions
     columnRef:
       name: Instructions
@@ -778,8 +756,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodel.column.productmodelid
   description: Primary key for ProductModel records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductModelID
   dataType: INT
   dataTypeRef: 
@@ -804,8 +780,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodel.column.name
   description: Product model description.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -833,8 +807,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodel.column.catalogdescription
   description: Detailed product catalog information in xml format.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CatalogDescription
   dataType: PRODUCTDESCRIPTIONSCHEMACOLLECTION
   dataTypeRef: 
@@ -859,8 +831,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodel.column.instructions
   description: Manufacturing instructions in xml format.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Instructions
   dataType: MANUINSTRUCTIONSSCHEMACOLLECTION
   dataTypeRef: 
@@ -885,8 +855,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodel.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -911,8 +879,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodel.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

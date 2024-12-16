@@ -2,15 +2,11 @@
 type: Table
 id: table.production.document
 description: Product maintenance documents.
-createdAt: 2023-05-08T12:07:29.4470000
-lastModifiedAt: 2023-05-08T12:07:38.7970000
 name: Production.Document
 foreignKeys:
 - type: ForeignKey
   id: table.production.document.foreignkey.fk_document_employee_owner
   description: Foreign key constraint referencing Employee.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_Document_Employee_Owner
   columns:
   - name: Owner
@@ -30,8 +26,6 @@ checks:
 - type: CheckConstraint
   id: table.production.document.check.ck_document_status
   description: Check constraint [Status] BETWEEN (1) AND (3)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Document_Status
   isChecked: true
   isEnabled: true
@@ -60,8 +54,6 @@ indexes:
 - type: Index
   id: table.production.document.index.ak_document_documentlevel_documentnode
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Document_DocumentLevel_DocumentNode
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -73,8 +65,6 @@ indexes:
   - type: IndexColumn
     id: table.production.document.index.ak_document_documentlevel_documentnode.indexedcolumn.documentlevel
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: DocumentLevel
     columnRef:
       name: DocumentLevel
@@ -88,8 +78,6 @@ indexes:
   - type: IndexColumn
     id: table.production.document.index.ak_document_documentlevel_documentnode.indexedcolumn.documentnode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: DocumentNode
     columnRef:
       name: DocumentNode
@@ -222,8 +210,6 @@ indexes:
 - type: Index
   id: table.production.document.index.ak_document_rowguid
   description: Unique nonclustered index. Used to support FileStream.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Document_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -235,8 +221,6 @@ indexes:
   - type: IndexColumn
     id: table.production.document.index.ak_document_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -369,8 +353,6 @@ indexes:
 - type: Index
   id: table.production.document.index.ix_document_filename_revision
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_Document_FileName_Revision
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -382,8 +364,6 @@ indexes:
   - type: IndexColumn
     id: table.production.document.index.ix_document_filename_revision.indexedcolumn.filename
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: FileName
     columnRef:
       name: FileName
@@ -397,8 +377,6 @@ indexes:
   - type: IndexColumn
     id: table.production.document.index.ix_document_filename_revision.indexedcolumn.revision
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Revision
     columnRef:
       name: Revision
@@ -531,8 +509,6 @@ indexes:
 - type: Index
   id: table.production.document.index.pk_document_documentnode
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Document_DocumentNode
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -544,8 +520,6 @@ indexes:
   - type: IndexColumn
     id: table.production.document.index.pk_document_documentnode.indexedcolumn.documentnode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: DocumentNode
     columnRef:
       name: DocumentNode
@@ -678,8 +652,6 @@ indexes:
 - type: Index
   id: table.production.document.index.uq__document__f73921f7c81c642f
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: UQ__Document__F73921F7C81C642F
   indexType: NONCLUSTERED
   indexKeyType: UNIQUE
@@ -691,8 +663,6 @@ indexes:
   - type: IndexColumn
     id: table.production.document.index.uq__document__f73921f7c81c642f.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -827,8 +797,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.documentnode
   description: Primary key for Document records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DocumentNode
   dataType: HIERARCHYID
   dataTypeRef: 
@@ -853,8 +821,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.documentlevel
   description: Depth in the document hierarchy.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DocumentLevel
   dataType: SMALLINT
   dataTypeRef: 
@@ -879,8 +845,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.title
   description: Title of the document.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Title
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -905,8 +869,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.owner
   description: Employee who controls the document.  Foreign key to Employee.BusinessEntityID
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Owner
   dataType: INT
   dataTypeRef: 
@@ -934,8 +896,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.folderflag
   description: 0 = This is a folder, 1 = This is a document.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FolderFlag
   dataType: BIT
   dataTypeRef: 
@@ -960,8 +920,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.filename
   description: File name of the document
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FileName
   dataType: NVARCHAR(400)
   dataTypeRef: 
@@ -986,8 +944,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.fileextension
   description: File extension indicating the document type. For example, .doc or .txt.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FileExtension
   dataType: NVARCHAR(8)
   dataTypeRef: 
@@ -1012,8 +968,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.revision
   description: 'Revision number of the document. '
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Revision
   dataType: NCHAR(5)
   dataTypeRef: 
@@ -1038,8 +992,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.changenumber
   description: Engineering change approval number.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ChangeNumber
   dataType: INT
   dataTypeRef: 
@@ -1064,8 +1016,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.status
   description: 1 = Pending approval, 2 = Approved, 3 = Obsolete
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Status
   dataType: TINYINT
   dataTypeRef: 
@@ -1090,8 +1040,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.documentsummary
   description: Document abstract.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DocumentSummary
   dataType: NVARCHAR(MAX)
   dataTypeRef: 
@@ -1116,8 +1064,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.document
   description: Complete document.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Document
   dataType: VARBINARY(MAX)
   dataTypeRef: 
@@ -1142,8 +1088,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Required for FileStream.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -1168,8 +1112,6 @@ columns:
 - type: TableColumn
   id: table.production.document.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

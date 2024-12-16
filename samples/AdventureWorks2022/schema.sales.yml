@@ -2,8 +2,6 @@
 type: Schema
 id: schema.sales
 description: Contains objects related to customers, sales orders, and sales territories.
-createdAt: 0001-01-01T00:00:00.0000000
-lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: Sales
 owner: dbo
 databaseId: database.adventureworks2022

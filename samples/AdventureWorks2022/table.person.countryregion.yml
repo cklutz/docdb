@@ -2,8 +2,6 @@
 type: Table
 id: table.person.countryregion
 description: Lookup table containing the ISO standard codes for countries and regions.
-createdAt: 2023-05-08T12:07:29.4270000
-lastModifiedAt: 2023-05-08T12:07:39.5700000
 name: Person.CountryRegion
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.person.countryregion.index.ak_countryregion_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_CountryRegion_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.person.countryregion.index.ak_countryregion_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -173,8 +167,6 @@ indexes:
 - type: Index
   id: table.person.countryregion.index.pk_countryregion_countryregioncode
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_CountryRegion_CountryRegionCode
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -186,8 +178,6 @@ indexes:
   - type: IndexColumn
     id: table.person.countryregion.index.pk_countryregion_countryregioncode.indexedcolumn.countryregioncode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CountryRegionCode
     columnRef:
       name: CountryRegionCode
@@ -322,8 +312,6 @@ columns:
 - type: TableColumn
   id: table.person.countryregion.column.countryregioncode
   description: ISO standard code for countries and regions.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegionCode
   dataType: NVARCHAR(3)
   dataTypeRef: 
@@ -348,8 +336,6 @@ columns:
 - type: TableColumn
   id: table.person.countryregion.column.name
   description: Country or region name.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -377,8 +363,6 @@ columns:
 - type: TableColumn
   id: table.person.countryregion.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

@@ -2,8 +2,6 @@
 type: View
 id: view.sales.vstorewithcontacts
 description: Stores (including store contacts) that sell Adventure Works Cycles products to consumers.
-createdAt: 2023-05-08T12:07:39.5830000
-lastModifiedAt: 2023-05-08T12:07:39.5830000
 name: Sales.vStoreWithContacts
 indexes: []
 triggers: []
@@ -11,8 +9,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.businessentityid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -37,8 +33,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.name
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -66,8 +60,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.contacttype
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ContactType
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -95,8 +87,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.title
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Title
   dataType: NVARCHAR(8)
   dataTypeRef: 
@@ -121,8 +111,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.firstname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FirstName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -150,8 +138,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.middlename
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MiddleName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -179,8 +165,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.lastname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LastName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -208,8 +192,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.suffix
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Suffix
   dataType: NVARCHAR(10)
   dataTypeRef: 
@@ -234,8 +216,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.phonenumber
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PhoneNumber
   dataType: '[dbo].[Phone]'
   dataTypeRef:
@@ -263,8 +243,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.phonenumbertype
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PhoneNumberType
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -292,8 +270,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.emailaddress
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmailAddress
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -318,8 +294,6 @@ columns:
 - type: ViewColumn
   id: view.sales.vstorewithcontacts.column.emailpromotion
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmailPromotion
   dataType: INT
   dataTypeRef: 

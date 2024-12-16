@@ -2,8 +2,6 @@
 type: Table
 id: table.production.productdescription
 description: Product descriptions in several languages.
-createdAt: 2023-05-08T12:07:29.5000000
-lastModifiedAt: 2023-05-08T12:07:39.5300000
 name: Production.ProductDescription
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.production.productdescription.index.ak_productdescription_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_ProductDescription_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productdescription.index.ak_productdescription_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -173,8 +167,6 @@ indexes:
 - type: Index
   id: table.production.productdescription.index.pk_productdescription_productdescriptionid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ProductDescription_ProductDescriptionID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -186,8 +178,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productdescription.index.pk_productdescription_productdescriptionid.indexedcolumn.productdescriptionid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductDescriptionID
     columnRef:
       name: ProductDescriptionID
@@ -322,8 +312,6 @@ columns:
 - type: TableColumn
   id: table.production.productdescription.column.productdescriptionid
   description: Primary key for ProductDescription records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductDescriptionID
   dataType: INT
   dataTypeRef: 
@@ -348,8 +336,6 @@ columns:
 - type: TableColumn
   id: table.production.productdescription.column.description
   description: Description of the product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Description
   dataType: NVARCHAR(400)
   dataTypeRef: 
@@ -374,8 +360,6 @@ columns:
 - type: TableColumn
   id: table.production.productdescription.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -400,8 +384,6 @@ columns:
 - type: TableColumn
   id: table.production.productdescription.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

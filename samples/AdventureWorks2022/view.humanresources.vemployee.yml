@@ -2,8 +2,6 @@
 type: View
 id: view.humanresources.vemployee
 description: Employee names and addresses.
-createdAt: 2023-05-08T12:07:39.4570000
-lastModifiedAt: 2023-05-08T12:07:39.4570000
 name: HumanResources.vEmployee
 indexes: []
 triggers: []
@@ -11,8 +9,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.businessentityid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -37,8 +33,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.title
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Title
   dataType: NVARCHAR(8)
   dataTypeRef: 
@@ -63,8 +57,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.firstname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FirstName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -92,8 +84,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.middlename
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MiddleName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -121,8 +111,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.lastname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LastName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -150,8 +138,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.suffix
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Suffix
   dataType: NVARCHAR(10)
   dataTypeRef: 
@@ -176,8 +162,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.jobtitle
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: JobTitle
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -202,8 +186,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.phonenumber
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PhoneNumber
   dataType: '[dbo].[Phone]'
   dataTypeRef:
@@ -231,8 +213,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.phonenumbertype
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PhoneNumberType
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -260,8 +240,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.emailaddress
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmailAddress
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -286,8 +264,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.emailpromotion
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmailPromotion
   dataType: INT
   dataTypeRef: 
@@ -312,8 +288,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.addressline1
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AddressLine1
   dataType: NVARCHAR(60)
   dataTypeRef: 
@@ -338,8 +312,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.addressline2
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AddressLine2
   dataType: NVARCHAR(60)
   dataTypeRef: 
@@ -364,8 +336,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.city
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: City
   dataType: NVARCHAR(30)
   dataTypeRef: 
@@ -390,8 +360,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.stateprovincename
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -419,8 +387,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.postalcode
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PostalCode
   dataType: NVARCHAR(15)
   dataTypeRef: 
@@ -445,8 +411,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.countryregionname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegionName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -474,8 +438,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vemployee.column.additionalcontactinfo
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AdditionalContactInfo
   dataType: ADDITIONALCONTACTINFOSCHEMACOLLECTION
   dataTypeRef: 

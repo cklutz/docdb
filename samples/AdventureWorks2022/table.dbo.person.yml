@@ -2,8 +2,6 @@
 type: Table
 id: table.dbo.person
 description: 
-createdAt: 2024-12-12T10:28:06.9900000
-lastModifiedAt: 2024-12-12T10:28:06.9930000
 name: dbo.Person
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.dbo.person.index.pk_person_businessentityid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Person_BusinessEntityID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.dbo.person.index.pk_person_businessentityid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -54,8 +48,6 @@ indexes:
   - type: IndexColumn
     id: table.dbo.person.index.pk_person_businessentityid.indexedcolumn.persontype
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: PersonType
     columnRef:
       name: PersonType
@@ -190,8 +182,6 @@ columns:
 - type: TableColumn
   id: table.dbo.person.column.businessentityid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -216,8 +206,6 @@ columns:
 - type: TableColumn
   id: table.dbo.person.column.persontype
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PersonType
   dataType: NCHAR(2)
   dataTypeRef: 
@@ -242,8 +230,6 @@ columns:
 - type: TableColumn
   id: table.dbo.person.column.modifieddate
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.salesterritory
 description: Sales territory lookup table.
-createdAt: 2023-05-08T12:07:29.5800000
-lastModifiedAt: 2023-05-08T12:07:39.2700000
 name: Sales.SalesTerritory
 foreignKeys:
 - type: ForeignKey
   id: table.sales.salesterritory.foreignkey.fk_salesterritory_countryregion_countryregioncode
   description: Foreign key constraint referencing CountryRegion.CountryRegionCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesTerritory_CountryRegion_CountryRegionCode
   columns:
   - name: CountryRegionCode
@@ -30,8 +26,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesterritory.check.ck_salesterritory_costlastyear
   description: Check constraint [CostLastYear] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesTerritory_CostLastYear
   isChecked: true
   isEnabled: true
@@ -41,8 +35,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesterritory.check.ck_salesterritory_costytd
   description: Check constraint [CostYTD] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesTerritory_CostYTD
   isChecked: true
   isEnabled: true
@@ -52,8 +44,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesterritory.check.ck_salesterritory_saleslastyear
   description: Check constraint [SalesLastYear] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesTerritory_SalesLastYear
   isChecked: true
   isEnabled: true
@@ -63,8 +53,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesterritory.check.ck_salesterritory_salesytd
   description: Check constraint [SalesYTD] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesTerritory_SalesYTD
   isChecked: true
   isEnabled: true
@@ -90,8 +78,6 @@ indexes:
 - type: Index
   id: table.sales.salesterritory.index.ak_salesterritory_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SalesTerritory_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -103,8 +89,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesterritory.index.ak_salesterritory_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -237,8 +221,6 @@ indexes:
 - type: Index
   id: table.sales.salesterritory.index.ak_salesterritory_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SalesTerritory_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -250,8 +232,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesterritory.index.ak_salesterritory_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -384,8 +364,6 @@ indexes:
 - type: Index
   id: table.sales.salesterritory.index.pk_salesterritory_territoryid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_SalesTerritory_TerritoryID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -397,8 +375,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesterritory.index.pk_salesterritory_territoryid.indexedcolumn.territoryid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: TerritoryID
     columnRef:
       name: TerritoryID
@@ -533,8 +509,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritory.column.territoryid
   description: Primary key for SalesTerritory records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryID
   dataType: INT
   dataTypeRef: 
@@ -559,8 +533,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritory.column.name
   description: Sales territory description
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -588,8 +560,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritory.column.countryregioncode
   description: 'ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. '
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CountryRegionCode
   dataType: NVARCHAR(3)
   dataTypeRef: 
@@ -617,8 +587,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritory.column.group
   description: Geographic area to which the sales territory belong.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Group
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -643,8 +611,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritory.column.salesytd
   description: Sales in the territory year to date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesYTD
   dataType: MONEY
   dataTypeRef: 
@@ -669,8 +635,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritory.column.saleslastyear
   description: Sales in the territory the previous year.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesLastYear
   dataType: MONEY
   dataTypeRef: 
@@ -695,8 +659,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritory.column.costytd
   description: Business costs in the territory year to date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CostYTD
   dataType: MONEY
   dataTypeRef: 
@@ -721,8 +683,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritory.column.costlastyear
   description: Business costs in the territory the previous year.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CostLastYear
   dataType: MONEY
   dataTypeRef: 
@@ -747,8 +707,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritory.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -773,8 +731,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritory.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

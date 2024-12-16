@@ -2,8 +2,6 @@
 type: Table
 id: table.sales.creditcard
 description: Customer credit card information.
-createdAt: 2023-05-08T12:07:29.4300000
-lastModifiedAt: 2023-05-08T12:07:39.0100000
 name: Sales.CreditCard
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.sales.creditcard.index.ak_creditcard_cardnumber
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_CreditCard_CardNumber
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.creditcard.index.ak_creditcard_cardnumber.indexedcolumn.cardnumber
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CardNumber
     columnRef:
       name: CardNumber
@@ -173,8 +167,6 @@ indexes:
 - type: Index
   id: table.sales.creditcard.index.pk_creditcard_creditcardid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_CreditCard_CreditCardID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -186,8 +178,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.creditcard.index.pk_creditcard_creditcardid.indexedcolumn.creditcardid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CreditCardID
     columnRef:
       name: CreditCardID
@@ -322,8 +312,6 @@ columns:
 - type: TableColumn
   id: table.sales.creditcard.column.creditcardid
   description: Primary key for CreditCard records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CreditCardID
   dataType: INT
   dataTypeRef: 
@@ -348,8 +336,6 @@ columns:
 - type: TableColumn
   id: table.sales.creditcard.column.cardtype
   description: Credit card name.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CardType
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -374,8 +360,6 @@ columns:
 - type: TableColumn
   id: table.sales.creditcard.column.cardnumber
   description: Credit card number.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CardNumber
   dataType: NVARCHAR(25)
   dataTypeRef: 
@@ -400,8 +384,6 @@ columns:
 - type: TableColumn
   id: table.sales.creditcard.column.expmonth
   description: Credit card expiration month.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ExpMonth
   dataType: TINYINT
   dataTypeRef: 
@@ -426,8 +408,6 @@ columns:
 - type: TableColumn
   id: table.sales.creditcard.column.expyear
   description: Credit card expiration year.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ExpYear
   dataType: SMALLINT
   dataTypeRef: 
@@ -452,8 +432,6 @@ columns:
 - type: TableColumn
   id: table.sales.creditcard.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

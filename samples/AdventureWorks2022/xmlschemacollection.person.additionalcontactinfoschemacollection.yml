@@ -2,8 +2,6 @@
 type: XmlSchemaCollection
 id: xmlschemacollection.person.additionalcontactinfoschemacollection
 description: Collection of XML schemas for the AdditionalContactInfo column in the Person.Contact table.
-createdAt: 0001-01-01T00:00:00.0000000
-lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: Person.AdditionalContactInfoSchemaCollection
 schemas:
 - id: schema_1

@@ -2,15 +2,11 @@
 type: Table
 id: table.production.product
 description: Products sold or used in the manfacturing of sold products.
-createdAt: 2023-05-08T12:07:29.4900000
-lastModifiedAt: 2023-05-08T12:07:39.5300000
 name: Production.Product
 foreignKeys:
 - type: ForeignKey
   id: table.production.product.foreignkey.fk_product_productmodel_productmodelid
   description: Foreign key constraint referencing ProductModel.ProductModelID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_Product_ProductModel_ProductModelID
   columns:
   - name: ProductModelID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.production.product.foreignkey.fk_product_productsubcategory_productsubcategoryid
   description: Foreign key constraint referencing ProductSubcategory.ProductSubcategoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_Product_ProductSubcategory_ProductSubcategoryID
   columns:
   - name: ProductSubcategoryID
@@ -49,8 +43,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.production.product.foreignkey.fk_product_unitmeasure_sizeunitmeasurecode
   description: Foreign key constraint referencing UnitMeasure.UnitMeasureCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_Product_UnitMeasure_SizeUnitMeasureCode
   columns:
   - name: SizeUnitMeasureCode
@@ -69,8 +61,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.production.product.foreignkey.fk_product_unitmeasure_weightunitmeasurecode
   description: Foreign key constraint referencing UnitMeasure.UnitMeasureCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_Product_UnitMeasure_WeightUnitMeasureCode
   columns:
   - name: WeightUnitMeasureCode
@@ -90,8 +80,6 @@ checks:
 - type: CheckConstraint
   id: table.production.product.check.ck_product_class
   description: Check constraint [Class]='h' OR [Class]='m' OR [Class]='l' OR [Class]='H' OR [Class]='M' OR [Class]='L' OR [Class] IS NULL
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Product_Class
   isChecked: true
   isEnabled: true
@@ -101,8 +89,6 @@ checks:
 - type: CheckConstraint
   id: table.production.product.check.ck_product_daystomanufacture
   description: Check constraint [DaysToManufacture] >= (0)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Product_DaysToManufacture
   isChecked: true
   isEnabled: true
@@ -112,8 +98,6 @@ checks:
 - type: CheckConstraint
   id: table.production.product.check.ck_product_listprice
   description: Check constraint [ListPrice] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Product_ListPrice
   isChecked: true
   isEnabled: true
@@ -123,8 +107,6 @@ checks:
 - type: CheckConstraint
   id: table.production.product.check.ck_product_productline
   description: Check constraint [ProductLine]='r' OR [ProductLine]='m' OR [ProductLine]='t' OR [ProductLine]='s' OR [ProductLine]='R' OR [ProductLine]='M' OR [ProductLine]='T' OR [ProductLine]='S' OR [ProductLine] IS NULL
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Product_ProductLine
   isChecked: true
   isEnabled: true
@@ -134,8 +116,6 @@ checks:
 - type: CheckConstraint
   id: table.production.product.check.ck_product_reorderpoint
   description: Check constraint [ReorderPoint] > (0)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Product_ReorderPoint
   isChecked: true
   isEnabled: true
@@ -145,8 +125,6 @@ checks:
 - type: CheckConstraint
   id: table.production.product.check.ck_product_safetystocklevel
   description: Check constraint [SafetyStockLevel] > (0)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Product_SafetyStockLevel
   isChecked: true
   isEnabled: true
@@ -156,8 +134,6 @@ checks:
 - type: CheckConstraint
   id: table.production.product.check.ck_product_sellenddate
   description: Check constraint [SellEndDate] >= [SellStartDate] OR [SellEndDate] IS NULL
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Product_SellEndDate
   isChecked: true
   isEnabled: true
@@ -167,8 +143,6 @@ checks:
 - type: CheckConstraint
   id: table.production.product.check.ck_product_standardcost
   description: Check constraint [SafetyStockLevel] > (0)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Product_StandardCost
   isChecked: true
   isEnabled: true
@@ -178,8 +152,6 @@ checks:
 - type: CheckConstraint
   id: table.production.product.check.ck_product_style
   description: Check constraint [Style]='u' OR [Style]='m' OR [Style]='w' OR [Style]='U' OR [Style]='M' OR [Style]='W' OR [Style] IS NULL
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Product_Style
   isChecked: true
   isEnabled: true
@@ -189,8 +161,6 @@ checks:
 - type: CheckConstraint
   id: table.production.product.check.ck_product_weight
   description: Check constraint [Weight] > (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_Product_Weight
   isChecked: true
   isEnabled: true
@@ -216,8 +186,6 @@ indexes:
 - type: Index
   id: table.production.product.index.ak_product_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Product_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -229,8 +197,6 @@ indexes:
   - type: IndexColumn
     id: table.production.product.index.ak_product_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -363,8 +329,6 @@ indexes:
 - type: Index
   id: table.production.product.index.ak_product_productnumber
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Product_ProductNumber
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -376,8 +340,6 @@ indexes:
   - type: IndexColumn
     id: table.production.product.index.ak_product_productnumber.indexedcolumn.productnumber
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductNumber
     columnRef:
       name: ProductNumber
@@ -510,8 +472,6 @@ indexes:
 - type: Index
   id: table.production.product.index.ak_product_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Product_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -523,8 +483,6 @@ indexes:
   - type: IndexColumn
     id: table.production.product.index.ak_product_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -657,8 +615,6 @@ indexes:
 - type: Index
   id: table.production.product.index.pk_product_productid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Product_ProductID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -670,8 +626,6 @@ indexes:
   - type: IndexColumn
     id: table.production.product.index.pk_product_productid.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -806,8 +760,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.productid
   description: Primary key for Product records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -832,8 +784,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.name
   description: Name of the product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -861,8 +811,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.productnumber
   description: Unique product identification number.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductNumber
   dataType: NVARCHAR(25)
   dataTypeRef: 
@@ -887,8 +835,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.makeflag
   description: 0 = Product is purchased, 1 = Product is manufactured in-house.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MakeFlag
   dataType: '[dbo].[Flag]'
   dataTypeRef:
@@ -916,8 +862,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.finishedgoodsflag
   description: 0 = Product is not a salable item. 1 = Product is salable.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FinishedGoodsFlag
   dataType: '[dbo].[Flag]'
   dataTypeRef:
@@ -945,8 +889,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.color
   description: Product color.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Color
   dataType: NVARCHAR(15)
   dataTypeRef: 
@@ -971,8 +913,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.safetystocklevel
   description: 'Minimum inventory quantity. '
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SafetyStockLevel
   dataType: SMALLINT
   dataTypeRef: 
@@ -997,8 +937,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.reorderpoint
   description: 'Inventory level that triggers a purchase order or work order. '
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ReorderPoint
   dataType: SMALLINT
   dataTypeRef: 
@@ -1023,8 +961,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.standardcost
   description: Standard cost of the product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StandardCost
   dataType: MONEY
   dataTypeRef: 
@@ -1049,8 +985,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.listprice
   description: Selling price.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ListPrice
   dataType: MONEY
   dataTypeRef: 
@@ -1075,8 +1009,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.size
   description: Product size.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Size
   dataType: NVARCHAR(5)
   dataTypeRef: 
@@ -1101,8 +1033,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.sizeunitmeasurecode
   description: Unit of measure for Size column.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SizeUnitMeasureCode
   dataType: NCHAR(3)
   dataTypeRef: 
@@ -1130,8 +1060,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.weightunitmeasurecode
   description: Unit of measure for Weight column.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: WeightUnitMeasureCode
   dataType: NCHAR(3)
   dataTypeRef: 
@@ -1159,8 +1087,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.weight
   description: Product weight.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Weight
   dataType: DECIMAL
   dataTypeRef: 
@@ -1185,8 +1111,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.daystomanufacture
   description: Number of days required to manufacture the product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DaysToManufacture
   dataType: INT
   dataTypeRef: 
@@ -1211,8 +1135,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.productline
   description: R = Road, M = Mountain, T = Touring, S = Standard
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductLine
   dataType: NCHAR(2)
   dataTypeRef: 
@@ -1237,8 +1159,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.class
   description: H = High, M = Medium, L = Low
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Class
   dataType: NCHAR(2)
   dataTypeRef: 
@@ -1263,8 +1183,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.style
   description: W = Womens, M = Mens, U = Universal
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Style
   dataType: NCHAR(2)
   dataTypeRef: 
@@ -1289,8 +1207,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.productsubcategoryid
   description: 'Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID. '
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductSubcategoryID
   dataType: INT
   dataTypeRef: 
@@ -1318,8 +1234,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.productmodelid
   description: Product is a member of this product model. Foreign key to ProductModel.ProductModelID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductModelID
   dataType: INT
   dataTypeRef: 
@@ -1347,8 +1261,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.sellstartdate
   description: Date the product was available for sale.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SellStartDate
   dataType: DATETIME
   dataTypeRef: 
@@ -1373,8 +1285,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.sellenddate
   description: Date the product was no longer available for sale.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SellEndDate
   dataType: DATETIME
   dataTypeRef: 
@@ -1399,8 +1309,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.discontinueddate
   description: Date the product was discontinued.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DiscontinuedDate
   dataType: DATETIME
   dataTypeRef: 
@@ -1425,8 +1333,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -1451,8 +1357,6 @@ columns:
 - type: TableColumn
   id: table.production.product.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

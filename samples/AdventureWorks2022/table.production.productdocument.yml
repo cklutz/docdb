@@ -2,15 +2,11 @@
 type: Table
 id: table.production.productdocument
 description: Cross-reference table mapping products to related product documents.
-createdAt: 2023-05-08T12:07:29.5030000
-lastModifiedAt: 2023-05-08T12:07:38.7970000
 name: Production.ProductDocument
 foreignKeys:
 - type: ForeignKey
   id: table.production.productdocument.foreignkey.fk_productdocument_document_documentnode
   description: Foreign key constraint referencing Document.DocumentNode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductDocument_Document_DocumentNode
   columns:
   - name: DocumentNode
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.production.productdocument.foreignkey.fk_productdocument_product_productid
   description: Foreign key constraint referencing Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductDocument_Product_ProductID
   columns:
   - name: ProductID
@@ -66,8 +60,6 @@ indexes:
 - type: Index
   id: table.production.productdocument.index.pk_productdocument_productid_documentnode
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ProductDocument_ProductID_DocumentNode
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -79,8 +71,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productdocument.index.pk_productdocument_productid_documentnode.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -94,8 +84,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productdocument.index.pk_productdocument_productid_documentnode.indexedcolumn.documentnode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: DocumentNode
     columnRef:
       name: DocumentNode
@@ -230,8 +218,6 @@ columns:
 - type: TableColumn
   id: table.production.productdocument.column.productid
   description: Product identification number. Foreign key to Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -259,8 +245,6 @@ columns:
 - type: TableColumn
   id: table.production.productdocument.column.documentnode
   description: Document identification number. Foreign key to Document.DocumentNode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DocumentNode
   dataType: HIERARCHYID
   dataTypeRef: 
@@ -288,8 +272,6 @@ columns:
 - type: TableColumn
   id: table.production.productdocument.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

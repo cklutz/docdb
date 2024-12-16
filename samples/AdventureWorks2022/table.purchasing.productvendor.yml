@@ -2,15 +2,11 @@
 type: Table
 id: table.purchasing.productvendor
 description: Cross-reference table mapping vendors with the products they supply.
-createdAt: 2023-05-08T12:07:29.5330000
-lastModifiedAt: 2023-05-08T12:07:38.8400000
 name: Purchasing.ProductVendor
 foreignKeys:
 - type: ForeignKey
   id: table.purchasing.productvendor.foreignkey.fk_productvendor_product_productid
   description: Foreign key constraint referencing Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductVendor_Product_ProductID
   columns:
   - name: ProductID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.purchasing.productvendor.foreignkey.fk_productvendor_unitmeasure_unitmeasurecode
   description: Foreign key constraint referencing UnitMeasure.UnitMeasureCode.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductVendor_UnitMeasure_UnitMeasureCode
   columns:
   - name: UnitMeasureCode
@@ -49,8 +43,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.purchasing.productvendor.foreignkey.fk_productvendor_vendor_businessentityid
   description: Foreign key constraint referencing Vendor.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductVendor_Vendor_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -70,8 +62,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.productvendor.check.ck_productvendor_averageleadtime
   description: Check constraint [AverageLeadTime] >= (1)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_ProductVendor_AverageLeadTime
   isChecked: true
   isEnabled: true
@@ -81,8 +71,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.productvendor.check.ck_productvendor_lastreceiptcost
   description: Check constraint [LastReceiptCost] > (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_ProductVendor_LastReceiptCost
   isChecked: true
   isEnabled: true
@@ -92,8 +80,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.productvendor.check.ck_productvendor_maxorderqty
   description: Check constraint [MaxOrderQty] >= (1)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_ProductVendor_MaxOrderQty
   isChecked: true
   isEnabled: true
@@ -103,8 +89,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.productvendor.check.ck_productvendor_minorderqty
   description: Check constraint [MinOrderQty] >= (1)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_ProductVendor_MinOrderQty
   isChecked: true
   isEnabled: true
@@ -114,8 +98,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.productvendor.check.ck_productvendor_onorderqty
   description: Check constraint [OnOrderQty] >= (0)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_ProductVendor_OnOrderQty
   isChecked: true
   isEnabled: true
@@ -125,8 +107,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.productvendor.check.ck_productvendor_standardprice
   description: Check constraint [StandardPrice] > (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_ProductVendor_StandardPrice
   isChecked: true
   isEnabled: true
@@ -152,8 +132,6 @@ indexes:
 - type: Index
   id: table.purchasing.productvendor.index.ix_productvendor_businessentityid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_ProductVendor_BusinessEntityID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -165,8 +143,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.productvendor.index.ix_productvendor_businessentityid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -299,8 +275,6 @@ indexes:
 - type: Index
   id: table.purchasing.productvendor.index.ix_productvendor_unitmeasurecode
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_ProductVendor_UnitMeasureCode
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -312,8 +286,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.productvendor.index.ix_productvendor_unitmeasurecode.indexedcolumn.unitmeasurecode
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: UnitMeasureCode
     columnRef:
       name: UnitMeasureCode
@@ -446,8 +418,6 @@ indexes:
 - type: Index
   id: table.purchasing.productvendor.index.pk_productvendor_productid_businessentityid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ProductVendor_ProductID_BusinessEntityID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -459,8 +429,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.productvendor.index.pk_productvendor_productid_businessentityid.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -474,8 +442,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.productvendor.index.pk_productvendor_productid_businessentityid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -610,8 +576,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.productid
   description: Primary key. Foreign key to Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -639,8 +603,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.businessentityid
   description: Primary key. Foreign key to Vendor.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -668,8 +630,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.averageleadtime
   description: The average span of time (in days) between placing an order with the vendor and receiving the purchased product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AverageLeadTime
   dataType: INT
   dataTypeRef: 
@@ -694,8 +654,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.standardprice
   description: The vendor's usual selling price.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StandardPrice
   dataType: MONEY
   dataTypeRef: 
@@ -720,8 +678,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.lastreceiptcost
   description: The selling price when last purchased.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LastReceiptCost
   dataType: MONEY
   dataTypeRef: 
@@ -746,8 +702,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.lastreceiptdate
   description: Date the product was last received by the vendor.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LastReceiptDate
   dataType: DATETIME
   dataTypeRef: 
@@ -772,8 +726,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.minorderqty
   description: The maximum quantity that should be ordered.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MinOrderQty
   dataType: INT
   dataTypeRef: 
@@ -798,8 +750,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.maxorderqty
   description: The minimum quantity that should be ordered.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MaxOrderQty
   dataType: INT
   dataTypeRef: 
@@ -824,8 +774,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.onorderqty
   description: The quantity currently on order.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OnOrderQty
   dataType: INT
   dataTypeRef: 
@@ -850,8 +798,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.unitmeasurecode
   description: The product's unit of measure.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: UnitMeasureCode
   dataType: NCHAR(3)
   dataTypeRef: 
@@ -879,8 +825,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.productvendor.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

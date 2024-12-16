@@ -2,15 +2,11 @@
 type: StoredProcedure
 id: storedprocedure.dbo.tvp
 description: 
-createdAt: 2024-12-16T11:48:55.0770000
-lastModifiedAt: 2024-12-16T11:48:55.0770000
 name: dbo.Tvp
 parameters:
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.tvp.param.@p0
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: '@p0'
   isOutputParameter: false
   isCursorParameter: false

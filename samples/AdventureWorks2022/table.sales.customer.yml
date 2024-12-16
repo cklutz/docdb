@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.customer
 description: Current customer information. Also see the Person and Store tables.
-createdAt: 2023-05-08T12:07:29.4400000
-lastModifiedAt: 2023-05-08T12:07:39.0100000
 name: Sales.Customer
 foreignKeys:
 - type: ForeignKey
   id: table.sales.customer.foreignkey.fk_customer_person_personid
   description: Foreign key constraint referencing Person.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_Customer_Person_PersonID
   columns:
   - name: PersonID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.customer.foreignkey.fk_customer_salesterritory_territoryid
   description: Foreign key constraint referencing SalesTerritory.TerritoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_Customer_SalesTerritory_TerritoryID
   columns:
   - name: TerritoryID
@@ -49,8 +43,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.customer.foreignkey.fk_customer_store_storeid
   description: Foreign key constraint referencing Store.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_Customer_Store_StoreID
   columns:
   - name: StoreID
@@ -86,8 +78,6 @@ indexes:
 - type: Index
   id: table.sales.customer.index.ak_customer_accountnumber
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Customer_AccountNumber
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -99,8 +89,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.customer.index.ak_customer_accountnumber.indexedcolumn.accountnumber
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: AccountNumber
     columnRef:
       name: AccountNumber
@@ -233,8 +221,6 @@ indexes:
 - type: Index
   id: table.sales.customer.index.ak_customer_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Customer_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -246,8 +232,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.customer.index.ak_customer_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -380,8 +364,6 @@ indexes:
 - type: Index
   id: table.sales.customer.index.ix_customer_territoryid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_Customer_TerritoryID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -393,8 +375,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.customer.index.ix_customer_territoryid.indexedcolumn.territoryid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: TerritoryID
     columnRef:
       name: TerritoryID
@@ -527,8 +507,6 @@ indexes:
 - type: Index
   id: table.sales.customer.index.pk_customer_customerid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Customer_CustomerID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -540,8 +518,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.customer.index.pk_customer_customerid.indexedcolumn.customerid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CustomerID
     columnRef:
       name: CustomerID
@@ -676,8 +652,6 @@ columns:
 - type: TableColumn
   id: table.sales.customer.column.customerid
   description: Primary key.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CustomerID
   dataType: INT
   dataTypeRef: 
@@ -702,8 +676,6 @@ columns:
 - type: TableColumn
   id: table.sales.customer.column.personid
   description: Foreign key to Person.BusinessEntityID
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PersonID
   dataType: INT
   dataTypeRef: 
@@ -731,8 +703,6 @@ columns:
 - type: TableColumn
   id: table.sales.customer.column.storeid
   description: Foreign key to Store.BusinessEntityID
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StoreID
   dataType: INT
   dataTypeRef: 
@@ -760,8 +730,6 @@ columns:
 - type: TableColumn
   id: table.sales.customer.column.territoryid
   description: ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryID
   dataType: INT
   dataTypeRef: 
@@ -789,8 +757,6 @@ columns:
 - type: TableColumn
   id: table.sales.customer.column.accountnumber
   description: Unique number identifying the customer assigned by the accounting system.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AccountNumber
   dataType: VARCHAR(10)
   dataTypeRef: 
@@ -815,8 +781,6 @@ columns:
 - type: TableColumn
   id: table.sales.customer.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -841,8 +805,6 @@ columns:
 - type: TableColumn
   id: table.sales.customer.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

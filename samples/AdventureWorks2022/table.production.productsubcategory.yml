@@ -2,15 +2,11 @@
 type: Table
 id: table.production.productsubcategory
 description: Product subcategories. See ProductCategory table.
-createdAt: 2023-05-08T12:07:29.5300000
-lastModifiedAt: 2023-05-08T12:07:38.8370000
 name: Production.ProductSubcategory
 foreignKeys:
 - type: ForeignKey
   id: table.production.productsubcategory.foreignkey.fk_productsubcategory_productcategory_productcategoryid
   description: Foreign key constraint referencing ProductCategory.ProductCategoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductSubcategory_ProductCategory_ProductCategoryID
   columns:
   - name: ProductCategoryID
@@ -46,8 +42,6 @@ indexes:
 - type: Index
   id: table.production.productsubcategory.index.ak_productsubcategory_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_ProductSubcategory_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -59,8 +53,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productsubcategory.index.ak_productsubcategory_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -193,8 +185,6 @@ indexes:
 - type: Index
   id: table.production.productsubcategory.index.ak_productsubcategory_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_ProductSubcategory_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -206,8 +196,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productsubcategory.index.ak_productsubcategory_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -340,8 +328,6 @@ indexes:
 - type: Index
   id: table.production.productsubcategory.index.pk_productsubcategory_productsubcategoryid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ProductSubcategory_ProductSubcategoryID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -353,8 +339,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productsubcategory.index.pk_productsubcategory_productsubcategoryid.indexedcolumn.productsubcategoryid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductSubcategoryID
     columnRef:
       name: ProductSubcategoryID
@@ -489,8 +473,6 @@ columns:
 - type: TableColumn
   id: table.production.productsubcategory.column.productsubcategoryid
   description: Primary key for ProductSubcategory records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductSubcategoryID
   dataType: INT
   dataTypeRef: 
@@ -515,8 +497,6 @@ columns:
 - type: TableColumn
   id: table.production.productsubcategory.column.productcategoryid
   description: Product category identification number. Foreign key to ProductCategory.ProductCategoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductCategoryID
   dataType: INT
   dataTypeRef: 
@@ -544,8 +524,6 @@ columns:
 - type: TableColumn
   id: table.production.productsubcategory.column.name
   description: Subcategory description.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -573,8 +551,6 @@ columns:
 - type: TableColumn
   id: table.production.productsubcategory.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -599,8 +575,6 @@ columns:
 - type: TableColumn
   id: table.production.productsubcategory.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.personcreditcard
 description: 'Cross-reference table mapping people to their credit card information in the CreditCard table. '
-createdAt: 2023-05-08T12:07:29.4800000
-lastModifiedAt: 2023-05-08T12:07:38.7230000
 name: Sales.PersonCreditCard
 foreignKeys:
 - type: ForeignKey
   id: table.sales.personcreditcard.foreignkey.fk_personcreditcard_creditcard_creditcardid
   description: Foreign key constraint referencing CreditCard.CreditCardID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_PersonCreditCard_CreditCard_CreditCardID
   columns:
   - name: CreditCardID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.personcreditcard.foreignkey.fk_personcreditcard_person_businessentityid
   description: Foreign key constraint referencing Person.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_PersonCreditCard_Person_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -66,8 +60,6 @@ indexes:
 - type: Index
   id: table.sales.personcreditcard.index.pk_personcreditcard_businessentityid_creditcardid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_PersonCreditCard_BusinessEntityID_CreditCardID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -79,8 +71,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.personcreditcard.index.pk_personcreditcard_businessentityid_creditcardid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -94,8 +84,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.personcreditcard.index.pk_personcreditcard_businessentityid_creditcardid.indexedcolumn.creditcardid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CreditCardID
     columnRef:
       name: CreditCardID
@@ -230,8 +218,6 @@ columns:
 - type: TableColumn
   id: table.sales.personcreditcard.column.businessentityid
   description: Business entity identification number. Foreign key to Person.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -259,8 +245,6 @@ columns:
 - type: TableColumn
   id: table.sales.personcreditcard.column.creditcardid
   description: Credit card identification number. Foreign key to CreditCard.CreditCardID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CreditCardID
   dataType: INT
   dataTypeRef: 
@@ -288,8 +272,6 @@ columns:
 - type: TableColumn
   id: table.sales.personcreditcard.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

@@ -2,15 +2,11 @@
 type: Table
 id: table.production.workorderrouting
 description: Work order details.
-createdAt: 2023-05-08T12:07:29.6300000
-lastModifiedAt: 2023-05-08T12:07:39.3200000
 name: Production.WorkOrderRouting
 foreignKeys:
 - type: ForeignKey
   id: table.production.workorderrouting.foreignkey.fk_workorderrouting_location_locationid
   description: Foreign key constraint referencing Location.LocationID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_WorkOrderRouting_Location_LocationID
   columns:
   - name: LocationID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.production.workorderrouting.foreignkey.fk_workorderrouting_workorder_workorderid
   description: Foreign key constraint referencing WorkOrder.WorkOrderID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_WorkOrderRouting_WorkOrder_WorkOrderID
   columns:
   - name: WorkOrderID
@@ -50,8 +44,6 @@ checks:
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_actualcost
   description: Check constraint [ActualCost] > (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_WorkOrderRouting_ActualCost
   isChecked: true
   isEnabled: true
@@ -61,8 +53,6 @@ checks:
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_actualenddate
   description: Check constraint [ActualEndDate] >= [ActualStartDate] OR [ActualEndDate] IS NULL OR [ActualStartDate] IS NULL
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_WorkOrderRouting_ActualEndDate
   isChecked: true
   isEnabled: true
@@ -72,8 +62,6 @@ checks:
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_actualresourcehrs
   description: Check constraint [ActualResourceHrs] >= (0.0000)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_WorkOrderRouting_ActualResourceHrs
   isChecked: true
   isEnabled: true
@@ -83,8 +71,6 @@ checks:
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_plannedcost
   description: Check constraint [PlannedCost] > (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_WorkOrderRouting_PlannedCost
   isChecked: true
   isEnabled: true
@@ -94,8 +80,6 @@ checks:
 - type: CheckConstraint
   id: table.production.workorderrouting.check.ck_workorderrouting_scheduledenddate
   description: Check constraint [ScheduledEndDate] >= [ScheduledStartDate]
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_WorkOrderRouting_ScheduledEndDate
   isChecked: true
   isEnabled: true
@@ -121,8 +105,6 @@ indexes:
 - type: Index
   id: table.production.workorderrouting.index.ix_workorderrouting_productid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_WorkOrderRouting_ProductID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -134,8 +116,6 @@ indexes:
   - type: IndexColumn
     id: table.production.workorderrouting.index.ix_workorderrouting_productid.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -268,8 +248,6 @@ indexes:
 - type: Index
   id: table.production.workorderrouting.index.pk_workorderrouting_workorderid_productid_operationsequence
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_WorkOrderRouting_WorkOrderID_ProductID_OperationSequence
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -281,8 +259,6 @@ indexes:
   - type: IndexColumn
     id: table.production.workorderrouting.index.pk_workorderrouting_workorderid_productid_operationsequence.indexedcolumn.workorderid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: WorkOrderID
     columnRef:
       name: WorkOrderID
@@ -296,8 +272,6 @@ indexes:
   - type: IndexColumn
     id: table.production.workorderrouting.index.pk_workorderrouting_workorderid_productid_operationsequence.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -311,8 +285,6 @@ indexes:
   - type: IndexColumn
     id: table.production.workorderrouting.index.pk_workorderrouting_workorderid_productid_operationsequence.indexedcolumn.operationsequence
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: OperationSequence
     columnRef:
       name: OperationSequence
@@ -447,8 +419,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.workorderid
   description: Primary key. Foreign key to WorkOrder.WorkOrderID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: WorkOrderID
   dataType: INT
   dataTypeRef: 
@@ -476,8 +446,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.productid
   description: Primary key. Foreign key to Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -502,8 +470,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.operationsequence
   description: Primary key. Indicates the manufacturing process sequence.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OperationSequence
   dataType: SMALLINT
   dataTypeRef: 
@@ -528,8 +494,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.locationid
   description: Manufacturing location where the part is processed. Foreign key to Location.LocationID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LocationID
   dataType: SMALLINT
   dataTypeRef: 
@@ -557,8 +521,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.scheduledstartdate
   description: Planned manufacturing start date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ScheduledStartDate
   dataType: DATETIME
   dataTypeRef: 
@@ -583,8 +545,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.scheduledenddate
   description: Planned manufacturing end date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ScheduledEndDate
   dataType: DATETIME
   dataTypeRef: 
@@ -609,8 +569,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.actualstartdate
   description: Actual start date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ActualStartDate
   dataType: DATETIME
   dataTypeRef: 
@@ -635,8 +593,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.actualenddate
   description: Actual end date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ActualEndDate
   dataType: DATETIME
   dataTypeRef: 
@@ -661,8 +617,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.actualresourcehrs
   description: Number of manufacturing hours used.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ActualResourceHrs
   dataType: DECIMAL
   dataTypeRef: 
@@ -687,8 +641,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.plannedcost
   description: Estimated manufacturing cost.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PlannedCost
   dataType: MONEY
   dataTypeRef: 
@@ -713,8 +665,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.actualcost
   description: Actual manufacturing cost.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ActualCost
   dataType: MONEY
   dataTypeRef: 
@@ -739,8 +689,6 @@ columns:
 - type: TableColumn
   id: table.production.workorderrouting.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

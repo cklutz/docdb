@@ -2,8 +2,6 @@
 type: XmlSchemaCollection
 id: xmlschemacollection.person.individualsurveyschemacollection
 description: Collection of XML schemas for the Demographics column in the Person.Person table.
-createdAt: 0001-01-01T00:00:00.0000000
-lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: Person.IndividualSurveySchemaCollection
 schemas:
 - id: schema_1

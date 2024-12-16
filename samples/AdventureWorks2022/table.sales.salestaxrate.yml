@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.salestaxrate
 description: Tax rate lookup table.
-createdAt: 2023-05-08T12:07:29.5730000
-lastModifiedAt: 2023-05-08T12:07:39.2430000
 name: Sales.SalesTaxRate
 foreignKeys:
 - type: ForeignKey
   id: table.sales.salestaxrate.foreignkey.fk_salestaxrate_stateprovince_stateprovinceid
   description: Foreign key constraint referencing StateProvince.StateProvinceID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesTaxRate_StateProvince_StateProvinceID
   columns:
   - name: StateProvinceID
@@ -30,8 +26,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salestaxrate.check.ck_salestaxrate_taxtype
   description: Check constraint [TaxType] BETWEEN (1) AND (3)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesTaxRate_TaxType
   isChecked: true
   isEnabled: true
@@ -57,8 +51,6 @@ indexes:
 - type: Index
   id: table.sales.salestaxrate.index.ak_salestaxrate_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SalesTaxRate_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -70,8 +62,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salestaxrate.index.ak_salestaxrate_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -204,8 +194,6 @@ indexes:
 - type: Index
   id: table.sales.salestaxrate.index.ak_salestaxrate_stateprovinceid_taxtype
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SalesTaxRate_StateProvinceID_TaxType
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -217,8 +205,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salestaxrate.index.ak_salestaxrate_stateprovinceid_taxtype.indexedcolumn.stateprovinceid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: StateProvinceID
     columnRef:
       name: StateProvinceID
@@ -232,8 +218,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salestaxrate.index.ak_salestaxrate_stateprovinceid_taxtype.indexedcolumn.taxtype
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: TaxType
     columnRef:
       name: TaxType
@@ -366,8 +350,6 @@ indexes:
 - type: Index
   id: table.sales.salestaxrate.index.pk_salestaxrate_salestaxrateid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_SalesTaxRate_SalesTaxRateID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -379,8 +361,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salestaxrate.index.pk_salestaxrate_salestaxrateid.indexedcolumn.salestaxrateid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: SalesTaxRateID
     columnRef:
       name: SalesTaxRateID
@@ -515,8 +495,6 @@ columns:
 - type: TableColumn
   id: table.sales.salestaxrate.column.salestaxrateid
   description: Primary key for SalesTaxRate records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SalesTaxRateID
   dataType: INT
   dataTypeRef: 
@@ -541,8 +519,6 @@ columns:
 - type: TableColumn
   id: table.sales.salestaxrate.column.stateprovinceid
   description: State, province, or country/region the sales tax applies to.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StateProvinceID
   dataType: INT
   dataTypeRef: 
@@ -570,8 +546,6 @@ columns:
 - type: TableColumn
   id: table.sales.salestaxrate.column.taxtype
   description: 1 = Tax applied to retail transactions, 2 = Tax applied to wholesale transactions, 3 = Tax applied to all sales (retail and wholesale) transactions.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TaxType
   dataType: TINYINT
   dataTypeRef: 
@@ -596,8 +570,6 @@ columns:
 - type: TableColumn
   id: table.sales.salestaxrate.column.taxrate
   description: Tax rate amount.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TaxRate
   dataType: SMALLMONEY
   dataTypeRef: 
@@ -622,8 +594,6 @@ columns:
 - type: TableColumn
   id: table.sales.salestaxrate.column.name
   description: Tax rate description.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -651,8 +621,6 @@ columns:
 - type: TableColumn
   id: table.sales.salestaxrate.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -677,8 +645,6 @@ columns:
 - type: TableColumn
   id: table.sales.salestaxrate.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

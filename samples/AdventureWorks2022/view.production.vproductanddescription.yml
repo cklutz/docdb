@@ -2,15 +2,11 @@
 type: View
 id: view.production.vproductanddescription
 description: Product names and descriptions. Product descriptions are provided in multiple languages.
-createdAt: 2023-05-08T12:07:39.5200000
-lastModifiedAt: 2024-12-13T16:37:17.7430000
 name: Production.vProductAndDescription
 indexes:
 - type: Index
   id: view.production.vproductanddescription.index.ix_vproductanddescription
   description: Clustered index on the view vProductAndDescription.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_vProductAndDescription
   indexType: CLUSTERED
   indexKeyType: ''
@@ -22,8 +18,6 @@ indexes:
   - type: IndexColumn
     id: view.production.vproductanddescription.index.ix_vproductanddescription.indexedcolumn.cultureid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CultureID
     columnRef:
       name: CultureID
@@ -37,8 +31,6 @@ indexes:
   - type: IndexColumn
     id: view.production.vproductanddescription.index.ix_vproductanddescription.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -173,8 +165,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductanddescription.column.productid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -199,8 +189,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductanddescription.column.name
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -228,8 +216,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductanddescription.column.productmodel
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductModel
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -257,8 +243,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductanddescription.column.cultureid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CultureID
   dataType: NCHAR(6)
   dataTypeRef: 
@@ -283,8 +267,6 @@ columns:
 - type: ViewColumn
   id: view.production.vproductanddescription.column.description
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Description
   dataType: NVARCHAR(400)
   dataTypeRef: 

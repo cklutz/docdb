@@ -2,8 +2,6 @@
 type: Assembly
 id: sqlassembly.testclrassembly
 description: 
-createdAt: 0001-01-01T00:00:00.0000000
-lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: TestClrAssembly
 assemblyName: TestClrAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 assemblySecurityLevel: Safe

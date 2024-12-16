@@ -2,8 +2,6 @@
 type: View
 id: view.humanresources.vjobcandidateemployment
 description: Displays the content from each employement history related element in the xml column Resume in the HumanResources.JobCandidate table. The content has been localized into French, Simplified Chinese and Thai. Some data may not display correctly unless supplemental language support is installed.
-createdAt: 2023-05-08T12:07:39.5030000
-lastModifiedAt: 2023-05-08T12:07:39.5030000
 name: HumanResources.vJobCandidateEmployment
 indexes: []
 triggers: []
@@ -11,8 +9,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.jobcandidateid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: JobCandidateID
   dataType: INT
   dataTypeRef: 
@@ -37,8 +33,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.startdate
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.StartDate
   dataType: DATETIME
   dataTypeRef: 
@@ -63,8 +57,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.enddate
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.EndDate
   dataType: DATETIME
   dataTypeRef: 
@@ -89,8 +81,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.orgname
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.OrgName
   dataType: NVARCHAR(100)
   dataTypeRef: 
@@ -115,8 +105,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.jobtitle
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.JobTitle
   dataType: NVARCHAR(100)
   dataTypeRef: 
@@ -141,8 +129,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.responsibility
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Responsibility
   dataType: NVARCHAR(MAX)
   dataTypeRef: 
@@ -167,8 +153,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.functioncategory
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.FunctionCategory
   dataType: NVARCHAR(MAX)
   dataTypeRef: 
@@ -193,8 +177,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.industrycategory
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.IndustryCategory
   dataType: NVARCHAR(MAX)
   dataTypeRef: 
@@ -219,8 +201,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.loc.countryregion
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Loc.CountryRegion
   dataType: NVARCHAR(MAX)
   dataTypeRef: 
@@ -245,8 +225,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.loc.state
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Loc.State
   dataType: NVARCHAR(MAX)
   dataTypeRef: 
@@ -271,8 +249,6 @@ columns:
 - type: ViewColumn
   id: view.humanresources.vjobcandidateemployment.column.emp.loc.city
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Emp.Loc.City
   dataType: NVARCHAR(MAX)
   dataTypeRef: 

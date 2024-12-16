@@ -2,15 +2,11 @@
 type: StoredProcedure
 id: storedprocedure.dbo.uspsearchcandidateresumes
 description: 
-createdAt: 2023-05-08T12:07:39.6400000
-lastModifiedAt: 2023-05-08T12:07:39.6400000
 name: dbo.uspSearchCandidateResumes
 parameters:
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspsearchcandidateresumes.param.@searchstring
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: '@searchString'
   isOutputParameter: false
   isCursorParameter: false
@@ -22,8 +18,6 @@ parameters:
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspsearchcandidateresumes.param.@useinflectional
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: '@useInflectional'
   isOutputParameter: false
   isCursorParameter: false
@@ -35,8 +29,6 @@ parameters:
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspsearchcandidateresumes.param.@usethesaurus
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: '@useThesaurus'
   isOutputParameter: false
   isCursorParameter: false
@@ -48,8 +40,6 @@ parameters:
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspsearchcandidateresumes.param.@language
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: '@language'
   isOutputParameter: false
   isCursorParameter: false

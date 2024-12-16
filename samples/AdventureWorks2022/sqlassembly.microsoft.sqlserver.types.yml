@@ -2,8 +2,6 @@
 type: Assembly
 id: sqlassembly.microsoft.sqlserver.types
 description: 
-createdAt: 0001-01-01T00:00:00.0000000
-lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: Microsoft.SqlServer.Types
 assemblyName: Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91
 assemblySecurityLevel: Unrestricted

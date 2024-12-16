@@ -2,15 +2,11 @@
 type: Table
 id: table.production.productproductphoto
 description: Cross-reference table mapping products and product photos.
-createdAt: 2023-05-08T12:07:29.5230000
-lastModifiedAt: 2023-05-08T12:07:38.8270000
 name: Production.ProductProductPhoto
 foreignKeys:
 - type: ForeignKey
   id: table.production.productproductphoto.foreignkey.fk_productproductphoto_product_productid
   description: Foreign key constraint referencing Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductProductPhoto_Product_ProductID
   columns:
   - name: ProductID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.production.productproductphoto.foreignkey.fk_productproductphoto_productphoto_productphotoid
   description: Foreign key constraint referencing ProductPhoto.ProductPhotoID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductProductPhoto_ProductPhoto_ProductPhotoID
   columns:
   - name: ProductPhotoID
@@ -66,8 +60,6 @@ indexes:
 - type: Index
   id: table.production.productproductphoto.index.pk_productproductphoto_productid_productphotoid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ProductProductPhoto_ProductID_ProductPhotoID
   indexType: NONCLUSTERED
   indexKeyType: PRIMARY
@@ -79,8 +71,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productproductphoto.index.pk_productproductphoto_productid_productphotoid.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -94,8 +84,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productproductphoto.index.pk_productproductphoto_productid_productphotoid.indexedcolumn.productphotoid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductPhotoID
     columnRef:
       name: ProductPhotoID
@@ -230,8 +218,6 @@ columns:
 - type: TableColumn
   id: table.production.productproductphoto.column.productid
   description: Product identification number. Foreign key to Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -259,8 +245,6 @@ columns:
 - type: TableColumn
   id: table.production.productproductphoto.column.productphotoid
   description: Product photo identification number. Foreign key to ProductPhoto.ProductPhotoID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductPhotoID
   dataType: INT
   dataTypeRef: 
@@ -288,8 +272,6 @@ columns:
 - type: TableColumn
   id: table.production.productproductphoto.column.primary
   description: 0 = Photo is not the principal image. 1 = Photo is the principal image.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Primary
   dataType: '[dbo].[Flag]'
   dataTypeRef:
@@ -317,8 +299,6 @@ columns:
 - type: TableColumn
   id: table.production.productproductphoto.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

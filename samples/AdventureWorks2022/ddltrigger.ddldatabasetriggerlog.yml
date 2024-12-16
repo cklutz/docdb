@@ -2,8 +2,6 @@
 type: DatabaseDdlTrigger
 id: ddltrigger.ddldatabasetriggerlog
 description: Database trigger to audit all of the DDL changes made to the AdventureWorks 2016 database.
-createdAt: 0001-01-01T00:00:00.0000000
-lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: ddlDatabaseTriggerLog
 ansiNulls: true
 quotedIdentifier: true

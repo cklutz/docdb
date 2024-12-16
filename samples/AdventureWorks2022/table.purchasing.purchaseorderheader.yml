@@ -2,15 +2,11 @@
 type: Table
 id: table.purchasing.purchaseorderheader
 description: General purchase order information. See PurchaseOrderDetail.
-createdAt: 2023-05-08T12:07:29.5430000
-lastModifiedAt: 2023-05-08T12:07:39.4200000
 name: Purchasing.PurchaseOrderHeader
 foreignKeys:
 - type: ForeignKey
   id: table.purchasing.purchaseorderheader.foreignkey.fk_purchaseorderheader_employee_employeeid
   description: Foreign key constraint referencing Employee.EmployeeID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_PurchaseOrderHeader_Employee_EmployeeID
   columns:
   - name: EmployeeID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.purchasing.purchaseorderheader.foreignkey.fk_purchaseorderheader_shipmethod_shipmethodid
   description: Foreign key constraint referencing ShipMethod.ShipMethodID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_PurchaseOrderHeader_ShipMethod_ShipMethodID
   columns:
   - name: ShipMethodID
@@ -49,8 +43,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.purchasing.purchaseorderheader.foreignkey.fk_purchaseorderheader_vendor_vendorid
   description: Foreign key constraint referencing Vendor.VendorID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_PurchaseOrderHeader_Vendor_VendorID
   columns:
   - name: VendorID
@@ -70,8 +62,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_freight
   description: Check constraint [Freight] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_PurchaseOrderHeader_Freight
   isChecked: true
   isEnabled: true
@@ -81,8 +71,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_shipdate
   description: Check constraint [ShipDate] >= [OrderDate] OR [ShipDate] IS NULL
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_PurchaseOrderHeader_ShipDate
   isChecked: true
   isEnabled: true
@@ -92,8 +80,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_status
   description: Check constraint [Status] BETWEEN (1) AND (4)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_PurchaseOrderHeader_Status
   isChecked: true
   isEnabled: true
@@ -103,8 +89,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_subtotal
   description: Check constraint [SubTotal] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_PurchaseOrderHeader_SubTotal
   isChecked: true
   isEnabled: true
@@ -114,8 +98,6 @@ checks:
 - type: CheckConstraint
   id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_taxamt
   description: Check constraint [TaxAmt] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_PurchaseOrderHeader_TaxAmt
   isChecked: true
   isEnabled: true
@@ -141,8 +123,6 @@ indexes:
 - type: Index
   id: table.purchasing.purchaseorderheader.index.ix_purchaseorderheader_employeeid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_PurchaseOrderHeader_EmployeeID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -154,8 +134,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.purchaseorderheader.index.ix_purchaseorderheader_employeeid.indexedcolumn.employeeid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: EmployeeID
     columnRef:
       name: EmployeeID
@@ -288,8 +266,6 @@ indexes:
 - type: Index
   id: table.purchasing.purchaseorderheader.index.ix_purchaseorderheader_vendorid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_PurchaseOrderHeader_VendorID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -301,8 +277,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.purchaseorderheader.index.ix_purchaseorderheader_vendorid.indexedcolumn.vendorid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: VendorID
     columnRef:
       name: VendorID
@@ -435,8 +409,6 @@ indexes:
 - type: Index
   id: table.purchasing.purchaseorderheader.index.pk_purchaseorderheader_purchaseorderid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_PurchaseOrderHeader_PurchaseOrderID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -448,8 +420,6 @@ indexes:
   - type: IndexColumn
     id: table.purchasing.purchaseorderheader.index.pk_purchaseorderheader_purchaseorderid.indexedcolumn.purchaseorderid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: PurchaseOrderID
     columnRef:
       name: PurchaseOrderID
@@ -583,8 +553,6 @@ triggers:
 - type: DmlTrigger
   id: table.purchasing.purchaseorderheader.trigger.upurchaseorderheader
   description: AFTER UPDATE trigger that updates the RevisionNumber and ModifiedDate columns in the PurchaseOrderHeader table.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Purchasing.uPurchaseOrderHeader
   isEnabled: true
   isSchemaBound: false
@@ -598,8 +566,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.purchaseorderid
   description: Primary key.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PurchaseOrderID
   dataType: INT
   dataTypeRef: 
@@ -624,8 +590,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.revisionnumber
   description: Incremental number to track changes to the purchase order over time.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: RevisionNumber
   dataType: TINYINT
   dataTypeRef: 
@@ -650,8 +614,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.status
   description: Order current status. 1 = Pending; 2 = Approved; 3 = Rejected; 4 = Complete
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Status
   dataType: TINYINT
   dataTypeRef: 
@@ -676,8 +638,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.employeeid
   description: Employee who created the purchase order. Foreign key to Employee.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmployeeID
   dataType: INT
   dataTypeRef: 
@@ -705,8 +665,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.vendorid
   description: Vendor with whom the purchase order is placed. Foreign key to Vendor.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: VendorID
   dataType: INT
   dataTypeRef: 
@@ -734,8 +692,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.shipmethodid
   description: Shipping method. Foreign key to ShipMethod.ShipMethodID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipMethodID
   dataType: INT
   dataTypeRef: 
@@ -763,8 +719,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.orderdate
   description: Purchase order creation date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrderDate
   dataType: DATETIME
   dataTypeRef: 
@@ -789,8 +743,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.shipdate
   description: Estimated shipment date from the vendor.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ShipDate
   dataType: DATETIME
   dataTypeRef: 
@@ -815,8 +767,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.subtotal
   description: Purchase order subtotal. Computed as SUM(PurchaseOrderDetail.LineTotal)for the appropriate PurchaseOrderID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SubTotal
   dataType: MONEY
   dataTypeRef: 
@@ -841,8 +791,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.taxamt
   description: Tax amount.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TaxAmt
   dataType: MONEY
   dataTypeRef: 
@@ -867,8 +815,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.freight
   description: Shipping cost.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Freight
   dataType: MONEY
   dataTypeRef: 
@@ -893,8 +839,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.totaldue
   description: Total due to vendor. Computed as Subtotal + TaxAmt + Freight.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TotalDue
   dataType: MONEY
   dataTypeRef: 
@@ -919,8 +863,6 @@ columns:
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

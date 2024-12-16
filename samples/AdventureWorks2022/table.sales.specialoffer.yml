@@ -2,16 +2,12 @@
 type: Table
 id: table.sales.specialoffer
 description: Sale discounts lookup table.
-createdAt: 2023-05-08T12:07:29.6000000
-lastModifiedAt: 2023-05-08T12:07:39.2630000
 name: Sales.SpecialOffer
 foreignKeys: []
 checks:
 - type: CheckConstraint
   id: table.sales.specialoffer.check.ck_specialoffer_discountpct
   description: Check constraint [DiscountPct] >= (0.00)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SpecialOffer_DiscountPct
   isChecked: true
   isEnabled: true
@@ -21,8 +17,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.specialoffer.check.ck_specialoffer_enddate
   description: Check constraint [EndDate] >= [StartDate]
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SpecialOffer_EndDate
   isChecked: true
   isEnabled: true
@@ -32,8 +26,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.specialoffer.check.ck_specialoffer_maxqty
   description: Check constraint [MaxQty] >= (0)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SpecialOffer_MaxQty
   isChecked: true
   isEnabled: true
@@ -43,8 +35,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.specialoffer.check.ck_specialoffer_minqty
   description: Check constraint [MinQty] >= (0)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SpecialOffer_MinQty
   isChecked: true
   isEnabled: true
@@ -70,8 +60,6 @@ indexes:
 - type: Index
   id: table.sales.specialoffer.index.ak_specialoffer_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SpecialOffer_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -83,8 +71,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.specialoffer.index.ak_specialoffer_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -217,8 +203,6 @@ indexes:
 - type: Index
   id: table.sales.specialoffer.index.pk_specialoffer_specialofferid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_SpecialOffer_SpecialOfferID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -230,8 +214,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.specialoffer.index.pk_specialoffer_specialofferid.indexedcolumn.specialofferid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: SpecialOfferID
     columnRef:
       name: SpecialOfferID
@@ -366,8 +348,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.specialofferid
   description: Primary key for SpecialOffer records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: SpecialOfferID
   dataType: INT
   dataTypeRef: 
@@ -392,8 +372,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.description
   description: Discount description.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Description
   dataType: NVARCHAR(255)
   dataTypeRef: 
@@ -418,8 +396,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.discountpct
   description: Discount precentage.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DiscountPct
   dataType: SMALLMONEY
   dataTypeRef: 
@@ -444,8 +420,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.type
   description: Discount type category.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Type
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -470,8 +444,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.category
   description: Group the discount applies to such as Reseller or Customer.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Category
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -496,8 +468,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.startdate
   description: Discount start date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StartDate
   dataType: DATETIME
   dataTypeRef: 
@@ -522,8 +492,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.enddate
   description: Discount end date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EndDate
   dataType: DATETIME
   dataTypeRef: 
@@ -548,8 +516,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.minqty
   description: Minimum discount percent allowed.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MinQty
   dataType: INT
   dataTypeRef: 
@@ -574,8 +540,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.maxqty
   description: Maximum discount percent allowed.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: MaxQty
   dataType: INT
   dataTypeRef: 
@@ -600,8 +564,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -626,8 +588,6 @@ columns:
 - type: TableColumn
   id: table.sales.specialoffer.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

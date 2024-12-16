@@ -2,15 +2,11 @@
 type: Table
 id: table.production.workorder
 description: Manufacturing work orders.
-createdAt: 2023-05-08T12:07:29.6270000
-lastModifiedAt: 2023-05-08T12:07:39.4400000
 name: Production.WorkOrder
 foreignKeys:
 - type: ForeignKey
   id: table.production.workorder.foreignkey.fk_workorder_product_productid
   description: Foreign key constraint referencing Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_WorkOrder_Product_ProductID
   columns:
   - name: ProductID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.production.workorder.foreignkey.fk_workorder_scrapreason_scrapreasonid
   description: Foreign key constraint referencing ScrapReason.ScrapReasonID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_WorkOrder_ScrapReason_ScrapReasonID
   columns:
   - name: ScrapReasonID
@@ -50,8 +44,6 @@ checks:
 - type: CheckConstraint
   id: table.production.workorder.check.ck_workorder_enddate
   description: Check constraint [EndDate] >= [StartDate] OR [EndDate] IS NULL
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_WorkOrder_EndDate
   isChecked: true
   isEnabled: true
@@ -61,8 +53,6 @@ checks:
 - type: CheckConstraint
   id: table.production.workorder.check.ck_workorder_orderqty
   description: Check constraint [OrderQty] > (0)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_WorkOrder_OrderQty
   isChecked: true
   isEnabled: true
@@ -72,8 +62,6 @@ checks:
 - type: CheckConstraint
   id: table.production.workorder.check.ck_workorder_scrappedqty
   description: Check constraint [ScrappedQty] >= (0)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_WorkOrder_ScrappedQty
   isChecked: true
   isEnabled: true
@@ -99,8 +87,6 @@ indexes:
 - type: Index
   id: table.production.workorder.index.ix_workorder_productid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_WorkOrder_ProductID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -112,8 +98,6 @@ indexes:
   - type: IndexColumn
     id: table.production.workorder.index.ix_workorder_productid.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -246,8 +230,6 @@ indexes:
 - type: Index
   id: table.production.workorder.index.ix_workorder_scrapreasonid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_WorkOrder_ScrapReasonID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -259,8 +241,6 @@ indexes:
   - type: IndexColumn
     id: table.production.workorder.index.ix_workorder_scrapreasonid.indexedcolumn.scrapreasonid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ScrapReasonID
     columnRef:
       name: ScrapReasonID
@@ -393,8 +373,6 @@ indexes:
 - type: Index
   id: table.production.workorder.index.pk_workorder_workorderid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_WorkOrder_WorkOrderID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -406,8 +384,6 @@ indexes:
   - type: IndexColumn
     id: table.production.workorder.index.pk_workorder_workorderid.indexedcolumn.workorderid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: WorkOrderID
     columnRef:
       name: WorkOrderID
@@ -541,8 +517,6 @@ triggers:
 - type: DmlTrigger
   id: table.production.workorder.trigger.iworkorder
   description: AFTER INSERT trigger that inserts a row in the TransactionHistory table.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Production.iWorkOrder
   isEnabled: true
   isSchemaBound: false
@@ -555,8 +529,6 @@ triggers:
 - type: DmlTrigger
   id: table.production.workorder.trigger.uworkorder
   description: AFTER UPDATE trigger that inserts a row in the TransactionHistory table, updates ModifiedDate in the WorkOrder table.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Production.uWorkOrder
   isEnabled: true
   isSchemaBound: false
@@ -570,8 +542,6 @@ columns:
 - type: TableColumn
   id: table.production.workorder.column.workorderid
   description: Primary key for WorkOrder records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: WorkOrderID
   dataType: INT
   dataTypeRef: 
@@ -596,8 +566,6 @@ columns:
 - type: TableColumn
   id: table.production.workorder.column.productid
   description: Product identification number. Foreign key to Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -625,8 +593,6 @@ columns:
 - type: TableColumn
   id: table.production.workorder.column.orderqty
   description: Product quantity to build.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: OrderQty
   dataType: INT
   dataTypeRef: 
@@ -651,8 +617,6 @@ columns:
 - type: TableColumn
   id: table.production.workorder.column.stockedqty
   description: Quantity built and put in inventory.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StockedQty
   dataType: INT
   dataTypeRef: 
@@ -677,8 +641,6 @@ columns:
 - type: TableColumn
   id: table.production.workorder.column.scrappedqty
   description: Quantity that failed inspection.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ScrappedQty
   dataType: SMALLINT
   dataTypeRef: 
@@ -703,8 +665,6 @@ columns:
 - type: TableColumn
   id: table.production.workorder.column.startdate
   description: Work order start date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StartDate
   dataType: DATETIME
   dataTypeRef: 
@@ -729,8 +689,6 @@ columns:
 - type: TableColumn
   id: table.production.workorder.column.enddate
   description: Work order end date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EndDate
   dataType: DATETIME
   dataTypeRef: 
@@ -755,8 +713,6 @@ columns:
 - type: TableColumn
   id: table.production.workorder.column.duedate
   description: Work order due date.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DueDate
   dataType: DATETIME
   dataTypeRef: 
@@ -781,8 +737,6 @@ columns:
 - type: TableColumn
   id: table.production.workorder.column.scrapreasonid
   description: Reason for inspection failure.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ScrapReasonID
   dataType: SMALLINT
   dataTypeRef: 
@@ -810,8 +764,6 @@ columns:
 - type: TableColumn
   id: table.production.workorder.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

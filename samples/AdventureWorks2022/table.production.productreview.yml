@@ -2,15 +2,11 @@
 type: Table
 id: table.production.productreview
 description: Customer reviews of products they have purchased.
-createdAt: 2023-05-08T12:07:29.5270000
-lastModifiedAt: 2023-05-08T12:07:38.8330000
 name: Production.ProductReview
 foreignKeys:
 - type: ForeignKey
   id: table.production.productreview.foreignkey.fk_productreview_product_productid
   description: Foreign key constraint referencing Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductReview_Product_ProductID
   columns:
   - name: ProductID
@@ -30,8 +26,6 @@ checks:
 - type: CheckConstraint
   id: table.production.productreview.check.ck_productreview_rating
   description: Check constraint [Rating] BETWEEN (1) AND (5)
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_ProductReview_Rating
   isChecked: true
   isEnabled: true
@@ -57,8 +51,6 @@ indexes:
 - type: Index
   id: table.production.productreview.index.ix_productreview_productid_name
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_ProductReview_ProductID_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -70,8 +62,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productreview.index.ix_productreview_productid_name.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -85,8 +75,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productreview.index.ix_productreview_productid_name.indexedcolumn.reviewername
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ReviewerName
     columnRef:
       name: ReviewerName
@@ -100,8 +88,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productreview.index.ix_productreview_productid_name.indexedcolumn.comments
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Comments
     columnRef:
       name: Comments
@@ -234,8 +220,6 @@ indexes:
 - type: Index
   id: table.production.productreview.index.pk_productreview_productreviewid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ProductReview_ProductReviewID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -247,8 +231,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productreview.index.pk_productreview_productreviewid.indexedcolumn.productreviewid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductReviewID
     columnRef:
       name: ProductReviewID
@@ -383,8 +365,6 @@ columns:
 - type: TableColumn
   id: table.production.productreview.column.productreviewid
   description: Primary key for ProductReview records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductReviewID
   dataType: INT
   dataTypeRef: 
@@ -409,8 +389,6 @@ columns:
 - type: TableColumn
   id: table.production.productreview.column.productid
   description: Product identification number. Foreign key to Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -438,8 +416,6 @@ columns:
 - type: TableColumn
   id: table.production.productreview.column.reviewername
   description: Name of the reviewer.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ReviewerName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -467,8 +443,6 @@ columns:
 - type: TableColumn
   id: table.production.productreview.column.reviewdate
   description: Date review was submitted.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ReviewDate
   dataType: DATETIME
   dataTypeRef: 
@@ -493,8 +467,6 @@ columns:
 - type: TableColumn
   id: table.production.productreview.column.emailaddress
   description: Reviewer's e-mail address.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmailAddress
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -519,8 +491,6 @@ columns:
 - type: TableColumn
   id: table.production.productreview.column.rating
   description: Product rating given by the reviewer. Scale is 1 to 5 with 5 as the highest rating.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Rating
   dataType: INT
   dataTypeRef: 
@@ -545,8 +515,6 @@ columns:
 - type: TableColumn
   id: table.production.productreview.column.comments
   description: Reviewer's comments
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Comments
   dataType: NVARCHAR(3850)
   dataTypeRef: 
@@ -571,8 +539,6 @@ columns:
 - type: TableColumn
   id: table.production.productreview.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

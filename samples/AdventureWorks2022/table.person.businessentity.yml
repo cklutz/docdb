@@ -2,8 +2,6 @@
 type: Table
 id: table.person.businessentity
 description: Source of the ID that connects vendors, customers, and employees with address and contact information.
-createdAt: 2023-05-08T12:07:29.4130000
-lastModifiedAt: 2023-05-08T12:07:39.2970000
 name: Person.BusinessEntity
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.person.businessentity.index.ak_businessentity_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_BusinessEntity_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.person.businessentity.index.ak_businessentity_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -173,8 +167,6 @@ indexes:
 - type: Index
   id: table.person.businessentity.index.pk_businessentity_businessentityid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_BusinessEntity_BusinessEntityID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -186,8 +178,6 @@ indexes:
   - type: IndexColumn
     id: table.person.businessentity.index.pk_businessentity_businessentityid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -322,8 +312,6 @@ columns:
 - type: TableColumn
   id: table.person.businessentity.column.businessentityid
   description: Primary key for all customers, vendors, and employees.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -348,8 +336,6 @@ columns:
 - type: TableColumn
   id: table.person.businessentity.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -374,8 +360,6 @@ columns:
 - type: TableColumn
   id: table.person.businessentity.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

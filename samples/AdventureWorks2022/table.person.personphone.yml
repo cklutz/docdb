@@ -2,15 +2,11 @@
 type: Table
 id: table.person.personphone
 description: Telephone number and type of a person.
-createdAt: 2023-05-08T12:07:29.4830000
-lastModifiedAt: 2023-05-08T12:07:38.7530000
 name: Person.PersonPhone
 foreignKeys:
 - type: ForeignKey
   id: table.person.personphone.foreignkey.fk_personphone_person_businessentityid
   description: Foreign key constraint referencing Person.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_PersonPhone_Person_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.person.personphone.foreignkey.fk_personphone_phonenumbertype_phonenumbertypeid
   description: Foreign key constraint referencing PhoneNumberType.PhoneNumberTypeID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID
   columns:
   - name: PhoneNumberTypeID
@@ -66,8 +60,6 @@ indexes:
 - type: Index
   id: table.person.personphone.index.ix_personphone_phonenumber
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_PersonPhone_PhoneNumber
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -79,8 +71,6 @@ indexes:
   - type: IndexColumn
     id: table.person.personphone.index.ix_personphone_phonenumber.indexedcolumn.phonenumber
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: PhoneNumber
     columnRef:
       name: PhoneNumber
@@ -213,8 +203,6 @@ indexes:
 - type: Index
   id: table.person.personphone.index.pk_personphone_businessentityid_phonenumber_phonenumbertypeid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_PersonPhone_BusinessEntityID_PhoneNumber_PhoneNumberTypeID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -226,8 +214,6 @@ indexes:
   - type: IndexColumn
     id: table.person.personphone.index.pk_personphone_businessentityid_phonenumber_phonenumbertypeid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -241,8 +227,6 @@ indexes:
   - type: IndexColumn
     id: table.person.personphone.index.pk_personphone_businessentityid_phonenumber_phonenumbertypeid.indexedcolumn.phonenumber
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: PhoneNumber
     columnRef:
       name: PhoneNumber
@@ -256,8 +240,6 @@ indexes:
   - type: IndexColumn
     id: table.person.personphone.index.pk_personphone_businessentityid_phonenumber_phonenumbertypeid.indexedcolumn.phonenumbertypeid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: PhoneNumberTypeID
     columnRef:
       name: PhoneNumberTypeID
@@ -392,8 +374,6 @@ columns:
 - type: TableColumn
   id: table.person.personphone.column.businessentityid
   description: Business entity identification number. Foreign key to Person.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -421,8 +401,6 @@ columns:
 - type: TableColumn
   id: table.person.personphone.column.phonenumber
   description: Telephone number identification number.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PhoneNumber
   dataType: '[dbo].[Phone]'
   dataTypeRef:
@@ -450,8 +428,6 @@ columns:
 - type: TableColumn
   id: table.person.personphone.column.phonenumbertypeid
   description: Kind of phone number. Foreign key to PhoneNumberType.PhoneNumberTypeID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PhoneNumberTypeID
   dataType: INT
   dataTypeRef: 
@@ -479,8 +455,6 @@ columns:
 - type: TableColumn
   id: table.person.personphone.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

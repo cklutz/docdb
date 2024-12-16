@@ -2,8 +2,6 @@
 type: Table
 id: table.production.productphoto
 description: Product images.
-createdAt: 2023-05-08T12:07:29.5200000
-lastModifiedAt: 2023-05-08T12:07:38.8270000
 name: Production.ProductPhoto
 foreignKeys: []
 checks: []
@@ -29,8 +27,6 @@ indexes:
 - type: Index
   id: table.production.productphoto.index.pk_productphoto_productphotoid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ProductPhoto_ProductPhotoID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -42,8 +38,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productphoto.index.pk_productphoto_productphotoid.indexedcolumn.productphotoid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductPhotoID
     columnRef:
       name: ProductPhotoID
@@ -178,8 +172,6 @@ columns:
 - type: TableColumn
   id: table.production.productphoto.column.productphotoid
   description: Primary key for ProductPhoto records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductPhotoID
   dataType: INT
   dataTypeRef: 
@@ -204,8 +196,6 @@ columns:
 - type: TableColumn
   id: table.production.productphoto.column.thumbnailphoto
   description: Small image of the product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ThumbNailPhoto
   dataType: VARBINARY(MAX)
   dataTypeRef: 
@@ -230,8 +220,6 @@ columns:
 - type: TableColumn
   id: table.production.productphoto.column.thumbnailphotofilename
   description: Small image file name.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ThumbnailPhotoFileName
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -256,8 +244,6 @@ columns:
 - type: TableColumn
   id: table.production.productphoto.column.largephoto
   description: Large image of the product.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LargePhoto
   dataType: VARBINARY(MAX)
   dataTypeRef: 
@@ -282,8 +268,6 @@ columns:
 - type: TableColumn
   id: table.production.productphoto.column.largephotofilename
   description: Large image file name.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: LargePhotoFileName
   dataType: NVARCHAR(50)
   dataTypeRef: 
@@ -308,8 +292,6 @@ columns:
 - type: TableColumn
   id: table.production.productphoto.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

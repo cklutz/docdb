@@ -2,15 +2,11 @@
 type: StoredProcedure
 id: storedprocedure.dbo.uspgetemployeemanagers
 description: Stored procedure using a recursive query to return the direct and indirect managers of the specified employee.
-createdAt: 2023-05-08T12:07:39.6200000
-lastModifiedAt: 2023-05-08T12:07:39.6200000
 name: dbo.uspGetEmployeeManagers
 parameters:
 - type: StoredProcedureParameter
   id: storedprocedure.dbo.uspgetemployeemanagers.param.@businessentityid
   description: Input parameter for the stored procedure uspGetEmployeeManagers. Enter a valid BusinessEntityID from the HumanResources.Employee table.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: '@BusinessEntityID'
   isOutputParameter: false
   isCursorParameter: false

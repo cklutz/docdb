@@ -2,15 +2,11 @@
 type: Table
 id: table.dbo.employee
 description: 
-createdAt: 2024-12-12T10:28:06.9900000
-lastModifiedAt: 2024-12-12T10:28:06.9930000
 name: dbo.Employee
 foreignKeys:
 - type: ForeignKey
   id: table.dbo.employee.foreignkey.fk_dboemployee_person_businessentityid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_DboEmployee_Person_BusinessEntityID
   columns:
   - name: EmployeeID
@@ -49,8 +45,6 @@ indexes:
 - type: Index
   id: table.dbo.employee.index.pk_employee_businessentityid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Employee_BusinessEntityID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -62,8 +56,6 @@ indexes:
   - type: IndexColumn
     id: table.dbo.employee.index.pk_employee_businessentityid.indexedcolumn.employeeid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: EmployeeID
     columnRef:
       name: EmployeeID
@@ -198,8 +190,6 @@ columns:
 - type: TableColumn
   id: table.dbo.employee.column.employeeid
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmployeeID
   dataType: INT
   dataTypeRef: 
@@ -227,8 +217,6 @@ columns:
 - type: TableColumn
   id: table.dbo.employee.column.employeetype
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EmployeeType
   dataType: NCHAR(2)
   dataTypeRef: 

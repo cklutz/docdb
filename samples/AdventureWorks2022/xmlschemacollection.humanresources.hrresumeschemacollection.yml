@@ -2,8 +2,6 @@
 type: XmlSchemaCollection
 id: xmlschemacollection.humanresources.hrresumeschemacollection
 description: Collection of XML schemas for the Resume column in the HumanResources.JobCandidate table.
-createdAt: 0001-01-01T00:00:00.0000000
-lastModifiedAt: 0001-01-01T00:00:00.0000000
 name: HumanResources.HRResumeSchemaCollection
 schemas:
 - id: schema_1

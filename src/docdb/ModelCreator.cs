@@ -16,6 +16,8 @@ internal class ModelCreator
 
     public ModelCreator(Database database)
     {
+        ArgumentNullException.ThrowIfNull(database);
+
         _databaseId = database.GetModelId();
     }
 
@@ -53,8 +55,6 @@ internal class ModelCreator
 
     private T InitBase<T>(T obj, NamedSmoObject smo, bool noScript = false) where T : DdbObject
     {
-        // TODO: Via reflection (no common base class?) set the CreatedAt, LastModifiedAt members
-
         obj.DatabaseId = _databaseId;
         obj.Id = smo.GetModelId();
 
@@ -71,7 +71,7 @@ internal class ModelCreator
         if (smo is IScriptable && !noScript)
         {
             var scriptingOptions = new ScriptingOptions();
-            if (obj is DdbTable || obj is DdbView)
+            if (smo is TableViewTableTypeBase)
             {
                 scriptingOptions.Indexes = true;
                 scriptingOptions.Triggers = true;
@@ -425,8 +425,6 @@ internal class ModelCreator
     {
         var result = InitBase(new DdbUserDefinedFunction
         {
-            CreatedAt = udf.CreateDate,
-            LastModifiedAt = udf.DateLastModified,
             ReturnsNullOnNullInput = udf.ReturnsNullOnNullInput,
             FunctionType = udf.FunctionType switch
             {
@@ -456,8 +454,6 @@ internal class ModelCreator
     {
         var result = InitBase(new DdbStoredProcedure
         {
-            CreatedAt = sp.CreateDate,
-            LastModifiedAt = sp.DateLastModified,
             Syntax = sp.GetSyntax()
         }, sp);
 
@@ -672,8 +668,6 @@ internal class ModelCreator
     {
         var result = InitBase(new DdbUserDefinedTableType
         {
-            CreatedAt = udt.CreateDate,
-            LastModifiedAt = udt.DateLastModified,
             Collation = udt.Collation,
             IsMemoryOptimized = udt.IsMemoryOptimized,
             IsUserDefined = udt.IsUserDefined,
@@ -740,8 +734,6 @@ internal class ModelCreator
     {
         var result = InitBase(new DdbView
         {
-            CreatedAt = view.CreateDate,
-            LastModifiedAt = view.DateLastModified,
         }, view);
 
         foreach (Column column in view.Columns)
@@ -759,8 +751,6 @@ internal class ModelCreator
     {
         var result = InitBase(new DdbTable()
         {
-            CreatedAt = table.CreateDate,
-            LastModifiedAt = table.DateLastModified,
             FileGroup = table.Parent.FileGroups.FindFirstOrDefault<FileGroup>(table.FileGroup)?.ToNamedRef<DdbFileGroup>(),
             FileStreamGroup = table.Parent.FileGroups.FindFirstOrDefault<FileGroup>(table.FileStreamFileGroup)?.ToNamedRef<DdbFileGroup>(),
             TextFileGroup = table.Parent.FileGroups.FindFirstOrDefault<FileGroup>(table.TextFileGroup)?.ToNamedRef<DdbFileGroup>()

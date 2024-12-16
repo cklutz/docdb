@@ -2,8 +2,6 @@
 type: Table
 id: table.humanresources.department
 description: Lookup table containing the departments within the Adventure Works Cycles company.
-createdAt: 2023-05-08T12:07:29.4400000
-lastModifiedAt: 2023-05-08T12:07:38.6800000
 name: HumanResources.Department
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.humanresources.department.index.ak_department_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Department_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.department.index.ak_department_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -173,8 +167,6 @@ indexes:
 - type: Index
   id: table.humanresources.department.index.pk_department_departmentid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Department_DepartmentID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -186,8 +178,6 @@ indexes:
   - type: IndexColumn
     id: table.humanresources.department.index.pk_department_departmentid.indexedcolumn.departmentid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: DepartmentID
     columnRef:
       name: DepartmentID
@@ -322,8 +312,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.department.column.departmentid
   description: Primary key for Department records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: DepartmentID
   dataType: SMALLINT
   dataTypeRef: 
@@ -348,8 +336,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.department.column.name
   description: Name of the department.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -377,8 +363,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.department.column.groupname
   description: Name of the group to which the department belongs.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: GroupName
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -406,8 +390,6 @@ columns:
 - type: TableColumn
   id: table.humanresources.department.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

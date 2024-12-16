@@ -2,8 +2,6 @@
 type: Table
 id: table.dbo.int
 description: 
-createdAt: 2024-12-03T07:15:48.8270000
-lastModifiedAt: 2024-12-03T07:15:48.8270000
 name: dbo.INT
 foreignKeys: []
 checks: []
@@ -28,8 +26,6 @@ columns:
 - type: TableColumn
   id: table.dbo.int.column.int
   description: 
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: INT
   dataType: INT
   dataTypeRef: 

@@ -2,16 +2,12 @@
 type: Table
 id: table.production.transactionhistoryarchive
 description: Transactions for previous years.
-createdAt: 2023-05-08T12:07:29.6170000
-lastModifiedAt: 2023-05-08T12:07:35.1070000
 name: Production.TransactionHistoryArchive
 foreignKeys: []
 checks:
 - type: CheckConstraint
   id: table.production.transactionhistoryarchive.check.ck_transactionhistoryarchive_transactiontype
   description: Check constraint [TransactionType]='p' OR [TransactionType]='s' OR [TransactionType]='w' OR [TransactionType]='P' OR [TransactionType]='S' OR [TransactionType]='W'
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_TransactionHistoryArchive_TransactionType
   isChecked: true
   isEnabled: true
@@ -37,8 +33,6 @@ indexes:
 - type: Index
   id: table.production.transactionhistoryarchive.index.ix_transactionhistoryarchive_productid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_TransactionHistoryArchive_ProductID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -50,8 +44,6 @@ indexes:
   - type: IndexColumn
     id: table.production.transactionhistoryarchive.index.ix_transactionhistoryarchive_productid.indexedcolumn.productid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductID
     columnRef:
       name: ProductID
@@ -184,8 +176,6 @@ indexes:
 - type: Index
   id: table.production.transactionhistoryarchive.index.ix_transactionhistoryarchive_referenceorderid_referenceorderlineid
   description: Nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IX_TransactionHistoryArchive_ReferenceOrderID_ReferenceOrderLineID
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -197,8 +187,6 @@ indexes:
   - type: IndexColumn
     id: table.production.transactionhistoryarchive.index.ix_transactionhistoryarchive_referenceorderid_referenceorderlineid.indexedcolumn.referenceorderid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ReferenceOrderID
     columnRef:
       name: ReferenceOrderID
@@ -212,8 +200,6 @@ indexes:
   - type: IndexColumn
     id: table.production.transactionhistoryarchive.index.ix_transactionhistoryarchive_referenceorderid_referenceorderlineid.indexedcolumn.referenceorderlineid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ReferenceOrderLineID
     columnRef:
       name: ReferenceOrderLineID
@@ -346,8 +332,6 @@ indexes:
 - type: Index
   id: table.production.transactionhistoryarchive.index.pk_transactionhistoryarchive_transactionid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_TransactionHistoryArchive_TransactionID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -359,8 +343,6 @@ indexes:
   - type: IndexColumn
     id: table.production.transactionhistoryarchive.index.pk_transactionhistoryarchive_transactionid.indexedcolumn.transactionid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: TransactionID
     columnRef:
       name: TransactionID
@@ -495,8 +477,6 @@ columns:
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.transactionid
   description: Primary key for TransactionHistoryArchive records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TransactionID
   dataType: INT
   dataTypeRef: 
@@ -521,8 +501,6 @@ columns:
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.productid
   description: Product identification number. Foreign key to Product.ProductID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductID
   dataType: INT
   dataTypeRef: 
@@ -547,8 +525,6 @@ columns:
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.referenceorderid
   description: Purchase order, sales order, or work order identification number.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ReferenceOrderID
   dataType: INT
   dataTypeRef: 
@@ -573,8 +549,6 @@ columns:
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.referenceorderlineid
   description: Line number associated with the purchase order, sales order, or work order.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ReferenceOrderLineID
   dataType: INT
   dataTypeRef: 
@@ -599,8 +573,6 @@ columns:
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.transactiondate
   description: Date and time of the transaction.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TransactionDate
   dataType: DATETIME
   dataTypeRef: 
@@ -625,8 +597,6 @@ columns:
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.transactiontype
   description: W = Work Order, S = Sales Order, P = Purchase Order
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TransactionType
   dataType: NCHAR(1)
   dataTypeRef: 
@@ -651,8 +621,6 @@ columns:
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.quantity
   description: Product quantity.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Quantity
   dataType: INT
   dataTypeRef: 
@@ -677,8 +645,6 @@ columns:
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.actualcost
   description: Product cost.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ActualCost
   dataType: MONEY
   dataTypeRef: 
@@ -703,8 +669,6 @@ columns:
 - type: TableColumn
   id: table.production.transactionhistoryarchive.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

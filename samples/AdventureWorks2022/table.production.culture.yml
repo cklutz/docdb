@@ -2,8 +2,6 @@
 type: Table
 id: table.production.culture
 description: Lookup table containing the languages in which some AdventureWorks data is stored.
-createdAt: 2023-05-08T12:07:29.4300000
-lastModifiedAt: 2023-05-08T12:07:38.8200000
 name: Production.Culture
 foreignKeys: []
 checks: []
@@ -26,8 +24,6 @@ indexes:
 - type: Index
   id: table.production.culture.index.ak_culture_name
   description: Unique nonclustered index.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_Culture_Name
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -39,8 +35,6 @@ indexes:
   - type: IndexColumn
     id: table.production.culture.index.ak_culture_name.indexedcolumn.name
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: Name
     columnRef:
       name: Name
@@ -173,8 +167,6 @@ indexes:
 - type: Index
   id: table.production.culture.index.pk_culture_cultureid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_Culture_CultureID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -186,8 +178,6 @@ indexes:
   - type: IndexColumn
     id: table.production.culture.index.pk_culture_cultureid.indexedcolumn.cultureid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CultureID
     columnRef:
       name: CultureID
@@ -322,8 +312,6 @@ columns:
 - type: TableColumn
   id: table.production.culture.column.cultureid
   description: Primary key for Culture records.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CultureID
   dataType: NCHAR(6)
   dataTypeRef: 
@@ -348,8 +336,6 @@ columns:
 - type: TableColumn
   id: table.production.culture.column.name
   description: Culture description.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: Name
   dataType: '[dbo].[Name]'
   dataTypeRef:
@@ -377,8 +363,6 @@ columns:
 - type: TableColumn
   id: table.production.culture.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

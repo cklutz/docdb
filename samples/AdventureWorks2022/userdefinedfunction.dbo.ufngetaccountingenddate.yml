@@ -2,8 +2,6 @@
 type: UserDefinedFunction
 id: userdefinedfunction.dbo.ufngetaccountingenddate
 description: Scalar function used in the uSalesOrderHeader trigger to set the starting account date.
-createdAt: 2023-05-08T12:07:39.5930000
-lastModifiedAt: 2023-05-08T12:07:39.5930000
 name: dbo.ufnGetAccountingEndDate
 functionType: Scalar
 returnsNullOnNullInput: false

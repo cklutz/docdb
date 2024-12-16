@@ -2,15 +2,11 @@
 type: Table
 id: table.sales.salesterritoryhistory
 description: Sales representative transfers to other sales territories.
-createdAt: 2023-05-08T12:07:29.5830000
-lastModifiedAt: 2023-05-08T12:07:39.2530000
 name: Sales.SalesTerritoryHistory
 foreignKeys:
 - type: ForeignKey
   id: table.sales.salesterritoryhistory.foreignkey.fk_salesterritoryhistory_salesperson_businessentityid
   description: Foreign key constraint referencing SalesPerson.SalesPersonID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesTerritoryHistory_SalesPerson_BusinessEntityID
   columns:
   - name: BusinessEntityID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.sales.salesterritoryhistory.foreignkey.fk_salesterritoryhistory_salesterritory_territoryid
   description: Foreign key constraint referencing SalesTerritory.TerritoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_SalesTerritoryHistory_SalesTerritory_TerritoryID
   columns:
   - name: TerritoryID
@@ -50,8 +44,6 @@ checks:
 - type: CheckConstraint
   id: table.sales.salesterritoryhistory.check.ck_salesterritoryhistory_enddate
   description: Check constraint [EndDate] >= [StartDate] OR [EndDate] IS NULL
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CK_SalesTerritoryHistory_EndDate
   isChecked: true
   isEnabled: true
@@ -77,8 +69,6 @@ indexes:
 - type: Index
   id: table.sales.salesterritoryhistory.index.ak_salesterritoryhistory_rowguid
   description: Unique nonclustered index. Used to support replication samples.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: AK_SalesTerritoryHistory_rowguid
   indexType: NONCLUSTERED
   indexKeyType: ''
@@ -90,8 +80,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesterritoryhistory.index.ak_salesterritoryhistory_rowguid.indexedcolumn.rowguid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: rowguid
     columnRef:
       name: rowguid
@@ -224,8 +212,6 @@ indexes:
 - type: Index
   id: table.sales.salesterritoryhistory.index.pk_salesterritoryhistory_businessentityid_startdate_territoryid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_SalesTerritoryHistory_BusinessEntityID_StartDate_TerritoryID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -237,8 +223,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesterritoryhistory.index.pk_salesterritoryhistory_businessentityid_startdate_territoryid.indexedcolumn.businessentityid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: BusinessEntityID
     columnRef:
       name: BusinessEntityID
@@ -252,8 +236,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesterritoryhistory.index.pk_salesterritoryhistory_businessentityid_startdate_territoryid.indexedcolumn.startdate
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: StartDate
     columnRef:
       name: StartDate
@@ -267,8 +249,6 @@ indexes:
   - type: IndexColumn
     id: table.sales.salesterritoryhistory.index.pk_salesterritoryhistory_businessentityid_startdate_territoryid.indexedcolumn.territoryid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: TerritoryID
     columnRef:
       name: TerritoryID
@@ -403,8 +383,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritoryhistory.column.businessentityid
   description: Primary key. The sales rep.  Foreign key to SalesPerson.BusinessEntityID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: BusinessEntityID
   dataType: INT
   dataTypeRef: 
@@ -432,8 +410,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritoryhistory.column.territoryid
   description: Primary key. Territory identification number. Foreign key to SalesTerritory.SalesTerritoryID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: TerritoryID
   dataType: INT
   dataTypeRef: 
@@ -461,8 +437,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritoryhistory.column.startdate
   description: Primary key. Date the sales representive started work in the territory.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: StartDate
   dataType: DATETIME
   dataTypeRef: 
@@ -487,8 +461,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritoryhistory.column.enddate
   description: Date the sales representative left work in the territory.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: EndDate
   dataType: DATETIME
   dataTypeRef: 
@@ -513,8 +485,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritoryhistory.column.rowguid
   description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: rowguid
   dataType: UNIQUEIDENTIFIER
   dataTypeRef: 
@@ -539,8 +509,6 @@ columns:
 - type: TableColumn
   id: table.sales.salesterritoryhistory.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

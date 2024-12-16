@@ -2,15 +2,11 @@
 type: Table
 id: table.production.productmodelproductdescriptionculture
 description: Cross-reference table mapping product descriptions and the language the description is written in.
-createdAt: 2023-05-08T12:07:29.5170000
-lastModifiedAt: 2023-05-08T12:07:39.5300000
 name: Production.ProductModelProductDescriptionCulture
 foreignKeys:
 - type: ForeignKey
   id: table.production.productmodelproductdescriptionculture.foreignkey.fk_productmodelproductdescriptionculture_culture_cultureid
   description: Foreign key constraint referencing Culture.CultureID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductModelProductDescriptionCulture_Culture_CultureID
   columns:
   - name: CultureID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.production.productmodelproductdescriptionculture.foreignkey.fk_productmodelproductdescriptionculture_productdescription_productdescriptionid
   description: Foreign key constraint referencing ProductDescription.ProductDescriptionID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductModelProductDescriptionCulture_ProductDescription_ProductDescriptionID
   columns:
   - name: ProductDescriptionID
@@ -49,8 +43,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.production.productmodelproductdescriptionculture.foreignkey.fk_productmodelproductdescriptionculture_productmodel_productmodelid
   description: Foreign key constraint referencing ProductModel.ProductModelID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductModelProductDescriptionCulture_ProductModel_ProductModelID
   columns:
   - name: ProductModelID
@@ -86,8 +78,6 @@ indexes:
 - type: Index
   id: table.production.productmodelproductdescriptionculture.index.pk_productmodelproductdescriptionculture_productmodelid_productdescriptionid_cultureid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ProductModelProductDescriptionCulture_ProductModelID_ProductDescriptionID_CultureID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -99,8 +89,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productmodelproductdescriptionculture.index.pk_productmodelproductdescriptionculture_productmodelid_productdescriptionid_cultureid.indexedcolumn.productmodelid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductModelID
     columnRef:
       name: ProductModelID
@@ -114,8 +102,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productmodelproductdescriptionculture.index.pk_productmodelproductdescriptionculture_productmodelid_productdescriptionid_cultureid.indexedcolumn.productdescriptionid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductDescriptionID
     columnRef:
       name: ProductDescriptionID
@@ -129,8 +115,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productmodelproductdescriptionculture.index.pk_productmodelproductdescriptionculture_productmodelid_productdescriptionid_cultureid.indexedcolumn.cultureid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: CultureID
     columnRef:
       name: CultureID
@@ -265,8 +249,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodelproductdescriptionculture.column.productmodelid
   description: Primary key. Foreign key to ProductModel.ProductModelID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductModelID
   dataType: INT
   dataTypeRef: 
@@ -294,8 +276,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodelproductdescriptionculture.column.productdescriptionid
   description: Primary key. Foreign key to ProductDescription.ProductDescriptionID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductDescriptionID
   dataType: INT
   dataTypeRef: 
@@ -323,8 +303,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodelproductdescriptionculture.column.cultureid
   description: Culture identification number. Foreign key to Culture.CultureID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: CultureID
   dataType: NCHAR(6)
   dataTypeRef: 
@@ -352,8 +330,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodelproductdescriptionculture.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 

@@ -1,8 +1,10 @@
 ﻿using DocDB.Contracts;
 using Microsoft.SqlServer.Management.Sdk.Sfc;
+using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using YamlDotNet.Serialization;
@@ -56,8 +58,6 @@ public static class Program
                 .WithAttributeOverride<DdbObject>(o => o.Id, new YamlMemberAttribute { Order = -10 })
                 .WithAttributeOverride<DdbObject>(o => o.Type, new YamlMemberAttribute { Order = -11 /*-9*/ })
                 .WithAttributeOverride<DdbObject>(o => o.Description!, new YamlMemberAttribute { Order = -8 })
-                .WithAttributeOverride<DdbObject>(o => o.CreatedAt!, new YamlMemberAttribute { Order = -7 })
-                .WithAttributeOverride<DdbObject>(o => o.LastModifiedAt!, new YamlMemberAttribute { Order = -6 })
                 .WithAttributeOverride<DdbObject>(o => o.Script!, new YamlMemberAttribute { Order = int.MaxValue - 10, ScalarStyle = YamlDotNet.Core.ScalarStyle.Literal })
                 .WithAttributeOverride<DdbStoredProcedure>(o => o.Syntax!, new YamlMemberAttribute { ScalarStyle = YamlDotNet.Core.ScalarStyle.Literal })
                 .WithAttributeOverride<DdbUserDefinedFunction>(o => o.Syntax!, new YamlMemberAttribute { ScalarStyle = YamlDotNet.Core.ScalarStyle.Literal })

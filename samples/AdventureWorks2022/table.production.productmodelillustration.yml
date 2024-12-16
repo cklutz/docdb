@@ -2,15 +2,11 @@
 type: Table
 id: table.production.productmodelillustration
 description: Cross-reference table mapping product models and illustrations.
-createdAt: 2023-05-08T12:07:29.5130000
-lastModifiedAt: 2023-05-08T12:07:38.8130000
 name: Production.ProductModelIllustration
 foreignKeys:
 - type: ForeignKey
   id: table.production.productmodelillustration.foreignkey.fk_productmodelillustration_illustration_illustrationid
   description: Foreign key constraint referencing Illustration.IllustrationID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductModelIllustration_Illustration_IllustrationID
   columns:
   - name: IllustrationID
@@ -29,8 +25,6 @@ foreignKeys:
 - type: ForeignKey
   id: table.production.productmodelillustration.foreignkey.fk_productmodelillustration_productmodel_productmodelid
   description: Foreign key constraint referencing ProductModel.ProductModelID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: FK_ProductModelIllustration_ProductModel_ProductModelID
   columns:
   - name: ProductModelID
@@ -66,8 +60,6 @@ indexes:
 - type: Index
   id: table.production.productmodelillustration.index.pk_productmodelillustration_productmodelid_illustrationid
   description: Primary key (clustered) constraint
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: PK_ProductModelIllustration_ProductModelID_IllustrationID
   indexType: CLUSTERED
   indexKeyType: PRIMARY
@@ -79,8 +71,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productmodelillustration.index.pk_productmodelillustration_productmodelid_illustrationid.indexedcolumn.productmodelid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: ProductModelID
     columnRef:
       name: ProductModelID
@@ -94,8 +84,6 @@ indexes:
   - type: IndexColumn
     id: table.production.productmodelillustration.index.pk_productmodelillustration_productmodelid_illustrationid.indexedcolumn.illustrationid
     description: 
-    createdAt: 0001-01-01T00:00:00.0000000
-    lastModifiedAt: 0001-01-01T00:00:00.0000000
     name: IllustrationID
     columnRef:
       name: IllustrationID
@@ -230,8 +218,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodelillustration.column.productmodelid
   description: Primary key. Foreign key to ProductModel.ProductModelID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ProductModelID
   dataType: INT
   dataTypeRef: 
@@ -259,8 +245,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodelillustration.column.illustrationid
   description: Primary key. Foreign key to Illustration.IllustrationID.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: IllustrationID
   dataType: INT
   dataTypeRef: 
@@ -288,8 +272,6 @@ columns:
 - type: TableColumn
   id: table.production.productmodelillustration.column.modifieddate
   description: Date and time the record was last updated.
-  createdAt: 0001-01-01T00:00:00.0000000
-  lastModifiedAt: 0001-01-01T00:00:00.0000000
   name: ModifiedDate
   dataType: DATETIME
   dataTypeRef: 
