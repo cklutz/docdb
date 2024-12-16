@@ -14,6 +14,7 @@ namespace DocDB
         // "Database"
         //      Tables
         //      Views
+        //      Synonyms
         //      Programmability
         //          Stored Procedures
         //          Functions
@@ -69,6 +70,7 @@ namespace DocDB
 
                 AddNamedItemSequence(emitter, "Tables", objects.OfType<DdbTable>());
                 AddNamedItemSequence(emitter, "Views", objects.OfType<DdbView>());
+                AddNamedItemSequence(emitter, "Synonyms", objects.OfType<DdbSynonym>());
 
                 NamedComplexSequenceEntry(emitter, "Programmability", emitter =>
                 {

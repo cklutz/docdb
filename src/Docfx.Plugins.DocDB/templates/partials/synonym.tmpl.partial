@@ -1,0 +1,33 @@
+
+{{#payload}}
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Type</th>
+			<td>{{baseType}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Base</th>
+			<td>
+			{{#baseIsInSameDatabase}}<a href="{{baseRef.id}}.html">{{baseRef.name}}</a>{{/baseIsInSameDatabase}}
+			{{^baseIsInSameDatabase}}{{baseRef.name}}{{/baseIsInSameDatabase}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Schema Owned</th>
+			<td>
+			{{#isSchemaOwned}}{{{__global.symCheckMark}}}{{/isSchemaOwned}}
+			{{^isSchemaOwned}}{{{__global.symCross}}}{{/isSchemaOwned}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Owner</th>
+			<td>{{owner}}</td>
+		</tr>
+	</tbody>
+</table>
+{{/payload}}

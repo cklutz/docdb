@@ -17,7 +17,7 @@
 			<td><ul>{{#rangeValues}}<li>{{.}}</li>{{/rangeValues}}</ul></td>
 		</tr>
 		<tr>
-			<th class="nowrap">Nubmer of partitions</th>
+			<th class="nowrap">Number of partitions</th>
 			<td>{{numberOfPartitions}}</td>
 		</tr>
 		<tr>

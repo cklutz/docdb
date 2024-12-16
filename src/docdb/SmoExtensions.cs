@@ -1,4 +1,5 @@
-﻿using Microsoft.SqlServer.Management.Sdk.Sfc;
+﻿using DocDB.Contracts;
+using Microsoft.SqlServer.Management.Sdk.Sfc;
 using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Buffers;
@@ -170,6 +171,41 @@ public static class SmoExtensions
         return new string(chars);
     }
 
+    public static string GetFullName(string? serverName, string? baseDatabase, string? schemaName, string objectName)
+    {
+        var sb = new ValueStringBuilder(stackalloc char[128]);
+
+        if (!string.IsNullOrEmpty(serverName))
+        {
+            sb.Append('[');
+            sb.Append(serverName);
+            sb.Append(']');
+            sb.Append('.');
+        }
+
+        if (!string.IsNullOrEmpty(baseDatabase))
+        {
+            sb.Append('[');
+            sb.Append(baseDatabase);
+            sb.Append(']');
+            sb.Append('.');
+        }
+
+        if (!string.IsNullOrEmpty(schemaName))
+        {
+            sb.Append('[');
+            sb.Append(schemaName);
+            sb.Append(']');
+            sb.Append('.');
+        }
+
+        sb.Append('[');
+        sb.Append(objectName);
+        sb.Append(']');
+
+        return sb.ToString();
+    }
+
     public static string GetFullName(this NamedSmoObject obj, bool quote = true)
     {
         string? schemaName = null;
@@ -212,7 +248,7 @@ public static class SmoExtensions
 
         // Seen this with "Index": we get exceptions attempting to access the extended
         // properties for "system named" ones.
-        if (obj is SqlSmoObject sql && sql.IsSupportedProperty("IsSystemNamed") && 
+        if (obj is SqlSmoObject sql && sql.IsSupportedProperty("IsSystemNamed") &&
             sql.Properties["IsSystemNamed"]?.Value is bool isSystemNamed &&
             isSystemNamed)
         {
@@ -448,6 +484,57 @@ public static class SmoExtensions
                 sb.Append(']');
             }
         }
+    }
+
+    public static string GetTypeTag(this SynonymBaseType baseType)
+    {
+        return baseType switch
+        {
+            SynonymBaseType.Table => DdbObject.GetTypeTag<DdbTable>(isRef: true),
+            SynonymBaseType.View => DdbObject.GetTypeTag<DdbView>(isRef: true),
+            SynonymBaseType.SqlStoredProcedure => DdbObject.GetTypeTag<DdbStoredProcedure>(isRef: true),
+            SynonymBaseType.SqlScalarFunction => DdbObject.GetTypeTag<DdbUserDefinedFunction>(isRef: true),
+            SynonymBaseType.SqlTableValuedFunction => DdbObject.GetTypeTag<DdbUserDefinedFunction>(isRef: true),
+            SynonymBaseType.SqlInlineTableValuedFunction => DdbObject.GetTypeTag<DdbUserDefinedFunction>(isRef: true),
+            SynonymBaseType.ClrStoredProcedure => DdbObject.GetTypeTag<DdbStoredProcedure>(isRef: true),
+            SynonymBaseType.ClrScalarFunction => DdbObject.GetTypeTag<DdbUserDefinedFunction>(isRef: true),
+            SynonymBaseType.ClrTableValuedFunction => DdbObject.GetTypeTag<DdbUserDefinedFunction>(isRef: true),
+            SynonymBaseType.ClrAggregateFunction => DdbObject.GetTypeTag<DdbUserDefinedAggregate>(isRef: true),
+            SynonymBaseType.ExtendedStoredProcedure => "",
+            SynonymBaseType.ReplicationFilterProcedure => "",
+            _ => "",
+        };
+    }
+
+    public static NamedDdbRef? FindBaseRef(this Synonym synonym)
+    {
+        NamedDdbRef? baseRef = null;
+        switch (synonym.BaseType)
+        {
+            case SynonymBaseType.Table:
+                baseRef = synonym.Parent.Tables.FindFirstOrDefault<Table>(synonym.BaseSchema, synonym.BaseObject)?.ToNamedRef<DdbTable>();
+                break;
+            case SynonymBaseType.View:
+                baseRef = synonym.Parent.Views.FindFirstOrDefault<View>(synonym.BaseSchema, synonym.BaseObject)?.ToNamedRef<DdbView>();
+                break;
+            case SynonymBaseType.SqlStoredProcedure:
+            case SynonymBaseType.ClrStoredProcedure:
+                baseRef = synonym.Parent.StoredProcedures.FindFirstOrDefault<StoredProcedure>(synonym.BaseSchema, synonym.BaseObject)?.ToNamedRef<DdbStoredProcedure>();
+                break;
+            case SynonymBaseType.SqlScalarFunction:
+            case SynonymBaseType.SqlInlineTableValuedFunction:
+            case SynonymBaseType.ClrScalarFunction:
+            case SynonymBaseType.SqlTableValuedFunction:
+            case SynonymBaseType.ClrTableValuedFunction:
+                baseRef = synonym.Parent.UserDefinedFunctions.FindFirstOrDefault<UserDefinedFunction>(synonym.BaseSchema, synonym.BaseObject)?.ToNamedRef<DdbUserDefinedFunction>();
+                break;
+            case SynonymBaseType.ReplicationFilterProcedure:
+                break;
+            case SynonymBaseType.ClrAggregateFunction:
+                baseRef = synonym.Parent.UserDefinedAggregates.FindFirstOrDefault<UserDefinedAggregate>(synonym.BaseSchema, synonym.BaseObject)?.ToNamedRef<DdbUserDefinedAggregate>();
+                break;
+        }
+        return baseRef;
     }
 }
 

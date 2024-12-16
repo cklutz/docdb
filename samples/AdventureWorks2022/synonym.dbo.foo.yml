@@ -1,0 +1,20 @@
+### YamlMime:DocDB
+type: Synonym
+id: synonym.dbo.foo
+description: 
+createdAt: 0001-01-01T00:00:00.0000000
+lastModifiedAt: 0001-01-01T00:00:00.0000000
+name: dbo.foo
+baseRef:
+  name: '[dbo].[Customers]'
+  id: table.dbo.customers
+  type: TableRef
+baseType: 
+baseIsInSameDatabase: true
+isSchemaOwned: true
+owner: dbo
+databaseId: database.adventureworks2022
+script: |+
+  CREATE SYNONYM [dbo].[foo] FOR [AdventureWorks2022].[dbo].[Customers]
+  GO
+

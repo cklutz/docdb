@@ -46,6 +46,7 @@ internal class ModelCreator
             XmlSchemaCollection collection => CreateXmlSchemaCollection(collection),
             PartitionScheme ps => CreatePartitionScheme(ps),
             PartitionFunction pf => CreatePartitionFunction(pf),
+            Synonym synonym => CreateSynonym(synonym),
             _ => throw new ArgumentOutOfRangeException(nameof(obj), obj.GetType(), null)
         };
     }
@@ -583,6 +584,44 @@ internal class ModelCreator
         {
             TextBody = def.TextBody
         }, def);
+
+        return result;
+    }
+
+    private DdbSynonym CreateSynonym(Synonym synonym)
+    {
+        bool isInSameDatabase = false;
+        NamedDdbRef? baseRef = null;
+        if (string.IsNullOrEmpty(synonym.BaseServer) && 
+            synonym.GetStringComparer().Compare(synonym.Parent.Name, synonym.BaseDatabase) == 0)
+        {
+            isInSameDatabase = true;
+            baseRef = synonym.FindBaseRef();
+        }
+
+        // Either base ref not found (in current DB) or the reference is in a different database,
+        // or on a different server.
+        if (baseRef == null)
+        {
+            string fullName = SmoExtensions.GetFullName(synonym.BaseServer, synonym.BaseDatabase, synonym.BaseSchema, synonym.BaseObject);
+            string type = synonym.BaseType.GetTypeTag();
+            baseRef = new NamedDdbRef
+            {
+                Id = "",
+                Name = fullName,
+                Type = type
+            };
+        }
+
+        var result = InitBase(new DdbSynonym
+        {
+            BaseRef = baseRef,
+            BaseIsInSameDatabase = isInSameDatabase,
+            BaseType = synonym.BaseType.ToString(),
+            IsSchemaOwned = synonym.IsSchemaOwned,
+            Owner = synonym.Owner
+            
+        }, synonym);
 
         return result;
     }

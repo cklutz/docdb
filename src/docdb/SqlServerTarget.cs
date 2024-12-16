@@ -85,6 +85,7 @@ public sealed class SqlServerTarget : IDisposable
         .Union(AddUrns<DatabaseRole>(_database.Roles, r => true))
         .Union(AddUrns<ApplicationRole>(_database.ApplicationRoles))
         .Union(AddUrns<User>(_database.Users, t => t.IsSystemObject))
+        .Union(AddUrns<Synonym>(_database.Synonyms, t => true))
         .Union(AddUrns<Schema>(_database.Schemas, t => (!t.IsSystemSchema() && t.EnumOwnedObjects().Length > 0) || t.Name == "dbo"))
         , LazyThreadSafetyMode.ExecutionAndPublication);
 

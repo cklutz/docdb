@@ -652,6 +652,20 @@ public class DdbView : TabularDdbObject<DdbViewColumn>
 {
 }
 
+public class DdbSynonym : NamedDdbObject
+{
+    [JsonPropertyName("baseRef"), JsonProperty("baseRef")]
+    public NamedDdbRef? BaseRef { get; set; }
+    [JsonPropertyName("baseType"), JsonProperty("baseType")]
+    public string? BaseType { get; set; }
+    [JsonPropertyName("baseIsInSameDatabase"), JsonProperty("baseIsInSameDatabase")]
+    public bool BaseIsInSameDatabase { get; set; }
+    [JsonPropertyName("isSchemaOwned"), JsonProperty("isSchemaOwned")]
+    public bool IsSchemaOwned { get; set; }
+    [JsonPropertyName("owner"), JsonProperty("owner")]
+    public string? Owner { get; set; }
+}
+
 public class DdbSequence : NamedDdbObject
 {
     [JsonPropertyName("dataType"), JsonProperty("dataType")]
@@ -708,8 +722,6 @@ public class DdbUserDefinedType : NamedDdbObject
     public bool IsFixedLength { get; set; }
     [JsonPropertyName("collation"), JsonProperty("collation")]
     public string? Collation { get; set; }
-    [JsonPropertyName("isSchemaOwned"), JsonProperty("isSchemaOwned")]
-    public bool IsSchemaOwned { get; set; }
     [JsonPropertyName("maxLength"), JsonProperty("maxLength")]
     public int? MaxLength { get; set; }
     [JsonPropertyName("isNullable"), JsonProperty("isNullable")]
@@ -718,6 +730,8 @@ public class DdbUserDefinedType : NamedDdbObject
     public int NumericPrecision { get; set; }
     [JsonPropertyName("numericScale"), JsonProperty("numericScale")]
     public int NumericScale { get; set; }
+    [JsonPropertyName("isSchemaOwned"), JsonProperty("isSchemaOwned")]
+    public bool IsSchemaOwned { get; set; }
     [JsonPropertyName("owner"), JsonProperty("owner")]
     public string? Owner { get; set; }
 }
