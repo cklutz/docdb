@@ -1,0 +1,63 @@
+
+{{#payload}}
+<table class="table table-bordered table-condensed">
+	<colgroup>
+		<col style="width: 1%"/>
+		<col style="width: 99%"/>
+	</colgroup>
+	<tbody>
+		<tr>
+			<th class="nowrap">Enabled</th>
+			<td>
+			{{#isEnabled}}{{{__global.symCheckMark}}}{{/isEnabled}}
+			{{^isEnabled}}{{{__global.symCross}}}{{/isEnabled}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">ANSI Nulls</th>
+			<td>
+			{{#ansiNulls}}{{{__global.symCheckMark}}}{{/ansiNulls}}
+			{{^ansiNulls}}{{{__global.symCross}}}{{/ansiNulls}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Quoted identifiers</th>
+			<td>
+			{{#quotedIdentifier}}{{{__global.symCheckMark}}}{{/quotedIdentifier}}
+			{{^quotedIdentifier}}{{{__global.symCross}}}{{/quotedIdentifier}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Not for replication</th>
+			<td>
+			{{#notForReplication}}{{{__global.symCheckMark}}}{{/notForReplication}}
+			{{^notForReplication}}{{{__global.symCross}}}{{/notForReplication}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Encrypted</th>
+			<td>
+			{{#isEncrypted}}{{{__global.symCheckMark}}}{{/isEncrypted}}
+			{{^isEncrypted}}{{{__global.symCross}}}{{/isEncrypted}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Implementation type</th>
+			<td>{{implementationType}}</td>
+		</tr>
+		{{#assemblyName}}
+	    <tr>
+			<th class="nowrap">Assembly</th>
+			<td>
+			{{#assemblyRef}}<a href="{{id}}.html">{{name}}</a>{{/assemblyRef}}
+			{{^assemblyRef}}{{assemblyName}}{{/assemblyRef}}
+			</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Method</th>
+			<td>{{className}}.{{methodName}}()</td>
+		</tr>
+		{{/assemblyName}}
+	</tbody>
+</table>
+{{/payload}}

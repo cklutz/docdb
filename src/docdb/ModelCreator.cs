@@ -28,6 +28,7 @@ internal class ModelCreator
             Schema schema => CreateSchema(schema),
             User user => CreateUser(user),
             DatabaseRole databaseRole => CreateDatabaseRole(databaseRole),
+            DatabaseDdlTrigger ddlTrigger => CreateDatabaseDdlTrigger(ddlTrigger),
             ApplicationRole applicationRole => CreateApplicationRole(applicationRole),
             UserDefinedFunction udf => CreateUserDefinedFunction(udf),
             UserDefinedAggregate uda => CreateUserDefinedAggregate(uda),
@@ -353,12 +354,33 @@ internal class ModelCreator
         }, role);
         return result;
     }
+
     private DdbApplicationRole CreateApplicationRole(ApplicationRole role)
     {
         var result = InitBase(new DdbApplicationRole
         {
             DefaultSchema = role.DefaultSchema,
         }, role);
+        return result;
+    }
+
+    private DdbDatabaseDdlTrigger CreateDatabaseDdlTrigger(DatabaseDdlTrigger trigger)
+    {
+        var result = InitBase(new DdbDatabaseDdlTrigger
+        {
+            AnsiNulls = trigger.AnsiNullsStatus,
+            QuotedIdentifier = trigger.QuotedIdentifierStatus,
+            ImplementationType = trigger.ImplementationType.ToString(),
+            IsEnabled = trigger.IsEnabled,
+            IsEncrypted = trigger.IsEncrypted,
+            NotForReplication = trigger.NotForReplication,
+            Text = trigger.Text,
+            AssemblyName = trigger.AssemblyName,
+            AssemblyRef = trigger.Parent.Assemblies.FindFirstOrDefault<SqlAssembly>(trigger.AssemblyName)?.ToNamedRef<DdbAssembly>(),
+            ClassName = trigger.ClassName,
+            MethodName = trigger.MethodName
+        }, trigger);
+
         return result;
     }
 

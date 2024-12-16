@@ -75,7 +75,7 @@ public sealed class SqlServerTarget : IDisposable
         .Union(AddUrns<UserDefinedDataType>(_database.UserDefinedDataTypes))
         .Union(AddUrns<UserDefinedType>(_database.UserDefinedTypes))
         .Union(AddUrns<SqlAssembly>(_database.Assemblies))
-        //.Union(AddUrns<DatabaseDdlTrigger>(_database.Triggers, t => !t.IsSystemObject))
+        .Union(AddUrns<DatabaseDdlTrigger>(_database.Triggers, t => !t.IsSystemObject))
         .Union(AddUrns<XmlSchemaCollection>(_database.XmlSchemaCollections))
         //.Union(AddUrns<PartitionFunction>(_database.PartitionFunctions))
         //.Union(AddUrns<PartitionScheme>(_database.PartitionSchemes))

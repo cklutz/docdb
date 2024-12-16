@@ -27,6 +27,10 @@
 {{>partials/database}}
 {{/isDatabase}}
 
+{{#isDatabaseDdlTrigger}}
+{{>partials/prog.ddltrigger}}
+{{/isDatabaseDdlTrigger}}
+
 {{#isProcOrFunction}}
 {{>partials/prog.syntax}}
 {{>partials/prog.parameter}}

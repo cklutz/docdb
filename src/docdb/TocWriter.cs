@@ -98,6 +98,7 @@ namespace DocDB
                         emitter.Emit(SequenceEnd());
                     });
 
+                    AddNamedItemSequence(emitter, "Database Triggers", objects.OfType<DdbDatabaseDdlTrigger>());
                     AddNamedItemSequence(emitter, "Assemblies", objects.OfType<DdbAssembly>());
 
                     NamedComplexSequenceEntry(emitter, "Types", emitter =>
