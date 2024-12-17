@@ -9,11 +9,13 @@ using static YamlExtensions;
 
 internal class TocSectionWriter
 {
+    private readonly IOutput _output;
     private readonly IModelInfo _modelInfo;
     private readonly string _directoryName;
 
-    public TocSectionWriter(IModelInfo modelInfo, string directoryName)
+    public TocSectionWriter(IOutput output, IModelInfo modelInfo, string directoryName)
     {
+        _output = output;
         _modelInfo = modelInfo;
         _directoryName = directoryName;
     }
@@ -21,7 +23,9 @@ internal class TocSectionWriter
     public void WriteDoc(string id, string name, IDictionary<string, (string Name, string? Description)> entries)
     {
         string fileName = Path.Combine(_directoryName, id + ".yml");
-        Console.WriteLine(">>>> " + fileName);
+
+        _output.Message($"Writing {fileName}");
+
         using var stream = new StreamWriter(fileName, append: false);
         stream.WriteLine("### YamlMime:DocDB");
         var emitter = new Emitter(stream);

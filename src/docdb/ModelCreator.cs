@@ -15,18 +15,23 @@ internal interface IModelInfo
     string? SchemaVersion { get; }
     DateTime LastSchemaModificationAt { get; }
     string DatabaseId { get; }
+    string DatabaseName { get; }
 }
 
 internal class ModelCreator : IModelInfo
 {
+    private readonly IOutput _output;
     private readonly string _databaseId;
+    private readonly string _databaseName;
     private readonly string? _schemaVersion;
     private readonly DateTime _lastModified;
 
-    public ModelCreator(Database database, string? schemaVersion)
+    public ModelCreator(IOutput output, Database database, string? overrideDatabaseName, string? schemaVersion)
     {
         ArgumentNullException.ThrowIfNull(database);
 
+        _output = output;
+        _databaseName = overrideDatabaseName ?? database.Name;
         _databaseId = database.GetModelId();
         _schemaVersion = schemaVersion;
         _lastModified = database.GetLastModificationDate();
@@ -35,6 +40,7 @@ internal class ModelCreator : IModelInfo
     public string? SchemaVersion => _schemaVersion;
     public DateTime LastSchemaModificationAt => _lastModified;
     public string DatabaseId => _databaseId;
+    public string DatabaseName => _databaseName;
 
     public DdbObject? CreateObject(NamedSmoObject obj)
     {
@@ -68,7 +74,7 @@ internal class ModelCreator : IModelInfo
         };
     }
 
-    private T InitBase<T>(T obj, NamedSmoObject smo, bool noScript = false) where T : DdbObject
+    private T InitBase<T>(T obj, NamedSmoObject smo, bool noScript = false, string? overrideName = null) where T : DdbObject
     {
         obj.DatabaseId = _databaseId;
         obj.Id = smo.GetModelId();
@@ -77,7 +83,7 @@ internal class ModelCreator : IModelInfo
 
         if (obj is NamedDdbObject named)
         {
-            named.Name = smo.GetFullName(quote: false);
+            named.Name = overrideName ?? smo.GetFullName(quote: false);
         }
 
         if (smo is IExtendedProperties extendedProperties)
@@ -102,7 +108,7 @@ internal class ModelCreator : IModelInfo
 
     private DdbDatabase CreateDatabase(Database database)
     {
-        var result = InitBase(new DdbDatabase(), database);
+        var result = InitBase(new DdbDatabase(), database, overrideName: _databaseName);
 
         // These are (hopefully) vendor/product agnostic.
         result.Collation = database.Collation;
@@ -504,9 +510,10 @@ internal class ModelCreator : IModelInfo
             an.SetPublicKeyToken(assembly.PublicKey);
             assemblyName = an.ToString();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             // We cannot trust the individual values that make up the assembly name.
+            _output.Warning($"Could not generate assembly name for {assembly.Name}: {ex}");
         }
 
         // TODO: Use ILSpy "lib" to decompile assembly? ;-)
@@ -573,6 +580,8 @@ internal class ModelCreator : IModelInfo
         }
         catch (Exception ex)
         {
+            _output.Warning($"Could not parse/format schema in {collection}: {ex}");
+
             result.Schemas.Clear();
             result.Schemas.Add(new DdbXmlSchema { Namespace = "", Text = collection.Text });
             result.SchemasError = ex.GetAllMessages();

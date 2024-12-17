@@ -15,7 +15,7 @@
 	<tbody>
 {{#payload.files}}
 	<tr>
-		<td>{{name}}</td>
+		<td><a href="#{{id}}">{{name}}</a></td>
 		<td>
 		{{#isData}}Data{{/isData}}
 		{{^isData}}Log{{/isData}}

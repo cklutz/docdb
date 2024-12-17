@@ -1,5 +1,4 @@
 ﻿using DocDB.Contracts;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -40,13 +39,9 @@ namespace DocDB
         //              Application Roles
         //          Schemas
         //  
-        public static void WriteToc(IModelInfo modelInfo, string fileName, List<DdbObject> objects)
+        public static void WriteToc(IOutput output, IModelInfo modelInfo, string fileName, List<DdbObject> objects)
         {
-            var databaseObj = objects.OfType<DdbDatabase>().FirstOrDefault();
-            if (databaseObj == null)
-            {
-                throw new InvalidOperationException("Objects contain no database object.");
-            }
+            output.Message($"Writing {fileName}");
 
             using var stream = new StreamWriter(fileName, append: false);
             stream.WriteLine("### YamlMime:TableOfContent");
@@ -58,13 +53,13 @@ namespace DocDB
             emitter.Emit(new Scalar("items"));
             emitter.Emit(SequenceStart());
 
-            emitter.EmitNamed(databaseObj.Name, emitter =>
+            emitter.EmitNamed(modelInfo.DatabaseName, emitter =>
             {
-                var uidBuilder = new UidBuilder(databaseObj.Id, databaseObj.Name, 
-                    new TocSectionWriter(modelInfo, Path.GetDirectoryName(Path.GetFullPath(fileName))!));
+                var uidBuilder = new UidBuilder(modelInfo.DatabaseId, modelInfo.DatabaseName, 
+                    new TocSectionWriter(output, modelInfo, Path.GetDirectoryName(Path.GetFullPath(fileName))!));
 
                 emitter.EmitNamedScalar("uid", uidBuilder.Value);
-                emitter.EmitNamedScalar("type", databaseObj.Type);
+                emitter.EmitNamedScalar("type", DdbObject.GetTypeTag<DdbDatabase>());
                 emitter.Emit(new Scalar("items"));
                 emitter.Emit(SequenceStart());
 
