@@ -35,4 +35,11 @@
 		</tr>
 	</tbody>
 </table>
+
+<h2>Source Code</h2>
+
+{{#payload.sourceCode}}
+<pre class="csharp pre-wrap"><code>{{payload.sourceCode}}</code></pre>
+{{/payload.sourceCode}}
+
 {{/payload}}

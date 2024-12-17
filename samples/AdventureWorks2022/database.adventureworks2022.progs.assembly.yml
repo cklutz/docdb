@@ -11,9 +11,6 @@ items:
 - id: sqlassembly.geometry
   name: Geometry
   description: 
-- id: sqlassembly.microsoft.sqlserver.types
-  name: Microsoft.SqlServer.Types
-  description: 
 - id: sqlassembly.testclrassembly
   name: TestClrAssembly
   description: 

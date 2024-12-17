@@ -21,4 +21,8 @@ public class DdbAssembly : NamedDdbObject
     public string? Version { get; set; }
     [JsonPropertyName("fileNames"), JsonProperty("fileNames")]
     public List<string> FileNames { get; set; } = [];
+    [JsonPropertyName("isDecompiled"), JsonProperty("isDecompiled")]
+    public bool IsDecompiled { get; set; }
+    [JsonPropertyName("sourceCode"), JsonProperty("sourceCode")]
+    public string? SourceCode { get; set; }
 }

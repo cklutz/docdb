@@ -74,6 +74,7 @@ public static class Program
                 .WithAttributeOverride<DdbUserDefinedFunction>(o => o.Syntax!, new YamlMemberAttribute { ScalarStyle = YamlDotNet.Core.ScalarStyle.Literal })
                 .WithAttributeOverride<DdbXmlSchemaCollection>(o => o.Schemas!, new YamlMemberAttribute { ScalarStyle = YamlDotNet.Core.ScalarStyle.Literal })
                 .WithAttributeOverride<DdbXmlSchemaCollection>(o => o.SchemasError!, new YamlMemberAttribute { ScalarStyle = YamlDotNet.Core.ScalarStyle.Literal })
+                .WithAttributeOverride<DdbAssembly>(o => o.SourceCode!, new YamlMemberAttribute { ScalarStyle = YamlDotNet.Core.ScalarStyle.Literal })
                 .WithAttributeOverride<NamedDdbObject>(o => o.Name, new YamlMemberAttribute { Order = -5 })
                 .WithNamingConvention(CamelCaseNamingConvention.Instance);
 

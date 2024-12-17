@@ -21,6 +21,1523 @@ fileNames:
 - Line.cs
 - Point.cs
 - Triangle.cs
+isDecompiled: false
+sourceCode: |+
+  // ====================================================================
+  // Angle.cs
+  // ====================================================================
+
+  using System;
+  using System.Data.Sql;
+  using Microsoft.SqlServer.Server;
+  using System.Data.SqlTypes;
+  using System.Runtime.InteropServices;
+  /// <summary>
+  /// Angle object with IComparable sorting.
+  /// </summary>
+  /// 
+  [StructLayout(LayoutKind.Sequential)]
+  [SqlUserDefinedTypeAttribute(Format.Native, IsByteOrdered = true)]
+  [Serializable()]
+
+
+  public class Angle : System.Data.SqlTypes.INullable
+  {
+  	double m_nTheta;
+  	int m_nIsNull;
+
+  	public Angle()
+  	{
+  		m_nTheta = 0;
+  		m_nIsNull = 1;
+  	}
+
+  	public Angle(double x)
+  	{
+  		m_nTheta = x % 360.0;
+  		m_nIsNull = 0;
+  	}
+
+  	public bool IsNull
+  	{
+  		get { return (m_nIsNull == 1); }
+  	}
+
+  	public override String ToString()
+  	{
+  		
+  		String val = null;
+  		if (!this.IsNull)
+  			return m_nTheta.ToString();
+  		else
+  			return val;
+  	}
+
+  	public static Angle Parse(SqlString s)
+  	{
+  		double x;
+  		Angle RetVal = Angle.Null;
+
+  		x = double.Parse((string)s);
+  		RetVal.m_nTheta = x % 360.0;
+  		RetVal.m_nIsNull = 0;
+  		return RetVal;
+  	}
+
+  	public static Angle FromXMLString(SqlString s)
+  	{
+  		return new Angle();
+  	}
+
+  	public SqlString ToXMLString()
+  	{
+  		SqlString sStr = new SqlString(""); // = null;
+
+  		sStr += "<Theta>" + m_nTheta.ToString() + "</Theta>";
+  		return sStr;
+  	}
+
+  	public static Angle Null
+  	{
+  		get { return new Angle(); }
+  	}
+  //
+  //	public int CompareTo(object o)
+  //	{
+  //		//boundary condition where the clr object reference is null, and the
+  //		//receiver is not null. We assume that not-null is always greater
+  //		//than null.
+  //		if (null == o)
+  //			return 1;
+  //
+  //		//check for database null values
+  //		//nulls always compare less than non-nulls expect when the recvr and
+  //		//argument are both null
+  //		Angle other = o as Angle;
+  //		if (other == null) 
+  //			throw new ArgumentException("dont know how to compare " + o);
+  //
+  //		if (this.IsNull)
+  //		{
+  //			if (other.IsNull)
+  //				return  0; //both values are null
+  //			return -1;
+  //		}
+  //		if (other.IsNull)
+  //			return 1;
+  //
+  //		//do the real comparison now
+  //		return this.m_nTheta.CompareTo(other.m_nTheta);
+  //	}
+  //
+  //	public override bool Equals(object other)
+  //	{
+  //		Angle u = other as Angle;
+  //
+  //		if (u == null)
+  //			return false;
+  //		return this.CompareTo(other) == 0;
+  //	}
+  //
+  //	public override int GetHashCode()
+  //	{
+  //		if (this.IsNull)
+  //			return 0;
+  //		return this.m_nTheta.GetHashCode();
+  //	}
+  // 
+  //	public static SqlBoolean operator <(Angle first, Angle next)
+  //	{
+  //		if (null == (object)first)
+  //			return false;
+  //		if (first.IsNull || (object)next==null || next.IsNull)
+  //			return SqlBoolean.Null;
+  //		return first.CompareTo(next) < 0;
+  //	}
+  //
+  //	public static SqlBoolean operator >(Angle first, Angle next)
+  //	{
+  //		if (null == (object)first)
+  //			return false;
+  //		if (first.IsNull || (object)next==null || next.IsNull)
+  //			return SqlBoolean.Null;
+  //		return first.CompareTo(next) > 0;
+  //	}
+  //
+  //	public static SqlBoolean operator <=(Angle first, Angle next)
+  //	{
+  //		if (null == (object)first)
+  //			return null == ((object)next) ? true : false;
+  //		if (first.IsNull || (object)next==null || next.IsNull)
+  //			return SqlBoolean.Null;
+  //		return first.CompareTo(next) <= 0;
+  //	}
+  //
+  //	public static SqlBoolean operator >=(Angle first, Angle next)
+  //	{
+  //		if (null == (object)first)
+  //			return null == (object)next;
+  //		if (first.IsNull || (object)next==null || next.IsNull)
+  //			return SqlBoolean.Null;
+  //		return first.CompareTo(next) >= 0;
+  //	}
+  //
+  //	public static SqlBoolean operator ==(Angle first, Angle next)
+  //	{
+  //		if (null == (object)first)
+  //			return null == (object)next;
+  //		if (first.IsNull || (object)next==null || next.IsNull)
+  //			return SqlBoolean.Null;
+  //		return first.CompareTo(next) == 0;
+  //	}
+  //
+  //	public static SqlBoolean operator !=(Angle first, Angle next)
+  //	{
+  //		if (null == (object)first)
+  //			return null == ((object)next) ? false : true;
+  //		if (first.IsNull || (object)next==null || next.IsNull)
+  //			return SqlBoolean.Null;
+  //		return first.CompareTo(next) != 0;
+  //	}
+  //
+  }
+  //}
+
+
+  // ====================================================================
+  // AssemblyInfo.cs
+  // ====================================================================
+
+  using System.Reflection;
+  using System.Runtime.CompilerServices;
+  using System.Data.Sql;
+
+
+  //
+  // General Information about an assembly is controlled through the following 
+  // set of attributes. Change these attribute values to modify the information
+  // associated with an assembly.
+  //
+  [assembly: AssemblyTitle("")]
+  [assembly: AssemblyDescription("")]
+  [assembly: AssemblyConfiguration("")]
+  [assembly: AssemblyCompany("")]
+  [assembly: AssemblyProduct("")]
+  [assembly: AssemblyCopyright("")]
+  [assembly: AssemblyTrademark("")]
+  [assembly: AssemblyCulture("")]		
+
+  //
+  // Version information for an assembly consists of the following four values:
+  //
+  //      Major Version
+  //      Minor Version 
+  //      Build Number
+  //      Revision
+  //
+  // You can specify all the values or you can default the Revision and Build Numbers 
+  // by using the '*' as shown below:
+
+  [assembly: AssemblyVersion("1.0.*")]
+
+  //
+  // In order to sign your assembly you must specify a key to use. Refer to the 
+  // Microsoft .NET Framework documentation for more information on assembly signing.
+  //
+  // Use the attributes below to control which key is used for signing. 
+  //
+  // Notes: 
+  //   (*) If no key is specified, the assembly is not signed.
+  //   (*) KeyName refers to a key that has been installed in the Crypto Service
+  //       Provider (CSP) on your machine. KeyFile refers to a file which contains
+  //       a key.
+  //   (*) If the KeyFile and the KeyName values are both specified, the 
+  //       following processing occurs:
+  //       (1) If the KeyName can be found in the CSP, that key is used.
+  //       (2) If the KeyName does not exist and the KeyFile does exist, the key 
+  //           in the KeyFile is installed into the CSP and used.
+  //   (*) In order to create a KeyFile, you can use the sn.exe (Strong Name) utility.
+  //       When specifying the KeyFile, the location of the KeyFile should be
+  //       relative to the project output directory which is
+  //       %Project Directory%\obj\<configuration>. For example, if your KeyFile is
+  //       located in the project directory, you would specify the AssemblyKeyFile 
+  //       attribute as [assembly: AssemblyKeyFile("..\\..\\mykey.snk")]
+  //   (*) Delay Signing is an advanced option - see the Microsoft .NET Framework
+  //       documentation for more information on this.
+  //
+  [assembly: AssemblyDelaySign(false)]
+  [assembly: AssemblyKeyFile("")]
+  [assembly: AssemblyKeyName("")]
+
+
+  // ====================================================================
+  // Circle.cs
+  // ====================================================================
+
+  using System;
+  using System.Data.SqlTypes;
+  using System.Data.Sql;
+  using Microsoft.SqlServer.Server;
+
+
+  /// <summary>
+  /// Circle object with binary sorting.
+  /// </summary>
+  [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+  [SqlUserDefinedTypeAttribute(Format.UserDefined, MaxByteSize = 500, IsByteOrdered = true)]
+  [Serializable()]
+  public class Circle : System.Data.SqlTypes.INullable,IBinarySerialize
+  {
+  	double m_nRadius;
+  	int m_nIsNull;
+
+  	public Circle()
+  	{
+  		m_nRadius = 0;
+  		m_nIsNull = 1;
+  	}
+
+  	public Circle(double x)
+  	{
+  		if (x == 0)
+  		{
+  			System.Exception s1 = new System.Exception("A circle must have a non-zero radius");
+  			m_nIsNull = 1;
+  			throw s1;
+  		}
+  		if (x < 0)
+  			m_nRadius = -x;
+  		else
+  			m_nRadius = x;
+  		m_nIsNull = 0;
+  	}
+
+  	public bool IsNull
+  	{
+  		get { return (m_nIsNull == 1); }
+  	}
+
+  	public override String ToString()
+  	{
+  		if (!this.IsNull)
+  			return m_nRadius.ToString();
+  		else
+  			return null;
+  	}
+
+  	public static Circle Parse(SqlString s)
+  	{
+  		double x;
+  		Circle RetVal = Circle.Null;
+  		if (s.IsNull) return Null;
+  		if (s == SqlString.Null) return Null;
+  		if (s.ToString() == SqlString.Null.ToString()) return Null;
+  		x = double.Parse((string)s);
+  		if (x == 0)
+  		{
+  			System.Exception s1 = new System.Exception("A circle must have a non-zero radius");
+  			RetVal.m_nIsNull = 1;
+  			throw s1;
+  		}
+  		if (x < 0)
+  			RetVal.m_nRadius = -x;
+  		else
+  			RetVal.m_nRadius = x;
+  		RetVal.m_nIsNull = 0;
+  		return RetVal;
+  	}
+
+  	public static Circle FromXMLString(SqlString s)
+  	{
+  		return new Circle();
+  	}
+
+  	public SqlString ToXMLString()
+  	{
+  		SqlString sStr = new SqlString(""); // = null;
+
+  		sStr += "<Radius>" + m_nRadius.ToString() + "</Radius>";
+  		return sStr;
+  	}
+
+  	public static Circle Null
+  	{
+  		get { return new Circle(); }
+  	}
+
+  	#region IBinarySerialize Members
+
+  	void IBinarySerialize.Read(System.IO.BinaryReader r)
+  	{
+  		this.m_nRadius = r.ReadDouble();
+  		this.m_nIsNull = r.ReadInt32();
+  	}
+
+  	void IBinarySerialize.Write(System.IO.BinaryWriter w)
+  	{
+  		w.Write(this.m_nRadius);
+  		w.Write(this.m_nIsNull);
+  	}
+
+  	#endregion
+  }
+  //}
+
+
+  // ====================================================================
+  // CLRFunctions.cs
+  // ====================================================================
+
+  using System;
+  using System.Data.Sql;
+  using Microsoft.SqlServer.Server;
+  using System.Collections;
+
+  /// <summary>
+  /// Summary description for CLRFunctions.
+  /// </summary>
+  public class CLRFunctions
+  {
+  	[SqlFunction]
+  	public static int CLR_XplusY(int x, int y)
+  	{
+  		return (x + y);
+  	}
+
+
+  	[SqlTrigger(Name = "Trigger1", Target = "authors", Event = "FOR UPDATE")]
+  	public static void CLR_SimpleTrigger()
+  	{
+  		System.Data.SqlClient.SqlCommand cmd;
+  		cmd = new System.Data.SqlClient.SqlCommand();
+  		cmd.CommandText = "UPDATE stores SET state = 'MT'";
+  		cmd.CommandType = System.Data.CommandType.Text;
+  		Microsoft.SqlServer.Server.SqlContext.Pipe.ExecuteAndSend(cmd);	
+  	}
+
+  	[SqlProcedure]
+  	public static void CLR_SimpleResultsetProcedure()
+  	{
+  		System.Data.SqlClient.SqlCommand cmd;
+  		cmd = new System.Data.SqlClient.SqlCommand();		
+  		cmd.CommandType = System.Data.CommandType.Text;
+  		cmd.CommandText = "SELECT fname, lname, hire_date FROM Employee";
+
+  		Microsoft.SqlServer.Server.SqlContext.Pipe.ExecuteAndSend(cmd);
+  	}
+
+  	[SqlProcedure]
+
+  	public static void CLR_SimpleResultsetProcedurewithParams(string empid, DateTime hire_date, int job_id)
+  	{
+
+  		System.Data.SqlClient.SqlCommand cmd;
+  		cmd = new System.Data.SqlClient.SqlCommand();
+  		cmd.CommandType = System.Data.CommandType.Text;
+  		cmd.CommandText = "SELECT fname, lname, hire_date FROM Employee where emp_id = '" + empid + "' and  hire_date = '" + hire_date + "' and job_id = " + job_id;
+  		Microsoft.SqlServer.Server.SqlContext.Pipe.ExecuteAndSend(cmd);
+  	}
+
+
+  	[SqlProcedure]
+  	public static void CLR_SimpleUpdateProcedure()
+  	{		
+  		System.Data.SqlClient.SqlCommand cmd;
+  		cmd = new System.Data.SqlClient.SqlCommand();
+  		cmd.CommandText = "UPDATE publishers Set city = 'BZN'";
+  		cmd.CommandType = System.Data.CommandType.Text;
+  		Microsoft.SqlServer.Server.SqlContext.Pipe.ExecuteAndSend(cmd);			
+  	}
+
+  	public static double Multiply(double x, double y)
+  	{
+  		double z;
+
+  		z = x * y;
+  		return (z);
+  	}
+
+  	public static long SquareOfNum(int x)
+  	{
+  		return (x * x);
+  	}
+
+  	public static string HelloWorld()
+  	{
+  		return ("Hello World");
+  	}
+
+  	public static Point MidpointOfLine(Line l)
+  	{
+  		Point P1;
+  		Point P2;
+  		Point Mid = new Point(0, 0);
+  		double x1, y1, x2, y2;
+
+  		P1 = l.BeginPoint;
+  		P2 = l.EndPoint;
+
+  		x1 = P1.X;
+  		y1 = P1.Y;
+
+  		x2 = P2.X;
+  		y2 = P2.Y;
+
+  		Mid.X = (x1 + x2) * 0.5;
+  		Mid.Y = (y1 + y2) * 0.5;
+
+  		return (Mid);
+  	}
+
+  	public static double LineGradient(Point p1, Point p2)
+  	{
+  		double x1, y1, x2, y2;
+  		double gradient;
+
+  		x1 = p1.X;
+  		y1 = p1.Y;
+  		x2 = p2.X;
+  		y2 = p2.Y;
+
+  		gradient = (y2 - y1) / (x2 - x1);
+  		return (gradient);
+  	}
+
+  	public static string CreateTLA(string strSample)
+  	{
+  		try
+  		{
+  			string strTLA = "";
+  			int intlen = strSample.Length;
+  			int intpos = strSample.IndexOf(" ");
+  			if (intpos == -1)
+  			{
+  				strTLA = strTLA.Insert(0, (strSample.Substring(0, 1)));
+  				strTLA = strTLA.Insert(1, (strSample.Substring((intlen / 2), 1)));
+  				strTLA = strTLA.Insert(2, (strSample.Substring(intlen - 1, 1)));
+  				strTLA = strTLA.ToUpper();
+  			}
+  			else
+  			{
+  				return "Error: Only single words will be converted to a TLA";
+  			}
+
+
+  			return strTLA;
+  		}
+  		catch (Exception e)
+  		{
+  			return "Error: Could not create TLA. " + e.Message;
+  		}
+
+  	}
+  	public static string GetLocalTime()
+  	{
+  		try
+  		{
+  			string strDTime = DateTime.Now.ToString();
+  			return strDTime;
+  		}
+  		catch (Exception e)
+  		{
+  			return "Error: " + e.Message;
+  		}
+  	}
+  }
+  [Serializable]
+  [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+  [SqlUserDefinedAggregateAttribute(
+  	 Format.UserDefined,
+  	 IsInvariantToNulls = true,
+  	 IsInvariantToDuplicates = false, IsInvariantToOrder = true,
+  	 MaxByteSize = 8000)
+  ]
+  public class Concat : Microsoft.SqlServer.Server.IBinarySerialize
+  {
+  	private System.Text.StringBuilder result;
+
+  	public void Init()
+  	{
+  		result = new System.Text.StringBuilder();
+  	}
+
+  	public void Accumulate(System.Data.SqlTypes.SqlString nextval)
+  	{
+  		if (nextval.IsNull)
+  		{
+  			return;
+  		}
+  		result.Append(nextval.Value);
+
+  	}
+
+  	public void Merge(Concat otheragg)
+  	{
+  		result.Append(otheragg.result);
+  	}
+
+  	public System.Data.SqlTypes.SqlString Terminate()
+  	{
+  		return new System.Data.SqlTypes.SqlString(result.ToString());
+  	}
+
+  	#region IBinarySerialize Members
+
+  	public void Read(System.IO.BinaryReader r)
+  	{
+  		result = new System.Text.StringBuilder(r.ReadString());
+  	}
+
+  	public void Write(System.IO.BinaryWriter w)
+  	{
+  		w.Write(result.ToString());
+  	}
+
+  	#endregion
+  }
+
+
+
+  // ====================================================================
+  // CLRTablevaluedFunction.cs
+  // ====================================================================
+
+  using System;
+  using System.Data;
+  using System.Data.Sql;
+  using System.Data.SqlTypes;
+  using Microsoft.SqlServer.Server;
+  using System.Collections;
+
+  public partial class UserDefinedFunctions
+  {
+  	[SqlFunction(DataAccess = DataAccessKind.Read, TableDefinition = "au_id nvarchar(11), au_lname nvarchar(40) , au_fname nvarchar(20)", FillRowMethodName = "FillRowMethod")]
+  	public static IEnumerable CLRTableValueFunction(int recordCount)
+  	{
+  			
+  			MyAuthorsTable t1;
+  			t1 = new MyAuthorsTable(recordCount);
+  			return t1.List;		
+  	}
+
+      [SqlFunction(DataAccess = DataAccessKind.Read, TableDefinition = "x nvarchar(300)", FillRowMethodName = "FillRowMethod1")]
+      public static IEnumerable FV()
+      {
+          // Put your code here
+          string[] arr_String = new string[2];
+          arr_String[0] = new string('2', 128);
+          arr_String[0] = arr_String[0] + '1';
+          arr_String[1] = arr_String[0].Length.ToString();
+
+          return arr_String;
+      }
+
+      public static void FillRowMethod1(object record, out string x)
+      {
+          x = (string)record;
+      }
+
+  	public static void FillRowMethod(object record, out string au_id ,out string au_lname, out string au_fname)
+  	{
+  		Author author = (Author)record;
+  		au_id = author.au_id;
+  		au_fname = author.au_fname;
+  		au_lname = author.au_lname;
+  	}
+  	
+  	public class Author
+  	{
+  		public string au_id;
+  		public string au_lname;
+  		public string au_fname;
+  		public Author(string s1, string s2, string s3)
+  		{
+  			au_id = s1;
+  			au_lname = s2;
+  			au_fname = s3;
+  		}
+
+  	}
+
+  	public class MyAuthorsTable 
+  	{
+  		private int m_count = 0;
+  		
+  		
+  		private System.Collections.Generic.List<Author> list = new System.Collections.Generic.List<Author>();
+  		public System.Collections.Generic.List<Author>  List
+  		{
+  			get
+  			{
+  				return list;
+  			}
+  	    }
+  		public MyAuthorsTable(int recordCount)
+  		{
+
+
+  			using (System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection("context connection=true"))
+  			{
+  				int count = 0;
+  				m_count = recordCount;
+  				conn.Open();
+  				System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("select au_id,au_lname,au_fname from authors order by au_id", conn);
+  				cmd.CommandType = System.Data.CommandType.Text;
+  				System.Data.SqlClient.SqlDataReader reader;					
+  				reader = cmd.ExecuteReader();
+  				while (reader.Read())
+  				{
+  					Author thisAuthor = new Author(reader.GetString(0), reader.GetString(1), reader.GetString(2));
+  					if (count < m_count)
+  					{
+  						list.Add(thisAuthor);
+  						count++;
+  					}
+  					else
+  						break;
+  				}
+  				if (m_count > list.Count) m_count = list.Count;
+  				reader.Close();
+  				conn.Close();
+  			}
+  		}		
+  	}
+  	
+  };
+
+
+  // ====================================================================
+  // Line.cs
+  // ====================================================================
+
+  using System;
+  using System.Data.SqlTypes;
+  using System.Data.Sql;
+  using Microsoft.SqlServer.Server;
+
+  /// <summary>
+  /// Summary description for Class1.
+  /// </summary>
+  [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+  [SqlUserDefinedTypeAttribute(Format.UserDefined, MaxByteSize = 500)]
+  [Serializable()]
+  public class Line : System.Data.SqlTypes.INullable, Microsoft.SqlServer.Server.IBinarySerialize
+  {
+
+  	public const int MaxByteSize = 32;
+  	public const bool IsNullable = true;
+  	public const bool IsFixedLength = true;
+  	public const bool IsByteOrdered = true;
+  	Point m_objX;
+  	Point m_objY;
+  	int m_nIsNull;
+  	public Line()
+  	{
+  		Point X = new Point();
+  		Point Y = new Point();
+  		m_nIsNull = 1;
+  	}
+  	public Line(Point x, Point y)
+  	{
+
+  		if (x.ToString() == y.ToString())
+  		{
+  			System.Exception s1 = new System.Exception("That's not a line, only a point");
+  			m_nIsNull = 1;
+  			throw s1;
+  		}
+  		m_objX = x;
+  		m_objY = y;
+  		m_nIsNull = (m_objX.IsNull || m_objY.IsNull) ? 1 : 0;
+  	}
+  	public Point BeginPoint
+  	{
+  		get { return m_objX; }
+  		set { m_objX = value; }
+  	}
+  	public Point EndPoint
+  	{
+  		get { return m_objY; }
+  		set { m_objY = value; }
+  	}
+  	[SqlMethodAttribute(IsMutator = true)]
+  	public void SetAllValues(Point x, Point y)
+  	{
+  		m_objX = x;
+  		m_objY = y;
+  		m_nIsNull = (x.IsNull || y.IsNull) ? 1 : 0;
+  	}
+
+  	public bool IsNull
+  	{
+  		get
+  		{
+  			return (m_nIsNull == 1);
+  		}
+  	}
+
+  	public override String ToString()
+  	{
+  		String val = null;
+  		if (!this.IsNull)
+  			return m_objX.ToString() + "-" + m_objY.ToString();
+  		return val;
+  	}
+
+  	public static Line Parse(SqlString s)
+  	{
+  		string val;
+
+  		string substr;
+  		int nFirst = -1;
+  		int k;
+  		Point x, y;
+  		Line RetVal = Line.Null;
+  		if (s.IsNull)
+  		{
+  			return Null;
+  		}
+  		if (s == SqlString.Null)
+  		{
+  			return Null;
+  		}
+  		val = (string)s;
+  		x = new Point(0, 0);
+  		y = new Point(0, 0);
+  		int m;
+
+  		for (m = 0; m < val.Length; ++m)
+  		{
+  			if (val[m] == ' ')
+  			{
+  				val.Remove(m, 1);
+  			}
+  		}
+
+  		if (val != null && val.Length > 0)
+  		{
+  			if (val == SqlString.Null.ToString()) return Null;
+  			for (k = 0; k < val.Length; ++k)
+  			{
+  				if (k > 0 && k < val.Length - 1 & val[k - 1] == ')' && val[k + 1] == '(' && val[k] == '-')
+  				{
+  					if (nFirst == -1)
+  					{
+  						nFirst = k;
+  						break;
+  					}
+  				}
+  			}
+
+  			if (nFirst >= 1)
+  			{
+  				substr = val.Substring(0, nFirst);
+  				x = Point.Parse(substr);
+  				if ((nFirst + 1) < val.Length - 1)
+  				{
+  					substr = val.Substring(nFirst + 1);
+  					y = Point.Parse(substr);
+  				}
+  			}
+  			else
+  			{
+  				substr = val;
+  				x = Point.Parse(substr);
+  			}
+
+  			if (x.ToString() == y.ToString())
+  			{
+  				System.Exception s1 = new System.Exception("That's not a line, only a point");
+  				throw s1;
+  			}
+  			RetVal.m_objX = x;
+  			RetVal.m_objY = y;
+  			RetVal.m_nIsNull = 0;
+  			return RetVal;
+  		}
+  		else
+  		{
+  			RetVal.m_objX = new Point();
+  			RetVal.m_objY = new Point();
+  			RetVal.m_nIsNull = 1;
+  			return RetVal;
+  		}
+  	}
+
+
+  	public static Line FromXMLString(SqlString s)
+  	{
+  		return new Line();
+  	}
+
+  	public SqlString ToXMLString()
+  	{
+  		SqlString sStr = new SqlString(""); // = null;
+
+  		sStr += "<PointBegin>" + m_objX.ToString() + "</PointBegin>";
+  		sStr += "-";
+  		sStr += "<PointEnd>" + m_objY.ToString() + "</PointEnd>";
+  		return sStr;
+  	}
+
+  	public static Line Null
+  	{
+  		get { return new Line(); }
+  	}
+
+  	/*public static implicit operator Shape_OBJ(SqlString s)
+  		{
+  			return Parse(s);
+  		}*/
+
+  	public static explicit operator SqlString(Line Obj)
+  	{
+  		SqlString sStr = null;
+  		if (Obj != Null)
+  			sStr = new SqlString(Obj.ToString());
+  		return sStr;
+  	}
+
+  	public static implicit operator Line(SqlBytes val)
+  	{
+  		Line pObj = new Line();
+  		return pObj;
+  	}
+  	public double GetLength()
+  	{
+  		double x, y;
+  		x = m_objX.X - m_objY.X; y = m_objX.Y - m_objY.Y;
+  		return Math.Sqrt(x * x + y * y);
+  	}
+  	public bool IsIntersect(Line l)
+  	{
+  		if (l.IsNull) return false;
+  		if (this.IsNull) return false;
+
+  		if (IsOnLine(l.BeginPoint))
+  			return true;
+  		if (IsOnLine(l.EndPoint))
+  			return true;
+  		if (IsParrel(l))
+  			return false;
+  		return (this.IsOnSameSide(l.BeginPoint, l.EndPoint) || IsOnSameSide(this.BeginPoint, this.EndPoint));
+  	}
+  	public bool IsParrel(Line l)
+  	{
+
+  		double k = 0, k1 = 0;
+  		int mode = 0;
+  		int mode1 = 0;
+  		if (l.IsNull) return false;
+  		if (this.IsNull) return false;
+  		if (Math.Abs(this.BeginPoint.Y - this.EndPoint.Y) >= Math.Abs(this.BeginPoint.X - this.EndPoint.X))
+  		{
+  			k = (this.BeginPoint.X - this.EndPoint.X) / (this.BeginPoint.Y - this.EndPoint.Y);
+  			mode = 0;
+  		}
+  		else if (Math.Abs(this.BeginPoint.Y - this.EndPoint.Y) < Math.Abs(this.BeginPoint.X - this.EndPoint.X))
+  		{
+  			k = (this.BeginPoint.Y - this.EndPoint.Y) / (this.BeginPoint.X - this.EndPoint.X);
+  			mode = 1;
+  		}
+
+  		if (Math.Abs(l.BeginPoint.Y - l.EndPoint.Y) >= Math.Abs(l.BeginPoint.X - l.EndPoint.X))
+  		{
+  			k1 = (l.BeginPoint.X - l.EndPoint.X) / (l.BeginPoint.Y - l.EndPoint.Y);
+  			mode1 = 0;
+  		}
+  		else if (Math.Abs(l.BeginPoint.Y - l.EndPoint.Y) < Math.Abs(l.BeginPoint.X - l.EndPoint.X))
+  		{
+  			k1 = (l.BeginPoint.Y - l.EndPoint.Y) / (l.BeginPoint.X - l.EndPoint.X);
+  			mode1 = 1;
+  		}
+  		if (mode1 == mode)
+  		{
+  			if (Math.Abs(k - k1) <= 0.00000001) return true;
+  			else
+  				return false;
+  		}
+  		else
+  			return false;
+  	}
+  	public bool IsOnLine(Point p)
+  	{
+  		if (p.IsNull) return false;
+  		if (this.IsNull) return false;
+
+  		double k, b;
+  		if (Math.Abs(this.BeginPoint.Y - this.EndPoint.Y) >= Math.Abs(this.BeginPoint.X - this.EndPoint.X))
+  		{
+  			k = (this.BeginPoint.X - this.EndPoint.X) / (this.BeginPoint.Y - this.EndPoint.Y);
+  			b = this.BeginPoint.X - k * this.BeginPoint.Y;
+  			if (Math.Abs((p.X - p.Y * k - b)) < 0.0000000001)
+  			{
+  				if (p.Y <= Math.Max(this.BeginPoint.Y, this.EndPoint.Y) && p.Y >= Math.Min(this.BeginPoint.Y, this.EndPoint.Y))
+  					return true;
+  			}
+  			return false;
+
+  		}
+  		else if (Math.Abs(this.BeginPoint.Y - this.EndPoint.Y) < Math.Abs(this.BeginPoint.X - this.EndPoint.X))
+  		{
+  			k = (this.BeginPoint.Y - this.EndPoint.Y) / (this.BeginPoint.X - this.EndPoint.X);
+  			b = this.BeginPoint.Y - k * this.BeginPoint.X;
+  			if (Math.Abs((p.Y - p.X * k - b)) < 0.0000000001)
+  			{
+  				if (p.X <= Math.Max(this.BeginPoint.X, this.EndPoint.X) && p.X >= Math.Min(this.BeginPoint.X, this.EndPoint.X))
+  					return true;
+  			}
+  			return false;
+  		}
+  		return false;
+  	}
+  	public bool IsAboveLine(Point p)
+  	{
+
+  		double k = 0, b = 0;
+  		if (p.IsNull) return false;
+  		if (this.IsNull) return false;
+
+  		if (Math.Abs(this.BeginPoint.Y - this.EndPoint.Y) >= Math.Abs(this.BeginPoint.X - this.EndPoint.X))
+  		{
+  			k = (this.BeginPoint.X - this.EndPoint.X) / (this.BeginPoint.Y - this.EndPoint.Y);
+  			b = this.BeginPoint.X - k * this.BeginPoint.Y;
+  			if (Math.Abs((p.X - p.Y * k - b)) < 0.0000000001)
+  			{
+  				return false;
+  			}
+  			if (p.X < p.Y * k + b) return true;
+  			else
+  				return false;
+
+  		}
+  		else
+  		{
+  			k = (this.BeginPoint.Y - this.EndPoint.Y) / (this.BeginPoint.X - this.EndPoint.X);
+  			b = this.BeginPoint.Y - k * this.BeginPoint.X;
+  			if (Math.Abs((p.Y - p.X * k - b)) < 0.0000000001)
+  			{
+  				return false;
+  			}
+  			if (p.Y > p.X * k + b) return true;
+  			else
+  				return false;
+  		}
+
+  	}
+  	public bool IsOnSameSide(Point p1, Point p2)
+  	{
+  		if (p1.IsNull) return false;
+  		if (p2.IsNull) return false;
+  		if (this.IsNull) return false;
+  		if (IsAboveLine(p1) && IsAboveLine(p2))
+  			return true;
+  		if ((!IsAboveLine(p1)) && (!IsAboveLine(p2)))
+  			return true;
+  		else
+  			return false;
+  	}
+  	public string GetLineEquation()
+  	{
+
+  		double k = 0, b = 0;
+  		string s = "";
+  		if (this.m_nIsNull == 1) return "";
+  		if (Math.Abs(this.BeginPoint.Y - this.EndPoint.Y) >= Math.Abs(this.BeginPoint.X - this.EndPoint.X))
+  		{
+  			k = (this.BeginPoint.X - this.EndPoint.X) / (this.BeginPoint.Y - this.EndPoint.Y);
+  			b = this.BeginPoint.X - k * this.BeginPoint.Y;
+  			s = "X=";
+  			if (k == 1) s += "Y";
+  			else if (k == -1) s += "-Y";
+  			else if (k == 0) { }
+  			else
+  				s += k.ToString() + "*Y";
+  			if (b == 0) return s;
+  			if (b < 0) s += b.ToString();
+  			if (b > 0) s += "+" + b.ToString();
+  			return s;
+  		}
+  		else
+  		{
+  			k = (this.BeginPoint.Y - this.EndPoint.Y) / (this.BeginPoint.X - this.EndPoint.X);
+  			b = this.BeginPoint.Y - k * this.BeginPoint.X;
+  			s = "Y=";
+  			if (k == 1) s += "X";
+  			else if (k == -1) s += "-X";
+  			else if (k == 0) { }
+  			else
+  				s += k.ToString() + "*X";
+  			if (b == 0) return s;
+  			if (b < 0) s += b.ToString();
+  			if (b > 0) s += "+" + b.ToString();
+  			return s;
+  		}
+
+  	}
+  	public bool IsIntersectOnce(Line l)
+  	{
+  		if (!this.IsIntersect(l)) return false;
+  		if (this.GetLineEquation() == l.GetLineEquation())
+  		{
+  			if (Math.Abs(this.BeginPoint.Y - this.EndPoint.Y) >= Math.Abs(this.BeginPoint.X - this.EndPoint.X))
+  			{
+  				if (Math.Max(this.BeginPoint.Y, this.EndPoint.Y) == Math.Min(l.BeginPoint.Y, l.EndPoint.Y) || Math.Min(this.BeginPoint.Y, this.EndPoint.Y) == Math.Max(l.BeginPoint.Y, l.EndPoint.Y))
+  					return true;
+  			}
+  			else
+  			{
+  				if (Math.Max(this.BeginPoint.X, this.EndPoint.X) == Math.Min(l.BeginPoint.X, l.EndPoint.X) || Math.Min(this.BeginPoint.X, this.EndPoint.X) == Math.Max(l.BeginPoint.X, l.EndPoint.X))
+  					return true;
+  			}
+  			return false;
+  		}
+  		return true;
+  	}
+  	public Point GetIntersectPoint(Line l)
+  	{
+  		if (!IsIntersectOnce(l)) return Point.Null;
+  		double k1 = 0, b1 = 0;
+  		double k2 = 0, b2 = 0;
+  		double x = 0; double y = 0;
+  		int mode = 0; int mode1 = 0;
+
+  		if (this.m_nIsNull == 1) return Point.Null;
+  		if (l.IsNull) return Point.Null;
+  		if (this.IsOnLine(l.BeginPoint)) return new Point(l.BeginPoint.X, l.BeginPoint.Y);
+  		if (this.IsOnLine(l.EndPoint)) return new Point(l.EndPoint.X, l.EndPoint.Y);
+  		if (l.IsOnLine(this.EndPoint)) return new Point(this.EndPoint.X, this.EndPoint.Y);
+  		if (l.IsOnLine(this.BeginPoint)) return new Point(this.BeginPoint.X, this.BeginPoint.Y);
+
+  		if (Math.Abs(this.BeginPoint.Y - this.EndPoint.Y) >= Math.Abs(this.BeginPoint.X - this.EndPoint.X))
+  		{
+  			k1 = (this.BeginPoint.X - this.EndPoint.X) / (this.BeginPoint.Y - this.EndPoint.Y);
+  			b1 = this.BeginPoint.X - k1 * this.BeginPoint.Y;
+  			mode = 1;
+  		}
+  		else
+  		{
+  			k1 = (this.BeginPoint.Y - this.EndPoint.Y) / (this.BeginPoint.X - this.EndPoint.X);
+  			b1 = this.BeginPoint.Y - k1 * this.BeginPoint.X;
+  			mode = 2;
+  		}
+  		if (Math.Abs(l.BeginPoint.Y - l.EndPoint.Y) >= Math.Abs(l.BeginPoint.X - l.EndPoint.X))
+  		{
+  			k2 = (l.BeginPoint.X - l.EndPoint.X) / (l.BeginPoint.Y - l.EndPoint.Y);
+  			b2 = l.BeginPoint.X - k2 * l.BeginPoint.Y;
+  			mode1 = 1;
+  		}
+  		else
+  		{
+  			k2 = (l.BeginPoint.Y - l.EndPoint.Y) / (l.BeginPoint.X - l.EndPoint.X);
+  			b2 = l.BeginPoint.Y - k2 * l.BeginPoint.X;
+  			mode1 = 2;
+  		}
+  		if (mode == mode1)
+  		{
+  			if (mode == 1)
+  			{
+  				y = (b1 - b2) / (k2 - k1);
+  				x = k1 * y + b1;
+  			}
+  			else
+  			{
+  				x = (b1 - b2) / (k2 - k1);
+  				y = k1 * x + b1;
+  			}
+  		}
+  		else
+  		{
+  			if (mode == 1)
+  			{
+  				x = (k1 * b2 + b1) / (1 - k1 * k2);
+  				y = k1 * x + b1;
+  			}
+  			else
+  			{
+  				y = (k1 * b2 + b1) / (1 - k1 * k2);
+  				x = k1 * y + b1;
+  			}
+
+  		}
+  		return new Point(x, y);
+
+
+
+  	}
+
+  	#region IBinarySerialize Members
+
+  	void IBinarySerialize.Read(System.IO.BinaryReader r)
+  	{
+  		if (this.m_objX == null) this.m_objX = new Point();
+  		if (this.m_objY == null) this.m_objY = new Point();
+  		this.m_objX.Read(r);
+  		this.m_objY.Read(r);
+  		this.m_nIsNull = r.ReadInt32();
+  	}
+
+  	void IBinarySerialize.Write(System.IO.BinaryWriter w)
+  	{
+  		this.m_objX.Write(w);
+  		this.m_objY.Write(w);
+  		w.Write(this.m_nIsNull);
+  	}
+
+  	#endregion
+  }
+
+
+
+  // ====================================================================
+  // Point.cs
+  // ====================================================================
+
+
+  using System;
+  using System.Data.SqlTypes;
+  using System.Data.Sql;
+  using Microsoft.SqlServer.Server;
+
+  //namespace YUKON_OBJECTS
+  //{
+  /// <summary>
+  /// Summary description for Class1.
+  /// </summary>
+  /// 
+  [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+  [SqlUserDefinedTypeAttribute(Format.UserDefined, MaxByteSize = 500)]
+  [Serializable()]
+  public class Point : System.Data.SqlTypes.INullable, IBinarySerialize
+  {
+  	double m_nX;
+  	double m_nY;
+  	int m_nIsNull;
+  	public Point()
+  	{
+  		m_nX = 0;
+  		m_nY = 0;
+  		m_nIsNull = 1;
+  	}
+
+  	public Point(double x, double y)
+  	{
+  		m_nX = x;
+  		m_nY = y;
+  		m_nIsNull = 0;
+  	}
+
+
+  	public double X
+  	{
+  		get { return m_nX; }
+  		set { m_nX = value; }
+  	}
+  	public double Y
+  	{
+  		get { return m_nY; }
+  		set { m_nY = value; }
+  	}
+
+
+  	[SqlMethodAttribute(IsMutator=true)]
+  	public void SetAllValues(double x, double y)
+  	{
+  		m_nX = x;
+  		m_nY = y;
+  		m_nIsNull = 0;
+  	}
+
+  	public bool IsNull
+  	{
+  		get
+  		{
+  			return (m_nIsNull == 1);
+  		}
+  	}
+
+  	public override String ToString()
+  	{
+  		String val = null;
+  		if (!this.IsNull)
+  			return "(" + m_nX.ToString() + "," + m_nY.ToString() + ")";
+  		return val;
+  	}
+
+  	public static Point Parse(SqlString s)
+  	{
+  		string val;
+  		string substr;
+  		int nFirst = -1;
+  		int k;
+  		double x, y;
+  		Point RetVal = Point.Null;
+  		if (s.IsNull)
+  			return Null;
+  		if (s == SqlString.Null)
+  		{
+  			return Null;
+  		}
+  		val = (string)s;
+  		x = y = 0;
+  		if (val != null && val.Length > 0)
+  		{
+  			if (val == SqlString.Null.ToString())
+  			{
+
+  				return Null;
+
+  			}
+
+  			if (val[0] == '(' && val[val.Length - 1] == ')')
+  			{
+  				for (k = 1; k < val.Length - 1; ++k)
+  				{
+  					if (val[k] == ',')
+  					{
+  						if (nFirst == -1)
+  						{
+  							nFirst = k;
+  							break;
+  						}
+  					}
+  				}
+
+  				if (nFirst >= 1)
+  				{
+  					substr = val.Substring(1, nFirst - 1);
+  					x = double.Parse(substr);
+  					if ((nFirst + 1) < val.Length - 1)
+  					{
+  						substr = val.Substring(nFirst + 1, val.Length - 1 - nFirst - 1);
+  						y = double.Parse(substr);
+  					}
+  				}
+  				else
+  				{
+  					substr = val.Substring(1, val.Length - 1);
+  					x = double.Parse(substr);
+  				}
+
+  			}
+  			else
+  			{
+  				System.Exception a = new System.Exception("Format not correct");
+  				throw a;
+  			}
+
+
+  			RetVal.m_nX = x;
+  			RetVal.m_nY = y;
+  			RetVal.m_nIsNull = 0;
+
+
+
+  			return RetVal;
+  		}
+  		else
+  		{
+
+  			return Null;
+  		}
+
+
+
+  	}
+
+  	public static Point FromXMLString(SqlString s)
+  	{
+  		return new Point();
+  	}
+
+  	public SqlString ToXMLString()
+  	{
+  		SqlString sStr = new SqlString(""); // = null;
+
+  		sStr += "<X>" + m_nX.ToString() + "</X>";
+  		sStr += "<Y>" + m_nY.ToString() + "</Y>";
+  		return sStr;
+  	}
+
+  	public static Point Null
+  	{
+  		get { return new Point(); }
+  	}
+
+
+
+  	#region IBinarySerialize Members
+
+  	public void Read(System.IO.BinaryReader r)
+  	{
+  		m_nX = r.ReadDouble();
+  		m_nY = r.ReadDouble();
+  		this.m_nIsNull = r.ReadInt32();
+  	}
+
+  	public void Write(System.IO.BinaryWriter w)
+  	{
+  		w.Write(this.m_nX);
+  		w.Write(this.m_nY);
+  		w.Write(this.m_nIsNull);
+  	}
+
+  	#endregion
+  }
+
+
+
+
+  // ====================================================================
+  // Triangle.cs
+  // ====================================================================
+
+  using System;
+  using System.Data.SqlTypes;
+  using System.Data.Sql;
+  using Microsoft.SqlServer.Server;
+
+
+
+  /// <summary>
+  /// Summary description for Class1.
+  /// </summary>
+  [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+  [SqlUserDefinedTypeAttribute(Format.UserDefined, MaxByteSize = 500)]
+  [Serializable()]
+  public class Triangle : System.Data.SqlTypes.INullable, IBinarySerialize
+  {
+  	Point m_objX;
+  	Point m_objY;
+  	Point m_objZ;
+  	int m_nIsNull;
+  	public Triangle()
+  	{
+  		Point X = new Point();
+  		Point Y = new Point();
+  		Point Z = new Point();
+  		m_nIsNull = 1;
+  	}
+  	public Triangle(Point x, Point y, Point z)
+  	{
+  		m_nIsNull = 1;
+  		m_objX = x;
+  		m_objY = y;
+  		m_objZ = z;
+  		m_nIsNull = 0;
+  	}
+  	public bool IsNull
+  	{
+  		get
+  		{
+  			return (m_nIsNull == 1);
+  		}
+  	}
+  	public Point PointA
+  	{
+  		get
+  		{
+  			return m_objX;
+  		}
+  	}
+  	public Point PointB
+  	{
+  		get
+  		{
+  			return m_objY;
+  		}
+  	}
+  	public Point PointC
+  	{
+  		get
+  		{
+  			return m_objZ;
+  		}
+  	}
+  	public override String ToString()
+  	{
+  		String val = null;
+  		if (!this.IsNull)
+  			return m_objX.ToString() + "x" + m_objY.ToString() + "x" + m_objZ.ToString();
+  		return val;
+  	}
+  	public static Triangle Null
+  	{
+  		get { return new Triangle(); }
+  	}
+  	public static Triangle Parse(SqlString s)
+  	{
+  		string val;
+  		if (s.IsNull)
+  		{
+  			return Null;
+  		}
+  		if (s == SqlString.Null)
+  		{
+  			return Null;
+  		}
+  		val = (string)s;
+  		for (int m = 0; m < val.Length; ++m)
+  		{
+  			if (val[m] == ' ')
+  			{
+  				val.Remove(m, 1);
+  			}
+  		}
+
+
+  		try
+  		{
+  			int x, y;
+  			x = val.IndexOf("x");
+  			y = val.LastIndexOf("x");
+  			string s1, s2, s3;
+  			s1 = val.Substring(0, x);
+  			s2 = val.Substring(x + 1, y - x - 1);
+  			s3 = val.Substring(y + 1, val.Length - y - 1);
+  			Triangle RetVal = Triangle.Null;
+  			RetVal.m_objX = Point.Parse((SqlString)s1);
+  			RetVal.m_objY = Point.Parse((SqlString)s2);
+  			RetVal.m_objZ = Point.Parse((SqlString)s3);
+  			RetVal.m_nIsNull = 0;
+  			return RetVal;
+  		}
+  		catch
+  		{
+  			System.Exception a = new System.Exception("Format not correct");
+  			throw a;
+  		}
+  	}
+
+
+
+
+  	#region IBinarySerialize Members
+
+  	void IBinarySerialize.Read(System.IO.BinaryReader r)
+  	{
+  		if (this.m_objX == null) this.m_objX = new Point();
+  		if (this.m_objY == null) this.m_objY = new Point();
+  		if (this.m_objZ == null) this.m_objZ = new Point();
+  		this.m_objX.Read(r);
+  		this.m_objY.Read(r);
+  		this.m_objZ.Read(r);
+  		this.m_nIsNull = r.ReadInt32();
+  	}
+
+  	void IBinarySerialize.Write(System.IO.BinaryWriter w)
+  	{
+  		this.m_objX.Write(w);
+  		this.m_objY.Write(w);
+  		this.m_objZ.Write(w);
+  		w.Write(this.m_nIsNull);
+  	}
+
+  	#endregion
+  }
+
+
+
 databaseId: database.adventureworks2022
 schemaVersion: 
 lastSchemaModificationAt: 2024-12-16T15:41:06.5500000

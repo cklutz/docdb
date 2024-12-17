@@ -439,6 +439,12 @@ public static class SmoExtensions
         }
     }
 
+    public static bool IsBuiltInAssembly(this SqlAssembly assembly)
+    {
+        return assembly.SqlAssemblyFiles.OfType<SqlAssemblyFile>().Any(
+            f => "microsoft.sqlserver.types.dll".Equals(f.Name, StringComparison.OrdinalIgnoreCase));
+    }
+
     public static string GetTypeTag(this SynonymBaseType baseType)
     {
         return baseType switch

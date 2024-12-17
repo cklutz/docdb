@@ -1,22 +1,18 @@
 ﻿using DocDB.Contracts;
+using ICSharpCode.Decompiler;
+using ICSharpCode.Decompiler.CSharp;
 using Microsoft.SqlServer.Management.Smo;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Xml.Linq;
 using SmoIndex = Microsoft.SqlServer.Management.Smo.Index;
 
-
 namespace DocDB;
-
-internal interface IModelInfo
-{
-    string? SchemaVersion { get; }
-    DateTime LastSchemaModificationAt { get; }
-    string DatabaseId { get; }
-    string DatabaseName { get; }
-}
 
 internal class ModelCreator : IModelInfo
 {
@@ -28,6 +24,7 @@ internal class ModelCreator : IModelInfo
 
     public ModelCreator(IOutput output, Database database, string? overrideDatabaseName, string? schemaVersion)
     {
+        ArgumentNullException.ThrowIfNull(output);
         ArgumentNullException.ThrowIfNull(database);
 
         _output = output;
@@ -516,7 +513,8 @@ internal class ModelCreator : IModelInfo
             _output.Warning($"Could not generate assembly name for {assembly.Name}: {ex}");
         }
 
-        // TODO: Use ILSpy "lib" to decompile assembly? ;-)
+        // Find assembly itself (always ID 1)
+
 
         var result = InitBase(new DdbAssembly
         {
@@ -530,7 +528,67 @@ internal class ModelCreator : IModelInfo
             FileNames = assembly.SqlAssemblyFiles.OfType<SqlAssemblyFile>().Select(f => f.Name).ToList()
         }, assembly);
 
+        var assemblyFile = assembly.SqlAssemblyFiles.OfType<SqlAssemblyFile>().FirstOrDefault(a => a.ID == 1);
+        var sourceFiles = assembly.SqlAssemblyFiles.OfType<SqlAssemblyFile>().Where(a => a.ID > 1 && Path.GetExtension(a.Name) == ".cs");
+
+        if (sourceFiles.Any())
+        {
+            result.SourceCode = GetSourceFromSourceFiles(sourceFiles);
+            result.IsDecompiled = false;
+        }
+        else if (assemblyFile != null)
+        {
+            result.SourceCode = GetSourceFromDecompile(assemblyFile);
+            result.IsDecompiled = true;
+        }
+
         return result;
+    }
+
+    private static string GetSourceFromSourceFiles(IEnumerable<SqlAssemblyFile> sourceFiles)
+    {
+        var sb = new StringBuilder();
+
+        foreach (SqlAssemblyFile file in sourceFiles)
+        {
+            sb.AppendLine("// ====================================================================");
+            sb.AppendLine("// " + file.Name);
+            sb.AppendLine("// ====================================================================");
+            sb.AppendLine();
+            sb.AppendLine(Encoding.UTF8.GetString(file.GetFileBytes()));
+            sb.AppendLine();
+        }
+
+        return sb.ToString();
+    }
+
+    private string GetSourceFromDecompile(SqlAssemblyFile assemblyFile)
+    {
+        var settings = new DecompilerSettings
+        {
+            ThrowOnAssemblyResolveErrors = false,
+        };
+
+        string tempFile = Path.Combine(Path.GetTempPath(), assemblyFile.Name + "." + Guid.NewGuid().ToString("N") + ".bin");
+
+        try
+        {
+            File.WriteAllBytes(tempFile, assemblyFile.GetFileBytes());
+            var decompiler = new CSharpDecompiler(tempFile, settings);
+            return decompiler.DecompileWholeModuleAsString();
+        }
+        catch (Exception ex)
+        {
+            _output.Warning($"Failed to decompile {assemblyFile.Name}: {ex}");
+            return ex.ToString();
+        }
+        finally
+        {
+            if (File.Exists(tempFile))
+            {
+                File.Delete(tempFile);
+            }
+        }
     }
 
     private DdbUserDefinedType CreateUserDefinedType(UserDefinedType type)
@@ -614,7 +672,7 @@ internal class ModelCreator : IModelInfo
     {
         bool isInSameDatabase = false;
         NamedDdbRef? baseRef = null;
-        if (string.IsNullOrEmpty(synonym.BaseServer) && 
+        if (string.IsNullOrEmpty(synonym.BaseServer) &&
             synonym.GetStringComparer().Compare(synonym.Parent.Name, synonym.BaseDatabase) == 0)
         {
             isInSameDatabase = true;
@@ -642,7 +700,7 @@ internal class ModelCreator : IModelInfo
             BaseType = synonym.BaseType.ToString(),
             IsSchemaOwned = synonym.IsSchemaOwned,
             Owner = synonym.Owner
-            
+
         }, synonym);
 
         return result;
@@ -743,7 +801,7 @@ internal class ModelCreator : IModelInfo
             RangeType = pf.RangeType.ToString(),
             RangeValues = pf.RangeValues.Select(v => v?.ToString() ?? "").ToList(),
             Parameters = pf.PartitionFunctionParameters.OfType<PartitionFunctionParameter>()
-                .Select(p => 
+                .Select(p =>
                 InitBase(new DdbPartitionFunctionParameter
                 {
                     Collation = p.Collation,
