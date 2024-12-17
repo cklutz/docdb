@@ -1,0 +1,10 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.security.roles.applicationrole
+name: Application Roles
+type: TocSection
+description: ''
+items:
+- id: applicationrole.testapprole
+  name: testAppRole
+  description: ''
+...

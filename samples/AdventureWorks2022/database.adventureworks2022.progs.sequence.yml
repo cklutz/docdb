@@ -1,0 +1,10 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.progs.sequence
+name: Sequences
+type: TocSection
+description: ''
+items:
+- id: sequence.dbo.testseq
+  name: dbo.TestSeq
+  description: ''
+...

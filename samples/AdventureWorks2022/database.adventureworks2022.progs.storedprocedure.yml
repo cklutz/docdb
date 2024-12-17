@@ -1,0 +1,40 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.progs.storedprocedure
+name: Stored Procedures
+type: TocSection
+description: ''
+items:
+- id: storedprocedure.dbo.tvp
+  name: dbo.Tvp
+  description: ''
+- id: storedprocedure.dbo.uspgetbillofmaterials
+  name: dbo.uspGetBillOfMaterials
+  description: Stored procedure using a recursive query to return a multi-level bill of material for the specified ProductID.
+- id: storedprocedure.dbo.uspgetemployeemanagers
+  name: dbo.uspGetEmployeeManagers
+  description: Stored procedure using a recursive query to return the direct and indirect managers of the specified employee.
+- id: storedprocedure.dbo.uspgetmanageremployees
+  name: dbo.uspGetManagerEmployees
+  description: Stored procedure using a recursive query to return the direct and indirect employees of the specified manager.
+- id: storedprocedure.dbo.uspgetwhereusedproductid
+  name: dbo.uspGetWhereUsedProductID
+  description: Stored procedure using a recursive query to return all components or assemblies that directly or indirectly use the specified ProductID.
+- id: storedprocedure.dbo.usplogerror
+  name: dbo.uspLogError
+  description: Logs error information in the ErrorLog table about the error that caused execution to jump to the CATCH block of a TRY...CATCH construct. Should be executed from within the scope of a CATCH block otherwise it will return without inserting error information.
+- id: storedprocedure.dbo.uspprinterror
+  name: dbo.uspPrintError
+  description: Prints error information about the error that caused execution to jump to the CATCH block of a TRY...CATCH construct. Should be executed from within the scope of a CATCH block otherwise it will return without printing any error information.
+- id: storedprocedure.dbo.uspsearchcandidateresumes
+  name: dbo.uspSearchCandidateResumes
+  description: ''
+- id: storedprocedure.humanresources.uspupdateemployeehireinfo
+  name: HumanResources.uspUpdateEmployeeHireInfo
+  description: Updates the Employee table and inserts a new row in the EmployeePayHistory table with the values specified in the input parameters.
+- id: storedprocedure.humanresources.uspupdateemployeelogin
+  name: HumanResources.uspUpdateEmployeeLogin
+  description: Updates the Employee table with the values specified in the input parameters for the given BusinessEntityID.
+- id: storedprocedure.humanresources.uspupdateemployeepersonalinfo
+  name: HumanResources.uspUpdateEmployeePersonalInfo
+  description: Updates the Employee table with the values specified in the input parameters for the given EmployeeID.
+...

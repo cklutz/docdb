@@ -1,11 +1,12 @@
 ﻿using DocDB.Contracts;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
+
+using static YamlExtensions;
 
 namespace DocDB
 {
@@ -41,6 +42,9 @@ namespace DocDB
         //  
 
 
+
+
+
         public static void WriteToc(string fileName, List<DdbObject> objects)
         {
             var databaseObj = objects.OfType<DdbDatabase>().FirstOrDefault();
@@ -59,28 +63,33 @@ namespace DocDB
             emitter.Emit(new Scalar("items"));
             emitter.Emit(SequenceStart());
 
-            NamedComplexSequenceEntry(emitter, databaseObj.Name, emitter =>
+            emitter.EmitNamed(databaseObj.Name, emitter =>
             {
-                emitter.Emit(new Scalar("uid"));
-                emitter.Emit(new Scalar(databaseObj.Id));
-                emitter.Emit(new Scalar("type"));
-                emitter.Emit(new Scalar(databaseObj.Type));
+                var uidBuilder = new UidBuilder(databaseObj.Id, databaseObj.Name, new TocSectionWriter(databaseObj.Id, Path.GetDirectoryName(Path.GetFullPath(fileName))!));
+
+                emitter.EmitNamedScalar("uid", uidBuilder.Value);
+                emitter.EmitNamedScalar("type", databaseObj.Type);
                 emitter.Emit(new Scalar("items"));
                 emitter.Emit(SequenceStart());
 
-                AddNamedItemSequence(emitter, "Tables", objects.OfType<DdbTable>());
-                AddNamedItemSequence(emitter, "Views", objects.OfType<DdbView>());
-                AddNamedItemSequence(emitter, "Synonyms", objects.OfType<DdbSynonym>());
+                emitter.EmitNamedItemSequence("Tables", uidBuilder, objects.OfType<DdbTable>());
+                emitter.EmitNamedItemSequence("Views", uidBuilder, objects.OfType<DdbView>());
+                emitter.EmitNamedItemSequence("Synonyms", uidBuilder, objects.OfType<DdbSynonym>());
 
-                NamedComplexSequenceEntry(emitter, "Programmability", emitter =>
+                emitter.EmitNamed("Programmability", emitter =>
                 {
+                    using var scope = uidBuilder.GetScope("progs", "Programmability");
+
+                    emitter.EmitNamedScalar("uid", uidBuilder.Value);
                     emitter.Emit(new Scalar("items"));
                     emitter.Emit(SequenceStart());
 
-                    AddNamedItemSequence(emitter, "Stored Procedures", objects.OfType<DdbStoredProcedure>());
+                    emitter.EmitNamedItemSequence("Stored Procedures", uidBuilder, objects.OfType<DdbStoredProcedure>());
 
-                    NamedComplexSequenceEntry(emitter, "Functions", emitter =>
+                    emitter.EmitNamed("Functions", emitter =>
                     {
+                        using var scope = uidBuilder.GetScope("functions", "Functions");
+                        emitter.EmitNamedScalar("uid", uidBuilder.Value);
                         emitter.Emit(new Scalar("items"));
                         emitter.Emit(SequenceStart());
 
@@ -93,62 +102,71 @@ namespace DocDB
                                 .ToList();
                         var scalarValued = functions.Where(u => u.FunctionType == DdbUserDefinedFunctionType.Scalar).ToList();
 
-                        AddNamedItemSequence(emitter, "Table-valued Functions", tableValued);
-                        AddNamedItemSequence(emitter, "Scalar-valued Functions", scalarValued);
-                        AddNamedItemSequence(emitter, "Aggregate Functions", objects.OfType<DdbUserDefinedAggregate>());
+                        emitter.EmitNamedItemSequence("Table-valued Functions", uidBuilder, tableValued);
+                        emitter.EmitNamedItemSequence("Scalar-valued Functions", uidBuilder, scalarValued);
+                        emitter.EmitNamedItemSequence("Aggregate Functions", uidBuilder, objects.OfType<DdbUserDefinedAggregate>());
 
                         emitter.Emit(SequenceEnd());
                     });
 
-                    AddNamedItemSequence(emitter, "Database Triggers", objects.OfType<DdbDatabaseDdlTrigger>());
-                    AddNamedItemSequence(emitter, "Assemblies", objects.OfType<DdbAssembly>());
+                    emitter.EmitNamedItemSequence("Database Triggers", uidBuilder, objects.OfType<DdbDatabaseDdlTrigger>());
+                    emitter.EmitNamedItemSequence("Assemblies", uidBuilder, objects.OfType<DdbAssembly>());
 
-                    NamedComplexSequenceEntry(emitter, "Types", emitter =>
+                    emitter.EmitNamed("Types", emitter =>
                     {
+                        using var scope = uidBuilder.GetScope("types", "Types");
+
+                        emitter.EmitNamedScalar("uid", uidBuilder.Value);
                         emitter.Emit(new Scalar("items"));
                         emitter.Emit(SequenceStart());
 
-                        AddNamedItemSequence(emitter, "User-Defined Data Types", objects.OfType<DdbUserDefinedDataType>());
-                        AddNamedItemSequence(emitter, "User-Defined Table Types", objects.OfType<DdbUserDefinedTableType>());
-                        AddNamedItemSequence(emitter, "User-Defined Types", objects.OfType<DdbUserDefinedType>());
-                        AddNamedItemSequence(emitter, "XML Schema Collections", objects.OfType<DdbXmlSchemaCollection>());
+                        emitter.EmitNamedItemSequence("User-Defined Data Types", uidBuilder, objects.OfType<DdbUserDefinedDataType>());
+                        emitter.EmitNamedItemSequence("User-Defined Table Types", uidBuilder, objects.OfType<DdbUserDefinedTableType>());
+                        emitter.EmitNamedItemSequence("User-Defined Types", uidBuilder, objects.OfType<DdbUserDefinedType>());
+                        emitter.EmitNamedItemSequence("XML Schema Collections", uidBuilder, objects.OfType<DdbXmlSchemaCollection>());
 
                         emitter.Emit(SequenceEnd());
                     });
 
-                    AddNamedItemSequence(emitter, "Rules", objects.OfType<DdbRule>());
-                    AddNamedItemSequence(emitter, "Defaults", objects.OfType<DdbDefault>());
-                    AddNamedItemSequence(emitter, "Sequences", objects.OfType<DdbSequence>());
+                    emitter.EmitNamedItemSequence("Rules", uidBuilder, objects.OfType<DdbRule>());
+                    emitter.EmitNamedItemSequence("Defaults", uidBuilder, objects.OfType<DdbDefault>());
+                    emitter.EmitNamedItemSequence("Sequences", uidBuilder, objects.OfType<DdbSequence>());
 
                     emitter.Emit(SequenceEnd());
                 });
 
-                NamedComplexSequenceEntry(emitter, "Storage", emitter =>
+                emitter.EmitNamed("Storage", emitter =>
                 {
+                    using var scope = uidBuilder.GetScope("storage", "Storage");
+                    emitter.EmitNamedScalar("uid", uidBuilder.Value);
                     emitter.Emit(new Scalar("items"));
                     emitter.Emit(SequenceStart());
 
-                    AddNamedItemSequence(emitter, "Partition Schemes ", objects.OfType<DdbPartitionScheme>());
-                    AddNamedItemSequence(emitter, "Partition Functions", objects.OfType<DdbPartitionFunction>());
+                    emitter.EmitNamedItemSequence("Partition Schemes ", uidBuilder, objects.OfType<DdbPartitionScheme>());
+                    emitter.EmitNamedItemSequence("Partition Functions", uidBuilder, objects.OfType<DdbPartitionFunction>());
 
                     emitter.Emit(SequenceEnd());
                 });
 
-                NamedComplexSequenceEntry(emitter, "Security", emitter =>
+                emitter.EmitNamed("Security", emitter =>
                 {
+                    using var scope = uidBuilder.GetScope("security", "Security");
+                    emitter.EmitNamedScalar("uid", uidBuilder.Value);
                     emitter.Emit(new Scalar("items"));
                     emitter.Emit(SequenceStart());
 
-                    AddNamedItemSequence(emitter, "Users", objects.OfType<DdbUser>());
-                    AddNamedItemSequence(emitter, "Schemas", objects.OfType<DdbSchema>());
+                    emitter.EmitNamedItemSequence("Users", uidBuilder, objects.OfType<DdbUser>());
+                    emitter.EmitNamedItemSequence("Schemas", uidBuilder, objects.OfType<DdbSchema>());
 
-                    NamedComplexSequenceEntry(emitter, "Roles", emitter =>
+                    emitter.EmitNamed("Roles", emitter =>
                     {
+                        using var scope = uidBuilder.GetScope("roles", "Roles");
+                        emitter.EmitNamedScalar("uid", uidBuilder.Value);
                         emitter.Emit(new Scalar("items"));
                         emitter.Emit(SequenceStart());
 
-                        AddNamedItemSequence(emitter, "Database Roles", objects.OfType<DdbDatabaseRole>());
-                        AddNamedItemSequence(emitter, "Application Roles", objects.OfType<DdbApplicationRole>());
+                        emitter.EmitNamedItemSequence("Database Roles", uidBuilder, objects.OfType<DdbDatabaseRole>());
+                        emitter.EmitNamedItemSequence("Application Roles", uidBuilder, objects.OfType<DdbApplicationRole>());
 
                         emitter.Emit(SequenceEnd());
                     });
@@ -165,52 +183,5 @@ namespace DocDB
             emitter.Emit(new DocumentEnd(false));
             emitter.Emit(new StreamEnd());
         }
-
-        static void NamedComplexSequenceEntry(IEmitter emitter, string name, Action<IEmitter> content)
-        {
-            emitter.Emit(MappingStart());
-            emitter.Emit(new Scalar("name"));
-            emitter.Emit(new Scalar(name));
-
-            content(emitter);
-
-            emitter.Emit(MappingEnd());
-        }
-
-        static void AddNamedItemSequence<T>(IEmitter emitter, string name, IEnumerable<T>? items) where T : DdbObject
-        {
-            NamedComplexSequenceEntry(emitter, name, e => AddItemSequence(items, e));
-        }
-
-        static void AddItemSequence<T>(IEnumerable<T>? items, IEmitter emitter) where T : DdbObject
-        {
-            emitter.Emit(new Scalar("items"));
-            emitter.Emit(SequenceStart());
-
-            if (items != null)
-            {
-                foreach (var item in items.OrderBy(t => t.Id))
-                {
-                    emitter.Emit(MappingStart());
-                    emitter.Emit(new Scalar("uid"));
-                    emitter.Emit(new Scalar(item.Id));
-                    if (item is NamedDdbObject named)
-                    {
-                        emitter.Emit(new Scalar("name"));
-                        emitter.Emit(new Scalar(named.Name));
-                    }
-                    emitter.Emit(new Scalar("type"));
-                    emitter.Emit(new Scalar(item.Type));
-                    emitter.Emit(MappingEnd());
-                }
-            }
-
-            emitter.Emit(SequenceEnd());
-        }
-
-        static SequenceStart SequenceStart() => new(null, null, true, SequenceStyle.Block);
-        static SequenceEnd SequenceEnd() => new();
-        static MappingStart MappingStart() => new(null, null, true, MappingStyle.Block);
-        static MappingEnd MappingEnd() => new();
     }
 }

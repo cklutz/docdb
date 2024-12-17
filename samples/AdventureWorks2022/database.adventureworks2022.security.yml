@@ -1,0 +1,13 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.security
+name: Security
+type: TocSection
+description: ''
+items:
+- id: database.adventureworks2022.security.user
+  name: Users
+  description: ''
+- id: database.adventureworks2022.security.schema
+  name: Schemas
+  description: ''
+...

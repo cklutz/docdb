@@ -1,0 +1,10 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.storage.partitionfunction
+name: Partition Functions
+type: TocSection
+description: ''
+items:
+- id: partitionfunction.agepartfunc
+  name: AgePartFunc
+  description: ''
+...

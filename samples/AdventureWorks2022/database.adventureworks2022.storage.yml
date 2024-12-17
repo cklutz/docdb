@@ -1,0 +1,13 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.storage
+name: Storage
+type: TocSection
+description: ''
+items:
+- id: database.adventureworks2022.storage.partitionscheme
+  name: 'Partition Schemes '
+  description: ''
+- id: database.adventureworks2022.storage.partitionfunction
+  name: Partition Functions
+  description: ''
+...

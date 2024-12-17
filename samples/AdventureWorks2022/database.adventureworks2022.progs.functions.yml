@@ -1,0 +1,13 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.progs.functions
+name: Functions
+type: TocSection
+description: ''
+items:
+- id: database.adventureworks2022.progs.functions.userdefinedfunction
+  name: Scalar-valued Functions
+  description: ''
+- id: database.adventureworks2022.progs.functions.userdefinedaggregate
+  name: Aggregate Functions
+  description: ''
+...

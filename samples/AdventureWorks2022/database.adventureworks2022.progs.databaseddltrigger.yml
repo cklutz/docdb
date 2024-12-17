@@ -1,0 +1,10 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.progs.databaseddltrigger
+name: Database Triggers
+type: TocSection
+description: ''
+items:
+- id: ddltrigger.ddldatabasetriggerlog
+  name: ddlDatabaseTriggerLog
+  description: Database trigger to audit all of the DDL changes made to the AdventureWorks 2016 database.
+...

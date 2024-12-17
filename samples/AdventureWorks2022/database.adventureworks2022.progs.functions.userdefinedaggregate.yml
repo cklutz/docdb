@@ -1,0 +1,10 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.progs.functions.userdefinedaggregate
+name: Aggregate Functions
+type: TocSection
+description: ''
+items:
+- id: userdefinedaggregate.dbo.joinstringwithcommas
+  name: dbo.JoinStringWithCommas
+  description: ''
+...

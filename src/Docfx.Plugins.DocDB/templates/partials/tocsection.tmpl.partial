@@ -1,0 +1,22 @@
+{{#payload.items.0}}
+<h1 id="{{id}}" data-uid="{{id}}" class="text-break">{{ payload.name }}</h1>
+
+<div class"markdown level0 summary">{{payload.description}}</div>
+
+<table class="table table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>{{__global.description}}</th>
+		</tr>
+	</thead>
+	<tbody>
+{{#payload.items}}
+		<tr>
+			<td><a href="{{id}}.html">{{name}}</a></td>
+			<td class="pre-wrap">{{description}}</td>
+		</tr>
+{{/payload.items}}
+	</tbody>
+</table>
+{{/payload.items.0}}

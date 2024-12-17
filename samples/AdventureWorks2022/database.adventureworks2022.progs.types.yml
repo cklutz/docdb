@@ -1,0 +1,19 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.progs.types
+name: Types
+type: TocSection
+description: ''
+items:
+- id: database.adventureworks2022.progs.types.userdefineddatatype
+  name: User-Defined Data Types
+  description: ''
+- id: database.adventureworks2022.progs.types.userdefinedtabletype
+  name: User-Defined Table Types
+  description: ''
+- id: database.adventureworks2022.progs.types.userdefinedtype
+  name: User-Defined Types
+  description: ''
+- id: database.adventureworks2022.progs.types.xmlschemacollection
+  name: XML Schema Collections
+  description: ''
+...

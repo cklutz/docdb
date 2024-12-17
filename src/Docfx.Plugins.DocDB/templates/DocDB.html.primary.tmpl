@@ -1,6 +1,11 @@
 {{!Licensed to the .NET Foundation under one or more agreements. The .NET Foundation licenses this file to you under the MIT license.}}
 {{!master(layout/_master.tmpl)}}
 
+{{#isTocSection}}
+{{>partials/tocsection}}
+{{/isTocSection}}
+{{^isTocSection}}
+
 <h1 id="{{id}}" data-uid="{{uid}}" class="text-break">{{ name }} {{ displayType }}</h1>
 
 <div class"markdown level0 summary">{{payload.description}}</div>
@@ -91,4 +96,4 @@
 {{/isTable}}
 
 {{>partials/sqlscript}}
- 
+{{/isTocSection}}

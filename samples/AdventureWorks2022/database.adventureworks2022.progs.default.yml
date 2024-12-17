@@ -1,0 +1,10 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.progs.default
+name: Defaults
+type: TocSection
+description: ''
+items:
+- id: default.dbo.testdefault
+  name: dbo.testDefault
+  description: ''
+...

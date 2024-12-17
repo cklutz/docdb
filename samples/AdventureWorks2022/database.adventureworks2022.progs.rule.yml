@@ -1,0 +1,13 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.progs.rule
+name: Rules
+type: TocSection
+description: ''
+items:
+- id: rule.dbo.list_rule
+  name: dbo.list_rule
+  description: ''
+- id: rule.dbo.range_rule
+  name: dbo.range_rule
+  description: ''
+...

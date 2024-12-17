@@ -1,0 +1,235 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.table
+name: Tables
+type: TocSection
+description: ''
+items:
+- id: table.dbo.awbuildversion
+  name: dbo.AWBuildVersion
+  description: 'Current version number of the AdventureWorks 2016 sample database. '
+- id: table.dbo.customers
+  name: dbo.Customers
+  description: ''
+- id: table.dbo.databaselog
+  name: dbo.DatabaseLog
+  description: Audit table tracking all DDL changes made to the AdventureWorks database. Data is captured by the database trigger ddlDatabaseTriggerLog.
+- id: table.dbo.employee
+  name: dbo.Employee
+  description: ''
+- id: table.dbo.errorlog
+  name: dbo.ErrorLog
+  description: Audit table tracking errors in the the AdventureWorks database that are caught by the CATCH block of a TRY...CATCH construct. Data is inserted by stored procedure dbo.uspLogError when it is executed from inside the CATCH block of a TRY...CATCH construct.
+- id: table.dbo.int
+  name: dbo.INT
+  description: ''
+- id: table.dbo.person
+  name: dbo.Person
+  description: ''
+- id: table.dbo.table
+  name: dbo.TABLE
+  description: ''
+- id: table.humanresources.department
+  name: HumanResources.Department
+  description: Lookup table containing the departments within the Adventure Works Cycles company.
+- id: table.humanresources.employee
+  name: HumanResources.Employee
+  description: Employee information such as salary, department, and title.
+- id: table.humanresources.employeedepartmenthistory
+  name: HumanResources.EmployeeDepartmentHistory
+  description: Employee department transfers.
+- id: table.humanresources.employeepayhistory
+  name: HumanResources.EmployeePayHistory
+  description: Employee pay history.
+- id: table.humanresources.jobcandidate
+  name: HumanResources.JobCandidate
+  description: Résumés submitted to Human Resources by job applicants.
+- id: table.humanresources.shift
+  name: HumanResources.Shift
+  description: Work shift lookup table.
+- id: table.person.address
+  name: Person.Address
+  description: Street address information for customers, employees, and vendors.
+- id: table.person.addresstype
+  name: Person.AddressType
+  description: 'Types of addresses stored in the Address table. '
+- id: table.person.businessentity
+  name: Person.BusinessEntity
+  description: Source of the ID that connects vendors, customers, and employees with address and contact information.
+- id: table.person.businessentityaddress
+  name: Person.BusinessEntityAddress
+  description: Cross-reference table mapping customers, vendors, and employees to their addresses.
+- id: table.person.businessentitycontact
+  name: Person.BusinessEntityContact
+  description: Cross-reference table mapping stores, vendors, and employees to people
+- id: table.person.contacttype
+  name: Person.ContactType
+  description: Lookup table containing the types of business entity contacts.
+- id: table.person.countryregion
+  name: Person.CountryRegion
+  description: Lookup table containing the ISO standard codes for countries and regions.
+- id: table.person.emailaddress
+  name: Person.EmailAddress
+  description: Where to send a person email.
+- id: table.person.password
+  name: Person.Password
+  description: One way hashed authentication information
+- id: table.person.person
+  name: Person.Person
+  description: 'Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.'
+- id: table.person.personphone
+  name: Person.PersonPhone
+  description: Telephone number and type of a person.
+- id: table.person.phonenumbertype
+  name: Person.PhoneNumberType
+  description: Type of phone number of a person.
+- id: table.person.stateprovince
+  name: Person.StateProvince
+  description: State and province lookup table.
+- id: table.production.billofmaterials
+  name: Production.BillOfMaterials
+  description: Items required to make bicycles and bicycle subassemblies. It identifies the heirarchical relationship between a parent product and its components.
+- id: table.production.culture
+  name: Production.Culture
+  description: Lookup table containing the languages in which some AdventureWorks data is stored.
+- id: table.production.document
+  name: Production.Document
+  description: Product maintenance documents.
+- id: table.production.illustration
+  name: Production.Illustration
+  description: Bicycle assembly diagrams.
+- id: table.production.location
+  name: Production.Location
+  description: Product inventory and manufacturing locations.
+- id: table.production.product
+  name: Production.Product
+  description: Products sold or used in the manfacturing of sold products.
+- id: table.production.productcategory
+  name: Production.ProductCategory
+  description: High-level product categorization.
+- id: table.production.productcosthistory
+  name: Production.ProductCostHistory
+  description: Changes in the cost of a product over time.
+- id: table.production.productdescription
+  name: Production.ProductDescription
+  description: Product descriptions in several languages.
+- id: table.production.productdocument
+  name: Production.ProductDocument
+  description: Cross-reference table mapping products to related product documents.
+- id: table.production.productinventory
+  name: Production.ProductInventory
+  description: Product inventory information.
+- id: table.production.productlistpricehistory
+  name: Production.ProductListPriceHistory
+  description: Changes in the list price of a product over time.
+- id: table.production.productmodel
+  name: Production.ProductModel
+  description: Product model classification.
+- id: table.production.productmodelillustration
+  name: Production.ProductModelIllustration
+  description: Cross-reference table mapping product models and illustrations.
+- id: table.production.productmodelproductdescriptionculture
+  name: Production.ProductModelProductDescriptionCulture
+  description: Cross-reference table mapping product descriptions and the language the description is written in.
+- id: table.production.productphoto
+  name: Production.ProductPhoto
+  description: Product images.
+- id: table.production.productproductphoto
+  name: Production.ProductProductPhoto
+  description: Cross-reference table mapping products and product photos.
+- id: table.production.productreview
+  name: Production.ProductReview
+  description: Customer reviews of products they have purchased.
+- id: table.production.productsubcategory
+  name: Production.ProductSubcategory
+  description: Product subcategories. See ProductCategory table.
+- id: table.production.scrapreason
+  name: Production.ScrapReason
+  description: Manufacturing failure reasons lookup table.
+- id: table.production.transactionhistory
+  name: Production.TransactionHistory
+  description: Record of each purchase order, sales order, or work order transaction year to date.
+- id: table.production.transactionhistoryarchive
+  name: Production.TransactionHistoryArchive
+  description: Transactions for previous years.
+- id: table.production.unitmeasure
+  name: Production.UnitMeasure
+  description: Unit of measure lookup table.
+- id: table.production.workorder
+  name: Production.WorkOrder
+  description: Manufacturing work orders.
+- id: table.production.workorderrouting
+  name: Production.WorkOrderRouting
+  description: Work order details.
+- id: table.purchasing.productvendor
+  name: Purchasing.ProductVendor
+  description: Cross-reference table mapping vendors with the products they supply.
+- id: table.purchasing.purchaseorderdetail
+  name: Purchasing.PurchaseOrderDetail
+  description: Individual products associated with a specific purchase order. See PurchaseOrderHeader.
+- id: table.purchasing.purchaseorderheader
+  name: Purchasing.PurchaseOrderHeader
+  description: General purchase order information. See PurchaseOrderDetail.
+- id: table.purchasing.shipmethod
+  name: Purchasing.ShipMethod
+  description: Shipping company lookup table.
+- id: table.purchasing.vendor
+  name: Purchasing.Vendor
+  description: Companies from whom Adventure Works Cycles purchases parts or other goods.
+- id: table.sales.countryregioncurrency
+  name: Sales.CountryRegionCurrency
+  description: Cross-reference table mapping ISO currency codes to a country or region.
+- id: table.sales.creditcard
+  name: Sales.CreditCard
+  description: Customer credit card information.
+- id: table.sales.currency
+  name: Sales.Currency
+  description: Lookup table containing standard ISO currencies.
+- id: table.sales.currencyrate
+  name: Sales.CurrencyRate
+  description: Currency exchange rates.
+- id: table.sales.customer
+  name: Sales.Customer
+  description: Current customer information. Also see the Person and Store tables.
+- id: table.sales.personcreditcard
+  name: Sales.PersonCreditCard
+  description: 'Cross-reference table mapping people to their credit card information in the CreditCard table. '
+- id: table.sales.salesorderdetail
+  name: Sales.SalesOrderDetail
+  description: Individual products associated with a specific sales order. See SalesOrderHeader.
+- id: table.sales.salesorderheader
+  name: Sales.SalesOrderHeader
+  description: General sales order information.
+- id: table.sales.salesorderheadersalesreason
+  name: Sales.SalesOrderHeaderSalesReason
+  description: Cross-reference table mapping sales orders to sales reason codes.
+- id: table.sales.salesperson
+  name: Sales.SalesPerson
+  description: Sales representative current information.
+- id: table.sales.salespersonquotahistory
+  name: Sales.SalesPersonQuotaHistory
+  description: Sales performance tracking.
+- id: table.sales.salesreason
+  name: Sales.SalesReason
+  description: Lookup table of customer purchase reasons.
+- id: table.sales.salestaxrate
+  name: Sales.SalesTaxRate
+  description: Tax rate lookup table.
+- id: table.sales.salesterritory
+  name: Sales.SalesTerritory
+  description: Sales territory lookup table.
+- id: table.sales.salesterritoryhistory
+  name: Sales.SalesTerritoryHistory
+  description: Sales representative transfers to other sales territories.
+- id: table.sales.shoppingcartitem
+  name: Sales.ShoppingCartItem
+  description: Contains online customer orders until the order is submitted or cancelled.
+- id: table.sales.specialoffer
+  name: Sales.SpecialOffer
+  description: Sale discounts lookup table.
+- id: table.sales.specialofferproduct
+  name: Sales.SpecialOfferProduct
+  description: Cross-reference table mapping products to special offer discounts.
+- id: table.sales.store
+  name: Sales.Store
+  description: Customers (resellers) of Adventure Works products.
+...

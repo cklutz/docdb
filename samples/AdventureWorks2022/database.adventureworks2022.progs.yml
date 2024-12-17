@@ -1,0 +1,25 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.progs
+name: Programmability
+type: TocSection
+description: ''
+items:
+- id: database.adventureworks2022.progs.storedprocedure
+  name: Stored Procedures
+  description: ''
+- id: database.adventureworks2022.progs.databaseddltrigger
+  name: Database Triggers
+  description: ''
+- id: database.adventureworks2022.progs.assembly
+  name: Assemblies
+  description: ''
+- id: database.adventureworks2022.progs.rule
+  name: Rules
+  description: ''
+- id: database.adventureworks2022.progs.default
+  name: Defaults
+  description: ''
+- id: database.adventureworks2022.progs.sequence
+  name: Sequences
+  description: ''
+...

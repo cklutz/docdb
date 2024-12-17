@@ -1,0 +1,10 @@
+### YamlMime:DocDB
+id: database.adventureworks2022.storage.partitionscheme
+name: 'Partition Schemes '
+type: TocSection
+description: ''
+items:
+- id: partitionscheme.agepartscheme
+  name: AgePartScheme
+  description: ''
+...
