@@ -18,7 +18,7 @@ public class DdbTable : TabularDdbObject<DdbTableColumn>
     public NamedDdbRef? TextFileGroup { get; set; }
 
     [JsonPropertyName("partitionInfo"), JsonProperty("partitionInfo")]
-    public DdbTablePartitionInfo PartitionInfo { get; set; } = new();
+    public DdbPartitionInfo PartitionInfo { get; set; } = new();
     [JsonPropertyName("fileTableInfo"), JsonProperty("fileTableInfo")]
     public DdbFileTableInfo FileTableInfo { get; set; } = new();
 }

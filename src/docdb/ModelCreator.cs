@@ -839,7 +839,6 @@ internal class ModelCreator
                 },
                 IsDisabled = index.IsDisabled,
                 IsClustered = index.IsClustered,
-                IsPartitioned = index.IsPartitioned,
                 IsUnique = index.IsUnique,
                 Filter = index.FilterDefinition,
                 FileGroup = !string.IsNullOrEmpty(index.FileGroup) ? CreateFileGroupRef(tv.GetDatabase(), index.FileGroup) : null,
@@ -930,16 +929,17 @@ internal class ModelCreator
             SetOption(index, miscellaneous, nameof(SmoIndex.ResumableOperationState));
             idx.Options.Add(miscellaneous);
 
-            // TODO:
+            // TODO: XML index stuff
             //index.IndexedXmlPathName
             //index.IndexedXmlPathNamespaces
             //index.IndexedXmlPaths
 
-            // TODO:
-            //index.PartitionScheme
-            //index.PartitionSchemeParameters
-            //index.PhysicalPartitions
-
+            if (index.IsPartitioned)
+            {
+                idx.PartitionInfo.IsPartitioned = true;
+                idx.PartitionInfo.PartitionScheme = index.GetDatabase().PartitionSchemes.FindFirstOrDefault<PartitionScheme>(index.PartitionScheme)?.ToNamedRef<DdbPartitionScheme>();
+                idx.PartitionInfo.Columns = index.PartitionSchemeParameters.OfType<PartitionSchemeParameter>().Select(c => CreateColumnRef(index, c.Name)).ToList();
+            }
 
             result.Indexes.Add(idx);
         }
@@ -997,6 +997,21 @@ internal class ModelCreator
             Id = fileGroup.GetModelId(),
             Type = DdbObject.GetTypeTag<DdbFileGroup>(isRef: true),
             Name = fileGroup.Name
+        };
+    }
+
+    private NamedDdbRef CreateColumnRef(SmoIndex index, string columnName)
+    {
+        var column = index.IndexedColumns.FindFirstOrDefault<IndexedColumn>(columnName);
+        if (column == null)
+        {
+            throw new InvalidOperationException($"Index {index} does not contain column {columnName}.");
+        }
+        return new NamedDdbRef
+        {
+            Id = column.GetModelId(),
+            Type = DdbObject.GetTypeTag<DdbTableColumn>(isRef: true),
+            Name = column.Name
         };
     }
 

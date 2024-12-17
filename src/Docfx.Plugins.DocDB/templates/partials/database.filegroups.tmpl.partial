@@ -1,5 +1,5 @@
 {{#payload.fileGroups.0}}
-<h3>File Groups</h3>
+<h2>File Groups</h2>
 
 <table class="table table-bordered table-condensed">
 	<thead>

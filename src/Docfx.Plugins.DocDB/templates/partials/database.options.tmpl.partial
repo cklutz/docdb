@@ -1,5 +1,5 @@
 {{#payload.options.0}}
-<h3>Options</h3>
+<h2>Options</h2>
 
 <table class="table table-bordered table-condensed">
 	<thead>

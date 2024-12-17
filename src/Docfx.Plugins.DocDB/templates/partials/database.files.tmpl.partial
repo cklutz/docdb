@@ -1,5 +1,5 @@
 {{#payload.files.0}}
-<h3>Files</h3>
+<h2>Files</h2>
 
 <table class="table table-bordered table-condensed">
 	<thead>

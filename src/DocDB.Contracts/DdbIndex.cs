@@ -26,8 +26,8 @@ public class DdbIndex : NamedDdbObject
     [JsonPropertyName("columns"), JsonProperty("columns")]
     public List<DdbIndexColumn> Columns { get; set; } = [];
 
-    [JsonPropertyName("isPartitioned"), JsonProperty("isPartitioned")]
-    public bool IsPartitioned { get; set; }
+    [JsonPropertyName("partitionInfo"), JsonProperty("partitionInfo")]
+    public DdbPartitionInfo PartitionInfo { get; set; } = new();
 
     [JsonPropertyName("fileGroup"), JsonProperty("fileGroup")]
     public NamedDdbRef? FileGroup { get; set; }

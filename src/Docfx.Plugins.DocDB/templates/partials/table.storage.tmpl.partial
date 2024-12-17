@@ -19,6 +19,16 @@
 			<th class="nowrap">Text file group</th>
 			<td>{{#textFileGroup}}<a href="{{databaseId}}.html#{{id}}">{{name}}</a>{{/textFileGroup}}</td>
 		</tr>
+{{#partitionInfo.isPartitioned}}
+		<tr>
+			<th class="nowrap">Partition scheme</th>
+			<td><a href="{{partitionInfo.partitionScheme.id}}.html">{{partitionInfo.partitionScheme.name}}</a></td>
+		</tr>
+		<tr>
+			<th class="nowrap">Partition columns</th>
+			<td><ul>{{#partitionInfo.columns}}<li><a href="#{{id}}">{{name}}</a></li>{{/partitionInfo.columns}}</ul></td>
+		</tr>
+{{/partitionInfo.isPartitioned}}
 	</tbody>
 </table>
 {{/payload}}

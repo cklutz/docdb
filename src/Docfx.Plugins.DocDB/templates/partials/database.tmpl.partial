@@ -1,5 +1,8 @@
 
 {{#payload}}
+
+<h2>{{__global.overview}}</h2>
+
 <table class="table table-bordered table-condensed">
 	<colgroup>
 		<col style="width: 1%"/>

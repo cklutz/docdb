@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace DocDB.Contracts;
 
-public class DdbTablePartitionInfo
+public class DdbPartitionInfo
 {
     [JsonPropertyName("isPartitioned"), JsonProperty("isPartitioned")]
     public bool IsPartitioned { get; set; }

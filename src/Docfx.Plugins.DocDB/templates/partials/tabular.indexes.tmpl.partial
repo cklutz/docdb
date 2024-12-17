@@ -68,6 +68,16 @@
 			<th class="nowrap">File stream group</th>
 			<td>{{#fileStreamGroup}}<a href="{{databaseId}}.html#{{id}}">{{name}}</a>{{/fileStreamGroup}}</td>
 		</tr>
+{{#partitionInfo.isPartitioned}}
+		<tr>
+			<th class="nowrap">Partition scheme</th>
+			<td><a href="{{partitionInfo.partitionScheme.id}}.html">{{partitionInfo.partitionScheme.name}}</a></td>
+		</tr>
+		<tr>
+			<th class="nowrap">Partition columns</th>
+			<td><ul>{{#partitionInfo.columns}}<li><a href="#{{id}}">{{name}}</a></li>{{/partitionInfo.columns}}</ul></td>
+		</tr>
+{{/partitionInfo.isPartitioned}}
 	</tbody>
 </table>
 
