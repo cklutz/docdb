@@ -19,6 +19,10 @@
 			<td>{{#maxLength}}{{maxLength}}{{/maxLength}}</td>
 		</tr>
 		<tr>
+			<th class="nowrap">Storage Size</th>
+			<td>{{#storageSize}}{{storageSize}} bytes{{/storageSize}}</td>
+		</tr>
+		<tr>
 			<th class="nowrap">Precision</th>
 			<td>{{numericPrecision}}</td>
 		</tr>

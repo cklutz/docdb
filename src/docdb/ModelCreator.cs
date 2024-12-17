@@ -723,7 +723,8 @@ internal class ModelCreator : IModelInfo
             Owner = udt.Owner,
             RuleRef = !string.IsNullOrEmpty(udt.Rule) ? CreateRuleRef(udt.Parent, udt.RuleSchema, udt.Rule) : null,
             SystemType = udt.SystemType,
-            IsVariableLength = udt.VariableLength
+            IsVariableLength = udt.VariableLength,
+            StorageSize = udt.GetStorageSizeBytes()
         }, udt);
 
         return result;

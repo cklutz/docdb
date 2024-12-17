@@ -6,6 +6,7 @@ using System.Buffers;
 using System.Collections;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using SmoIndex = Microsoft.SqlServer.Management.Smo.Index;
 
@@ -437,6 +438,60 @@ public static class SmoExtensions
                 sb.Append(']');
             }
         }
+    }
+
+    public static int? GetStorageSizeBytes(this UserDefinedDataType udt)
+    {
+        // The values that SSMS shows for the "Storage" in the "User-defined Data Type" property dialog
+        // are as follows. I have not found any formula or reference documentation that would explain
+        // them all as they are. Thus, hardcoded - yuck!
+
+        switch (udt.SystemType?.ToLowerInvariant())
+        {
+            case "bigint": return 9;
+            case "binary": return udt.Length;
+            case "bit": return 9;
+            case "char": return udt.Length;
+            case "date": return 3;
+            case "datetime": return 13;
+            case "datetime2": return 8;
+            case "datetimeoffset": return 10;
+            case "decimal":
+            case "numeric":
+                if (udt.NumericPrecision <= 9)
+                {
+                    return 5;
+                }
+                if (udt.NumericPrecision <= 19)
+                {
+                    return 9;
+                }
+                if (udt.NumericPrecision <= 28)
+                {
+                    return 13;
+                }
+                return 17;
+            case "float": return 8;
+            case "image": return 16;
+            case "int": return 9;
+            case "money": return 9;
+            case "nchar": return udt.Length * 2;
+            case "nvarchar":return WithMax(udt.Length) * 2;
+            case "real": return 13;
+            case "smalldatetime": return 9;
+            case "smallint": return 5;
+            case "smallmoney": return 9;
+            case "sql_variant": return 8016;
+            case "text":return 16;
+            case "time": return 5;
+            case "tinyint": return 5;
+            case "uniqueidentifier": return 16;
+            case "varbinary": return WithMax(udt.Length);
+            case "varchar": return WithMax(udt.Length);
+            default: return udt.MaxLength;
+        }
+
+        static int? WithMax(int len) => len == -1 || len == 0 ? null : len;
     }
 
     public static bool IsBuiltInAssembly(this SqlAssembly assembly)

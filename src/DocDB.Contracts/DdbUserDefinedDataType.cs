@@ -31,4 +31,6 @@ public class DdbUserDefinedDataType : NamedDdbObject
     public string? SystemType { get; set; }
     [JsonPropertyName("isVariableLength"), JsonProperty("isVariableLength")]
     public bool IsVariableLength { get; set; }
+    [JsonPropertyName("storageSize"), JsonProperty("storageSize")]
+    public int? StorageSize { get; set; }
 }
