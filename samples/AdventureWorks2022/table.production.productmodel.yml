@@ -47,6 +47,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -169,6 +171,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: Index
   id: table.production.productmodel.index.ak_productmodel_rowguid
@@ -193,6 +197,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -315,6 +321,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: Index
   id: table.production.productmodel.index.pk_productmodel_productmodelid
@@ -339,6 +347,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -461,6 +471,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: Index
   id: table.production.productmodel.index.pxml_productmodel_catalogdescription
@@ -485,6 +497,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -613,6 +627,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: Index
   id: table.production.productmodel.index.pxml_productmodel_instructions
@@ -637,6 +653,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -765,6 +783,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 triggers: []
 columns:
@@ -791,6 +811,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.production.productmodel.column.name
@@ -818,6 +840,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.production.productmodel.column.catalogdescription
@@ -842,6 +866,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.production.productmodel.column.instructions
@@ -866,6 +892,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.production.productmodel.column.rowguid
@@ -890,6 +918,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.production.productmodel.column.modifieddate
@@ -914,8 +944,12 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   SET ANSI_NULLS ON
   GO

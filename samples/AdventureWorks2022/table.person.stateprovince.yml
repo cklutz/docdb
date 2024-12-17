@@ -21,6 +21,8 @@ foreignKeys:
   deleteAction: 
   updateAction: 
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: ForeignKey
   id: table.person.stateprovince.foreignkey.fk_stateprovince_salesterritory_territoryid
@@ -39,6 +41,8 @@ foreignKeys:
   deleteAction: 
   updateAction: 
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 checks: []
 fileGroup:
@@ -80,6 +84,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -202,6 +208,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: Index
   id: table.person.stateprovince.index.ak_stateprovince_rowguid
@@ -226,6 +234,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -348,6 +358,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: Index
   id: table.person.stateprovince.index.ak_stateprovince_stateprovincecode_countryregioncode
@@ -372,6 +384,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   - type: IndexColumn
     id: table.person.stateprovince.index.ak_stateprovince_stateprovincecode_countryregioncode.indexedcolumn.countryregioncode
@@ -385,6 +399,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -507,6 +523,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: Index
   id: table.person.stateprovince.index.pk_stateprovince_stateprovinceid
@@ -531,6 +549,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -653,6 +673,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 triggers: []
 columns:
@@ -679,6 +701,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.stateprovincecode
@@ -703,6 +727,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.countryregioncode
@@ -730,6 +756,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.isonlystateprovinceflag
@@ -757,6 +785,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.name
@@ -784,6 +814,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.territoryid
@@ -811,6 +843,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.rowguid
@@ -835,6 +869,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.person.stateprovince.column.modifieddate
@@ -859,8 +895,12 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   SET ANSI_NULLS ON
   GO

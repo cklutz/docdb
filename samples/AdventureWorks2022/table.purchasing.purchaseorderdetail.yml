@@ -21,6 +21,8 @@ foreignKeys:
   deleteAction: 
   updateAction: 
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: ForeignKey
   id: table.purchasing.purchaseorderdetail.foreignkey.fk_purchaseorderdetail_purchaseorderheader_purchaseorderid
@@ -39,6 +41,8 @@ foreignKeys:
   deleteAction: 
   updateAction: 
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 checks:
 - type: CheckConstraint
@@ -49,6 +53,8 @@ checks:
   isEnabled: true
   constraintText: ([OrderQty]>(0))
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: CheckConstraint
   id: table.purchasing.purchaseorderdetail.check.ck_purchaseorderdetail_receivedqty
@@ -58,6 +64,8 @@ checks:
   isEnabled: true
   constraintText: ([ReceivedQty]>=(0.00))
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: CheckConstraint
   id: table.purchasing.purchaseorderdetail.check.ck_purchaseorderdetail_rejectedqty
@@ -67,6 +75,8 @@ checks:
   isEnabled: true
   constraintText: ([RejectedQty]>=(0.00))
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: CheckConstraint
   id: table.purchasing.purchaseorderdetail.check.ck_purchaseorderdetail_unitprice
@@ -76,6 +86,8 @@ checks:
   isEnabled: true
   constraintText: ([UnitPrice]>=(0.00))
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 fileGroup:
   name: '[PRIMARY]'
@@ -116,6 +128,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -238,6 +252,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: Index
   id: table.purchasing.purchaseorderdetail.index.pk_purchaseorderdetail_purchaseorderid_purchaseorderdetailid
@@ -262,6 +278,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   - type: IndexColumn
     id: table.purchasing.purchaseorderdetail.index.pk_purchaseorderdetail_purchaseorderid_purchaseorderdetailid.indexedcolumn.purchaseorderdetailid
@@ -275,6 +293,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -397,6 +417,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 triggers:
 - type: DmlTrigger
@@ -410,6 +432,8 @@ triggers:
   onUpdate: false
   onInsert: true
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: DmlTrigger
   id: table.purchasing.purchaseorderdetail.trigger.upurchaseorderdetail
@@ -422,6 +446,8 @@ triggers:
   onUpdate: true
   onInsert: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 columns:
 - type: TableColumn
@@ -450,6 +476,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.purchaseorderdetailid
@@ -474,6 +502,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.duedate
@@ -498,6 +528,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.orderqty
@@ -522,6 +554,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.productid
@@ -549,6 +583,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.unitprice
@@ -573,6 +609,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.linetotal
@@ -597,6 +635,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.receivedqty
@@ -621,6 +661,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.rejectedqty
@@ -645,6 +687,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.stockedqty
@@ -669,6 +713,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderdetail.column.modifieddate
@@ -693,8 +739,12 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   SET ANSI_NULLS ON
   GO

@@ -21,6 +21,8 @@ foreignKeys:
   deleteAction: 
   updateAction: 
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: ForeignKey
   id: table.purchasing.purchaseorderheader.foreignkey.fk_purchaseorderheader_shipmethod_shipmethodid
@@ -39,6 +41,8 @@ foreignKeys:
   deleteAction: 
   updateAction: 
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: ForeignKey
   id: table.purchasing.purchaseorderheader.foreignkey.fk_purchaseorderheader_vendor_vendorid
@@ -57,6 +61,8 @@ foreignKeys:
   deleteAction: 
   updateAction: 
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 checks:
 - type: CheckConstraint
@@ -67,6 +73,8 @@ checks:
   isEnabled: true
   constraintText: ([Freight]>=(0.00))
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: CheckConstraint
   id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_shipdate
@@ -76,6 +84,8 @@ checks:
   isEnabled: true
   constraintText: ([ShipDate]>=[OrderDate] OR [ShipDate] IS NULL)
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: CheckConstraint
   id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_status
@@ -85,6 +95,8 @@ checks:
   isEnabled: true
   constraintText: ([Status]>=(1) AND [Status]<=(4))
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: CheckConstraint
   id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_subtotal
@@ -94,6 +106,8 @@ checks:
   isEnabled: true
   constraintText: ([SubTotal]>=(0.00))
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: CheckConstraint
   id: table.purchasing.purchaseorderheader.check.ck_purchaseorderheader_taxamt
@@ -103,6 +117,8 @@ checks:
   isEnabled: true
   constraintText: ([TaxAmt]>=(0.00))
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 fileGroup:
   name: '[PRIMARY]'
@@ -143,6 +159,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -265,6 +283,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: Index
   id: table.purchasing.purchaseorderheader.index.ix_purchaseorderheader_vendorid
@@ -289,6 +309,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -411,6 +433,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: Index
   id: table.purchasing.purchaseorderheader.index.pk_purchaseorderheader_purchaseorderid
@@ -435,6 +459,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -557,6 +583,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 triggers:
 - type: DmlTrigger
@@ -570,6 +598,8 @@ triggers:
   onUpdate: true
   onInsert: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 columns:
 - type: TableColumn
@@ -595,6 +625,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.revisionnumber
@@ -619,6 +651,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.status
@@ -643,6 +677,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.employeeid
@@ -670,6 +706,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.vendorid
@@ -697,6 +735,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.shipmethodid
@@ -724,6 +764,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.orderdate
@@ -748,6 +790,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.shipdate
@@ -772,6 +816,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.subtotal
@@ -796,6 +842,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.taxamt
@@ -820,6 +868,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.freight
@@ -844,6 +894,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.totaldue
@@ -868,6 +920,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: table.purchasing.purchaseorderheader.column.modifieddate
@@ -892,8 +946,12 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   SET ANSI_NULLS ON
   GO

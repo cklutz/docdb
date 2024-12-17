@@ -4,13 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
+using YamlDotNet.RepresentationModel;
 
 internal static class YamlExtensions
 {
-    public static void EmitNamedScalar(this IEmitter emitter, string name, string value)
+    public static void EmitNamedScalar(this IEmitter emitter, string name, string? value)
     {
         emitter.Emit(new Scalar(name));
-        emitter.Emit(new Scalar(value));
+        if (value != null)
+        {
+            emitter.Emit(new Scalar(value));
+        }
+        else
+        {
+            emitter.Emit(new Scalar(null, null, "", ScalarStyle.ForcePlain, true, true));
+        }
     }
 
     public static void EmitNamedItemSequence<T>(this IEmitter emitter, string name, UidBuilder uidBuilder, IEnumerable<T>? items) where T : DdbObject

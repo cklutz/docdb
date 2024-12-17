@@ -35,6 +35,8 @@ indexes:
     isIncluded: false
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
     script: ""
   partitionInfo:
     isPartitioned: false
@@ -157,6 +159,8 @@ indexes:
       value: None
       type: enum
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 triggers: []
 columns:
@@ -183,6 +187,8 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: TableColumn
   id: userdefinedtabletype.dbo.my_tvp.column.col2
@@ -207,8 +213,12 @@ columns:
   isFileStream: false
   isFullTextIndexed: false
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   CREATE TYPE [dbo].[my_tvp] AS TABLE(
   	[col1] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

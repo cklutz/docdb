@@ -20,6 +20,8 @@ fileGroups:
     id: file.adventureworks2022
     type: DataFileRef
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 dataFiles:
 - type: DataFile
@@ -40,6 +42,8 @@ dataFiles:
   maxSize: 
   size: 204800
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 logFiles:
 - type: LogFile
@@ -56,6 +60,8 @@ logFiles:
   maxSize: 2147483648
   size: 73728
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 options:
 - name: engine
@@ -330,6 +336,8 @@ options:
     value: ''
     type: string
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   CREATE DATABASE [AdventureWorks2022]
    CONTAINMENT = NONE

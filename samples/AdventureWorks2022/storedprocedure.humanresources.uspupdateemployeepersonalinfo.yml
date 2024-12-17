@@ -14,6 +14,8 @@ parameters:
   dataTypeRef: 
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeepersonalinfo.param.@nationalidnumber
@@ -25,6 +27,8 @@ parameters:
   dataTypeRef: 
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeepersonalinfo.param.@birthdate
@@ -36,6 +40,8 @@ parameters:
   dataTypeRef: 
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeepersonalinfo.param.@maritalstatus
@@ -47,6 +53,8 @@ parameters:
   dataTypeRef: 
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeepersonalinfo.param.@gender
@@ -58,6 +66,8 @@ parameters:
   dataTypeRef: 
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 syntax: |2+
 
@@ -69,6 +79,8 @@ syntax: |2+
       [ @Gender ] = Gender
   [ ; ]
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   SET ANSI_NULLS ON
   GO

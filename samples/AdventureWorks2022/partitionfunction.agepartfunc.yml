@@ -17,8 +17,12 @@ parameters:
   numericPrecision: 10
   numericScale: 0
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   CREATE PARTITION FUNCTION [AgePartFunc](int) AS RANGE RIGHT FOR VALUES (18)
   GO

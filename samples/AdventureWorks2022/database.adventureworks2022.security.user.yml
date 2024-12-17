@@ -1,19 +1,23 @@
 ### YamlMime:DocDB
+type: TocSection
 id: database.adventureworks2022.security.user
 name: Users
-type: TocSection
-description: ''
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
+schemaVersion: 
+description: 
+script: 
 items:
 - id: user.dbo
   name: dbo
-  description: ''
+  description: 
 - id: user.guest
   name: guest
-  description: ''
+  description: 
 - id: user.information_schema
   name: INFORMATION_SCHEMA
-  description: ''
+  description: 
 - id: user.sys
   name: sys
-  description: ''
+  description: 
 ...

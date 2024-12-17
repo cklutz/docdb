@@ -1,33 +1,37 @@
 ### YamlMime:DocDB
+type: TocSection
 id: database.adventureworks2022.table
 name: Tables
-type: TocSection
-description: ''
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
+schemaVersion: 
+description: 
+script: 
 items:
 - id: table.dbo.awbuildversion
   name: dbo.AWBuildVersion
   description: 'Current version number of the AdventureWorks 2016 sample database. '
 - id: table.dbo.customers
   name: dbo.Customers
-  description: ''
+  description: 
 - id: table.dbo.databaselog
   name: dbo.DatabaseLog
   description: Audit table tracking all DDL changes made to the AdventureWorks database. Data is captured by the database trigger ddlDatabaseTriggerLog.
 - id: table.dbo.employee
   name: dbo.Employee
-  description: ''
+  description: 
 - id: table.dbo.errorlog
   name: dbo.ErrorLog
   description: Audit table tracking errors in the the AdventureWorks database that are caught by the CATCH block of a TRY...CATCH construct. Data is inserted by stored procedure dbo.uspLogError when it is executed from inside the CATCH block of a TRY...CATCH construct.
 - id: table.dbo.int
   name: dbo.INT
-  description: ''
+  description: 
 - id: table.dbo.person
   name: dbo.Person
-  description: ''
+  description: 
 - id: table.dbo.table
   name: dbo.TABLE
-  description: ''
+  description: 
 - id: table.humanresources.department
   name: HumanResources.Department
   description: Lookup table containing the departments within the Adventure Works Cycles company.

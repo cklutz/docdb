@@ -5,6 +5,8 @@ description:
 name: testAppRole
 defaultSchema: dbo
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   /* To avoid disclosure of passwords, the password is generated in script. */
   declare @idx as int

@@ -17,12 +17,16 @@ parameters:
     type: UserDefinedTableTypeRef
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 syntax: |2+
 
   dbo.Tvp  [ @p0 ] = p0
   [ ; ]
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   SET ANSI_NULLS ON
   GO

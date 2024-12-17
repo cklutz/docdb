@@ -129,5 +129,17 @@ exports.transform = function (model) {
         }
     }
 
+    // Default templates use "title", we use "name".
+    if (!model.title && model.name) {
+        model.title = model.name;
+    }
+
+    if (!model._appFooter) {
+        model._appFooter = `Schema modification ${model._lastSchemaModification}`;
+        if (model.payload.schemaVersion) {
+            model._appFooter += `, version ${model.payload.schemaVersion}`;
+        }
+    }
+
     return model;
 }

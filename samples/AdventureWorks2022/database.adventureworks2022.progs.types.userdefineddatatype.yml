@@ -1,37 +1,41 @@
 ### YamlMime:DocDB
+type: TocSection
 id: database.adventureworks2022.progs.types.userdefineddatatype
 name: User-Defined Data Types
-type: TocSection
-description: ''
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
+schemaVersion: 
+description: 
+script: 
 items:
 - id: userdefineddatatype.dbo.accountnumber
   name: dbo.AccountNumber
-  description: ''
+  description: 
 - id: userdefineddatatype.dbo.decimal102
   name: dbo.Decimal102
-  description: ''
+  description: 
 - id: userdefineddatatype.dbo.flag
   name: dbo.Flag
-  description: ''
+  description: 
 - id: userdefineddatatype.dbo.foobar
   name: dbo.FooBar
-  description: ''
+  description: 
 - id: userdefineddatatype.dbo.foobar_11
   name: dbo.FooBar_11
-  description: ''
+  description: 
 - id: userdefineddatatype.dbo.foobar_max
   name: dbo.FooBar_MAX
-  description: ''
+  description: 
 - id: userdefineddatatype.dbo.name
   name: dbo.Name
-  description: ''
+  description: 
 - id: userdefineddatatype.dbo.namestyle
   name: dbo.NameStyle
-  description: ''
+  description: 
 - id: userdefineddatatype.dbo.ordernumber
   name: dbo.OrderNumber
-  description: ''
+  description: 
 - id: userdefineddatatype.dbo.phone
   name: dbo.Phone
-  description: ''
+  description: 
 ...

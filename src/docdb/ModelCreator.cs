@@ -10,16 +10,31 @@ using SmoIndex = Microsoft.SqlServer.Management.Smo.Index;
 
 namespace DocDB;
 
-internal class ModelCreator
+internal interface IModelInfo
+{
+    string? SchemaVersion { get; }
+    DateTime LastSchemaModificationAt { get; }
+    string DatabaseId { get; }
+}
+
+internal class ModelCreator : IModelInfo
 {
     private readonly string _databaseId;
+    private readonly string? _schemaVersion;
+    private readonly DateTime _lastModified;
 
-    public ModelCreator(Database database)
+    public ModelCreator(Database database, string? schemaVersion)
     {
         ArgumentNullException.ThrowIfNull(database);
 
         _databaseId = database.GetModelId();
+        _schemaVersion = schemaVersion;
+        _lastModified = database.GetLastModificationDate();
     }
+
+    public string? SchemaVersion => _schemaVersion;
+    public DateTime LastSchemaModificationAt => _lastModified;
+    public string DatabaseId => _databaseId;
 
     public DdbObject? CreateObject(NamedSmoObject obj)
     {
@@ -57,6 +72,8 @@ internal class ModelCreator
     {
         obj.DatabaseId = _databaseId;
         obj.Id = smo.GetModelId();
+        obj.SchemaVersion = _schemaVersion;
+        obj.LastSchemaModificationAt = _lastModified;
 
         if (obj is NamedDdbObject named)
         {

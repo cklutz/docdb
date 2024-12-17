@@ -1,7 +1,11 @@
 ### YamlMime:DocDB
+type: TocSection
 id: database.adventureworks2022.progs.types.userdefinedtype
 name: User-Defined Types
-type: TocSection
-description: ''
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
+schemaVersion: 
+description: 
+script: 
 items: []
 ...

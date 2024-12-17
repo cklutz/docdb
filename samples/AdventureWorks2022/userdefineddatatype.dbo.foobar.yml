@@ -20,6 +20,8 @@ ruleRef:
 systemType: int
 isVariableLength: false
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   CREATE TYPE [dbo].[FooBar] FROM [int] NULL
   GO

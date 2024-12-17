@@ -296,6 +296,20 @@ public static class SmoExtensions
         throw new ArgumentException($"Unexpected type {obj.GetType()}.");
     }
 
+    public static DateTime GetLastModificationDate(this Database database)
+    {
+        ArgumentNullException.ThrowIfNull(database);
+
+        var connection = database.Parent?.ConnectionContext;
+        if (connection == null)
+        {
+            throw new InvalidOperationException("No connection context.");
+        }
+
+        var dt = (DateTime)connection.ExecuteScalar("SELECT TOP(1) modify_date FROM sys.objects where is_ms_shipped = 0 ORDER BY modify_date DESC");
+        return dt;
+    }
+
     public static Default FindDefaultByName(this Database database, string schemaName, string defaultName)
     {
         ArgumentNullException.ThrowIfNull(database);

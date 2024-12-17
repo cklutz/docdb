@@ -10,6 +10,17 @@
 	</colgroup>
 	<tbody>
 		<tr>
+			<th class="nowrap">Last schema modification</th>
+			<td>{{lastSchemaModificationAt}}</td>
+		</tr>
+		<tr>
+			<th class="nowrap">Schema version</th>
+			<td>
+			{{#schemaVersion}}{{schemaVersion}}{{/schemaVersion}}
+			{{^schemaVersion}}-{{/schemaVersion}}
+			</td>
+		</tr>
+		<tr>
 			<th class="nowrap">Product</th>
 			<td>{{productInformation}}</td>
 		</tr>

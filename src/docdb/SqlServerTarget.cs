@@ -52,6 +52,11 @@ public sealed class SqlServerTarget : IDisposable
         _server.SetDefaultInitFields(typeof(SqlAssembly), nameof(SqlAssembly.IsSystemObject));
     }
 
+    public object ExecuteScalar(string statement)
+    {
+        return _connection.ExecuteScalar(statement);
+    }
+
     private IEnumerable<Urn> AddUrns<T>(SmoCollectionBase source, Func<T, bool>? predicate = null) where T : SqlSmoObject
     {
         // Some objects are not supported on Azure or Standalone

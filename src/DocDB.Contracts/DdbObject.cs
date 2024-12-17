@@ -22,6 +22,10 @@ public abstract class DdbObject : IDdbRef
     public string? Description { get; set; }
     [JsonPropertyName("script"), JsonProperty("script")]
     public string? Script { get; set; }
+    [JsonPropertyName("schemaVersion"), JsonProperty("schemaVersion")]
+    public string? SchemaVersion { get; set; }
+    [JsonPropertyName("lastSchemaModificationAt"), JsonProperty("lastSchemaModificationAt")]
+    public DateTime LastSchemaModificationAt { get; set; }
 
     public override bool Equals(object? obj) => obj is DdbObject dbo && dbo.Id == Id && dbo.Type == Type;
     public override int GetHashCode() => HashCode.Combine(Id, Type);

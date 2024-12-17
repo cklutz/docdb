@@ -14,12 +14,11 @@ namespace DocDB;
 
 public static class Program
 {
-
     public static int Main(string[] args)
     {
         if (args.Length < 3)
         {
-            Console.Error.WriteLine("Usage: {0} CONNECTION-STRING OUTPUT-DIR ROOTNODE-TEXT");
+            Console.Error.WriteLine("Usage: {0} CONNECTION-STRING OUTPUT-DIR ROOTNODE-TEXT [GET-SCHEMA-VERSION-STATEMENT]");
             return 1;
         }
 
@@ -31,8 +30,14 @@ public static class Program
             string outputDirectory = args[1];
             string rootNodeText = args[2];
 
+            string? getSchemaVersionStmt = null;
+            if (args.Length > 3)
+            {
+                getSchemaVersionStmt = args[3];
+            }
 
-            return DocumentDatabase(output, connectionString, outputDirectory, rootNodeText);
+
+            return DocumentDatabase(output, connectionString, outputDirectory, rootNodeText, getSchemaVersionStmt);
         }
         catch (Exception ex)
         {
@@ -41,7 +46,7 @@ public static class Program
         }
     }
 
-    private static int DocumentDatabase(IOutput output, string connectionString, string outputDirectory, string rootNodeText)
+    private static int DocumentDatabase(IOutput output, string connectionString, string outputDirectory, string rootNodeText, string? getSchemaVersionStmt)
     {
         if (!Directory.Exists(outputDirectory))
         {
@@ -51,7 +56,13 @@ public static class Program
 
         using (var target = new SqlServerTarget(connectionString))
         {
-            var modelCreator = new ModelCreator(target.Database);
+            string? schemaVersion = null;
+            if (getSchemaVersionStmt != null)
+            {
+                schemaVersion = target.ExecuteScalar(getSchemaVersionStmt) as string;
+            }
+
+            var modelCreator = new ModelCreator(target.Database, schemaVersion);
             var objects = new List<DdbObject>();
 
             var serializerBuilder = new SerializerBuilder()
@@ -92,7 +103,7 @@ public static class Program
 
             string tocFile = Path.Combine(outputDirectory, "toc.yml");
             output.Message($"Writing {tocFile}");
-            TocWriter.WriteToc(tocFile, objects);
+            TocWriter.WriteToc(modelCreator, tocFile, objects);
         }
 
         return 0;

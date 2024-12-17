@@ -40,12 +40,7 @@ namespace DocDB
         //              Application Roles
         //          Schemas
         //  
-
-
-
-
-
-        public static void WriteToc(string fileName, List<DdbObject> objects)
+        public static void WriteToc(IModelInfo modelInfo, string fileName, List<DdbObject> objects)
         {
             var databaseObj = objects.OfType<DdbDatabase>().FirstOrDefault();
             if (databaseObj == null)
@@ -65,7 +60,8 @@ namespace DocDB
 
             emitter.EmitNamed(databaseObj.Name, emitter =>
             {
-                var uidBuilder = new UidBuilder(databaseObj.Id, databaseObj.Name, new TocSectionWriter(databaseObj.Id, Path.GetDirectoryName(Path.GetFullPath(fileName))!));
+                var uidBuilder = new UidBuilder(databaseObj.Id, databaseObj.Name, 
+                    new TocSectionWriter(modelInfo, Path.GetDirectoryName(Path.GetFullPath(fileName))!));
 
                 emitter.EmitNamedScalar("uid", uidBuilder.Value);
                 emitter.EmitNamedScalar("type", databaseObj.Type);

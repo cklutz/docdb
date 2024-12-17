@@ -1,37 +1,41 @@
 ### YamlMime:DocDB
+type: TocSection
 id: database.adventureworks2022.security.roles.databaserole
 name: Database Roles
-type: TocSection
-description: ''
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
+schemaVersion: 
+description: 
+script: 
 items:
 - id: role.db_accessadmin
   name: db_accessadmin
-  description: ''
+  description: 
 - id: role.db_backupoperator
   name: db_backupoperator
-  description: ''
+  description: 
 - id: role.db_datareader
   name: db_datareader
-  description: ''
+  description: 
 - id: role.db_datawriter
   name: db_datawriter
-  description: ''
+  description: 
 - id: role.db_ddladmin
   name: db_ddladmin
-  description: ''
+  description: 
 - id: role.db_denydatareader
   name: db_denydatareader
-  description: ''
+  description: 
 - id: role.db_denydatawriter
   name: db_denydatawriter
-  description: ''
+  description: 
 - id: role.db_owner
   name: db_owner
-  description: ''
+  description: 
 - id: role.db_securityadmin
   name: db_securityadmin
-  description: ''
+  description: 
 - id: role.public
   name: public
-  description: ''
+  description: 
 ...

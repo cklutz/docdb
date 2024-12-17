@@ -14,6 +14,8 @@ parameters:
   dataTypeRef: 
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@jobtitle
@@ -25,6 +27,8 @@ parameters:
   dataTypeRef: 
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@hiredate
@@ -36,6 +40,8 @@ parameters:
   dataTypeRef: 
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@ratechangedate
@@ -47,6 +53,8 @@ parameters:
   dataTypeRef: 
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@rate
@@ -58,6 +66,8 @@ parameters:
   dataTypeRef: 
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@payfrequency
@@ -69,6 +79,8 @@ parameters:
   dataTypeRef: 
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 - type: StoredProcedureParameter
   id: storedprocedure.humanresources.uspupdateemployeehireinfo.param.@currentflag
@@ -83,6 +95,8 @@ parameters:
     type: UserDefinedDataTypeRef
   defaultValue: ''
   databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
   script: ""
 syntax: |2+
 
@@ -96,6 +110,8 @@ syntax: |2+
       [ @CurrentFlag ] = CurrentFlag
   [ ; ]
 databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
 script: |+
   SET ANSI_NULLS ON
   GO

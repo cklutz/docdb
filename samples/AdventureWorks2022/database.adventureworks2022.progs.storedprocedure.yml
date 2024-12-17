@@ -1,12 +1,16 @@
 ### YamlMime:DocDB
+type: TocSection
 id: database.adventureworks2022.progs.storedprocedure
 name: Stored Procedures
-type: TocSection
-description: ''
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-16T15:41:06.5500000
+schemaVersion: 
+description: 
+script: 
 items:
 - id: storedprocedure.dbo.tvp
   name: dbo.Tvp
-  description: ''
+  description: 
 - id: storedprocedure.dbo.uspgetbillofmaterials
   name: dbo.uspGetBillOfMaterials
   description: Stored procedure using a recursive query to return a multi-level bill of material for the specified ProductID.
@@ -27,7 +31,7 @@ items:
   description: Prints error information about the error that caused execution to jump to the CATCH block of a TRY...CATCH construct. Should be executed from within the scope of a CATCH block otherwise it will return without printing any error information.
 - id: storedprocedure.dbo.uspsearchcandidateresumes
   name: dbo.uspSearchCandidateResumes
-  description: ''
+  description: 
 - id: storedprocedure.humanresources.uspupdateemployeehireinfo
   name: HumanResources.uspUpdateEmployeeHireInfo
   description: Updates the Employee table and inserts a new row in the EmployeePayHistory table with the values specified in the input parameters.
