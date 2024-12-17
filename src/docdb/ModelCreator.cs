@@ -708,7 +708,6 @@ internal class ModelCreator : IModelInfo
 
     private DdbUserDefinedDataType CreateUserDefinedDataType(UserDefinedDataType udt)
     {
-        // TODO: MaxLength vs. Storage (SSMS)?
         var result = InitBase(new DdbUserDefinedDataType
         {
             AllowIdentity = udt.AllowIdentity,
