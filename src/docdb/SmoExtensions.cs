@@ -7,6 +7,7 @@ using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Text;
+using SmoIndex = Microsoft.SqlServer.Management.Smo.Index;
 
 namespace DocDB;
 
@@ -267,74 +268,6 @@ public static class SmoExtensions
         return null;
     }
 
-    public static string GetLevel1ObjectTypeName(this ExtendedPropertiesLevel1ObjectTypes objectType)
-    {
-        switch (objectType)
-        {
-            case ExtendedPropertiesLevel1ObjectTypes.None:
-                return "DEFAULT";
-            case ExtendedPropertiesLevel1ObjectTypes.Aggregate:
-            case ExtendedPropertiesLevel1ObjectTypes.Function:
-            case ExtendedPropertiesLevel1ObjectTypes.Procedure:
-            case ExtendedPropertiesLevel1ObjectTypes.Queue:
-            case ExtendedPropertiesLevel1ObjectTypes.Rule:
-            case ExtendedPropertiesLevel1ObjectTypes.Synonym:
-            case ExtendedPropertiesLevel1ObjectTypes.Table:
-            case ExtendedPropertiesLevel1ObjectTypes.Type:
-            case ExtendedPropertiesLevel1ObjectTypes.View:
-                return objectType.ToString().ToUpperInvariant();
-            case ExtendedPropertiesLevel1ObjectTypes.LogicalFileName:
-                return "LOGICAL FILE NAME";
-            case ExtendedPropertiesLevel1ObjectTypes.XmlSchemaCollection:
-                return "XML SCHEMA COLLECTION";
-        }
-
-        throw new ArgumentOutOfRangeException(nameof(objectType), objectType, null);
-    }
-
-    public static string GetLevel2ObjectTypeName(this ExtendedPropertiesLevel2ObjectTypes objectType)
-    {
-        switch (objectType)
-        {
-            case ExtendedPropertiesLevel2ObjectTypes.None:
-                return null;
-            case ExtendedPropertiesLevel2ObjectTypes.Column:
-            case ExtendedPropertiesLevel2ObjectTypes.Constraint:
-            case ExtendedPropertiesLevel2ObjectTypes.Index:
-            case ExtendedPropertiesLevel2ObjectTypes.Parameter:
-            case ExtendedPropertiesLevel2ObjectTypes.Trigger:
-                return objectType.ToString().ToUpperInvariant();
-            case ExtendedPropertiesLevel2ObjectTypes.EventNotification:
-                return "EVENT NOTIFICATION";
-        }
-
-        throw new ArgumentOutOfRangeException(nameof(objectType), objectType, null);
-    }
-
-    public static string GetLevel1ObjectTypeName(this Urn urn)
-    {
-        ArgumentNullException.ThrowIfNull(urn);
-
-        switch (urn.GetUrnObjectType())
-        {
-            case UrnObjectType.StoredProcedure:
-                return "PROCEDURE";
-            case UrnObjectType.UserDefinedFunction:
-                return "FUNCTION";
-            case UrnObjectType.UserDefinedAggregate:
-                return "AGGREGATE";
-            case UrnObjectType.UserDefinedDataType:
-            case UrnObjectType.UserDefinedType:
-                return "TYPE";
-            case UrnObjectType.XmlSchemaCollection:
-                return "XML SCHEMA COLLECTION";
-        }
-
-        // This might be correct or not, but until further
-        // investigation it works at least for (table and view)
-        return urn.Type.ToUpperInvariant();
-    }
-
     public static Database GetDatabase(this SmoObjectBase obj)
     {
         ArgumentNullException.ThrowIfNull(obj);
@@ -354,7 +287,13 @@ public static class SmoExtensions
             return tableType.Parent;
         }
 
-        throw new ArgumentException($"Unexpected type {obj.GetType()} or no UserData.Database present");
+        if (obj is SmoIndex index)
+        {
+            // Should descend into "UserDefinedTableType", "View" or "Table" cases above.
+            return index.Parent.GetDatabase();
+        }
+
+        throw new ArgumentException($"Unexpected type {obj.GetType()}.");
     }
 
     public static Default FindDefaultByName(this Database database, string schemaName, string defaultName)
@@ -559,31 +498,4 @@ public enum UrnObjectType
     ApplicationRole,
     Schema,
     DatabaseDdlTrigger
-}
-
-public enum ExtendedPropertiesLevel2ObjectTypes
-{
-    None,
-    Column,
-    Constraint,
-    Index,
-    Parameter,
-    Trigger,
-    EventNotification
-}
-
-public enum ExtendedPropertiesLevel1ObjectTypes
-{
-    None,
-    Aggregate,
-    Function,
-    LogicalFileName,
-    Procedure,
-    Queue,
-    Rule,
-    Synonym,
-    Table,
-    Type,
-    View,
-    XmlSchemaCollection
 }

@@ -54,7 +54,10 @@ indexes:
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
     script: ""
-  isPartitioned: false
+  partitionInfo:
+    isPartitioned: false
+    columns: []
+    partitionScheme: 
   fileGroup:
     name: PRIMARY
     id: filegroup.primary
@@ -210,7 +213,10 @@ indexes:
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
     script: ""
-  isPartitioned: false
+  partitionInfo:
+    isPartitioned: false
+    columns: []
+    partitionScheme: 
   fileGroup:
     name: PRIMARY
     id: filegroup.primary
@@ -353,7 +359,10 @@ indexes:
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
     script: ""
-  isPartitioned: false
+  partitionInfo:
+    isPartitioned: false
+    columns: []
+    partitionScheme: 
   fileGroup:
     name: PRIMARY
     id: filegroup.primary

@@ -61,7 +61,16 @@ indexes:
     columnStoreOrderOrdinal: 0
     databaseId: database.adventureworks2022
     script: ""
-  isPartitioned: true
+  partitionInfo:
+    isPartitioned: true
+    columns:
+    - name: age
+      id: table.dbo.customers.index.pk_customers.indexedcolumn.age
+      type: TableColumnRef
+    partitionScheme:
+      name: '[AgePartScheme]'
+      id: partitionscheme.agepartscheme
+      type: PartitionSchemeRef
   fileGroup: 
   fileStreamGroup: 
   options:

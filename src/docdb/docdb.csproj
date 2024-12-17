@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="171.30.0" />
+    <!-- SMO 172.52.0 references Microsoft.Data.SqlClient 5.1.5 which is vulnerable. -->
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+    <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="172.52.0" />
     <PackageReference Include="YamlDotNet" Version="16.2.1" />
   </ItemGroup>
 

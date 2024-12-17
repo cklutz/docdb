@@ -45,7 +45,7 @@
 			<td>
 				<ul>
 			{{#columns}}
-				<li>
+				<li id="{{id}}">
 				{{#isIncluded}}INCLUDE{{/isIncluded}}
 				<a href="#{{columnRef.id}}">{{columnRef.name}}</a>
 				{{#isDescending}}DESC{{/isDescending}}
