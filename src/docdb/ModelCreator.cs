@@ -1,4 +1,4 @@
-﻿using DocDB.Contracts;
+using DocDB.Contracts;
 using ICSharpCode.Decompiler;
 using ICSharpCode.Decompiler.CSharp;
 using Microsoft.SqlServer.Management.Smo;
@@ -17,10 +17,6 @@ namespace DocDB;
 internal class ModelCreator : IModelInfo
 {
     private readonly IOutput _output;
-    private readonly string _databaseId;
-    private readonly string _databaseName;
-    private readonly string? _schemaVersion;
-    private readonly DateTime _lastModified;
 
     public ModelCreator(IOutput output, Database database, string? overrideDatabaseName, string? schemaVersion)
     {
@@ -28,16 +24,16 @@ internal class ModelCreator : IModelInfo
         ArgumentNullException.ThrowIfNull(database);
 
         _output = output;
-        _databaseName = overrideDatabaseName ?? database.Name;
-        _databaseId = database.GetModelId();
-        _schemaVersion = schemaVersion;
-        _lastModified = database.GetLastModificationDate();
+        DatabaseName = overrideDatabaseName ?? database.Name;
+        DatabaseId = database.GetModelId();
+        SchemaVersion = schemaVersion;
+        LastSchemaModificationAt = database.GetLastModificationDate();
     }
 
-    public string? SchemaVersion => _schemaVersion;
-    public DateTime LastSchemaModificationAt => _lastModified;
-    public string DatabaseId => _databaseId;
-    public string DatabaseName => _databaseName;
+    public string? SchemaVersion { get; }
+    public DateTime LastSchemaModificationAt { get; }
+    public string DatabaseId { get; }
+    public string DatabaseName { get; }
 
     public DdbObject? CreateObject(NamedSmoObject obj)
     {
@@ -73,10 +69,10 @@ internal class ModelCreator : IModelInfo
 
     private T InitBase<T>(T obj, NamedSmoObject smo, bool noScript = false, string? overrideName = null) where T : DdbObject
     {
-        obj.DatabaseId = _databaseId;
+        obj.DatabaseId = DatabaseId;
         obj.Id = smo.GetModelId();
-        obj.SchemaVersion = _schemaVersion;
-        obj.LastSchemaModificationAt = _lastModified;
+        obj.SchemaVersion = SchemaVersion;
+        obj.LastSchemaModificationAt = LastSchemaModificationAt;
 
         if (obj is NamedDdbObject named)
         {
@@ -105,7 +101,7 @@ internal class ModelCreator : IModelInfo
 
     private DdbDatabase CreateDatabase(Database database)
     {
-        var result = InitBase(new DdbDatabase(), database, overrideName: _databaseName);
+        var result = InitBase(new DdbDatabase(), database, overrideName: DatabaseName);
 
         // These are (hopefully) vendor/product agnostic.
         result.Collation = database.Collation;
@@ -379,7 +375,7 @@ internal class ModelCreator : IModelInfo
         var result = InitBase(new DdbDatabaseRole
         {
             Owner = role.Owner,
-            Members = role.EnumMembers().OfType<string>().ToList()
+            Members = [.. role.EnumMembers().OfType<string>()]
         }, role);
         return result;
     }
@@ -525,7 +521,7 @@ internal class ModelCreator : IModelInfo
             Owner = assembly.Owner,
             PublicKey = assembly.PublicKey.ToHexString(),
             Version = assembly.Version.ToString(4),
-            FileNames = assembly.SqlAssemblyFiles.OfType<SqlAssemblyFile>().Select(f => f.Name).ToList()
+            FileNames = [.. assembly.SqlAssemblyFiles.OfType<SqlAssemblyFile>().Select(f => f.Name)]
         }, assembly);
 
         var assemblyFile = assembly.SqlAssemblyFiles.OfType<SqlAssemblyFile>().FirstOrDefault(a => a.ID == 1);
@@ -786,7 +782,7 @@ internal class ModelCreator : IModelInfo
     {
         var result = InitBase(new DdbPartitionScheme
         {
-            FileGroups = ps.FileGroups.OfType<string>().Select(fg => ps.Parent.FileGroups.FindFirstOrDefault<FileGroup>(fg)?.ToNamedRef<DdbFileGroup>()).ToList(),
+            FileGroups = [.. ps.FileGroups.OfType<string>().Select(fg => ps.Parent.FileGroups.FindFirstOrDefault<FileGroup>(fg)?.ToNamedRef<DdbFileGroup>())],
             NextUsedFileGroup = ps.Parent.FileGroups.FindFirstOrDefault<FileGroup>(ps.NextUsedFileGroup)?.ToNamedRef<DdbFileGroup>(),
             PartitionFunction = ps.Parent.PartitionFunctions.FindFirstOrDefault<PartitionFunction>(ps.PartitionFunction)?.ToNamedRef<DdbPartitionFunction>()
         }, ps);
@@ -799,8 +795,8 @@ internal class ModelCreator : IModelInfo
         {
             NumberOfPartitions = pf.NumberOfPartitions,
             RangeType = pf.RangeType.ToString(),
-            RangeValues = pf.RangeValues.Select(v => v?.ToString() ?? "").ToList(),
-            Parameters = pf.PartitionFunctionParameters.OfType<PartitionFunctionParameter>()
+            RangeValues = [.. pf.RangeValues.Select(v => v?.ToString() ?? "")],
+            Parameters = [.. pf.PartitionFunctionParameters.OfType<PartitionFunctionParameter>()
                 .Select(p =>
                 InitBase(new DdbPartitionFunctionParameter
                 {
@@ -808,7 +804,7 @@ internal class ModelCreator : IModelInfo
                     NumericPrecision = p.NumericPrecision,
                     NumericScale = p.NumericScale,
                     Length = p.Length
-                }, p)).ToList()
+                }, p))]
         }, pf);
         return result;
     }
@@ -844,7 +840,7 @@ internal class ModelCreator : IModelInfo
         {
             result.PartitionInfo.IsPartitioned = true;
             result.PartitionInfo.PartitionScheme = table.Parent.PartitionSchemes.FindFirstOrDefault<PartitionScheme>(table.PartitionScheme)?.ToNamedRef<DdbPartitionScheme>();
-            result.PartitionInfo.Columns = table.PartitionSchemeParameters.OfType<PartitionSchemeParameter>().Select(c => CreateColumnRef(table, c.Name)).ToList();
+            result.PartitionInfo.Columns = [.. table.PartitionSchemeParameters.OfType<PartitionSchemeParameter>().Select(c => CreateColumnRef(table, c.Name))];
         }
 
         if (table.IsFileTable)
@@ -859,7 +855,7 @@ internal class ModelCreator : IModelInfo
         {
             result.ForeignKeys.Add(InitBase(new DdbForeignKey
             {
-                Columns = foreignKey.Columns.OfType<ForeignKeyColumn>().Select(c => CreateColumnRef(table, c.Name)).ToList(),
+                Columns = [.. foreignKey.Columns.OfType<ForeignKeyColumn>().Select(c => CreateColumnRef(table, c.Name))],
                 IsChecked = foreignKey.IsChecked,
                 ReferencedKey = foreignKey.ReferencedKey,
                 ReferencedTable = CreateTableRef(table.Parent, foreignKey.ReferencedTableSchema, foreignKey.ReferencedTable)
@@ -1022,7 +1018,7 @@ internal class ModelCreator : IModelInfo
             {
                 idx.PartitionInfo.IsPartitioned = true;
                 idx.PartitionInfo.PartitionScheme = index.GetDatabase().PartitionSchemes.FindFirstOrDefault<PartitionScheme>(index.PartitionScheme)?.ToNamedRef<DdbPartitionScheme>();
-                idx.PartitionInfo.Columns = index.PartitionSchemeParameters.OfType<PartitionSchemeParameter>().Select(c => CreateColumnRef(index, c.Name)).ToList();
+                idx.PartitionInfo.Columns = [.. index.PartitionSchemeParameters.OfType<PartitionSchemeParameter>().Select(c => CreateColumnRef(index, c.Name))];
             }
 
             result.Indexes.Add(idx);
@@ -1049,7 +1045,7 @@ internal class ModelCreator : IModelInfo
         }
     }
 
-    private NamedDdbRef CreateDefaultRef(Database database, string schemaName, string defaultName)
+    private static NamedDdbRef CreateDefaultRef(Database database, string schemaName, string defaultName)
     {
         var def = database.FindDefaultByName(schemaName, defaultName);
 
@@ -1061,7 +1057,7 @@ internal class ModelCreator : IModelInfo
         };
     }
 
-    private NamedDdbRef CreateRuleRef(Database database, string schemaName, string ruleName)
+    private static NamedDdbRef CreateRuleRef(Database database, string schemaName, string ruleName)
     {
         var rule = database.FindRuleByName(schemaName, ruleName);
 
@@ -1073,7 +1069,7 @@ internal class ModelCreator : IModelInfo
         };
     }
 
-    private NamedDdbRef CreateFileGroupRef(Database database, string fileGroupName)
+    private static NamedDdbRef CreateFileGroupRef(Database database, string fileGroupName)
     {
         var fileGroup = database.FindFileGroupByName(fileGroupName);
         return new NamedDdbRef
@@ -1084,14 +1080,13 @@ internal class ModelCreator : IModelInfo
         };
     }
 
-    private NamedDdbRef CreateColumnRef(SmoIndex index, string columnName)
+    private static NamedDdbRef CreateColumnRef(SmoIndex index, string columnName)
     {
         var column = index.IndexedColumns.FindFirstOrDefault<IndexedColumn>(columnName);
-        if (column == null)
-        {
-            throw new InvalidOperationException($"Index {index} does not contain column {columnName}.");
-        }
-        return new NamedDdbRef
+
+        return column == null
+            ? throw new InvalidOperationException($"Index {index} does not contain column {columnName}.")
+            : new NamedDdbRef
         {
             Id = column.GetModelId(),
             Type = DdbObject.GetTypeTag<DdbTableColumn>(isRef: true),
@@ -1099,7 +1094,7 @@ internal class ModelCreator : IModelInfo
         };
     }
 
-    private NamedDdbRef CreateColumnRef(TableViewTableTypeBase tableView, string columnName)
+    private static NamedDdbRef CreateColumnRef(TableViewTableTypeBase tableView, string columnName)
     {
         var column = tableView.FindColumnByName(columnName);
         return new NamedDdbRef
@@ -1110,7 +1105,7 @@ internal class ModelCreator : IModelInfo
         };
     }
 
-    private NamedDdbRef CreateTableRef(Database database, string schemaName, string tableName)
+    private static NamedDdbRef CreateTableRef(Database database, string schemaName, string tableName)
     {
         var table = database.FindTableByName(schemaName, tableName);
 
@@ -1122,7 +1117,7 @@ internal class ModelCreator : IModelInfo
         };
     }
 
-    private T CreateColumn<T>(Database database, Column column) where T : DdbColumnBase, new()
+    private static T CreateColumn<T>(Database database, Column column) where T : DdbColumnBase, new()
     {
         return new T()
         {
@@ -1145,7 +1140,7 @@ internal class ModelCreator : IModelInfo
         };
     }
 
-    private void SetOption<T>(Func<T> getSmoObject, DdbOptionCategory options, string propertyName,
+    private static void SetOption<T>(Func<T> getSmoObject, DdbOptionCategory options, string propertyName,
        Func<T, object?>? getter = null)
        where T : SqlSmoObject
     {
@@ -1160,7 +1155,7 @@ internal class ModelCreator : IModelInfo
         }
     }
 
-    private void SetOption<T>(T smoObject, DdbOptionCategory options, string propertyName,
+    private static void SetOption<T>(T smoObject, DdbOptionCategory options, string propertyName,
         Func<T, object?>? getter = null)
         where T : SqlSmoObject
     {
@@ -1223,7 +1218,7 @@ internal class ModelCreator : IModelInfo
         }
     }
 
-    private NamedDdbRef? ResolveDataType(Database database, DataType dataType)
+    private static NamedDdbRef? ResolveDataType(Database database, DataType dataType)
     {
         NamedDdbRef? dataTypeRef = null;
         switch (dataType.SqlDataType)

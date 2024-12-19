@@ -18,6 +18,7 @@ api
 _site
 index.md
 toc.yml
+_exported_templates
 
 # Mono auto generated files
 mono_crash.*
