@@ -2,7 +2,7 @@
 
 Generate metadata from SQL Server databases for use with [DocFX](https://github.com/dotnet/docfx) to generate reference documentation.
 
-[![MIT License](https://img.shields.io/github/license/cklutz/docdb?color=%230b0&style=flat-square)](https://github.com/cklutz/docdb/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/github/license/cklutz/docdb?color=%230b0&style=flat-square&_x=123)](https://github.com/cklutz/docdb/blob/master/LICENSE)
 
 [![Status](https://github.com/cklutz/docdb/workflows/Windows/badge.svg)](https://github.com/cklutz/docdb/actions?query=workflow%3AWindows)
 
