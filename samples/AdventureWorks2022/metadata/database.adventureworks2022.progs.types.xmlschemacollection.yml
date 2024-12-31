@@ -1,0 +1,29 @@
+### YamlMime:DocDB
+type: TocSection
+id: database.adventureworks2022.progs.types.xmlschemacollection
+name: XML Schema Collections
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+schemaVersion: 
+description: 
+script: 
+items:
+- id: xmlschemacollection.humanresources.hrresumeschemacollection
+  name: HumanResources.HRResumeSchemaCollection
+  description: Collection of XML schemas for the Resume column in the HumanResources.JobCandidate table.
+- id: xmlschemacollection.person.additionalcontactinfoschemacollection
+  name: Person.AdditionalContactInfoSchemaCollection
+  description: Collection of XML schemas for the AdditionalContactInfo column in the Person.Contact table.
+- id: xmlschemacollection.person.individualsurveyschemacollection
+  name: Person.IndividualSurveySchemaCollection
+  description: Collection of XML schemas for the Demographics column in the Person.Person table.
+- id: xmlschemacollection.production.manuinstructionsschemacollection
+  name: Production.ManuInstructionsSchemaCollection
+  description: Collection of XML schemas for the Instructions column in the Production.ProductModel table.
+- id: xmlschemacollection.production.productdescriptionschemacollection
+  name: Production.ProductDescriptionSchemaCollection
+  description: Collection of XML schemas for the CatalogDescription column in the Production.ProductModel table.
+- id: xmlschemacollection.sales.storesurveyschemacollection
+  name: Sales.StoreSurveySchemaCollection
+  description: Collection of XML schemas for the Demographics column in the Sales.Store table.
+...

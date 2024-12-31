@@ -1,0 +1,1025 @@
+### YamlMime:DocDB
+type: Table
+id: table.production.workorder
+description: Manufacturing work orders.
+name: Production.WorkOrder
+foreignKeys:
+- type: ForeignKey
+  id: table.production.workorder.foreignkey.fk_workorder_product_productid
+  description: Foreign key constraint referencing Product.ProductID.
+  name: FK_WorkOrder_Product_ProductID
+  columns:
+  - name: ProductID
+    id: table.production.workorder.column.productid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_Product_ProductID
+  referencedTable:
+    name: '[Production].[Product]'
+    id: table.production.product
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ForeignKey
+  id: table.production.workorder.foreignkey.fk_workorder_scrapreason_scrapreasonid
+  description: Foreign key constraint referencing ScrapReason.ScrapReasonID.
+  name: FK_WorkOrder_ScrapReason_ScrapReasonID
+  columns:
+  - name: ScrapReasonID
+    id: table.production.workorder.column.scrapreasonid
+    type: TableColumnRef
+  isChecked: true
+  referencedKey: PK_ScrapReason_ScrapReasonID
+  referencedTable:
+    name: '[Production].[ScrapReason]'
+    id: table.production.scrapreason
+    type: TableRef
+  deleteAction: 
+  updateAction: 
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+checks:
+- type: CheckConstraint
+  id: table.production.workorder.check.ck_workorder_enddate
+  description: Check constraint [EndDate] >= [StartDate] OR [EndDate] IS NULL
+  name: CK_WorkOrder_EndDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([EndDate]>=[StartDate] OR [EndDate] IS NULL)
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: CheckConstraint
+  id: table.production.workorder.check.ck_workorder_orderqty
+  description: Check constraint [OrderQty] > (0)
+  name: CK_WorkOrder_OrderQty
+  isChecked: true
+  isEnabled: true
+  constraintText: ([OrderQty]>(0))
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: CheckConstraint
+  id: table.production.workorder.check.ck_workorder_scrappedqty
+  description: Check constraint [ScrappedQty] >= (0)
+  name: CK_WorkOrder_ScrappedQty
+  isChecked: true
+  isEnabled: true
+  constraintText: ([ScrappedQty]>=(0))
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
+indexes:
+- type: Index
+  id: table.production.workorder.index.ix_workorder_productid
+  description: Nonclustered index.
+  name: IX_WorkOrder_ProductID
+  indexType: NONCLUSTERED
+  indexKeyType: ''
+  isDisabled: false
+  isUnique: false
+  isClustered: false
+  filter: ''
+  columns:
+  - type: IndexColumn
+    id: table.production.workorder.index.ix_workorder_productid.indexedcolumn.productid
+    description: 
+    name: ProductID
+    columnRef:
+      name: ProductID
+      id: table.production.workorder.column.productid
+      type: TableColumnRef
+    isDescending: false
+    isIncluded: false
+    columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+    script: ""
+  partitionInfo:
+    isPartitioned: false
+    columns: []
+    partitionScheme: 
+  fileGroup:
+    name: PRIMARY
+    id: filegroup.primary
+    type: FileGroupRef
+  fileStreamGroup: 
+  options:
+  - name: general
+    entries:
+    - name: autoRecomputeStatistics
+      value: true
+      type: bool
+    - name: ignoreDuplicateKeys
+      value: false
+      type: bool
+  - name: storage
+    entries:
+    - name: sortInTempdb
+      value: 
+      type: 
+    - name: fillFactor
+      value: 0
+      type: string
+    - name: padIndex
+      value: false
+      type: bool
+  - name: operation
+    entries:
+    - name: maximumDegreeOfParallelism
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+  - name: locks
+    entries:
+    - name: allowPageLocks
+      value: true
+      type: bool
+    - name: allowRowLocks
+      value: true
+      type: bool
+  - name: spatial
+    entries:
+    - name: isSpatialIndex
+      value: false
+      type: bool
+  - name: xml
+    entries:
+    - name: isXmlIndex
+      value: false
+      type: bool
+  - name: miscellaneous
+    entries:
+    - name: hasCompressedPartitions
+      value: false
+      type: bool
+    - name: hasXmlCompressedPartitions
+      value: false
+      type: bool
+    - name: compressAllRowGroups
+      value: 
+      type: 
+    - name: compactLargeObjects
+      value: 
+      type: 
+    - name: compressionDelay
+      value: 
+      type: 
+    - name: dropExistingIndex
+      value: 
+      type: 
+    - name: hasSparseColumn
+      value: false
+      type: bool
+    - name: isFileTableDefined
+      value: false
+      type: bool
+    - name: isFullTextKey
+      value: false
+      type: bool
+    - name: isIndexOnComputed
+      value: 
+      type: 
+    - name: isIndexOnTable
+      value: 
+      type: 
+    - name: isMemoryOptimized
+      value: false
+      type: bool
+    - name: isOnlineRebuildSupported
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+    - name: lowPriorityAbortAfterWait
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: onlineIndexOperation
+      value: 
+      type: 
+    - name: resumableIndexOperation
+      value: 
+      type: 
+    - name: resumableMaxDuration
+      value: 
+      type: 
+    - name: resumableOperationState
+      value: None
+      type: enum
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: Index
+  id: table.production.workorder.index.ix_workorder_scrapreasonid
+  description: Nonclustered index.
+  name: IX_WorkOrder_ScrapReasonID
+  indexType: NONCLUSTERED
+  indexKeyType: ''
+  isDisabled: false
+  isUnique: false
+  isClustered: false
+  filter: ''
+  columns:
+  - type: IndexColumn
+    id: table.production.workorder.index.ix_workorder_scrapreasonid.indexedcolumn.scrapreasonid
+    description: 
+    name: ScrapReasonID
+    columnRef:
+      name: ScrapReasonID
+      id: table.production.workorder.column.scrapreasonid
+      type: TableColumnRef
+    isDescending: false
+    isIncluded: false
+    columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+    script: ""
+  partitionInfo:
+    isPartitioned: false
+    columns: []
+    partitionScheme: 
+  fileGroup:
+    name: PRIMARY
+    id: filegroup.primary
+    type: FileGroupRef
+  fileStreamGroup: 
+  options:
+  - name: general
+    entries:
+    - name: autoRecomputeStatistics
+      value: true
+      type: bool
+    - name: ignoreDuplicateKeys
+      value: false
+      type: bool
+  - name: storage
+    entries:
+    - name: sortInTempdb
+      value: 
+      type: 
+    - name: fillFactor
+      value: 0
+      type: string
+    - name: padIndex
+      value: false
+      type: bool
+  - name: operation
+    entries:
+    - name: maximumDegreeOfParallelism
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+  - name: locks
+    entries:
+    - name: allowPageLocks
+      value: true
+      type: bool
+    - name: allowRowLocks
+      value: true
+      type: bool
+  - name: spatial
+    entries:
+    - name: isSpatialIndex
+      value: false
+      type: bool
+  - name: xml
+    entries:
+    - name: isXmlIndex
+      value: false
+      type: bool
+  - name: miscellaneous
+    entries:
+    - name: hasCompressedPartitions
+      value: false
+      type: bool
+    - name: hasXmlCompressedPartitions
+      value: false
+      type: bool
+    - name: compressAllRowGroups
+      value: 
+      type: 
+    - name: compactLargeObjects
+      value: 
+      type: 
+    - name: compressionDelay
+      value: 
+      type: 
+    - name: dropExistingIndex
+      value: 
+      type: 
+    - name: hasSparseColumn
+      value: false
+      type: bool
+    - name: isFileTableDefined
+      value: false
+      type: bool
+    - name: isFullTextKey
+      value: false
+      type: bool
+    - name: isIndexOnComputed
+      value: 
+      type: 
+    - name: isIndexOnTable
+      value: 
+      type: 
+    - name: isMemoryOptimized
+      value: false
+      type: bool
+    - name: isOnlineRebuildSupported
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+    - name: lowPriorityAbortAfterWait
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: onlineIndexOperation
+      value: 
+      type: 
+    - name: resumableIndexOperation
+      value: 
+      type: 
+    - name: resumableMaxDuration
+      value: 
+      type: 
+    - name: resumableOperationState
+      value: None
+      type: enum
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: Index
+  id: table.production.workorder.index.pk_workorder_workorderid
+  description: Primary key (clustered) constraint
+  name: PK_WorkOrder_WorkOrderID
+  indexType: CLUSTERED
+  indexKeyType: PRIMARY
+  isDisabled: false
+  isUnique: true
+  isClustered: true
+  filter: ''
+  columns:
+  - type: IndexColumn
+    id: table.production.workorder.index.pk_workorder_workorderid.indexedcolumn.workorderid
+    description: 
+    name: WorkOrderID
+    columnRef:
+      name: WorkOrderID
+      id: table.production.workorder.column.workorderid
+      type: TableColumnRef
+    isDescending: false
+    isIncluded: false
+    columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+    script: ""
+  partitionInfo:
+    isPartitioned: false
+    columns: []
+    partitionScheme: 
+  fileGroup:
+    name: PRIMARY
+    id: filegroup.primary
+    type: FileGroupRef
+  fileStreamGroup: 
+  options:
+  - name: general
+    entries:
+    - name: autoRecomputeStatistics
+      value: true
+      type: bool
+    - name: ignoreDuplicateKeys
+      value: false
+      type: bool
+  - name: storage
+    entries:
+    - name: sortInTempdb
+      value: 
+      type: 
+    - name: fillFactor
+      value: 0
+      type: string
+    - name: padIndex
+      value: false
+      type: bool
+  - name: operation
+    entries:
+    - name: maximumDegreeOfParallelism
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+  - name: locks
+    entries:
+    - name: allowPageLocks
+      value: true
+      type: bool
+    - name: allowRowLocks
+      value: true
+      type: bool
+  - name: spatial
+    entries:
+    - name: isSpatialIndex
+      value: false
+      type: bool
+  - name: xml
+    entries:
+    - name: isXmlIndex
+      value: false
+      type: bool
+  - name: miscellaneous
+    entries:
+    - name: hasCompressedPartitions
+      value: false
+      type: bool
+    - name: hasXmlCompressedPartitions
+      value: false
+      type: bool
+    - name: compressAllRowGroups
+      value: 
+      type: 
+    - name: compactLargeObjects
+      value: 
+      type: 
+    - name: compressionDelay
+      value: 
+      type: 
+    - name: dropExistingIndex
+      value: 
+      type: 
+    - name: hasSparseColumn
+      value: false
+      type: bool
+    - name: isFileTableDefined
+      value: false
+      type: bool
+    - name: isFullTextKey
+      value: false
+      type: bool
+    - name: isIndexOnComputed
+      value: 
+      type: 
+    - name: isIndexOnTable
+      value: 
+      type: 
+    - name: isMemoryOptimized
+      value: false
+      type: bool
+    - name: isOnlineRebuildSupported
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+    - name: lowPriorityAbortAfterWait
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: onlineIndexOperation
+      value: 
+      type: 
+    - name: resumableIndexOperation
+      value: 
+      type: 
+    - name: resumableMaxDuration
+      value: 
+      type: 
+    - name: resumableOperationState
+      value: None
+      type: enum
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+triggers:
+- type: DmlTrigger
+  id: table.production.workorder.trigger.iworkorder
+  description: AFTER INSERT trigger that inserts a row in the TransactionHistory table.
+  name: Production.iWorkOrder
+  isEnabled: true
+  isSchemaBound: false
+  isInsteadOf: false
+  onDelete: false
+  onUpdate: false
+  onInsert: true
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: DmlTrigger
+  id: table.production.workorder.trigger.uworkorder
+  description: AFTER UPDATE trigger that inserts a row in the TransactionHistory table, updates ModifiedDate in the WorkOrder table.
+  name: Production.uWorkOrder
+  isEnabled: true
+  isSchemaBound: false
+  isInsteadOf: false
+  onDelete: false
+  onUpdate: true
+  onInsert: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+columns:
+- type: TableColumn
+  id: table.production.workorder.column.workorderid
+  description: Primary key for WorkOrder records.
+  name: WorkOrderID
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: true
+  identityIncrement: 1
+  identitySeed: 1
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.workorder.column.productid
+  description: Product identification number. Foreign key to Product.ProductID.
+  name: ProductID
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_WorkOrder_Product_ProductID
+    id: table.production.workorder.foreignkey.fk_workorder_product_productid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.workorder.column.orderqty
+  description: Product quantity to build.
+  name: OrderQty
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.workorder.column.stockedqty
+  description: Quantity built and put in inventory.
+  name: StockedQty
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: true
+  computedText: (isnull([OrderQty]-[ScrappedQty],(0)))
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.workorder.column.scrappedqty
+  description: Quantity that failed inspection.
+  name: ScrappedQty
+  dataType: SMALLINT
+  dataTypeRef: 
+  maxLengthBytes: 2
+  precision: 5
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.workorder.column.startdate
+  description: Work order start date.
+  name: StartDate
+  dataType: DATETIME
+  dataTypeRef: 
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.workorder.column.enddate
+  description: Work order end date.
+  name: EndDate
+  dataType: DATETIME
+  dataTypeRef: 
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.workorder.column.duedate
+  description: Work order due date.
+  name: DueDate
+  dataType: DATETIME
+  dataTypeRef: 
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.workorder.column.scrapreasonid
+  description: Reason for inspection failure.
+  name: ScrapReasonID
+  dataType: SMALLINT
+  dataTypeRef: 
+  maxLengthBytes: 2
+  precision: 5
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: true
+  foreignKeys:
+  - name: FK_WorkOrder_ScrapReason_ScrapReasonID
+    id: table.production.workorder.foreignkey.fk_workorder_scrapreason_scrapreasonid
+    type: ForeignKeyRef
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.workorder.column.modifieddate
+  description: Date and time the record was last updated.
+  name: ModifiedDate
+  dataType: DATETIME
+  dataTypeRef: 
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Production].[WorkOrder](
+  	[WorkOrderID] [int] IDENTITY(1,1) NOT NULL,
+  	[ProductID] [int] NOT NULL,
+  	[OrderQty] [int] NOT NULL,
+  	[StockedQty]  AS (isnull([OrderQty]-[ScrappedQty],(0))),
+  	[ScrappedQty] [smallint] NOT NULL,
+  	[StartDate] [datetime] NOT NULL,
+  	[EndDate] [datetime] NULL,
+  	[DueDate] [datetime] NOT NULL,
+  	[ScrapReasonID] [smallint] NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_WorkOrder_WorkOrderID] PRIMARY KEY CLUSTERED
+  (
+  	[WorkOrderID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_WorkOrder_ProductID] ON [Production].[WorkOrder]
+  (
+  	[ProductID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  CREATE NONCLUSTERED INDEX [IX_WorkOrder_ScrapReasonID] ON [Production].[WorkOrder]
+  (
+  	[ScrapReasonID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] ADD  CONSTRAINT [DF_WorkOrder_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [FK_WorkOrder_Product_ProductID] FOREIGN KEY([ProductID])
+  REFERENCES [Production].[Product] ([ProductID])
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [FK_WorkOrder_Product_ProductID]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [FK_WorkOrder_ScrapReason_ScrapReasonID] FOREIGN KEY([ScrapReasonID])
+  REFERENCES [Production].[ScrapReason] ([ScrapReasonID])
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [FK_WorkOrder_ScrapReason_ScrapReasonID]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [CK_WorkOrder_EndDate] CHECK  (([EndDate]>=[StartDate] OR [EndDate] IS NULL))
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [CK_WorkOrder_EndDate]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [CK_WorkOrder_OrderQty] CHECK  (([OrderQty]>(0)))
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [CK_WorkOrder_OrderQty]
+  GO
+
+  ALTER TABLE [Production].[WorkOrder]  WITH CHECK ADD  CONSTRAINT [CK_WorkOrder_ScrappedQty] CHECK  (([ScrappedQty]>=(0)))
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] CHECK CONSTRAINT [CK_WorkOrder_ScrappedQty]
+  GO
+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TRIGGER [Production].[iWorkOrder] ON [Production].[WorkOrder]
+  AFTER INSERT AS
+  BEGIN
+      DECLARE @Count int;
+
+      SET @Count = @@ROWCOUNT;
+      IF @Count = 0
+          RETURN;
+
+      SET NOCOUNT ON;
+
+      BEGIN TRY
+          INSERT INTO [Production].[TransactionHistory](
+              [ProductID]
+              ,[ReferenceOrderID]
+              ,[TransactionType]
+              ,[TransactionDate]
+              ,[Quantity]
+              ,[ActualCost])
+          SELECT
+              inserted.[ProductID]
+              ,inserted.[WorkOrderID]
+              ,'W'
+              ,GETDATE()
+              ,inserted.[OrderQty]
+              ,0
+          FROM inserted;
+      END TRY
+      BEGIN CATCH
+          EXECUTE [dbo].[uspPrintError];
+
+          -- Rollback any active or uncommittable transactions before
+          -- inserting information in the ErrorLog
+          IF @@TRANCOUNT > 0
+          BEGIN
+              ROLLBACK TRANSACTION;
+          END
+
+          EXECUTE [dbo].[uspLogError];
+      END CATCH;
+  END;
+
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] ENABLE TRIGGER [iWorkOrder]
+  GO
+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TRIGGER [Production].[uWorkOrder] ON [Production].[WorkOrder]
+  AFTER UPDATE AS
+  BEGIN
+      DECLARE @Count int;
+
+      SET @Count = @@ROWCOUNT;
+      IF @Count = 0
+          RETURN;
+
+      SET NOCOUNT ON;
+
+      BEGIN TRY
+          IF UPDATE([ProductID]) OR UPDATE([OrderQty])
+          BEGIN
+              INSERT INTO [Production].[TransactionHistory](
+                  [ProductID]
+                  ,[ReferenceOrderID]
+                  ,[TransactionType]
+                  ,[TransactionDate]
+                  ,[Quantity])
+              SELECT
+                  inserted.[ProductID]
+                  ,inserted.[WorkOrderID]
+                  ,'W'
+                  ,GETDATE()
+                  ,inserted.[OrderQty]
+              FROM inserted;
+          END;
+      END TRY
+      BEGIN CATCH
+          EXECUTE [dbo].[uspPrintError];
+
+          -- Rollback any active or uncommittable transactions before
+          -- inserting information in the ErrorLog
+          IF @@TRANCOUNT > 0
+          BEGIN
+              ROLLBACK TRANSACTION;
+          END
+
+          EXECUTE [dbo].[uspLogError];
+      END CATCH;
+  END;
+
+  GO
+
+  ALTER TABLE [Production].[WorkOrder] ENABLE TRIGGER [uWorkOrder]
+  GO
+

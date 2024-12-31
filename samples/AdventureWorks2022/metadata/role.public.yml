@@ -1,0 +1,11 @@
+### YamlMime:DocDB
+type: DatabaseRole
+id: role.public
+description: 
+name: public
+owner: dbo
+members: []
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: ""

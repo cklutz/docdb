@@ -1,0 +1,41 @@
+### YamlMime:DocDB
+type: TocSection
+id: database.adventureworks2022.progs.functions.userdefinedfunction
+name: Scalar-valued Functions
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+schemaVersion: 
+description: 
+script: 
+items:
+- id: userdefinedfunction.dbo.ufngetaccountingenddate
+  name: dbo.ufnGetAccountingEndDate
+  description: Scalar function used in the uSalesOrderHeader trigger to set the starting account date.
+- id: userdefinedfunction.dbo.ufngetaccountingstartdate
+  name: dbo.ufnGetAccountingStartDate
+  description: Scalar function used in the uSalesOrderHeader trigger to set the ending account date.
+- id: userdefinedfunction.dbo.ufngetdocumentstatustext
+  name: dbo.ufnGetDocumentStatusText
+  description: Scalar function returning the text representation of the Status column in the Document table.
+- id: userdefinedfunction.dbo.ufngetproductdealerprice
+  name: dbo.ufnGetProductDealerPrice
+  description: Scalar function returning the dealer price for a given product on a particular order date.
+- id: userdefinedfunction.dbo.ufngetproductlistprice
+  name: dbo.ufnGetProductListPrice
+  description: Scalar function returning the list price for a given product on a particular order date.
+- id: userdefinedfunction.dbo.ufngetproductstandardcost
+  name: dbo.ufnGetProductStandardCost
+  description: Scalar function returning the standard cost for a given product on a particular order date.
+- id: userdefinedfunction.dbo.ufngetpurchaseorderstatustext
+  name: dbo.ufnGetPurchaseOrderStatusText
+  description: Scalar function returning the text representation of the Status column in the PurchaseOrderHeader table.
+- id: userdefinedfunction.dbo.ufngetsalesorderstatustext
+  name: dbo.ufnGetSalesOrderStatusText
+  description: Scalar function returning the text representation of the Status column in the SalesOrderHeader table.
+- id: userdefinedfunction.dbo.ufngetstock
+  name: dbo.ufnGetStock
+  description: Scalar function returning the quantity of inventory in LocationID 6 (Miscellaneous Storage)for a specified ProductID.
+- id: userdefinedfunction.dbo.ufnleadingzeros
+  name: dbo.ufnLeadingZeros
+  description: Scalar function used by the Sales.Customer table to help set the account number.
+...

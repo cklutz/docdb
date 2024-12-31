@@ -1,0 +1,13 @@
+### YamlMime:DocDB
+type: Schema
+id: schema.humanresources
+description: Contains objects related to employees and departments.
+name: HumanResources
+owner: dbo
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE SCHEMA [HumanResources]
+  GO
+

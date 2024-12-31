@@ -1,0 +1,361 @@
+### YamlMime:DocDB
+type: View
+id: view.sales.vstorewithdemographics
+description: Stores (including demographics) that sell Adventure Works Cycles products to consumers.
+name: Sales.vStoreWithDemographics
+indexes: []
+triggers: []
+columns:
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.businessentityid
+  description: 
+  name: BusinessEntityID
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.name
+  description: 
+  name: Name
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.annualsales
+  description: 
+  name: AnnualSales
+  dataType: MONEY
+  dataTypeRef: 
+  maxLengthBytes: 8
+  precision: 19
+  scale: 4
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.annualrevenue
+  description: 
+  name: AnnualRevenue
+  dataType: MONEY
+  dataTypeRef: 
+  maxLengthBytes: 8
+  precision: 19
+  scale: 4
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.bankname
+  description: 
+  name: BankName
+  dataType: NVARCHAR(50)
+  dataTypeRef: 
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.businesstype
+  description: 
+  name: BusinessType
+  dataType: NVARCHAR(5)
+  dataTypeRef: 
+  maxLengthBytes: 5
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.yearopened
+  description: 
+  name: YearOpened
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.specialty
+  description: 
+  name: Specialty
+  dataType: NVARCHAR(50)
+  dataTypeRef: 
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.squarefeet
+  description: 
+  name: SquareFeet
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.brands
+  description: 
+  name: Brands
+  dataType: NVARCHAR(30)
+  dataTypeRef: 
+  maxLengthBytes: 30
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.internet
+  description: 
+  name: Internet
+  dataType: NVARCHAR(30)
+  dataTypeRef: 
+  maxLengthBytes: 30
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.sales.vstorewithdemographics.column.numberemployees
+  description: 
+  name: NumberEmployees
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [Sales].[vStoreWithDemographics] AS
+  SELECT
+      s.[BusinessEntityID]
+      ,s.[Name]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/AnnualSales)[1]', 'money') AS [AnnualSales]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/AnnualRevenue)[1]', 'money') AS [AnnualRevenue]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/BankName)[1]', 'nvarchar(50)') AS [BankName]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/BusinessType)[1]', 'nvarchar(5)') AS [BusinessType]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/YearOpened)[1]', 'integer') AS [YearOpened]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/Specialty)[1]', 'nvarchar(50)') AS [Specialty]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/SquareFeet)[1]', 'integer') AS [SquareFeet]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/Brands)[1]', 'nvarchar(30)') AS [Brands]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/Internet)[1]', 'nvarchar(30)') AS [Internet]
+      ,s.[Demographics].value('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey";
+          (/StoreSurvey/NumberEmployees)[1]', 'integer') AS [NumberEmployees]
+  FROM [Sales].[Store] s;
+
+  GO
+

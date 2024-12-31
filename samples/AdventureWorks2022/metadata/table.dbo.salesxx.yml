@@ -1,0 +1,288 @@
+### YamlMime:DocDB
+type: Table
+id: table.dbo.salesxx
+description: 
+name: dbo.SalesXX
+foreignKeys: []
+checks: []
+fileGroup:
+  name: '[MemoryOptimizedFG]'
+  id: filegroup.memoryoptimizedfg
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
+indexes:
+- type: Index
+  id: table.dbo.salesxx.index.pk__salesxx__c952fb1367186465
+  description: 
+  name: PK__SalesXX__C952FB1367186465
+  indexType: NONCLUSTERED
+  indexKeyType: PRIMARY
+  isDisabled: false
+  isUnique: true
+  isClustered: false
+  filter: ''
+  columns:
+  - type: IndexColumn
+    id: table.dbo.salesxx.index.pk__salesxx__c952fb1367186465.indexedcolumn.salesid
+    description: 
+    name: SalesID
+    columnRef:
+      name: SalesID
+      id: table.dbo.salesxx.column.salesid
+      type: TableColumnRef
+    isDescending: false
+    isIncluded: false
+    columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+    script: ""
+  partitionInfo:
+    isPartitioned: false
+    columns: []
+    partitionScheme: 
+  fileGroup:
+    name: MemoryOptimizedFG
+    id: filegroup.memoryoptimizedfg
+    type: FileGroupRef
+  fileStreamGroup: 
+  options:
+  - name: general
+    entries:
+    - name: autoRecomputeStatistics
+      value: true
+      type: bool
+    - name: ignoreDuplicateKeys
+      value: false
+      type: bool
+  - name: storage
+    entries:
+    - name: sortInTempdb
+      value: 
+      type: 
+    - name: fillFactor
+      value: 0
+      type: string
+    - name: padIndex
+      value: false
+      type: bool
+  - name: operation
+    entries:
+    - name: maximumDegreeOfParallelism
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+  - name: locks
+    entries:
+    - name: allowPageLocks
+      value: false
+      type: bool
+    - name: allowRowLocks
+      value: false
+      type: bool
+  - name: spatial
+    entries:
+    - name: isSpatialIndex
+      value: false
+      type: bool
+  - name: xml
+    entries:
+    - name: isXmlIndex
+      value: false
+      type: bool
+  - name: miscellaneous
+    entries:
+    - name: hasCompressedPartitions
+      value: false
+      type: bool
+    - name: hasXmlCompressedPartitions
+      value: false
+      type: bool
+    - name: compressAllRowGroups
+      value: 
+      type: 
+    - name: compactLargeObjects
+      value: 
+      type: 
+    - name: compressionDelay
+      value: 
+      type: 
+    - name: dropExistingIndex
+      value: 
+      type: 
+    - name: hasSparseColumn
+      value: false
+      type: bool
+    - name: isFileTableDefined
+      value: false
+      type: bool
+    - name: isFullTextKey
+      value: false
+      type: bool
+    - name: isIndexOnComputed
+      value: 
+      type: 
+    - name: isIndexOnTable
+      value: 
+      type: 
+    - name: isMemoryOptimized
+      value: true
+      type: bool
+    - name: isOnlineRebuildSupported
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+    - name: lowPriorityAbortAfterWait
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: onlineIndexOperation
+      value: 
+      type: 
+    - name: resumableIndexOperation
+      value: 
+      type: 
+    - name: resumableMaxDuration
+      value: 
+      type: 
+    - name: resumableOperationState
+      value: None
+      type: enum
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+triggers:
+- type: DmlTrigger
+  id: table.dbo.salesxx.trigger.tr_salesinsert
+  description: 
+  name: dbo.tr_SalesInsert
+  isEnabled: true
+  isSchemaBound: true
+  isInsteadOf: false
+  onDelete: false
+  onUpdate: false
+  onInsert: true
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+columns:
+- type: TableColumn
+  id: table.dbo.salesxx.column.salesid
+  description: 
+  name: SalesID
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.dbo.salesxx.column.quantity
+  description: 
+  name: Quantity
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [dbo].[SalesXX]
+  (
+  	[SalesID] [int] NOT NULL,
+  	[Quantity] [int] NOT NULL,
+
+   PRIMARY KEY NONCLUSTERED 
+  (
+  	[SalesID] ASC
+  )
+  )WITH ( MEMORY_OPTIMIZED = ON , DURABILITY = SCHEMA_AND_DATA )
+  GO
+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TRIGGER tr_SalesInsert
+  ON dbo.SalesXX
+  WITH NATIVE_COMPILATION, SCHEMABINDING
+  AFTER INSERT
+  AS
+  BEGIN ATOMIC WITH
+  (
+      TRANSACTION ISOLATION LEVEL = SNAPSHOT,
+      LANGUAGE = 'us_english'
+  )
+      UPDATE dbo.SalesXX
+      SET Quantity = Quantity + 1
+
+  END;
+  GO
+
+  ALTER TABLE [dbo].[SalesXX] ENABLE TRIGGER [tr_SalesInsert]
+  GO
+

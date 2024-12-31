@@ -1,0 +1,26 @@
+### YamlMime:DocDB
+type: UserDefinedDataType
+id: userdefineddatatype.dbo.accountnumber
+description: 
+name: dbo.AccountNumber
+allowIdentity: false
+collation: SQL_Latin1_General_CP1_CI_AS
+defaultRef: 
+isSchemaOwned: true
+length: 15
+maxLength: 30
+isNullable: true
+numericPrecision: 0
+numericScale: 0
+owner: dbo
+ruleRef: 
+systemType: nvarchar
+isVariableLength: true
+storageSize: 30
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE TYPE [dbo].[AccountNumber] FROM [nvarchar](15) NULL
+  GO
+

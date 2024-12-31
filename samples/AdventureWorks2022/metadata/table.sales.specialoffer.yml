@@ -1,0 +1,727 @@
+### YamlMime:DocDB
+type: Table
+id: table.sales.specialoffer
+description: Sale discounts lookup table.
+name: Sales.SpecialOffer
+foreignKeys: []
+checks:
+- type: CheckConstraint
+  id: table.sales.specialoffer.check.ck_specialoffer_discountpct
+  description: Check constraint [DiscountPct] >= (0.00)
+  name: CK_SpecialOffer_DiscountPct
+  isChecked: true
+  isEnabled: true
+  constraintText: ([DiscountPct]>=(0.00))
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: CheckConstraint
+  id: table.sales.specialoffer.check.ck_specialoffer_enddate
+  description: Check constraint [EndDate] >= [StartDate]
+  name: CK_SpecialOffer_EndDate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([EndDate]>=[StartDate])
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: CheckConstraint
+  id: table.sales.specialoffer.check.ck_specialoffer_maxqty
+  description: Check constraint [MaxQty] >= (0)
+  name: CK_SpecialOffer_MaxQty
+  isChecked: true
+  isEnabled: true
+  constraintText: ([MaxQty]>=(0))
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: CheckConstraint
+  id: table.sales.specialoffer.check.ck_specialoffer_minqty
+  description: Check constraint [MinQty] >= (0)
+  name: CK_SpecialOffer_MinQty
+  isChecked: true
+  isEnabled: true
+  constraintText: ([MinQty]>=(0))
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
+indexes:
+- type: Index
+  id: table.sales.specialoffer.index.ak_specialoffer_rowguid
+  description: Unique nonclustered index. Used to support replication samples.
+  name: AK_SpecialOffer_rowguid
+  indexType: NONCLUSTERED
+  indexKeyType: ''
+  isDisabled: false
+  isUnique: true
+  isClustered: false
+  filter: ''
+  columns:
+  - type: IndexColumn
+    id: table.sales.specialoffer.index.ak_specialoffer_rowguid.indexedcolumn.rowguid
+    description: 
+    name: rowguid
+    columnRef:
+      name: rowguid
+      id: table.sales.specialoffer.column.rowguid
+      type: TableColumnRef
+    isDescending: false
+    isIncluded: false
+    columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+    script: ""
+  partitionInfo:
+    isPartitioned: false
+    columns: []
+    partitionScheme: 
+  fileGroup:
+    name: PRIMARY
+    id: filegroup.primary
+    type: FileGroupRef
+  fileStreamGroup: 
+  options:
+  - name: general
+    entries:
+    - name: autoRecomputeStatistics
+      value: true
+      type: bool
+    - name: ignoreDuplicateKeys
+      value: false
+      type: bool
+  - name: storage
+    entries:
+    - name: sortInTempdb
+      value: 
+      type: 
+    - name: fillFactor
+      value: 0
+      type: string
+    - name: padIndex
+      value: false
+      type: bool
+  - name: operation
+    entries:
+    - name: maximumDegreeOfParallelism
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+  - name: locks
+    entries:
+    - name: allowPageLocks
+      value: true
+      type: bool
+    - name: allowRowLocks
+      value: true
+      type: bool
+  - name: spatial
+    entries:
+    - name: isSpatialIndex
+      value: false
+      type: bool
+  - name: xml
+    entries:
+    - name: isXmlIndex
+      value: false
+      type: bool
+  - name: miscellaneous
+    entries:
+    - name: hasCompressedPartitions
+      value: false
+      type: bool
+    - name: hasXmlCompressedPartitions
+      value: false
+      type: bool
+    - name: compressAllRowGroups
+      value: 
+      type: 
+    - name: compactLargeObjects
+      value: 
+      type: 
+    - name: compressionDelay
+      value: 
+      type: 
+    - name: dropExistingIndex
+      value: 
+      type: 
+    - name: hasSparseColumn
+      value: false
+      type: bool
+    - name: isFileTableDefined
+      value: false
+      type: bool
+    - name: isFullTextKey
+      value: false
+      type: bool
+    - name: isIndexOnComputed
+      value: 
+      type: 
+    - name: isIndexOnTable
+      value: 
+      type: 
+    - name: isMemoryOptimized
+      value: false
+      type: bool
+    - name: isOnlineRebuildSupported
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+    - name: lowPriorityAbortAfterWait
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: onlineIndexOperation
+      value: 
+      type: 
+    - name: resumableIndexOperation
+      value: 
+      type: 
+    - name: resumableMaxDuration
+      value: 
+      type: 
+    - name: resumableOperationState
+      value: None
+      type: enum
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: Index
+  id: table.sales.specialoffer.index.pk_specialoffer_specialofferid
+  description: Primary key (clustered) constraint
+  name: PK_SpecialOffer_SpecialOfferID
+  indexType: CLUSTERED
+  indexKeyType: PRIMARY
+  isDisabled: false
+  isUnique: true
+  isClustered: true
+  filter: ''
+  columns:
+  - type: IndexColumn
+    id: table.sales.specialoffer.index.pk_specialoffer_specialofferid.indexedcolumn.specialofferid
+    description: 
+    name: SpecialOfferID
+    columnRef:
+      name: SpecialOfferID
+      id: table.sales.specialoffer.column.specialofferid
+      type: TableColumnRef
+    isDescending: false
+    isIncluded: false
+    columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+    script: ""
+  partitionInfo:
+    isPartitioned: false
+    columns: []
+    partitionScheme: 
+  fileGroup:
+    name: PRIMARY
+    id: filegroup.primary
+    type: FileGroupRef
+  fileStreamGroup: 
+  options:
+  - name: general
+    entries:
+    - name: autoRecomputeStatistics
+      value: true
+      type: bool
+    - name: ignoreDuplicateKeys
+      value: false
+      type: bool
+  - name: storage
+    entries:
+    - name: sortInTempdb
+      value: 
+      type: 
+    - name: fillFactor
+      value: 0
+      type: string
+    - name: padIndex
+      value: false
+      type: bool
+  - name: operation
+    entries:
+    - name: maximumDegreeOfParallelism
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+  - name: locks
+    entries:
+    - name: allowPageLocks
+      value: true
+      type: bool
+    - name: allowRowLocks
+      value: true
+      type: bool
+  - name: spatial
+    entries:
+    - name: isSpatialIndex
+      value: false
+      type: bool
+  - name: xml
+    entries:
+    - name: isXmlIndex
+      value: false
+      type: bool
+  - name: miscellaneous
+    entries:
+    - name: hasCompressedPartitions
+      value: false
+      type: bool
+    - name: hasXmlCompressedPartitions
+      value: false
+      type: bool
+    - name: compressAllRowGroups
+      value: 
+      type: 
+    - name: compactLargeObjects
+      value: 
+      type: 
+    - name: compressionDelay
+      value: 
+      type: 
+    - name: dropExistingIndex
+      value: 
+      type: 
+    - name: hasSparseColumn
+      value: false
+      type: bool
+    - name: isFileTableDefined
+      value: false
+      type: bool
+    - name: isFullTextKey
+      value: false
+      type: bool
+    - name: isIndexOnComputed
+      value: 
+      type: 
+    - name: isIndexOnTable
+      value: 
+      type: 
+    - name: isMemoryOptimized
+      value: false
+      type: bool
+    - name: isOnlineRebuildSupported
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+    - name: lowPriorityAbortAfterWait
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: onlineIndexOperation
+      value: 
+      type: 
+    - name: resumableIndexOperation
+      value: 
+      type: 
+    - name: resumableMaxDuration
+      value: 
+      type: 
+    - name: resumableOperationState
+      value: None
+      type: enum
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+triggers: []
+columns:
+- type: TableColumn
+  id: table.sales.specialoffer.column.specialofferid
+  description: Primary key for SpecialOffer records.
+  name: SpecialOfferID
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: true
+  identityIncrement: 1
+  identitySeed: 1
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.sales.specialoffer.column.description
+  description: Discount description.
+  name: Description
+  dataType: NVARCHAR(255)
+  dataTypeRef: 
+  maxLengthBytes: 255
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.sales.specialoffer.column.discountpct
+  description: Discount precentage.
+  name: DiscountPct
+  dataType: SMALLMONEY
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 4
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((0.00))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.sales.specialoffer.column.type
+  description: Discount type category.
+  name: Type
+  dataType: NVARCHAR(50)
+  dataTypeRef: 
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.sales.specialoffer.column.category
+  description: Group the discount applies to such as Reseller or Customer.
+  name: Category
+  dataType: NVARCHAR(50)
+  dataTypeRef: 
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.sales.specialoffer.column.startdate
+  description: Discount start date.
+  name: StartDate
+  dataType: DATETIME
+  dataTypeRef: 
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.sales.specialoffer.column.enddate
+  description: Discount end date.
+  name: EndDate
+  dataType: DATETIME
+  dataTypeRef: 
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.sales.specialoffer.column.minqty
+  description: Minimum discount percent allowed.
+  name: MinQty
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((0))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.sales.specialoffer.column.maxqty
+  description: Maximum discount percent allowed.
+  name: MaxQty
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.sales.specialoffer.column.rowguid
+  description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+  name: rowguid
+  dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
+  maxLengthBytes: 16
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (newid())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.sales.specialoffer.column.modifieddate
+  description: Date and time the record was last updated.
+  name: ModifiedDate
+  dataType: DATETIME
+  dataTypeRef: 
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Sales].[SpecialOffer](
+  	[SpecialOfferID] [int] IDENTITY(1,1) NOT NULL,
+  	[Description] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[DiscountPct] [smallmoney] NOT NULL,
+  	[Type] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[Category] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+  	[StartDate] [datetime] NOT NULL,
+  	[EndDate] [datetime] NOT NULL,
+  	[MinQty] [int] NOT NULL,
+  	[MaxQty] [int] NULL,
+  	[rowguid] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_SpecialOffer_SpecialOfferID] PRIMARY KEY CLUSTERED
+  (
+  	[SpecialOfferID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_SpecialOffer_rowguid] ON [Sales].[SpecialOffer]
+  (
+  	[rowguid] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer] ADD  CONSTRAINT [DF_SpecialOffer_DiscountPct]  DEFAULT ((0.00)) FOR [DiscountPct]
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer] ADD  CONSTRAINT [DF_SpecialOffer_MinQty]  DEFAULT ((0)) FOR [MinQty]
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer] ADD  CONSTRAINT [DF_SpecialOffer_rowguid]  DEFAULT (newid()) FOR [rowguid]
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer] ADD  CONSTRAINT [DF_SpecialOffer_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_DiscountPct] CHECK  (([DiscountPct]>=(0.00)))
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_DiscountPct]
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_EndDate] CHECK  (([EndDate]>=[StartDate]))
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_EndDate]
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_MaxQty] CHECK  (([MaxQty]>=(0)))
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_MaxQty]
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer]  WITH CHECK ADD  CONSTRAINT [CK_SpecialOffer_MinQty] CHECK  (([MinQty]>=(0)))
+  GO
+
+  ALTER TABLE [Sales].[SpecialOffer] CHECK CONSTRAINT [CK_SpecialOffer_MinQty]
+  GO
+

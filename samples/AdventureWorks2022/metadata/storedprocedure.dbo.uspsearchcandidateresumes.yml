@@ -1,0 +1,134 @@
+### YamlMime:DocDB
+type: StoredProcedure
+id: storedprocedure.dbo.uspsearchcandidateresumes
+description: 
+name: dbo.uspSearchCandidateResumes
+parameters:
+- type: StoredProcedureParameter
+  id: storedprocedure.dbo.uspsearchcandidateresumes.param.@searchstring
+  description: 
+  name: '@searchString'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: NVARCHAR(1000)
+  dataTypeRef: 
+  defaultValue: ''
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: StoredProcedureParameter
+  id: storedprocedure.dbo.uspsearchcandidateresumes.param.@useinflectional
+  description: 
+  name: '@useInflectional'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: BIT
+  dataTypeRef: 
+  defaultValue: 0
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: StoredProcedureParameter
+  id: storedprocedure.dbo.uspsearchcandidateresumes.param.@usethesaurus
+  description: 
+  name: '@useThesaurus'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: BIT
+  dataTypeRef: 
+  defaultValue: 0
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: StoredProcedureParameter
+  id: storedprocedure.dbo.uspsearchcandidateresumes.param.@language
+  description: 
+  name: '@language'
+  isOutputParameter: false
+  isCursorParameter: false
+  dataType: INT
+  dataTypeRef: 
+  defaultValue: 0
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+syntax: |2+
+
+  dbo.uspSearchCandidateResumes
+      [ @searchString ] = searchString ,
+     [  [ @useInflectional ] = '0' ] ,
+     [  [ @useThesaurus ] = '0' ] ,
+     [  [ @language ] = '0' ]
+  [ ; ]
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  --A stored procedure which demonstrates integrated full text search
+
+  CREATE PROCEDURE [dbo].[uspSearchCandidateResumes]
+      @searchString [nvarchar](1000),
+      @useInflectional [bit]=0,
+      @useThesaurus [bit]=0,
+      @language[int]=0
+
+
+  WITH EXECUTE AS CALLER
+  AS
+  BEGIN
+      SET NOCOUNT ON;
+
+        DECLARE @string nvarchar(1050)
+        --setting the lcid to the default instance LCID if needed
+        IF @language = NULL OR @language = 0
+        BEGIN
+              SELECT @language =CONVERT(int, serverproperty('lcid'))
+        END
+
+
+              --FREETEXTTABLE case as inflectional and Thesaurus were required
+        IF @useThesaurus = 1 AND @useInflectional = 1
+          BEGIN
+                    SELECT FT_TBL.[JobCandidateID], KEY_TBL.[RANK] FROM [HumanResources].[JobCandidate] AS FT_TBL
+                          INNER JOIN FREETEXTTABLE([HumanResources].[JobCandidate],*, @searchString,LANGUAGE @language) AS KEY_TBL
+                     ON  FT_TBL.[JobCandidateID] =KEY_TBL.[KEY]
+              END
+
+        ELSE IF @useThesaurus = 1
+              BEGIN
+                    SELECT @string ='FORMSOF(THESAURUS,"'+@searchString +'"'+')'
+                    SELECT FT_TBL.[JobCandidateID], KEY_TBL.[RANK] FROM [HumanResources].[JobCandidate] AS FT_TBL
+                          INNER JOIN CONTAINSTABLE([HumanResources].[JobCandidate],*, @string,LANGUAGE @language) AS KEY_TBL
+                     ON  FT_TBL.[JobCandidateID] =KEY_TBL.[KEY]
+          END
+
+        ELSE IF @useInflectional = 1
+              BEGIN
+                    SELECT @string ='FORMSOF(INFLECTIONAL,"'+@searchString +'"'+')'
+                    SELECT FT_TBL.[JobCandidateID], KEY_TBL.[RANK] FROM [HumanResources].[JobCandidate] AS FT_TBL
+                          INNER JOIN CONTAINSTABLE([HumanResources].[JobCandidate],*, @string,LANGUAGE @language) AS KEY_TBL
+                     ON  FT_TBL.[JobCandidateID] =KEY_TBL.[KEY]
+          END
+
+        ELSE --base case, plain CONTAINSTABLE
+              BEGIN
+                    SELECT @string='"'+@searchString +'"'
+                    SELECT FT_TBL.[JobCandidateID],KEY_TBL.[RANK] FROM [HumanResources].[JobCandidate] AS FT_TBL
+                          INNER JOIN CONTAINSTABLE([HumanResources].[JobCandidate],*,@string,LANGUAGE @language) AS KEY_TBL
+                     ON  FT_TBL.[JobCandidateID] =KEY_TBL.[KEY]
+              END
+
+  END;
+
+  GO
+

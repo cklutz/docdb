@@ -1,0 +1,14 @@
+### YamlMime:DocDB
+type: TocSection
+id: database.adventureworks2022.progs.functions.userdefinedaggregate
+name: Aggregate Functions
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+schemaVersion: 
+description: 
+script: 
+items:
+- id: userdefinedaggregate.dbo.joinstringwithcommas
+  name: dbo.JoinStringWithCommas
+  description: 
+...

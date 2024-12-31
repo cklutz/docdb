@@ -1,0 +1,14 @@
+### YamlMime:DocDB
+type: TocSection
+id: database.adventureworks2022.progs.sequence
+name: Sequences
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+schemaVersion: 
+description: 
+script: 
+items:
+- id: sequence.dbo.testseq
+  name: dbo.TestSeq
+  description: 
+...

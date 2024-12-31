@@ -1,0 +1,330 @@
+### YamlMime:DocDB
+type: View
+id: view.production.vproductmodelinstructions
+description: Displays the content from each element in the xml column Instructions for each product in the Production.ProductModel table that has manufacturing instructions.
+name: Production.vProductModelInstructions
+indexes: []
+triggers: []
+columns:
+- type: ViewColumn
+  id: view.production.vproductmodelinstructions.column.productmodelid
+  description: 
+  name: ProductModelID
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: true
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.production.vproductmodelinstructions.column.name
+  description: 
+  name: Name
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.production.vproductmodelinstructions.column.instructions
+  description: 
+  name: Instructions
+  dataType: NVARCHAR(MAX)
+  dataTypeRef: 
+  maxLengthBytes: 
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.production.vproductmodelinstructions.column.locationid
+  description: 
+  name: LocationID
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.production.vproductmodelinstructions.column.setuphours
+  description: 
+  name: SetupHours
+  dataType: DECIMAL
+  dataTypeRef: 
+  maxLengthBytes: 5
+  precision: 9
+  scale: 4
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.production.vproductmodelinstructions.column.machinehours
+  description: 
+  name: MachineHours
+  dataType: DECIMAL
+  dataTypeRef: 
+  maxLengthBytes: 5
+  precision: 9
+  scale: 4
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.production.vproductmodelinstructions.column.laborhours
+  description: 
+  name: LaborHours
+  dataType: DECIMAL
+  dataTypeRef: 
+  maxLengthBytes: 5
+  precision: 9
+  scale: 4
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.production.vproductmodelinstructions.column.lotsize
+  description: 
+  name: LotSize
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.production.vproductmodelinstructions.column.step
+  description: 
+  name: Step
+  dataType: NVARCHAR(1024)
+  dataTypeRef: 
+  maxLengthBytes: 1024
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.production.vproductmodelinstructions.column.rowguid
+  description: 
+  name: rowguid
+  dataType: UNIQUEIDENTIFIER
+  dataTypeRef: 
+  maxLengthBytes: 16
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: ViewColumn
+  id: view.production.vproductmodelinstructions.column.modifieddate
+  description: 
+  name: ModifiedDate
+  dataType: DATETIME
+  dataTypeRef: 
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE VIEW [Production].[vProductModelInstructions]
+  AS
+  SELECT
+      [ProductModelID]
+      ,[Name]
+      ,[Instructions].value(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelManuInstructions";
+          (/root/text())[1]', 'nvarchar(max)') AS [Instructions]
+      ,[MfgInstructions].ref.value('@LocationID[1]', 'int') AS [LocationID]
+      ,[MfgInstructions].ref.value('@SetupHours[1]', 'decimal(9, 4)') AS [SetupHours]
+      ,[MfgInstructions].ref.value('@MachineHours[1]', 'decimal(9, 4)') AS [MachineHours]
+      ,[MfgInstructions].ref.value('@LaborHours[1]', 'decimal(9, 4)') AS [LaborHours]
+      ,[MfgInstructions].ref.value('@LotSize[1]', 'int') AS [LotSize]
+      ,[Steps].ref.value('string(.)[1]', 'nvarchar(1024)') AS [Step]
+      ,[rowguid]
+      ,[ModifiedDate]
+  FROM [Production].[ProductModel]
+  CROSS APPLY [Instructions].nodes(N'declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelManuInstructions";
+      /root/Location') MfgInstructions(ref)
+  CROSS APPLY [MfgInstructions].ref.nodes('declare default element namespace "http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/ProductModelManuInstructions";
+      step') Steps(ref);
+
+  GO
+

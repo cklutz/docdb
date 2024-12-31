@@ -1,0 +1,55 @@
+### YamlMime:DocDB
+type: UserDefinedFunction
+id: userdefinedfunction.dbo.ufngetsalesorderstatustext
+description: Scalar function returning the text representation of the Status column in the SalesOrderHeader table.
+name: dbo.ufnGetSalesOrderStatusText
+functionType: Scalar
+returnsNullOnNullInput: false
+parameters:
+- type: UserDefinedFunctionParameter
+  id: userdefinedfunction.dbo.ufngetsalesorderstatustext.param.@status
+  description: Input parameter for the scalar function ufnGetSalesOrderStatusText. Enter a valid integer.
+  name: '@Status'
+  dataType: TINYINT
+  dataTypeRef: 
+  defaultValue: ''
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+syntax: |2-
+
+  dbo.ufnGetSalesOrderStatusText(Status)
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE FUNCTION [dbo].[ufnGetSalesOrderStatusText](@Status [tinyint])
+  RETURNS [nvarchar](15)
+  AS
+  -- Returns the sales order status text representation for the status value.
+  BEGIN
+      DECLARE @ret [nvarchar](15);
+
+      SET @ret =
+          CASE @Status
+              WHEN 1 THEN 'In process'
+              WHEN 2 THEN 'Approved'
+              WHEN 3 THEN 'Backordered'
+              WHEN 4 THEN 'Rejected'
+              WHEN 5 THEN 'Shipped'
+              WHEN 6 THEN 'Cancelled'
+              ELSE '** Invalid **'
+          END;
+
+      RETURN @ret
+  END;
+
+  GO
+

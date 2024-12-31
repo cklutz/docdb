@@ -1,0 +1,66 @@
+### YamlMime:DocDB
+type: Table
+id: table.dbo.int
+description: 
+name: dbo.INT
+foreignKeys: []
+checks: []
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
+indexes: []
+triggers: []
+columns:
+- type: TableColumn
+  id: table.dbo.int.column.int
+  description: 
+  name: INT
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [dbo].[INT](
+  	[INT] [int] NULL
+  ) ON [PRIMARY]
+  GO
+

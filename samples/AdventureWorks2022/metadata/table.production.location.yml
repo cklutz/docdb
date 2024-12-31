@@ -1,0 +1,534 @@
+### YamlMime:DocDB
+type: Table
+id: table.production.location
+description: Product inventory and manufacturing locations.
+name: Production.Location
+foreignKeys: []
+checks:
+- type: CheckConstraint
+  id: table.production.location.check.ck_location_availability
+  description: Check constraint [Availability] >= (0.00)
+  name: CK_Location_Availability
+  isChecked: true
+  isEnabled: true
+  constraintText: ([Availability]>=(0.00))
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: CheckConstraint
+  id: table.production.location.check.ck_location_costrate
+  description: Check constraint [CostRate] >= (0.00)
+  name: CK_Location_CostRate
+  isChecked: true
+  isEnabled: true
+  constraintText: ([CostRate]>=(0.00))
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+fileGroup:
+  name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+fileStreamGroup: 
+textFileGroup: 
+partitionInfo:
+  isPartitioned: false
+  columns: []
+  partitionScheme: 
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
+indexes:
+- type: Index
+  id: table.production.location.index.ak_location_name
+  description: Unique nonclustered index.
+  name: AK_Location_Name
+  indexType: NONCLUSTERED
+  indexKeyType: ''
+  isDisabled: false
+  isUnique: true
+  isClustered: false
+  filter: ''
+  columns:
+  - type: IndexColumn
+    id: table.production.location.index.ak_location_name.indexedcolumn.name
+    description: 
+    name: Name
+    columnRef:
+      name: Name
+      id: table.production.location.column.name
+      type: TableColumnRef
+    isDescending: false
+    isIncluded: false
+    columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+    script: ""
+  partitionInfo:
+    isPartitioned: false
+    columns: []
+    partitionScheme: 
+  fileGroup:
+    name: PRIMARY
+    id: filegroup.primary
+    type: FileGroupRef
+  fileStreamGroup: 
+  options:
+  - name: general
+    entries:
+    - name: autoRecomputeStatistics
+      value: true
+      type: bool
+    - name: ignoreDuplicateKeys
+      value: false
+      type: bool
+  - name: storage
+    entries:
+    - name: sortInTempdb
+      value: 
+      type: 
+    - name: fillFactor
+      value: 0
+      type: string
+    - name: padIndex
+      value: false
+      type: bool
+  - name: operation
+    entries:
+    - name: maximumDegreeOfParallelism
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+  - name: locks
+    entries:
+    - name: allowPageLocks
+      value: true
+      type: bool
+    - name: allowRowLocks
+      value: true
+      type: bool
+  - name: spatial
+    entries:
+    - name: isSpatialIndex
+      value: false
+      type: bool
+  - name: xml
+    entries:
+    - name: isXmlIndex
+      value: false
+      type: bool
+  - name: miscellaneous
+    entries:
+    - name: hasCompressedPartitions
+      value: false
+      type: bool
+    - name: hasXmlCompressedPartitions
+      value: false
+      type: bool
+    - name: compressAllRowGroups
+      value: 
+      type: 
+    - name: compactLargeObjects
+      value: 
+      type: 
+    - name: compressionDelay
+      value: 
+      type: 
+    - name: dropExistingIndex
+      value: 
+      type: 
+    - name: hasSparseColumn
+      value: false
+      type: bool
+    - name: isFileTableDefined
+      value: false
+      type: bool
+    - name: isFullTextKey
+      value: false
+      type: bool
+    - name: isIndexOnComputed
+      value: 
+      type: 
+    - name: isIndexOnTable
+      value: 
+      type: 
+    - name: isMemoryOptimized
+      value: false
+      type: bool
+    - name: isOnlineRebuildSupported
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+    - name: lowPriorityAbortAfterWait
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: onlineIndexOperation
+      value: 
+      type: 
+    - name: resumableIndexOperation
+      value: 
+      type: 
+    - name: resumableMaxDuration
+      value: 
+      type: 
+    - name: resumableOperationState
+      value: None
+      type: enum
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: Index
+  id: table.production.location.index.pk_location_locationid
+  description: Primary key (clustered) constraint
+  name: PK_Location_LocationID
+  indexType: CLUSTERED
+  indexKeyType: PRIMARY
+  isDisabled: false
+  isUnique: true
+  isClustered: true
+  filter: ''
+  columns:
+  - type: IndexColumn
+    id: table.production.location.index.pk_location_locationid.indexedcolumn.locationid
+    description: 
+    name: LocationID
+    columnRef:
+      name: LocationID
+      id: table.production.location.column.locationid
+      type: TableColumnRef
+    isDescending: false
+    isIncluded: false
+    columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+    script: ""
+  partitionInfo:
+    isPartitioned: false
+    columns: []
+    partitionScheme: 
+  fileGroup:
+    name: PRIMARY
+    id: filegroup.primary
+    type: FileGroupRef
+  fileStreamGroup: 
+  options:
+  - name: general
+    entries:
+    - name: autoRecomputeStatistics
+      value: true
+      type: bool
+    - name: ignoreDuplicateKeys
+      value: false
+      type: bool
+  - name: storage
+    entries:
+    - name: sortInTempdb
+      value: 
+      type: 
+    - name: fillFactor
+      value: 0
+      type: string
+    - name: padIndex
+      value: false
+      type: bool
+  - name: operation
+    entries:
+    - name: maximumDegreeOfParallelism
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+  - name: locks
+    entries:
+    - name: allowPageLocks
+      value: true
+      type: bool
+    - name: allowRowLocks
+      value: true
+      type: bool
+  - name: spatial
+    entries:
+    - name: isSpatialIndex
+      value: false
+      type: bool
+  - name: xml
+    entries:
+    - name: isXmlIndex
+      value: false
+      type: bool
+  - name: miscellaneous
+    entries:
+    - name: hasCompressedPartitions
+      value: false
+      type: bool
+    - name: hasXmlCompressedPartitions
+      value: false
+      type: bool
+    - name: compressAllRowGroups
+      value: 
+      type: 
+    - name: compactLargeObjects
+      value: 
+      type: 
+    - name: compressionDelay
+      value: 
+      type: 
+    - name: dropExistingIndex
+      value: 
+      type: 
+    - name: hasSparseColumn
+      value: false
+      type: bool
+    - name: isFileTableDefined
+      value: false
+      type: bool
+    - name: isFullTextKey
+      value: false
+      type: bool
+    - name: isIndexOnComputed
+      value: 
+      type: 
+    - name: isIndexOnTable
+      value: 
+      type: 
+    - name: isMemoryOptimized
+      value: false
+      type: bool
+    - name: isOnlineRebuildSupported
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+    - name: lowPriorityAbortAfterWait
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: onlineIndexOperation
+      value: 
+      type: 
+    - name: resumableIndexOperation
+      value: 
+      type: 
+    - name: resumableMaxDuration
+      value: 
+      type: 
+    - name: resumableOperationState
+      value: None
+      type: enum
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+triggers: []
+columns:
+- type: TableColumn
+  id: table.production.location.column.locationid
+  description: Primary key for Location records.
+  name: LocationID
+  dataType: SMALLINT
+  dataTypeRef: 
+  maxLengthBytes: 2
+  precision: 5
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: true
+  identityIncrement: 1
+  identitySeed: 1
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.location.column.name
+  description: Location description.
+  name: Name
+  dataType: '[dbo].[Name]'
+  dataTypeRef:
+    name: '[dbo].[Name]'
+    id: userdefineddatatype.dbo.name
+    type: UserDefinedDataTypeRef
+  maxLengthBytes: 50
+  precision: 0
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.location.column.costrate
+  description: Standard hourly cost of the manufacturing location.
+  name: CostRate
+  dataType: SMALLMONEY
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 4
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((0.00))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.location.column.availability
+  description: Work capacity (in hours) of the manufacturing location.
+  name: Availability
+  dataType: DECIMAL
+  dataTypeRef: 
+  maxLengthBytes: 5
+  precision: 8
+  scale: 2
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: ((0.00))
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.production.location.column.modifieddate
+  description: Date and time the record was last updated.
+  name: ModifiedDate
+  dataType: DATETIME
+  dataTypeRef: 
+  maxLengthBytes: 8
+  precision: 23
+  scale: 3
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: (getdate())
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [Production].[Location](
+  	[LocationID] [smallint] IDENTITY(1,1) NOT NULL,
+  	[Name] [dbo].[Name] NOT NULL,
+  	[CostRate] [smallmoney] NOT NULL,
+  	[Availability] [decimal](8, 2) NOT NULL,
+  	[ModifiedDate] [datetime] NOT NULL,
+   CONSTRAINT [PK_Location_LocationID] PRIMARY KEY CLUSTERED
+  (
+  	[LocationID] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  ) ON [PRIMARY]
+
+  GO
+
+  SET ANSI_PADDING ON
+  GO
+
+  CREATE UNIQUE NONCLUSTERED INDEX [AK_Location_Name] ON [Production].[Location]
+  (
+  	[Name] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+  GO
+
+  ALTER TABLE [Production].[Location] ADD  CONSTRAINT [DF_Location_CostRate]  DEFAULT ((0.00)) FOR [CostRate]
+  GO
+
+  ALTER TABLE [Production].[Location] ADD  CONSTRAINT [DF_Location_Availability]  DEFAULT ((0.00)) FOR [Availability]
+  GO
+
+  ALTER TABLE [Production].[Location] ADD  CONSTRAINT [DF_Location_ModifiedDate]  DEFAULT (getdate()) FOR [ModifiedDate]
+  GO
+
+  ALTER TABLE [Production].[Location]  WITH CHECK ADD  CONSTRAINT [CK_Location_Availability] CHECK  (([Availability]>=(0.00)))
+  GO
+
+  ALTER TABLE [Production].[Location] CHECK CONSTRAINT [CK_Location_Availability]
+  GO
+
+  ALTER TABLE [Production].[Location]  WITH CHECK ADD  CONSTRAINT [CK_Location_CostRate] CHECK  (([CostRate]>=(0.00)))
+  GO
+
+  ALTER TABLE [Production].[Location] CHECK CONSTRAINT [CK_Location_CostRate]
+  GO
+

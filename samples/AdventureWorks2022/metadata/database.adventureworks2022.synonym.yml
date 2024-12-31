@@ -1,0 +1,14 @@
+### YamlMime:DocDB
+type: TocSection
+id: database.adventureworks2022.synonym
+name: Synonyms
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+schemaVersion: 
+description: 
+script: 
+items:
+- id: synonym.dbo.foo
+  name: dbo.foo
+  description: 
+...

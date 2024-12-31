@@ -1,0 +1,29 @@
+### YamlMime:DocDB
+type: PartitionFunction
+id: partitionfunction.agepartfunc
+description: 
+name: AgePartFunc
+numberOfPartitions: 2
+rangeType: Right
+rangeValues:
+- 18
+parameters:
+- type: PartitionFunctionParameter
+  id: partitionfunctionparameter.int
+  description: 
+  name: int
+  collation: ''
+  length: 4
+  numericPrecision: 10
+  numericScale: 0
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE PARTITION FUNCTION [AgePartFunc](int) AS RANGE RIGHT FOR VALUES (18)
+  GO
+

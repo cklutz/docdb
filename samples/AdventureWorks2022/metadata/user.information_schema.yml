@@ -1,0 +1,17 @@
+### YamlMime:DocDB
+type: User
+id: user.information_schema
+description: 
+name: INFORMATION_SCHEMA
+userType: NoLogin
+authenticationType: None
+hasDBAccess: false
+loginType: SqlLogin
+login: ''
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE USER [INFORMATION_SCHEMA]
+  GO
+

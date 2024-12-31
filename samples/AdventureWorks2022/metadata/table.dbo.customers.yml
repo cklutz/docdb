@@ -1,0 +1,297 @@
+### YamlMime:DocDB
+type: Table
+id: table.dbo.customers
+description: 
+name: dbo.Customers
+foreignKeys: []
+checks: []
+fileGroup: 
+fileStreamGroup: 
+textFileGroup: 
+partitionInfo:
+  isPartitioned: true
+  columns:
+  - name: age
+    id: table.dbo.customers.column.age
+    type: TableColumnRef
+  partitionScheme:
+    name: '[AgePartScheme]'
+    id: partitionscheme.agepartscheme
+    type: PartitionSchemeRef
+fileTableInfo:
+  isFileTable: false
+  directoryName: 
+  nameColumnCollation: 
+  namespaceEnabled: false
+indexes:
+- type: Index
+  id: table.dbo.customers.index.pk_customers
+  description: 
+  name: PK_CUSTOMERS
+  indexType: CLUSTERED
+  indexKeyType: PRIMARY
+  isDisabled: false
+  isUnique: true
+  isClustered: true
+  filter: ''
+  columns:
+  - type: IndexColumn
+    id: table.dbo.customers.index.pk_customers.indexedcolumn.id
+    description: 
+    name: id
+    columnRef:
+      name: id
+      id: table.dbo.customers.column.id
+      type: TableColumnRef
+    isDescending: false
+    isIncluded: false
+    columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+    script: ""
+  - type: IndexColumn
+    id: table.dbo.customers.index.pk_customers.indexedcolumn.age
+    description: 
+    name: age
+    columnRef:
+      name: age
+      id: table.dbo.customers.column.age
+      type: TableColumnRef
+    isDescending: false
+    isIncluded: false
+    columnStoreOrderOrdinal: 0
+    databaseId: database.adventureworks2022
+    schemaVersion: 
+    lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+    script: ""
+  partitionInfo:
+    isPartitioned: true
+    columns:
+    - name: age
+      id: table.dbo.customers.index.pk_customers.indexedcolumn.age
+      type: TableColumnRef
+    partitionScheme:
+      name: '[AgePartScheme]'
+      id: partitionscheme.agepartscheme
+      type: PartitionSchemeRef
+  fileGroup: 
+  fileStreamGroup: 
+  options:
+  - name: general
+    entries:
+    - name: autoRecomputeStatistics
+      value: true
+      type: bool
+    - name: ignoreDuplicateKeys
+      value: false
+      type: bool
+  - name: storage
+    entries:
+    - name: sortInTempdb
+      value: 
+      type: 
+    - name: fillFactor
+      value: 0
+      type: string
+    - name: padIndex
+      value: false
+      type: bool
+  - name: operation
+    entries:
+    - name: maximumDegreeOfParallelism
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+  - name: locks
+    entries:
+    - name: allowPageLocks
+      value: true
+      type: bool
+    - name: allowRowLocks
+      value: true
+      type: bool
+  - name: spatial
+    entries:
+    - name: isSpatialIndex
+      value: false
+      type: bool
+  - name: xml
+    entries:
+    - name: isXmlIndex
+      value: false
+      type: bool
+  - name: miscellaneous
+    entries:
+    - name: hasCompressedPartitions
+      value: false
+      type: bool
+    - name: hasXmlCompressedPartitions
+      value: false
+      type: bool
+    - name: compressAllRowGroups
+      value: 
+      type: 
+    - name: compactLargeObjects
+      value: 
+      type: 
+    - name: compressionDelay
+      value: 
+      type: 
+    - name: dropExistingIndex
+      value: 
+      type: 
+    - name: hasSparseColumn
+      value: false
+      type: bool
+    - name: isFileTableDefined
+      value: false
+      type: bool
+    - name: isFullTextKey
+      value: false
+      type: bool
+    - name: isIndexOnComputed
+      value: 
+      type: 
+    - name: isIndexOnTable
+      value: 
+      type: 
+    - name: isMemoryOptimized
+      value: false
+      type: bool
+    - name: isOnlineRebuildSupported
+      value: 
+      type: 
+    - name: isOptimizedForSequentialKey
+      value: false
+      type: bool
+    - name: lowPriorityAbortAfterWait
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: lowPriorityMaxDuration
+      value: 
+      type: 
+    - name: onlineIndexOperation
+      value: 
+      type: 
+    - name: resumableIndexOperation
+      value: 
+      type: 
+    - name: resumableMaxDuration
+      value: 
+      type: 
+    - name: resumableOperationState
+      value: None
+      type: enum
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+triggers: []
+columns:
+- type: TableColumn
+  id: table.dbo.customers.column.id
+  description: 
+  name: id
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: true
+  identityIncrement: 1
+  identitySeed: 1
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.dbo.customers.column.name
+  description: 
+  name: name
+  dataType: VARCHAR(255)
+  dataTypeRef: 
+  maxLengthBytes: 255
+  precision: 0
+  scale: 0
+  isNullable: true
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: false
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: SQL_Latin1_General_CP1_CI_AS
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: TableColumn
+  id: table.dbo.customers.column.age
+  description: 
+  name: age
+  dataType: INT
+  dataTypeRef: 
+  maxLengthBytes: 4
+  precision: 10
+  scale: 0
+  isNullable: false
+  isComputed: false
+  computedText: ''
+  isIdentity: false
+  identityIncrement: 0
+  identitySeed: 0
+  inPrimaryKey: true
+  isForeignKey: false
+  foreignKeys: []
+  default: 
+  collation: ''
+  isFileStream: false
+  isFullTextIndexed: false
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE TABLE [dbo].[Customers](
+  	[id] [int] IDENTITY(1,1) NOT NULL,
+  	[name] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+  	[age] [int] NOT NULL,
+   CONSTRAINT [PK_CUSTOMERS] PRIMARY KEY CLUSTERED
+  (
+  	[id] ASC,
+  	[age] ASC
+  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [AgePartScheme]([age])
+  ) ON [AgePartScheme]([age])
+
+  GO
+

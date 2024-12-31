@@ -1,0 +1,29 @@
+### YamlMime:DocDB
+type: UserDefinedDataType
+id: userdefineddatatype.dbo.foobar
+description: 
+name: dbo.FooBar
+allowIdentity: true
+collation: ''
+defaultRef:
+  name: '[dbo].[testDefault]'
+  id: default.dbo.testdefault
+  type: DefaultRef
+isSchemaOwned: true
+length: 4
+maxLength: 4
+isNullable: true
+numericPrecision: 10
+numericScale: 0
+owner: dbo
+ruleRef: 
+systemType: int
+isVariableLength: false
+storageSize: 9
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE TYPE [dbo].[FooBar] FROM [int] NULL
+  GO
+

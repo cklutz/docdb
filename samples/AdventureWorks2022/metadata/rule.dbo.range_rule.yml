@@ -1,0 +1,15 @@
+### YamlMime:DocDB
+type: Rule
+id: rule.dbo.range_rule
+description: 
+name: dbo.range_rule
+textBody: '@range>= $1000 AND @range <$20000;  '
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE RULE dbo.range_rule  
+  AS   
+  @range>= $1000 AND @range <$20000;
+  GO
+

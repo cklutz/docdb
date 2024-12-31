@@ -1,0 +1,14 @@
+### YamlMime:DocDB
+type: TocSection
+id: database.adventureworks2022.progs.types.userdefinedtabletype
+name: User-Defined Table Types
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+schemaVersion: 
+description: 
+script: 
+items:
+- id: userdefinedtabletype.dbo.my_tvp
+  name: dbo.my_tvp
+  description: Test
+...

@@ -1,0 +1,17 @@
+### YamlMime:DocDB
+type: User
+id: user.dbo
+description: 
+name: dbo
+userType: SqlLogin
+authenticationType: Instance
+hasDBAccess: true
+loginType: SqlLogin
+login: sa
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE USER [dbo] FOR LOGIN [sa] WITH DEFAULT_SCHEMA=[dbo]
+  GO
+

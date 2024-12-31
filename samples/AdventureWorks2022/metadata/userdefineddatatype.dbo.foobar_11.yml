@@ -1,0 +1,26 @@
+### YamlMime:DocDB
+type: UserDefinedDataType
+id: userdefineddatatype.dbo.foobar_11
+description: 
+name: dbo.FooBar_11
+allowIdentity: false
+collation: SQL_Latin1_General_CP1_CI_AS
+defaultRef: 
+isSchemaOwned: true
+length: 11
+maxLength: 11
+isNullable: true
+numericPrecision: 0
+numericScale: 0
+owner: dbo
+ruleRef: 
+systemType: varchar
+isVariableLength: true
+storageSize: 11
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE TYPE [dbo].[FooBar_11] FROM [varchar](11) NULL
+  GO
+

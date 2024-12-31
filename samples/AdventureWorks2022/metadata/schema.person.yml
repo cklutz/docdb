@@ -1,0 +1,13 @@
+### YamlMime:DocDB
+type: Schema
+id: schema.person
+description: Contains objects related to names and addresses of customers, vendors, and employees
+name: Person
+owner: dbo
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE SCHEMA [Person]
+  GO
+

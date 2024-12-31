@@ -1,0 +1,29 @@
+### YamlMime:DocDB
+type: UserDefinedFunction
+id: userdefinedfunction.dbo.ufngetaccountingstartdate
+description: Scalar function used in the uSalesOrderHeader trigger to set the ending account date.
+name: dbo.ufnGetAccountingStartDate
+functionType: Scalar
+returnsNullOnNullInput: false
+parameters: []
+syntax: |2-
+
+  dbo.ufnGetAccountingStartDate()
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE FUNCTION [dbo].[ufnGetAccountingStartDate]()
+  RETURNS [datetime] 
+  AS 
+  BEGIN
+      RETURN CONVERT(datetime, '20030701', 112);
+  END;
+  GO
+

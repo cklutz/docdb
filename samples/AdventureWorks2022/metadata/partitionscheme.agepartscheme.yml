@@ -1,0 +1,24 @@
+### YamlMime:DocDB
+type: PartitionScheme
+id: partitionscheme.agepartscheme
+description: 
+name: AgePartScheme
+fileGroups:
+- name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+- name: '[PRIMARY]'
+  id: filegroup.primary
+  type: FileGroupRef
+nextUsedFileGroup: 
+partitionFunction:
+  name: '[AgePartFunc]'
+  id: partitionfunction.agepartfunc
+  type: PartitionFunctionRef
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE PARTITION SCHEME [AgePartScheme] AS PARTITION [AgePartFunc] TO ([PRIMARY], [PRIMARY])
+  GO
+

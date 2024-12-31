@@ -1,4 +1,4 @@
-﻿using DocDB.Contracts;
+using DocDB.Contracts;
 using Docfx.Build.Common;
 using Docfx.Common;
 using Docfx.Common.Git;
@@ -16,20 +16,17 @@ public class DocDBDocumentProcessor : ReferenceDocumentProcessorBase
     private const string DocDBDocumentType = "DocDB";
     private const string DocumentTypeKey = "documentType";
 
-    private readonly IDeserializer _deserializer;
-
-    public DocDBDocumentProcessor()
+    private readonly Lazy<IDeserializer> _deserializer = new(() =>
     {
-        Logger.LogVerbose($"{nameof(DocDBDocumentProcessor)}: created.");
-
         var builder = new DeserializerBuilder();
         builder.WithNamingConvention(CamelCaseNamingConvention.Instance);
         builder.IgnoreUnmatchedProperties();
         builder.WithTypeDiscriminatingNodeDeserializer(
             o => o.AddKeyValueTypeDiscriminator<DdbObject>("type", DdbObject.GetTypeMappings()));
 
-        _deserializer = builder.Build();
-    }
+        Logger.LogVerbose($"{nameof(DocDBDocumentProcessor)}: create deserializer (instance {builder.GetHashCode()})");
+        return builder.Build();
+    });
 
     protected override string ProcessedDocumentType => DocDBDocumentType;
     public override string Name => nameof(DocDBDocumentProcessor);
@@ -52,7 +49,7 @@ public class DocDBDocumentProcessor : ReferenceDocumentProcessorBase
         Logger.LogVerbose($"{nameof(DocDBDocumentProcessor)}: {ProcessedDocumentType}: loading file {file.FullPath}.");
 
         using var reader = new StreamReader(file.FullPath);
-        var obj = _deserializer.Deserialize<DdbObject>(reader);
+        var obj = _deserializer.Value.Deserialize<DdbObject>(reader);
 
         var vm = new DocDBViewModel(obj);
         vm.DisplayType = GetDisplayType(obj.Type);

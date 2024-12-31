@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+  "build": {
+    "content": [
+      { "files": [ "metadata/**/*.yml" ], "exclude": [ "_site/**" ] }
+    ],
+    "resource": [
+      { "files": [ "images/**" ] }
+    ],
+    "output": "_site",
+    "template": [
+      "default",
+      "modern",
+      "../../artifacts/templates"
+    ],
+    "globalMetadata": {
+      "_appName": "AdventureWorks2022",
+      "_appTitle": "AdventureWorks2022",
+      "_enableSearch": true,
+      "pdf": false
+    }
+  }
+}

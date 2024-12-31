@@ -1,0 +1,49 @@
+### YamlMime:DocDB
+type: UserDefinedFunction
+id: userdefinedfunction.dbo.ufnleadingzeros
+description: Scalar function used by the Sales.Customer table to help set the account number.
+name: dbo.ufnLeadingZeros
+functionType: Scalar
+returnsNullOnNullInput: false
+parameters:
+- type: UserDefinedFunctionParameter
+  id: userdefinedfunction.dbo.ufnleadingzeros.param.@value
+  description: Input parameter for the scalar function ufnLeadingZeros. Enter a valid integer.
+  name: '@Value'
+  dataType: INT
+  dataTypeRef: 
+  defaultValue: ''
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+syntax: |2-
+
+  dbo.ufnLeadingZeros(Value)
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE FUNCTION [dbo].[ufnLeadingZeros](
+      @Value int
+  )
+  RETURNS varchar(8)
+  WITH SCHEMABINDING
+  AS
+  BEGIN
+      DECLARE @ReturnValue varchar(8);
+
+      SET @ReturnValue = CONVERT(varchar(8), @Value);
+      SET @ReturnValue = REPLICATE('0', 8 - DATALENGTH(@ReturnValue)) + @ReturnValue;
+
+      RETURN (@ReturnValue);
+  END;
+
+  GO
+

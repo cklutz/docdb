@@ -1,0 +1,26 @@
+### YamlMime:DocDB
+type: UserDefinedDataType
+id: userdefineddatatype.dbo.ordernumber
+description: 
+name: dbo.OrderNumber
+allowIdentity: false
+collation: SQL_Latin1_General_CP1_CI_AS
+defaultRef: 
+isSchemaOwned: true
+length: 25
+maxLength: 50
+isNullable: true
+numericPrecision: 0
+numericScale: 0
+owner: dbo
+ruleRef: 
+systemType: nvarchar
+isVariableLength: true
+storageSize: 50
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE TYPE [dbo].[OrderNumber] FROM [nvarchar](25) NULL
+  GO
+

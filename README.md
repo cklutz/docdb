@@ -34,7 +34,7 @@ the Object Explorer of SSMS.
 
 # Examples
 
-The following xamples are based on the [AdventureWorks Sample Database](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/adventure-works/oltp-install-script).
+The following pictures are based on the [AdventureWorks Sample Database](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/adventure-works/oltp-install-script). To generate those yourself see [AdventureWorks2022 sample](samples/AdventureWorks2022/README.md).
 
 ![](docs/images/sample_db.png)
 *Database Overview*
@@ -47,3 +47,4 @@ The following xamples are based on the [AdventureWorks Sample Database](https://
 
 ![](docs/images/sample_sp.png)
 *Stored Procedure Details*
+

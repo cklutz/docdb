@@ -1,0 +1,15 @@
+### YamlMime:DocDB
+type: Rule
+id: rule.dbo.list_rule
+description: 
+name: dbo.list_rule
+textBody: "@list IN ('1389', '0736', '0877');"
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE RULE dbo.list_rule  
+  AS   
+  @list IN ('1389', '0736', '0877');
+  GO
+

@@ -1,0 +1,62 @@
+### YamlMime:DocDB
+type: UserDefinedFunction
+id: userdefinedfunction.dbo.ufngetproductstandardcost
+description: Scalar function returning the standard cost for a given product on a particular order date.
+name: dbo.ufnGetProductStandardCost
+functionType: Scalar
+returnsNullOnNullInput: false
+parameters:
+- type: UserDefinedFunctionParameter
+  id: userdefinedfunction.dbo.ufngetproductstandardcost.param.@productid
+  description: Input parameter for the scalar function ufnGetProductStandardCost. Enter a valid ProductID from the Production.Product table.
+  name: '@ProductID'
+  dataType: INT
+  dataTypeRef: 
+  defaultValue: ''
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: UserDefinedFunctionParameter
+  id: userdefinedfunction.dbo.ufngetproductstandardcost.param.@orderdate
+  description: Input parameter for the scalar function ufnGetProductStandardCost. Enter a valid order date.
+  name: '@OrderDate'
+  dataType: DATETIME
+  dataTypeRef: 
+  defaultValue: ''
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+syntax: |2-
+
+  dbo.ufnGetProductStandardCost(ProductID, OrderDate)
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE FUNCTION [dbo].[ufnGetProductStandardCost](@ProductID [int], @OrderDate [datetime])
+  RETURNS [money]
+  AS
+  -- Returns the standard cost for the product on a specific date.
+  BEGIN
+      DECLARE @StandardCost money;
+
+      SELECT @StandardCost = pch.[StandardCost]
+      FROM [Production].[Product] p
+          INNER JOIN [Production].[ProductCostHistory] pch
+          ON p.[ProductID] = pch.[ProductID]
+              AND p.[ProductID] = @ProductID
+              AND @OrderDate BETWEEN pch.[StartDate] AND COALESCE(pch.[EndDate], CONVERT(datetime, '99991231', 112)); -- Make sure we get all the prices!
+
+      RETURN @StandardCost;
+  END;
+
+  GO
+

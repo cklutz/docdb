@@ -1,0 +1,65 @@
+### YamlMime:DocDB
+type: UserDefinedFunction
+id: userdefinedfunction.dbo.ufngetproductdealerprice
+description: Scalar function returning the dealer price for a given product on a particular order date.
+name: dbo.ufnGetProductDealerPrice
+functionType: Scalar
+returnsNullOnNullInput: false
+parameters:
+- type: UserDefinedFunctionParameter
+  id: userdefinedfunction.dbo.ufngetproductdealerprice.param.@productid
+  description: Input parameter for the scalar function ufnGetProductDealerPrice. Enter a valid ProductID from the Production.Product table.
+  name: '@ProductID'
+  dataType: INT
+  dataTypeRef: 
+  defaultValue: ''
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+- type: UserDefinedFunctionParameter
+  id: userdefinedfunction.dbo.ufngetproductdealerprice.param.@orderdate
+  description: Input parameter for the scalar function ufnGetProductDealerPrice. Enter a valid order date.
+  name: '@OrderDate'
+  dataType: DATETIME
+  dataTypeRef: 
+  defaultValue: ''
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+syntax: |2-
+
+  dbo.ufnGetProductDealerPrice(ProductID, OrderDate)
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  SET ANSI_NULLS ON
+  GO
+
+  SET QUOTED_IDENTIFIER ON
+  GO
+
+  CREATE FUNCTION [dbo].[ufnGetProductDealerPrice](@ProductID [int], @OrderDate [datetime])
+  RETURNS [money]
+  AS
+  -- Returns the dealer price for the product on a specific date.
+  BEGIN
+      DECLARE @DealerPrice money;
+      DECLARE @DealerDiscount money;
+
+      SET @DealerDiscount = 0.60  -- 60% of list price
+
+      SELECT @DealerPrice = plph.[ListPrice] * @DealerDiscount
+      FROM [Production].[Product] p
+          INNER JOIN [Production].[ProductListPriceHistory] plph
+          ON p.[ProductID] = plph.[ProductID]
+              AND p.[ProductID] = @ProductID
+              AND @OrderDate BETWEEN plph.[StartDate] AND COALESCE(plph.[EndDate], CONVERT(datetime, '99991231', 112)); -- Make sure we get all the prices!
+
+      RETURN @DealerPrice;
+  END;
+
+  GO
+

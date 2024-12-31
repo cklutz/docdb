@@ -1,0 +1,71 @@
+### YamlMime:DocDB
+type: TocSection
+id: database.adventureworks2022.view
+name: Views
+databaseId: database.adventureworks2022
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+schemaVersion: 
+description: 
+script: 
+items:
+- id: view.humanresources.vemployee
+  name: HumanResources.vEmployee
+  description: Employee names and addresses.
+- id: view.humanresources.vemployeedepartment
+  name: HumanResources.vEmployeeDepartment
+  description: Returns employee name, title, and current department.
+- id: view.humanresources.vemployeedepartmenthistory
+  name: HumanResources.vEmployeeDepartmentHistory
+  description: Returns employee name and current and previous departments.
+- id: view.humanresources.vjobcandidate
+  name: HumanResources.vJobCandidate
+  description: Job candidate names and resumes.
+- id: view.humanresources.vjobcandidateeducation
+  name: HumanResources.vJobCandidateEducation
+  description: Displays the content from each education related element in the xml column Resume in the HumanResources.JobCandidate table. The content has been localized into French, Simplified Chinese and Thai. Some data may not display correctly unless supplemental language support is installed.
+- id: view.humanresources.vjobcandidateemployment
+  name: HumanResources.vJobCandidateEmployment
+  description: Displays the content from each employement history related element in the xml column Resume in the HumanResources.JobCandidate table. The content has been localized into French, Simplified Chinese and Thai. Some data may not display correctly unless supplemental language support is installed.
+- id: view.person.vadditionalcontactinfo
+  name: Person.vAdditionalContactInfo
+  description: Displays the contact name and content from each element in the xml column AdditionalContactInfo for that person.
+- id: view.person.vstateprovincecountryregion
+  name: Person.vStateProvinceCountryRegion
+  description: Joins StateProvince table with CountryRegion table.
+- id: view.production.vproductanddescription
+  name: Production.vProductAndDescription
+  description: Product names and descriptions. Product descriptions are provided in multiple languages.
+- id: view.production.vproductmodelcatalogdescription
+  name: Production.vProductModelCatalogDescription
+  description: Displays the content from each element in the xml column CatalogDescription for each product in the Production.ProductModel table that has catalog data.
+- id: view.production.vproductmodelinstructions
+  name: Production.vProductModelInstructions
+  description: Displays the content from each element in the xml column Instructions for each product in the Production.ProductModel table that has manufacturing instructions.
+- id: view.purchasing.vvendorwithaddresses
+  name: Purchasing.vVendorWithAddresses
+  description: Vendor (company) names and addresses .
+- id: view.purchasing.vvendorwithcontacts
+  name: Purchasing.vVendorWithContacts
+  description: Vendor (company) names  and the names of vendor employees to contact.
+- id: view.sales.vindividualcustomer
+  name: Sales.vIndividualCustomer
+  description: Individual customers (names and addresses) that purchase Adventure Works Cycles products online.
+- id: view.sales.vpersondemographics
+  name: Sales.vPersonDemographics
+  description: Displays the content from each element in the xml column Demographics for each customer in the Person.Person table.
+- id: view.sales.vsalesperson
+  name: Sales.vSalesPerson
+  description: Sales representiatives (names and addresses) and their sales-related information.
+- id: view.sales.vsalespersonsalesbyfiscalyears
+  name: Sales.vSalesPersonSalesByFiscalYears
+  description: Uses PIVOT to return aggregated sales information for each sales representative.
+- id: view.sales.vstorewithaddresses
+  name: Sales.vStoreWithAddresses
+  description: Stores (including store addresses) that sell Adventure Works Cycles products to consumers.
+- id: view.sales.vstorewithcontacts
+  name: Sales.vStoreWithContacts
+  description: Stores (including store contacts) that sell Adventure Works Cycles products to consumers.
+- id: view.sales.vstorewithdemographics
+  name: Sales.vStoreWithDemographics
+  description: Stores (including demographics) that sell Adventure Works Cycles products to consumers.
+...

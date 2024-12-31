@@ -1,0 +1,40 @@
+### YamlMime:DocDB
+type: UserDefinedAggregate
+id: userdefinedaggregate.dbo.joinstringwithcommas
+description: 
+name: dbo.JoinStringWithCommas
+assemblyName: TestClrAssembly
+assemblyRef:
+  name: '[TestClrAssembly]'
+  id: sqlassembly.testclrassembly
+  type: AssemblyRef
+className: TestClrAssembly.JoinStringWithCommas
+isSchemaOwned: true
+owner: dbo
+returnDataType: NVARCHAR(MAX)
+returnDataTypeRef: 
+parameters:
+- type: UserDefinedAggregateParameter
+  id: userdefinedaggregate.dbo.joinstringwithcommas.param.@value
+  description: 
+  name: '@value'
+  dataType: NVARCHAR(4000)
+  dataTypeRef: 
+  defaultValue: 
+  databaseId: database.adventureworks2022
+  schemaVersion: 
+  lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+  script: ""
+syntax: >2-
+
+  dbo.JoinStringWithCommas(value)
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE AGGREGATE [dbo].[JoinStringWithCommas]
+  (@value [nvarchar](4000))
+  RETURNS[nvarchar](max)
+  EXTERNAL NAME [TestClrAssembly].[TestClrAssembly.JoinStringWithCommas]
+  GO
+

@@ -1,0 +1,29 @@
+### YamlMime:DocDB
+type: Sequence
+id: sequence.dbo.testseq
+description: 
+name: dbo.TestSeq
+dataType: BIGINT
+dataTypeRef: 
+isCached: true
+isCycleEnabled: true
+isSchemaOwned: true
+cacheSize: 20
+incrementValue: 1
+startValue: 1000
+minValue: 1000
+maxValue: 9999
+databaseId: database.adventureworks2022
+schemaVersion: 
+lastSchemaModificationAt: 2024-12-17T15:38:40.5330000
+script: |+
+  CREATE SEQUENCE [dbo].[TestSeq] 
+   AS [bigint]
+   START WITH 1000
+   INCREMENT BY 1
+   MINVALUE 1000
+   MAXVALUE 9999
+   CYCLE 
+   CACHE  20
+  GO
+
