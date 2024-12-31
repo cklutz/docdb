@@ -1,9 +1,14 @@
+# DocDB
+
 Generate metadata from SQL Server databases for use with [DocFX](https://github.com/dotnet/docfx) to generate reference documentation.
 
-# Overview
+[![MIT License](https://img.shields.io/github/license/cklutz/docdb?color=%230b0&style=flat-square)](https://github.com/cklutz/docdb/blob/master/LICENSE) 
+[![](https://github.com/cklutz/docdb/workflows/Windows/badge.svg)](https://github.com/cklutz/docdb/actions?query=workflow%3AWindows)
 
 You can use this tool to generate meta data files (<code>.yml</code> files) for a given SQL Server database.
 Then use <code>docfx</code> to generate reference documentation like you would do for other languages (e.g. C#).
+
+__Warning__: Albeit usable, this tool is not complete. Still lacking are unit tests and code coverage and integration style tests. YMMV.
 
 # Features
 
@@ -47,4 +52,3 @@ The following pictures are based on the [AdventureWorks Sample Database](https:/
 
 ![](docs/images/sample_sp.png)
 *Stored Procedure Details*
-
