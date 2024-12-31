@@ -19,7 +19,7 @@ DocDB can document the following SQL Server objects:
 * Stored Procedures
 * Functions (scalar, table valued, aggregates)
 * Types (data types, table types, CLR types)
-* Assemblies (incl. decompilied C# code)
+* Assemblies (incl. decompiled C# code)
 * DDL Triggers
 * XML Schema collections
 * Parition information (functions, schemes)
