@@ -2,9 +2,22 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net8.0</TargetFrameworks>
-    <Nullable>enable</Nullable>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackAsTool>true</PackAsTool>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <RollForward>major</RollForward>
+    <PackageId>docdb.console</PackageId>
+    <Authors>cklutz</Authors>
+    <Description>Generate metadata from SQL Server databases for use with docfx to generate reference documentation.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/cklutz/docdb</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/cklutz/docdb</RepositoryUrl>
+    <PackageTags>.NET;dotnet;docfx-plugin;sql-server;documentation-generation;templates</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
   
   <ItemGroup>
@@ -12,16 +25,51 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- SMO 172.52.0 references Microsoft.Data.SqlClient 5.1.5 which is vulnerable. -->
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
-    <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="172.52.0" />
-    <PackageReference Include="YamlDotNet" Version="16.2.1" />
+    <None Include="../../THIRD-PARTY-NOTICES.TXT" CopyToOutputDirectory="PreserveNewest" PackageCopyToOutput="true" />
+    <None Include="../../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
-    <PackageReference Include="ICSharpCode.Decompiler" Version="9.0.0.7833-preview3" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient"/>
+    <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects"/>
+    <PackageReference Include="YamlDotNet"/>
+    <PackageReference Include="ICSharpCode.Decompiler"/>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DocDB.Contracts\DocDB.Contracts.csproj" />
+    <ProjectReference Include="..\Docfx.Plugins.DocDB\Docfx.Plugins.DocDB.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_FixTemplatePackagePaths</TargetsForTfmSpecificContentInPackage>
+    <!-- Silence warning/error about .dll not being in the lib folder. -->
+    <NoWarn>$(NoWarn);NU5100</NoWarn>
+  </PropertyGroup>
+
+  <Target Name="_FixTemplatePackagePaths">
+    <!--
+    The plugin must be located inside the "templates/plugins" folder for docfx to find it.
+    Package it like this so that the package "installation" location can be used to reference
+    the template later on.
+    -->
+    <ItemGroup>
+      <TfmSpecificPackageFile Include="$(OutputPath)/Docfx.Plugins.DocDB.*" PackagePath="templates/plugins"/>
+      <TfmSpecificPackageFile Include="$(OutputPath)/DocDB.Contracts.*" PackagePath="templates/plugins"/>
+    </ItemGroup>
+
+    <!--
+    The templates themselves are packed underneath the "tools/<tfm>/any" directory. We want them to be "top-level"
+    in the package.
+    -->
+    <ItemGroup>
+      <TfmSpecificPackageFile
+        Update="@(TfmSpecificPackageFile)"
+        Condition="$([System.String]::new('%(TfmSpecificPackageFile.PackagePath)').StartsWith('tools/$(TargetFramework)/any/templates/'))
+          or $([System.String]::new('%(TfmSpecificPackageFile.PackagePath)').Equals('tools/$(TargetFramework)/any/templates'))"
+        PackagePath="$([System.String]::new('%(TfmSpecificPackageFile.PackagePath)').Replace('tools/$(TargetFramework)/any/',''))"/>
+    </ItemGroup>
+
+    <Message Importance="low" Text="%(TfmSpecificPackageFile.Identity) => %(PackagePath)"/>
+  </Target>
 </Project>
