@@ -27,57 +27,56 @@ GO
         IsNullIfEmpty = true)]
     public class JoinStringWithCommas : IBinarySerialize
     {
-        private StringBuilder m_buffer;
+        private StringBuilder _buffer = new StringBuilder();
 
         public void Init()
         {
-            m_buffer = new StringBuilder();
         }
 
         public void Accumulate(SqlString sqlValue)
         {
             if (!sqlValue.IsNull)
             {
-                if (m_buffer.Length > 0)
+                if (_buffer.Length > 0)
                 {
-                    m_buffer.Append(",");
+                    _buffer.Append(",");
                 }
 
-                m_buffer.Append(sqlValue.ToString());
+                _buffer.Append(sqlValue.ToString());
             }
         }
 
         public void Merge(JoinStringWithCommas other)
         {
-            if (other.m_buffer.Length > 0)
+            if (other._buffer.Length > 0)
             {
-                if (m_buffer.Length > 0)
+                if (_buffer.Length > 0)
                 {
-                    m_buffer.Append(",");
+                    _buffer.Append(",");
                 }
 
-                m_buffer.Append(other.m_buffer);
+                _buffer.Append(other._buffer);
             }
         }
 
         public SqlString Terminate()
         {
-            if (m_buffer.Length == 0)
+            if (_buffer.Length == 0)
             {
                 return SqlString.Null;
             }
 
-            return new SqlString(m_buffer.ToString());
+            return new SqlString(_buffer.ToString());
         }
 
         public void Read(BinaryReader r)
         {
-            m_buffer = new StringBuilder(r.ReadString());
+            _buffer = new StringBuilder(r.ReadString());
         }
 
         public void Write(BinaryWriter w)
         {
-            w.Write(m_buffer.ToString());
+            w.Write(_buffer.ToString());
         }
     }
 }

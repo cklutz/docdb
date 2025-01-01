@@ -1,27 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net8.0</TargetFrameworks>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <TemplatesDirectory>$(ArtifactsPath)\templates\</TemplatesDirectory>
-    <PluginsDirectory>$(TemplatesDirectory)\plugins\</PluginsDirectory>
-  </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Docfx.Build.Common" Version="2.78.2" />
-    <PackageReference Include="Docfx.Common" Version="2.78.2" />
-    <PackageReference Include="Docfx.Plugins" Version="2.78.2" />
-    <PackageReference Include="System.Composition" Version="9.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_TemplateFiles Include="templates/**/*" />
-    <_PluginFiles Include="$(OutputPath)/**/*" />
+    <PackageReference Include="Docfx.Build.Common"/>
+    <PackageReference Include="Docfx.Common"/>
+    <PackageReference Include="Docfx.Plugins"/>
+    <PackageReference Include="System.Composition"/>
   </ItemGroup>
 
   <ItemGroup>
@@ -32,13 +15,38 @@
     <ProjectReference Include="..\DocDB.Contracts\DocDB.Contracts.csproj" />
   </ItemGroup>
 
-  <Target Name="CopyTemplates" AfterTargets="Build" Inputs="@(_TemplateFiles)" Outputs="@(_TemplateFiles->'$(TemplatesDirectory)%(RecursiveDir)%(Filename)%(Extension)')">
-    <Copy SourceFiles="@(_TemplateFiles)" DestinationFiles="@(_TemplateFiles->'$(TemplatesDirectory)%(RecursiveDir)%(Filename)%(Extension)')" />
+  <ItemGroup>
+    <Content Include="templates/**" CopyToOutputDirectory="PreserveNewest" PackageCopyToOutput="true" PackagePath="contentFiles/any/any/templates" />
+  </ItemGroup>
+
+  <!--
+  Ensure that there is a valid "templates" directory structure (including "templates/plugins") in the artifacts folder.
+  This will always reflect the current or most recent build output (configuration and tfm), and is used for inner loop
+  tests.
+  -->
+  <Target Name="_Setup">
+    <ItemGroup>
+      <_TemplateFiles Include="templates/**/*" />
+      <_PluginFiles Include="$(OutputPath)/*" />
+    </ItemGroup>
+    <PropertyGroup>
+      <TemplatesDirectory>$(ArtifactsPath)\templates\</TemplatesDirectory>
+    </PropertyGroup>
   </Target>
 
-  <Target Name="CopyPlugin" AfterTargets="Build" Inputs="@(_PluginFiles)" Outputs="@(_PluginFiles->'$(PluginsDirectory)%(RecursiveDir)%(Filename)%(Extension)')">
-    <Copy SourceFiles="@(_PluginFiles)" DestinationFiles="@(_PluginFiles->'$(PluginsDirectory)%(RecursiveDir)%(Filename)%(Extension)')" />
+  <Target Name="CopyTemplates" AfterTargets="Build"
+    DependsOnTargets="_Setup"
+    Inputs="@(_TemplateFiles)"
+    Outputs="@(_TemplateFiles->'$(ArtifactsPath)\templates\%(RecursiveDir)%(Filename)%(Extension)')"
+    Condition="'$(IsTargetBuild)' == 'true'">
+    <Copy SourceFiles="@(_TemplateFiles)" DestinationFiles="@(_TemplateFiles->'$(ArtifactsPath)\templates\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
 
-
+  <Target Name="CopyPlugin" AfterTargets="Build"
+    DependsOnTargets="_Setup"
+    Inputs="@(_PluginFiles)"
+    Outputs="@(_PluginFiles->'$(ArtifactsPath)\templates\plugins\%(RecursiveDir)%(Filename)%(Extension)')"
+    Condition="'$(IsTargetBuild)' == 'true'">
+    <Copy SourceFiles="@(_PluginFiles)" DestinationFiles="@(_PluginFiles->'$(ArtifactsPath)\templates\plugins\%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
 </Project>

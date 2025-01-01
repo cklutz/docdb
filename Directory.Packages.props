@@ -1,0 +1,23 @@
+<Project>
+  <!-- See https://learn.microsoft.com/nuget/consume-packages/Central-Package-Management -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.6.143"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- SMO 172.52.0 references Microsoft.Data.SqlClient 5.1.5 which is vulnerable. -->
+    <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+    <PackageVersion Include="Microsoft.SqlServer.SqlManagementObjects" Version="172.52.0" />
+    <PackageVersion Include="YamlDotNet" Version="16.2.1" />
+    <PackageVersion Include="ICSharpCode.Decompiler" Version="9.0.0.7833-preview3" />
+    <PackageVersion Include="Docfx.Common" Version="2.78.2" />
+    <PackageVersion Include="Docfx.Build.Common" Version="2.78.2" />
+    <PackageVersion Include="Docfx.Plugins" Version="2.78.2" />
+    <PackageVersion Include="System.Composition" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.SqlServer.Server" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
