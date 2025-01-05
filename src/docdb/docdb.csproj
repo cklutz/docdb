@@ -34,6 +34,7 @@
     <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects"/>
     <PackageReference Include="YamlDotNet"/>
     <PackageReference Include="ICSharpCode.Decompiler"/>
+    <PackageReference Include="Spectre.Console.Cli" />
   </ItemGroup>
 
   <ItemGroup>
