@@ -15,6 +15,7 @@ public class DocDBDocumentProcessor : ReferenceDocumentProcessorBase
 {
     private const string DocDBDocumentType = "DocDB";
     private const string DocumentTypeKey = "documentType";
+    private const string YamlMimeType = YamlMime.YamlMimePrefix + DocDBDocumentType;
 
     private readonly Lazy<IDeserializer> _deserializer = new(() =>
     {
@@ -37,8 +38,12 @@ public class DocDBDocumentProcessor : ReferenceDocumentProcessorBase
         if (file.Type == DocumentType.Article &&
             ".yml".Equals(Path.GetExtension(file.File), StringComparison.OrdinalIgnoreCase))
         {
-            Logger.LogVerbose($"{nameof(DocDBDocumentProcessor)}: {ProcessedDocumentType}: adding file {file.FullPath}.");
-            return ProcessingPriority.Normal;
+            string? mimeType = YamlMime.ReadMime(file.File);
+            if (mimeType == YamlMimeType)
+            {
+                Logger.LogVerbose($"{nameof(DocDBDocumentProcessor)}: {ProcessedDocumentType}: adding file {file.FullPath}.");
+                return ProcessingPriority.Normal;
+            }
         }
 
         return ProcessingPriority.NotSupported;
