@@ -1,8 +1,0 @@
-docdb: Test debug
-docdb: Test message
-docdb: warning: Test warning
-docdb: error: Test error
-docdb: Processing Server[@Name='GFT-NmJxHoi15ez']/Database[@Name='AdventureWorks2022']
-docdb: Writing C:\Users\cnkz\source\repos\docdb\samples\AdventureWorks2022\\metadata\database.adventureworks2022.yml
-docdb: Processing Server[@Name='GFT-NmJxHoi15ez']/Database[@Name='AdventureWorks2022']/Table[@Name='AWBuildVersion' and @Schema='dbo']
-Terminate batch job (Y/N)? 
