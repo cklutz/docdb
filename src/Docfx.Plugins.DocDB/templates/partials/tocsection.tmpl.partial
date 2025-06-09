@@ -20,3 +20,6 @@
 	</tbody>
 </table>
 {{/payload.items.0}}
+{{^payload.items.0}}
+<div class="noobjects">{{__global.noobjects}}</div>
+{{/payload.items.0}}
