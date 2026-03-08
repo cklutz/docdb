@@ -1,6 +1,6 @@
 # DocDB
 
-Generate metadata from SQL Server databases for use with [DocFX](https://github.com/dotnet/docfx) to generate reference documentation.
+Generate metadata for SQL Server databases, for use with [DocFX](https://github.com/dotnet/docfx), to generate reference documentation.
 
 [![NuGet](https://img.shields.io/nuget/v/docdb.console)](https://www.nuget.org/packages/docdb.console)
 [![Status](https://github.com/cklutz/docdb/workflows/Windows/badge.svg)](https://github.com/cklutz/docdb/actions?query=workflow%3AWindows)
@@ -70,3 +70,4 @@ The following pictures are based on the [AdventureWorks Sample Database](https:/
 
 ![](docs/images/sample_sp.png)
 *Stored Procedure Details*
+
